@@ -1,0 +1,46 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/goody-api-openapi-original.json
+docs: https://developer.ongoody.com/commerce-api/authentication
+summary:
+  types:
+  - http
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: bearer
+  type: http
+  scheme: bearer
+  description: >-
+    Goody API key (Commerce API / Automation API). Passed as
+    "Authorization: Bearer [example key]". Production and Sandbox
+    accounts are separate and carry different keys for isolation.
+  docs: https://developer.ongoody.com/commerce-api/authentication
+  sources:
+  - openapi/goody-api-openapi-original.json
+- name: mcp_oauth2
+  type: oauth2
+  description: >-
+    OAuth 2.0 authorization-code + PKCE (S256) used by the Goody MCP server
+    for interactive clients (Claude, Cursor). Supports dynamic client
+    registration (RFC 7591). Advertised at
+    /.well-known/oauth-authorization-server (RFC 8414). Scripts/automations
+    may instead pass a personal MCP token as a bearer token.
+  docs: https://developer.ongoody.com/mcp/authentication
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.ongoody.com/oauth/authorize
+    tokenUrl: https://api.ongoody.com/oauth/token
+    registrationUrl: https://api.ongoody.com/oauth/register
+    revocationUrl: https://api.ongoody.com/oauth/revoke
+    pkce: S256
+    scopes:
+    - mcp.read
+    - mcp.write
+    - mcp.gifts
+    - chrome.write
+  sources:
+  - well-known/goody-oauth-authorization-server.json
