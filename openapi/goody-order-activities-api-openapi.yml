@@ -1,0 +1,569 @@
+openapi: 3.0.1
+info:
+  title: Goody Brands Order Activities API
+  version: 1.0.0
+  contact:
+    name: Goody Support
+    email: support@ongoody.com
+servers:
+- url: https://api.ongoody.com
+  description: Production
+- url: https://api.sandbox.ongoody.com
+  description: Sandbox
+tags:
+- name: Order Activities
+paths:
+  /v1/order_activities:
+    get:
+      summary: List order activities
+      tags:
+      - Order Activities
+      security:
+      - bearer: []
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+        description: Page for pagination, starting at 1
+        required: false
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+          maximum: 100
+        description: Items per page for pagination
+        required: false
+      - name: after
+        in: query
+        schema:
+          type: string
+          format: date-time
+          description: ISO 8601
+          nullable: true
+        description: Filter activities created at or after this timestamp (ISO 8601)
+        required: false
+      - name: before
+        in: query
+        schema:
+          type: string
+          format: date-time
+          description: ISO 8601
+          nullable: true
+        description: Filter activities created at or before this timestamp (ISO 8601)
+        required: false
+      - name: statuses
+        in: query
+        schema:
+          type: string
+          nullable: true
+        description: Comma-separated list of statuses to filter by (e.g. "created,opened,shipped")
+        required: false
+      responses:
+        '200':
+          description: Order activities retrieved
+          content:
+            application/json:
+              examples:
+                Order activities retrieved:
+                  value:
+                    data:
+                    - id: 2f7fda94-5e06-42a4-b856-010a83afe76d
+                      order_status: opened
+                      created_at: '2026-06-03T12:24:10Z'
+                      order:
+                        id: e3d4235a-9367-4bff-a0dd-a9339784cac2
+                        status: opened
+                        individual_gift_link: https://gifts.ongoody.com/gift/MAWESE8CCGYUEHZBDNFNH8V8
+                        recipient_first_name: Recipient
+                        recipient_last_name: Smith
+                        recipient_email: null
+                        card_id: ffdb7f07-1d78-4e0c-ac3d-580394c9eea6
+                        message: Test Message
+                        thank_you_note: null
+                        view_count_recipient: 0
+                        is_swapped: false
+                        order_batch_id: 93b36a7e-2de8-495c-8192-fc45be4c970e
+                        expires_at: null
+                        cart:
+                          id: 1d2b284b-9a88-4ea1-8b0b-1ca983d214c9
+                          items:
+                          - id: 9acd31ae-a9bd-43e4-9b7d-dd6ace754184
+                            quantity: 1
+                            product:
+                              id: b55b1c75-d69a-42fd-a1d3-aaa881db000d
+                              name: Cookies
+                              brand:
+                                id: c710da1e-18d0-46b2-93c1-7b91f93603c5
+                                name: Cookie Company
+                        shipments: []
+                        amounts:
+                          amount_product: 0
+                          amount_shipping: 0
+                          amount_processing_fee: 0
+                          amount_pre_tax_total: 0
+                          amount_tax: null
+                          amount_total: null
+                          amount_global_relay_cost: null
+                        sender:
+                          first_name: Test
+                          last_name: User
+                          email: 15554158553@test.ongoody.com
+                        workspace_id: 7fb09027-7350-46bc-954a-ee9c2b4f5126
+                        workspace_name: Test Team
+                        original_cart: null
+                        original_amounts: null
+                        reference_id: DRKRUKB5XGWRB7VRKNZBWN5Q
+                        payment_link: null
+                    - id: 542c1b8b-2819-44fd-a79b-a5e07018a7a8
+                      order_status: created
+                      created_at: '2026-06-03T12:24:10Z'
+                      order:
+                        id: e3d4235a-9367-4bff-a0dd-a9339784cac2
+                        status: opened
+                        individual_gift_link: https://gifts.ongoody.com/gift/MAWESE8CCGYUEHZBDNFNH8V8
+                        recipient_first_name: Recipient
+                        recipient_last_name: Smith
+                        recipient_email: null
+                        card_id: ffdb7f07-1d78-4e0c-ac3d-580394c9eea6
+                        message: Test Message
+                        thank_you_note: null
+                        view_count_recipient: 0
+                        is_swapped: false
+                        order_batch_id: 93b36a7e-2de8-495c-8192-fc45be4c970e
+                        expires_at: null
+                        cart:
+                          id: 1d2b284b-9a88-4ea1-8b0b-1ca983d214c9
+                          items:
+                          - id: 9acd31ae-a9bd-43e4-9b7d-dd6ace754184
+                            quantity: 1
+                            product:
+                              id: b55b1c75-d69a-42fd-a1d3-aaa881db000d
+                              name: Cookies
+                              brand:
+                                id: c710da1e-18d0-46b2-93c1-7b91f93603c5
+                                name: Cookie Company
+                        shipments: []
+                        amounts:
+                          amount_product: 0
+                          amount_shipping: 0
+                          amount_processing_fee: 0
+                          amount_pre_tax_total: 0
+                          amount_tax: null
+                          amount_total: null
+                          amount_global_relay_cost: null
+                        sender:
+                          first_name: Test
+                          last_name: User
+                          email: 15554158553@test.ongoody.com
+                        workspace_id: 7fb09027-7350-46bc-954a-ee9c2b4f5126
+                        workspace_name: Test Team
+                        original_cart: null
+                        original_amounts: null
+                        reference_id: DRKRUKB5XGWRB7VRKNZBWN5Q
+                        payment_link: null
+                    list_meta:
+                      total_count: 2
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OrderActivity'
+                  list_meta:
+                    $ref: '#/components/schemas/ListMeta'
+components:
+  schemas:
+    Order:
+      type: object
+      description: An individual order contains the gift link to be sent to the recipient (if applicable) and other information about the order.
+      properties:
+        id:
+          type: string
+          format: uuid
+        recipient_first_name:
+          type: string
+        recipient_last_name:
+          type: string
+          nullable: true
+        recipient_email:
+          type: string
+          nullable: true
+        status:
+          $ref: '#/components/schemas/OrderStatus'
+        individual_gift_link:
+          type: string
+          description: This gift link can be sent to the recipient or shared with the sender. For privacy reasons, this gift link does not display tracking information. A separate link, the recipient link, is sent directly to the recipient after they accept their gift, which does contain tracking information.
+        cart:
+          $ref: '#/components/schemas/Cart'
+          description: The cart currently on this order. If the order is a gift that was swapped, `cart` displays the most recent products selected (i.e. post-swap).
+        cart_selections:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartSelection'
+          description: Product variant selections for each cart product. Only for commerce app orders.
+          nullable: true
+        shipments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Shipment'
+          description: A list of the shipments for the order.
+        workspace_id:
+          type: string
+          format: uuid
+          nullable: true
+          description: Organizations are sub-divided into workspaces. Orders are contained in workspaces, identified by this ID.
+        workspace_name:
+          type: string
+          nullable: true
+        expires_at:
+          type: string
+          format: date-time
+          description: For gifts, the date and time the gift is set to expire.
+          nullable: true
+        card_id:
+          type: string
+          format: uuid
+          nullable: true
+          description: The digital greeting card on this gift.
+        message:
+          type: string
+          nullable: true
+          description: The message in this gift, provided by the sender.
+        thank_you_note:
+          type: string
+          nullable: true
+          description: A thank you note sent by the recipient.
+        view_count_recipient:
+          type: integer
+          description: The number of times the recipient viewed the gift.
+        is_swapped:
+          type: boolean
+          description: If this gift was swapped by the recipient. Swapping allows a recipient to select another product or products, which replaces the `cart`. The original products are saved to `original_cart`.
+        order_batch_id:
+          type: string
+          format: uuid
+          description: On Goody for Business, all orders are attached to a order batch, which is a collection of one or more orders.
+        amounts:
+          type: object
+          description: Costs in USD cents (i.e. $1.00 = 100). If the order was swapped, `amounts` displays the most recent amounts (i.e. post-swap).
+          properties:
+            amount_product:
+              type: integer
+              description: Total cost of the products in this order.
+            amount_shipping:
+              type: integer
+              description: Total cost of shipping for this order.
+            amount_processing_fee:
+              type: integer
+              nullable: true
+              description: Total cost of processing fees for this order.
+            amount_credit_applied:
+              type: integer
+              nullable: true
+              description: Total amount of credit applied to this order.
+            amount_pre_tax_total:
+              type: integer
+              description: Total cost of the products, shipping, and processing fees in this order.
+            amount_tax:
+              type: integer
+              nullable: true
+              description: Total tax for this order.
+            amount_total:
+              type: integer
+              nullable: true
+              description: Total cost of the products, shipping, processing fees, tax, and global shipping costs in this order.
+            amount_global_relay_cost:
+              type: integer
+              nullable: true
+              description: Total cost of global shipping for this order through the Global Relay service.
+          required:
+          - amount_product
+          - amount_shipping
+          - amount_pre_tax_total
+        event_times:
+          type: object
+          description: Only provided when calling the /orders/:id endpoint.
+          properties:
+            created_at:
+              type: string
+              format: date-time
+              description: ISO 8601
+            notified_at:
+              type: string
+              format: date-time
+              description: When the recipient was notified of the order.
+              nullable: true
+            opened_at:
+              type: string
+              format: date-time
+              description: For gifts, when the recipient opened the order.
+              nullable: true
+            accepted_at:
+              type: string
+              format: date-time
+              description: For gifts, when the recipient accepted the order.
+              nullable: true
+            pending_payment_at:
+              type: string
+              format: date-time
+              description: When the order entered pending payment status.
+              nullable: true
+            paid_at:
+              type: string
+              format: date-time
+              description: When the order was paid for.
+              nullable: true
+            shipped_at:
+              type: string
+              format: date-time
+              description: When the order was first shipped. If there are multiple shipments, this is when the first shipment shipped.
+              nullable: true
+            delivered_at:
+              type: string
+              format: date-time
+              description: When the order was delivered. If there are multiple shipments, this is when all shipments were delivered.
+              nullable: true
+          required:
+          - created_at
+          nullable: true
+        original_cart:
+          $ref: '#/components/schemas/Cart'
+          description: If this order is a gift that was swapped, this displays the original cart that was sent to the recipient.
+          nullable: true
+        original_amounts:
+          type: object
+          description: If this order is a gift that was swapped, this displays the original amounts of the cart that was sent to the recipient.
+          properties:
+            original_amount_product:
+              type: integer
+              nullable: true
+            original_amount_shipping:
+              type: integer
+              nullable: true
+            original_amount_credit_applied:
+              type: integer
+              nullable: true
+            original_amount_pre_tax_total:
+              type: integer
+              nullable: true
+          nullable: true
+        sender:
+          $ref: '#/components/schemas/Sender'
+          description: The Goody user who sent this order.
+        payment_link:
+          type: string
+          nullable: true
+          description: For commerce apps using Hosted Payment, the payment link for the gift with the credit card entry form. Available when the gift is in `pending_payment` status (after it has been accepted).
+        reference_id:
+          type: string
+          description: The reference ID displayed on receipts and other locations as the ID for this order.
+      required:
+      - id
+      - recipient_first_name
+      - status
+      - individual_gift_link
+      - cart
+      - shipments
+      - amounts
+      - sender
+      - reference_id
+    OrderActivityStatus:
+      type: string
+      enum:
+      - created
+      - opened
+      - pending_payment
+      - paid
+      - ordered
+      - shipped
+      - delivered
+      - failed
+      - pending_user_approval
+      description: The status of the order activity event. Mapped from internal statuses using the same logic as order status.
+    Shipment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - pending
+          - tracking
+          - shipped
+          - delivered
+          - delivered_override
+          - failed
+          - failed_unset_tracking
+          - failed_with_reship
+        brand_name:
+          type: string
+          description: The name of the brand that this shipment is from.
+        tracking_carrier:
+          type: string
+          nullable: true
+          description: The carrier for this shipment, e.g. UPS.
+        tracking_number:
+          type: string
+          nullable: true
+          description: Only for approved distribution partners.
+        tracking_url:
+          type: string
+          nullable: true
+          description: Only for approved distribution partners.
+        shipped_at:
+          type: string
+          format: date-time
+          description: ISO 8601
+          nullable: true
+        delivered_at:
+          type: string
+          format: date-time
+          description: ISO 8601
+          nullable: true
+        delivery_eta:
+          type: string
+          format: date-time
+          description: The estimated delivery time of this shipment.
+          nullable: true
+      required:
+      - id
+      - status
+      - brand_name
+    OrderStatus:
+      type: string
+      enum:
+      - created
+      - notified
+      - opened
+      - accepted
+      - pending_payment
+      - paid
+      - ordered
+      - shipped
+      - delivered
+      - failed
+      - canceled
+    Sender:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+      required:
+      - first_name
+      - last_name
+      - email
+    OrderActivity:
+      type: object
+      description: An order activity represents a status change event for an order.
+      properties:
+        id:
+          type: string
+          format: uuid
+        order_status:
+          $ref: '#/components/schemas/OrderActivityStatus'
+          description: The status that the order transitioned to.
+        created_at:
+          type: string
+          format: date-time
+          description: When this activity occurred.
+        order:
+          $ref: '#/components/schemas/Order'
+          description: The current state of the order.
+      required:
+      - id
+      - order_status
+      - created_at
+      - order
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+    Cart:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+    CartItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        product:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            brand:
+              type: object
+              description: The brand that this product is from.
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+              required:
+              - id
+              - name
+          required:
+          - id
+          - name
+          - brand
+        quantity:
+          type: integer
+      required:
+      - id
+      - product
+      - quantity
+    CartSelection:
+      type: object
+      description: Product variant selections for a specific gift cart product.
+      properties:
+        id:
+          type: string
+          format: uuid
+        cart_item_id:
+          type: string
+          format: uuid
+          description: The cart item ID this selection belongs to. Match this with cart.items[].id.
+        quantity_index:
+          type: integer
+          description: The index of this selection within multiple quantities of the same product. If a given cart product has multiple quantities, this will be 0 for the first unit, 1 for the second unit, etc.
+        variants:
+          type: array
+          items:
+            type: string
+          description: The selected variants for this product selection and quantity index.
+      required:
+      - id
+      - cart_item_id
+      - quantity_index
+      - variants
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Your Goody API key.

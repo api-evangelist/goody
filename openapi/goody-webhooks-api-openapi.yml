@@ -1,0 +1,126 @@
+openapi: 3.0.1
+info:
+  title: Goody Brands Webhooks API
+  version: 1.0.0
+  contact:
+    name: Goody Support
+    email: support@ongoody.com
+servers:
+- url: https://api.ongoody.com
+  description: Production
+- url: https://api.sandbox.ongoody.com
+  description: Sandbox
+tags:
+- name: Webhooks
+paths:
+  /v1/webhooks:
+    post:
+      summary: Create a webhook endpoint
+      tags:
+      - Webhooks
+      security:
+      - bearer: []
+      parameters: []
+      responses:
+        '201':
+          description: Webhook endpoint created
+          content:
+            application/json:
+              examples:
+                Webhook endpoint created:
+                  value:
+                    id: 106b2d34-eea8-4de3-8e41-46f6bb65a8c3
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+        '400':
+          description: Webhook endpoint not created
+          content:
+            application/json:
+              examples:
+                Webhook endpoint failed to create:
+                  value:
+                    error: Unauthorized. You must be an admin to manage webhooks.
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookInput'
+            examples:
+              Webhook endpoint created:
+                summary: Webhook endpoint created
+                value:
+                  url: https://ongoody.com/webhook-endpoint
+                  events:
+                  - order_batch.created
+  /v1/webhooks/{id}:
+    parameters:
+    - name: id
+      in: path
+      description: Webhook endpoint ID
+      required: true
+      schema:
+        type: string
+    delete:
+      summary: Delete a webhook endpoint
+      tags:
+      - Webhooks
+      security:
+      - bearer: []
+      parameters: []
+      responses:
+        '204':
+          description: Webhook endpoint deleted
+        '400':
+          description: Webhook endpoint not deleted
+          content:
+            application/json:
+              examples:
+                Webhook endpoint failed to delete:
+                  value:
+                    error: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookInput'
+            examples:
+              Webhook endpoint deleted:
+                summary: Webhook endpoint deleted
+                value:
+                  url: https://ongoody.com/webhook-endpoint
+                  events:
+                  - order_batch.created
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+    WebhookInput:
+      type: object
+      description: Input parameters for a webhook endpoint.
+      properties:
+        url:
+          type: string
+          description: The URL for the webhook to call.
+        events:
+          type: array
+          items:
+            type: string
+          nullable: true
+          description: Filter the events you want to get webhooks for. Refer to the Webhooks list for the event names.
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Your Goody API key.

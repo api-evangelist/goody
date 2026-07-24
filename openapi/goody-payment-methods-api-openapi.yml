@@ -1,0 +1,96 @@
+openapi: 3.0.1
+info:
+  title: Goody Brands Payment Methods API
+  version: 1.0.0
+  contact:
+    name: Goody Support
+    email: support@ongoody.com
+servers:
+- url: https://api.ongoody.com
+  description: Production
+- url: https://api.sandbox.ongoody.com
+  description: Sandbox
+tags:
+- name: Payment Methods
+paths:
+  /v1/payment_methods:
+    get:
+      summary: List all payment methods
+      tags:
+      - Payment Methods
+      security:
+      - bearer: []
+      responses:
+        '200':
+          description: Payment methods retrieved
+          content:
+            application/json:
+              examples:
+                Payment methods retrieved:
+                  value:
+                    data:
+                    - id: 915d4077-5f47-43fb-87ba-f2f385933a35
+                      name: Visa 1234
+                      cardholder_name: Card 1
+                    - id: b66f3c41-3574-428f-8f84-d78c18564619
+                      name: Mastercard 5678
+                      cardholder_name: Card 2
+                    list_meta:
+                      total_count: 2
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PaymentMethod'
+                  list_meta:
+                    $ref: '#/components/schemas/ListMeta'
+        '401':
+          description: Failed to authorize
+          content:
+            application/json:
+              examples:
+                Unauthorized:
+                  value:
+                    error: Unauthorized
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+    PaymentMethod:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        cardholder_name:
+          type: string
+          nullable: true
+          description: For payment methods with a cardholder name, returns the name on the card.
+        balance:
+          type: integer
+          nullable: true
+          description: For payment methods with a balance, returns the available balance on the payment method.
+      required:
+      - id
+      - name
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Your Goody API key.

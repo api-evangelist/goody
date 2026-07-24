@@ -1,0 +1,70 @@
+openapi: 3.0.1
+info:
+  title: Goody Brands Workspaces API
+  version: 1.0.0
+  contact:
+    name: Goody Support
+    email: support@ongoody.com
+servers:
+- url: https://api.ongoody.com
+  description: Production
+- url: https://api.sandbox.ongoody.com
+  description: Sandbox
+tags:
+- name: Workspaces
+paths:
+  /v1/workspaces:
+    get:
+      summary: List all workspaces
+      tags:
+      - Workspaces
+      security:
+      - bearer: []
+      responses:
+        '200':
+          description: Workspaces retrieved
+          content:
+            application/json:
+              examples:
+                Workspaces retrieved:
+                  value:
+                    data:
+                    - id: 541e9673-649e-4977-8e8b-3cee52fd7b68
+                      name: Workspace 1
+                    - id: ed05606e-d6ba-4b9f-baf3-bde2cbbf0a72
+                      name: Workspace 2
+                    list_meta:
+                      total_count: 2
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Workspace'
+                  list_meta:
+                    $ref: '#/components/schemas/ListMeta'
+components:
+  schemas:
+    Workspace:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+      required:
+      - id
+      - name
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Your Goody API key.

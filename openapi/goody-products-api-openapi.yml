@@ -1,0 +1,602 @@
+openapi: 3.0.1
+info:
+  title: Goody Brands Products API
+  version: 1.0.0
+  contact:
+    name: Goody Support
+    email: support@ongoody.com
+servers:
+- url: https://api.ongoody.com
+  description: Production
+- url: https://api.sandbox.ongoody.com
+  description: Sandbox
+tags:
+- name: Products
+paths:
+  /v1/products:
+    get:
+      summary: List all active products
+      tags:
+      - Products
+      security:
+      - bearer: []
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+        description: Page for pagination, starting at 1
+        required: false
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+          maximum: 100
+        description: Items per page for pagination
+        required: false
+      - name: use_custom_catalog
+        in: query
+        schema:
+          type: boolean
+        description: Limit to custom catalog only (for approved API partners)
+        required: false
+      - name: country_code
+        in: query
+        schema:
+          type: string
+          default: US
+        description: Filter by a specific shipping country code
+        required: false
+      - name: custom_catalog_show_inactive
+        in: query
+        schema:
+          type: boolean
+        description: Show inactive products in the custom catalog. Only for Commerce API customers with a custom catalog.
+        required: false
+      responses:
+        '200':
+          description: Products retrieved
+          content:
+            application/json:
+              examples:
+                Products retrieved:
+                  value:
+                    data:
+                    - id: 83bd1170-9352-427d-85aa-e2bcf3c323c8
+                      name: Six Cookies
+                      brand:
+                        id: 2a294fe7-ecac-40c2-ae3f-1c931ae68720
+                        name: Nerissa Littel
+                        logo_image: null
+                        shipping_price: 1000
+                        free_shipping_minimum: null
+                        brand_values:
+                        - Sustainable
+                      subtitle: null
+                      subtitle_short: null
+                      recipient_description: ''
+                      variants_label: option
+                      variants_num_selectable: 3
+                      variants:
+                      - id: 5dea5349-cf6c-4b67-8ace-309557f16f9f
+                        name: Chocolate Chip
+                        subtitle: Classic chocolate chip.
+                        image_large: null
+                      - id: 7324cbd9-0c83-4d79-90ec-c793ab0023af
+                        name: Oatmeal
+                        subtitle: Delicious oatmeal.
+                        image_large: null
+                      - id: 928b21ea-a7a3-4ad2-aa6c-f30b23f10faa
+                        name: Sugar
+                        subtitle: Tasty sugar.
+                        image_large: null
+                      variant_groups: []
+                      images: []
+                      price: 1000
+                      price_is_variable: false
+                      restricted_states: []
+                      attributes:
+                      - label: Where it's made
+                        content: Made in Miami, FL
+                      updated_at: '2026-06-03T12:25:19Z'
+                      status: active
+                    - id: 94d0582f-f37b-45e4-b4d6-188ddd41e499
+                      name: Dozen Cookies
+                      brand:
+                        id: 2a294fe7-ecac-40c2-ae3f-1c931ae68720
+                        name: Nerissa Littel
+                        logo_image: null
+                        shipping_price: 1000
+                        free_shipping_minimum: null
+                        brand_values:
+                        - Sustainable
+                      subtitle: null
+                      subtitle_short: null
+                      recipient_description: ''
+                      variants_label: option
+                      variants_num_selectable: 3
+                      variants:
+                      - id: d63f8e89-a7cb-4607-8f8b-1f347be4d1b6
+                        name: Chocolate Chip
+                        subtitle: Classic chocolate chip.
+                        image_large: null
+                      - id: b197404c-c331-4676-8580-290b2bebe353
+                        name: Oatmeal
+                        subtitle: Delicious oatmeal.
+                        image_large: null
+                      - id: 1e2c60a4-6513-48a6-a696-021e5c2d3093
+                        name: Sugar
+                        subtitle: Tasty sugar.
+                        image_large: null
+                      variant_groups: []
+                      images: []
+                      price: 1000
+                      price_is_variable: false
+                      restricted_states: []
+                      attributes: []
+                      updated_at: '2026-06-03T12:25:19Z'
+                      status: active
+                    - id: a169b309-6166-4382-b020-8d571c7f2b95
+                      name: Cookie Box
+                      brand:
+                        id: 2a294fe7-ecac-40c2-ae3f-1c931ae68720
+                        name: Nerissa Littel
+                        logo_image: null
+                        shipping_price: 1000
+                        free_shipping_minimum: null
+                        brand_values:
+                        - Sustainable
+                      subtitle: null
+                      subtitle_short: null
+                      recipient_description: ''
+                      variants_label: option
+                      variants_num_selectable: 1
+                      variants:
+                      - id: badeeb1c-8847-40d9-b7f9-d118723f51f1
+                        name: Grey / Chocolate Chip
+                        subtitle: null
+                        image_large: null
+                      - id: 01f20566-5645-4c32-9f79-222c5c1f1407
+                        name: Grey / Oatmeal
+                        subtitle: null
+                        image_large: null
+                      - id: b7fc2aad-b490-47af-b73f-7cc5aa55697a
+                        name: Grey / Sugar
+                        subtitle: null
+                        image_large: null
+                      - id: 72f5b1fb-5085-4218-8c60-a356d35b3be1
+                        name: Purple / Chocolate Chip
+                        subtitle: null
+                        image_large: null
+                      - id: 2ec977b6-4333-4e20-a8dc-dca2cc27fb6d
+                        name: Purple / Oatmeal
+                        subtitle: null
+                        image_large: null
+                      - id: 2a060efb-a11e-4858-a547-939ca630977c
+                        name: Purple / Sugar
+                        subtitle: null
+                        image_large: null
+                      variant_groups:
+                      - id: 6dba80e5-2bd7-49fe-bffb-7739c0574d48
+                        name: Box Color
+                        options:
+                        - id: b24e07dc-bc75-4425-83fa-4d212e83114a
+                          name: Grey
+                          subtitle: null
+                          color: null
+                          image_large: null
+                        - id: 1a7794e5-95cc-4308-a1f0-48925271e49c
+                          name: Purple
+                          subtitle: null
+                          color: null
+                          image_large: null
+                      - id: 4f2acf33-9f5d-4117-b3f4-8eb82517bc07
+                        name: Flavor
+                        options:
+                        - id: e849793c-c0d3-409a-b915-bbce6be5b37c
+                          name: Chocolate Chip
+                          subtitle: null
+                          color: null
+                          image_large: null
+                        - id: 5f22280f-64e7-4d8c-a42a-1030e2153b77
+                          name: Oatmeal
+                          subtitle: null
+                          color: null
+                          image_large: null
+                        - id: e8323403-4ba5-4893-b747-969a4bc2259e
+                          name: Sugar
+                          subtitle: null
+                          color: null
+                          image_large: null
+                      images: []
+                      price: 1000
+                      price_is_variable: false
+                      restricted_states: []
+                      attributes: []
+                      updated_at: '2026-06-03T12:25:19Z'
+                      status: active
+                    list_meta:
+                      total_count: 3
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+                  list_meta:
+                    $ref: '#/components/schemas/ListMeta'
+  /v1/products/{id}:
+    get:
+      summary: Retrieve a product
+      tags:
+      - Products
+      security:
+      - bearer: []
+      parameters:
+      - name: id
+        in: path
+        description: Product ID
+        required: true
+        schema:
+          type: string
+      - name: use_custom_catalog
+        in: query
+        schema:
+          type: boolean
+        description: Limit to custom catalog only (for approved API partners)
+        required: false
+      responses:
+        '200':
+          description: Product retrieved
+          content:
+            application/json:
+              examples:
+                Product retrieved:
+                  value:
+                    id: 42bee678-617c-4925-a30e-783bcd9772d1
+                    name: Six Cookies
+                    brand:
+                      id: e663f830-efbd-4cc9-b46d-7ee2a6459017
+                      name: Gov. Gerardo Gerhold
+                      logo_image: null
+                      shipping_price: 1000
+                      free_shipping_minimum: null
+                      brand_values: []
+                    subtitle: null
+                    subtitle_short: null
+                    recipient_description: ''
+                    variants_label: option
+                    variants_num_selectable: 3
+                    variants:
+                    - id: 9e918c3b-7d28-428d-8578-a5ddd66a7859
+                      name: Chocolate Chip
+                      subtitle: Classic chocolate chip.
+                      image_large: null
+                    - id: 8c22f783-0386-479d-8eda-441ff27e1373
+                      name: Oatmeal
+                      subtitle: Delicious oatmeal.
+                      image_large: null
+                    - id: 32997c3f-39f3-44c8-a277-018eb9c83fef
+                      name: Sugar
+                      subtitle: Tasty sugar.
+                      image_large: null
+                    variant_groups: []
+                    images: []
+                    price: 1000
+                    price_is_variable: false
+                    restricted_states: []
+                    attributes: []
+                    updated_at: '2026-06-03T12:25:20Z'
+                    status: active
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Product not found
+          content:
+            application/json:
+              examples:
+                Product not found:
+                  value:
+                    error: Product not found
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    ProductVariantGroup:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the variant group, e.g. "Size" or "Color".
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariantGroupOption'
+      required:
+      - id
+      - name
+    ProductImage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - image_large
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        brand:
+          $ref: '#/components/schemas/Brand'
+        subtitle:
+          type: string
+          nullable: true
+          description: A description of this product.
+        subtitle_short:
+          type: string
+          nullable: true
+          description: An optional one-line description of this product. When provided, it overrides the subtitle when displayed in areas with less space. Not always provided.
+        recipient_description:
+          type: string
+          nullable: true
+          description: An optional description of this product with custom verbiage for recipients. When provided, it overrides the subtitle for the product when displayed to the recipient. Falls back to the subtitle.
+        variants_label:
+          type: string
+          nullable: true
+          description: The label for the variants of this product, e.g. "Size" or "Color".
+        variants_num_selectable:
+          type: integer
+          nullable: true
+          description: The number of variants that can be selected for this product. For example, if this is a t-shirt, then this would be 1, since you can only select one size. If this were a build-a-box of chocolates, this could be 3 if you could select 3 flavor variants.
+        variants:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariant'
+        variant_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariantGroup'
+          description: For products that have multiple types of variants, such as both Color and Size, this array contains each group and the options for each group. All variant group permutations have a variant generated for them, constructed from the options in the order of the groups, separated by ` / `, e.g. `Medium / Black` when the groups are Size and Color.
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductImage'
+        price:
+          type: integer
+          description: The price of the product, in cents.
+        price_is_variable:
+          type: boolean
+          description: Whether the price of this product is variable. If true, then the price can be set by the sender.
+        price_min:
+          type: integer
+          nullable: true
+          description: The minimum price of the product, in cents. Only used if price_is_variable is true.
+        price_max:
+          type: integer
+          nullable: true
+          description: The maximum price of the product, in cents. Only used if price_is_variable is true.
+        restricted_states:
+          type: array
+          items:
+            type: string
+            description: The US states that this product cannot be shipped to.
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductAttribute'
+          description: An array of attributes that describe this product.
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          description: Whether this product is active. Since the product catalog only returns active products by default, this is always `true`, except if you are a Commerce API customer using a custom catalog, and are pulling products with the `custom_catalog_show_inactive` flag.
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time this product was last updated, ISO 8601 format. This is bumped when the product, brand, product variants, product attributes, or product images are updated.
+        reserved_options:
+          type: object
+          description: For approved API partners only.
+          properties:
+            custom_price_tier:
+              type: integer
+              nullable: true
+              description: For approved API partners only. A custom price tier for this product.
+          nullable: true
+      required:
+      - id
+      - name
+      - brand
+      - variants
+      - images
+      - price
+      - price_is_variable
+      - restricted_states
+    Brand:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        logo_image:
+          $ref: '#/components/schemas/Image'
+          nullable: true
+          description: The logo image for this brand.
+        shipping_price:
+          type: integer
+          description: The price of shipping for this brand, in cents.
+        free_shipping_minimum:
+          type: integer
+          description: When set and when the product price is above this amount, shipping is free. In cents. Products in a cart for this brand can combine to reach this threshold.
+          nullable: true
+        commerce_revshare_excluded:
+          type: boolean
+          description: Whether this brand is excluded from the commerce revenue share. Only displayed on the products endpoint when using a commerce app.
+          nullable: true
+        brand_values:
+          type: array
+          items:
+            type: string
+          description: An array of brand values for this brand. Potential values are USA Made, Social Impact Driven, Sustainable, Gluten Free, Vegan, Kosher Certified, Female Founded, AAPI Founded, BIPOC Founded, Black Founded, LGBTQ+ Founded, and Hispanic Founded.
+        brand_sets:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSet'
+          description: An array of brand sets for this brand. Only included when using the brands endpoint.
+          nullable: true
+      required:
+      - id
+      - name
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+      required:
+      - url
+    ProductVariant:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        image_large:
+          $ref: '#/components/schemas/Image'
+          nullable: true
+        subtitle:
+          type: string
+          nullable: true
+      required:
+      - id
+      - name
+    BrandSetImage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - image_large
+    BrandSet:
+      type: object
+      description: A brand set represents a collection of products from a brand.
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSetImage'
+          description: An array of images for this brand set.
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+          description: An array of products in this brand set.
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSetCategory'
+          description: An array of categories this brand set belongs to.
+      required:
+      - id
+      - name
+    ProductVariantGroupOption:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the variant group option, e.g. "Small" for the "Size" variant group.
+        subtitle:
+          type: string
+          nullable: true
+        color:
+          type: string
+          nullable: true
+          description: The hex color code for this option, e.g. "#000000", if any.
+        image_large:
+          $ref: '#/components/schemas/Image'
+          nullable: true
+      required:
+      - id
+      - name
+    BrandSetCategory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        subcategories:
+          type: array
+          items:
+            type: string
+          description: An array of subcategory names within this category.
+      required:
+      - id
+      - name
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+    ProductAttribute:
+      type: object
+      properties:
+        label:
+          type: string
+          description: The label for this attribute, e.g. "Materials".
+        content:
+          type: string
+          description: The content for this attribute, e.g. "80% cotton, 20% elastane". This can be text or sanitized HTML (you might choose to sanitize the HTML as well). Allowed elements are a (href allowed), div, img (src, width height, alt allowed), span, p, br, strong, b, em, i, ol, ul, li, and hr.
+      required:
+      - label
+      - content
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Your Goody API key.

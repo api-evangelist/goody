@@ -1,0 +1,159 @@
+openapi: 3.0.1
+info:
+  title: Goody Brands Commerce User Payment Methods API
+  version: 1.0.0
+  contact:
+    name: Goody Support
+    email: support@ongoody.com
+servers:
+- url: https://api.ongoody.com
+  description: Production
+- url: https://api.sandbox.ongoody.com
+  description: Sandbox
+tags:
+- name: Commerce User Payment Methods
+paths:
+  /v1/commerce_user_payment_methods:
+    post:
+      summary: Create a commerce user payment method
+      tags:
+      - Commerce User Payment Methods
+      security:
+      - bearer: []
+      parameters: []
+      responses:
+        '201':
+          description: Commerce user payment method created
+          content:
+            application/json:
+              examples:
+                Commerce user payment method created:
+                  value:
+                    id: 7e77b629-5ea9-4bd5-8191-a67a402ccd26
+                    card_brand: mastercard
+                    card_last_4: '4444'
+                    card_exp_month: 12
+                    card_exp_year: 2034
+                    cardholder_name: John Doe
+                    created_at: '2026-06-03T12:24:05Z'
+              schema:
+                $ref: '#/components/schemas/CommerceUserPaymentMethod'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              examples:
+                Card declined:
+                  value:
+                    error: Your card was declined.
+                Card missing field:
+                  value:
+                    error: Cardholder name is required
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommerceUserPaymentMethodInput'
+            examples:
+              Commerce user payment method created:
+                summary: Commerce user payment method created
+                value:
+                  cardholder_name: John Doe
+                  commerce_end_user_id: test_user_pm_2331d26e
+                  payment_method_type: card
+                  interim_card_key: X9edbacqt1CBCRRKRLkuiINj
+                  billing_address:
+                    address_1: 123 Main St
+                    address_2: Apt 4B
+                    city: New York
+                    state: NY
+                    postal_code: '10001'
+                    country: US
+components:
+  schemas:
+    CommerceUserPaymentMethodInput:
+      type: object
+      properties:
+        cardholder_name:
+          type: string
+          description: The name on the card.
+        commerce_end_user_id:
+          type: string
+          description: The user ID of the user in *your* app to associate this payment method with.
+        payment_method_type:
+          type: string
+          description: The type of payment method to create. Currently, only `card` is supported.
+        interim_card_key:
+          type: string
+          description: The key for the interim card to use for the payment method.
+        billing_address:
+          type: object
+          properties:
+            address_1:
+              type: string
+            address_2:
+              type: string
+              nullable: true
+            city:
+              type: string
+            state:
+              type: string
+            postal_code:
+              type: string
+            country:
+              type: string
+              description: The two-letter country code, e.g. `US`.
+          required:
+          - address_1
+          - city
+          - state
+          - postal_code
+          - country
+      required:
+      - cardholder_name
+      - commerce_end_user_id
+      - payment_method_type
+      - interim_card_key
+      - billing_address
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+    CommerceUserPaymentMethod:
+      type: object
+      properties:
+        id:
+          type: string
+        card_brand:
+          type: string
+          nullable: true
+          description: Brand of the card, e.g. 'Visa' or 'Mastercard'.
+        card_last_4:
+          type: string
+          nullable: true
+          description: Last 4 digits of the card number.
+        card_exp_month:
+          type: integer
+          nullable: true
+        card_exp_year:
+          type: integer
+          nullable: true
+        cardholder_name:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          description: Date and time the payment method was created, ISO 8601 format.
+      required:
+      - id
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Your Goody API key.

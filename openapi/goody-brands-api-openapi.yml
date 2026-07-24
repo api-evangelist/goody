@@ -1,0 +1,349 @@
+openapi: 3.0.1
+info:
+  title: Goody Brands API
+  version: 1.0.0
+  contact:
+    name: Goody Support
+    email: support@ongoody.com
+servers:
+- url: https://api.ongoody.com
+  description: Production
+- url: https://api.sandbox.ongoody.com
+  description: Sandbox
+tags:
+- name: Brands
+paths:
+  /v1/brands:
+    get:
+      summary: List all active brands
+      tags:
+      - Brands
+      security:
+      - bearer: []
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+        description: Page for pagination, starting at 1
+        required: false
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+          maximum: 100
+        description: Items per page for pagination
+        required: false
+      - name: country_code
+        in: query
+        schema:
+          type: string
+          default: US
+        description: Filter by a specific shipping country code
+        required: false
+      responses:
+        '200':
+          description: Brands retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Brand'
+                  list_meta:
+                    $ref: '#/components/schemas/ListMeta'
+components:
+  schemas:
+    ProductVariantGroup:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the variant group, e.g. "Size" or "Color".
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariantGroupOption'
+      required:
+      - id
+      - name
+    ProductImage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - image_large
+    ProductAttribute:
+      type: object
+      properties:
+        label:
+          type: string
+          description: The label for this attribute, e.g. "Materials".
+        content:
+          type: string
+          description: The content for this attribute, e.g. "80% cotton, 20% elastane". This can be text or sanitized HTML (you might choose to sanitize the HTML as well). Allowed elements are a (href allowed), div, img (src, width height, alt allowed), span, p, br, strong, b, em, i, ol, ul, li, and hr.
+      required:
+      - label
+      - content
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        brand:
+          $ref: '#/components/schemas/Brand'
+        subtitle:
+          type: string
+          nullable: true
+          description: A description of this product.
+        subtitle_short:
+          type: string
+          nullable: true
+          description: An optional one-line description of this product. When provided, it overrides the subtitle when displayed in areas with less space. Not always provided.
+        recipient_description:
+          type: string
+          nullable: true
+          description: An optional description of this product with custom verbiage for recipients. When provided, it overrides the subtitle for the product when displayed to the recipient. Falls back to the subtitle.
+        variants_label:
+          type: string
+          nullable: true
+          description: The label for the variants of this product, e.g. "Size" or "Color".
+        variants_num_selectable:
+          type: integer
+          nullable: true
+          description: The number of variants that can be selected for this product. For example, if this is a t-shirt, then this would be 1, since you can only select one size. If this were a build-a-box of chocolates, this could be 3 if you could select 3 flavor variants.
+        variants:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariant'
+        variant_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariantGroup'
+          description: For products that have multiple types of variants, such as both Color and Size, this array contains each group and the options for each group. All variant group permutations have a variant generated for them, constructed from the options in the order of the groups, separated by ` / `, e.g. `Medium / Black` when the groups are Size and Color.
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductImage'
+        price:
+          type: integer
+          description: The price of the product, in cents.
+        price_is_variable:
+          type: boolean
+          description: Whether the price of this product is variable. If true, then the price can be set by the sender.
+        price_min:
+          type: integer
+          nullable: true
+          description: The minimum price of the product, in cents. Only used if price_is_variable is true.
+        price_max:
+          type: integer
+          nullable: true
+          description: The maximum price of the product, in cents. Only used if price_is_variable is true.
+        restricted_states:
+          type: array
+          items:
+            type: string
+            description: The US states that this product cannot be shipped to.
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductAttribute'
+          description: An array of attributes that describe this product.
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          description: Whether this product is active. Since the product catalog only returns active products by default, this is always `true`, except if you are a Commerce API customer using a custom catalog, and are pulling products with the `custom_catalog_show_inactive` flag.
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time this product was last updated, ISO 8601 format. This is bumped when the product, brand, product variants, product attributes, or product images are updated.
+        reserved_options:
+          type: object
+          description: For approved API partners only.
+          properties:
+            custom_price_tier:
+              type: integer
+              nullable: true
+              description: For approved API partners only. A custom price tier for this product.
+          nullable: true
+      required:
+      - id
+      - name
+      - brand
+      - variants
+      - images
+      - price
+      - price_is_variable
+      - restricted_states
+    Brand:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        logo_image:
+          $ref: '#/components/schemas/Image'
+          nullable: true
+          description: The logo image for this brand.
+        shipping_price:
+          type: integer
+          description: The price of shipping for this brand, in cents.
+        free_shipping_minimum:
+          type: integer
+          description: When set and when the product price is above this amount, shipping is free. In cents. Products in a cart for this brand can combine to reach this threshold.
+          nullable: true
+        commerce_revshare_excluded:
+          type: boolean
+          description: Whether this brand is excluded from the commerce revenue share. Only displayed on the products endpoint when using a commerce app.
+          nullable: true
+        brand_values:
+          type: array
+          items:
+            type: string
+          description: An array of brand values for this brand. Potential values are USA Made, Social Impact Driven, Sustainable, Gluten Free, Vegan, Kosher Certified, Female Founded, AAPI Founded, BIPOC Founded, Black Founded, LGBTQ+ Founded, and Hispanic Founded.
+        brand_sets:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSet'
+          description: An array of brand sets for this brand. Only included when using the brands endpoint.
+          nullable: true
+      required:
+      - id
+      - name
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+      required:
+      - url
+    ProductVariant:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        image_large:
+          $ref: '#/components/schemas/Image'
+          nullable: true
+        subtitle:
+          type: string
+          nullable: true
+      required:
+      - id
+      - name
+    BrandSetImage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - image_large
+    ProductVariantGroupOption:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the variant group option, e.g. "Small" for the "Size" variant group.
+        subtitle:
+          type: string
+          nullable: true
+        color:
+          type: string
+          nullable: true
+          description: The hex color code for this option, e.g. "#000000", if any.
+        image_large:
+          $ref: '#/components/schemas/Image'
+          nullable: true
+      required:
+      - id
+      - name
+    BrandSetCategory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        subcategories:
+          type: array
+          items:
+            type: string
+          description: An array of subcategory names within this category.
+      required:
+      - id
+      - name
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+    BrandSet:
+      type: object
+      description: A brand set represents a collection of products from a brand.
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSetImage'
+          description: An array of images for this brand set.
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+          description: An array of products in this brand set.
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSetCategory'
+          description: An array of categories this brand set belongs to.
+      required:
+      - id
+      - name
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Your Goody API key.

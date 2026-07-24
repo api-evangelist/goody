@@ -1,0 +1,58 @@
+openapi: 3.0.1
+info:
+  title: Goody Brands Me API
+  version: 1.0.0
+  contact:
+    name: Goody Support
+    email: support@ongoody.com
+servers:
+- url: https://api.ongoody.com
+  description: Production
+- url: https://api.sandbox.ongoody.com
+  description: Sandbox
+tags:
+- name: Me
+paths:
+  /v1/me:
+    get:
+      summary: Retrieve current user
+      tags:
+      - Me
+      security:
+      - bearer: []
+      responses:
+        '200':
+          description: Me retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Me'
+        '401':
+          description: Failed to authorize
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+    Me:
+      type: object
+      properties:
+        email:
+          type: string
+          nullable: true
+        public_app_id:
+          type: string
+          nullable: true
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Your Goody API key.

@@ -1,0 +1,141 @@
+openapi: 3.0.1
+info:
+  title: Goody Brands Cards API
+  version: 1.0.0
+  contact:
+    name: Goody Support
+    email: support@ongoody.com
+servers:
+- url: https://api.ongoody.com
+  description: Production
+- url: https://api.sandbox.ongoody.com
+  description: Sandbox
+tags:
+- name: Cards
+paths:
+  /v1/cards:
+    get:
+      summary: Retrieve cards
+      tags:
+      - Cards
+      security:
+      - bearer: []
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+        description: Page for pagination, starting at 1
+        required: false
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+          maximum: 100
+        description: Items per page for pagination
+        required: false
+      responses:
+        '200':
+          description: Cards retrieved
+          content:
+            application/json:
+              examples:
+                Cards retrieved:
+                  value:
+                    data:
+                    - id: 9f6a0a5e-bbd5-4bb6-bd6d-c6eaab586522
+                      image:
+                        url: https://assets.ongoody.com/cards/222.png?format=png
+                        width: 800
+                        height: 1130
+                      image_thumb:
+                        url: https://assets.ongoody.com/cards/222.png?width=200&format=png
+                        width: 200
+                        height: 283
+                      occasions:
+                      - Congratulations
+                      - Onboarding
+                    - id: addda4f1-f501-4dfe-9b1d-fa53c8814c85
+                      image:
+                        url: https://assets.ongoody.com/cards/111.png?format=png
+                        width: 800
+                        height: 1130
+                      image_thumb:
+                        url: https://assets.ongoody.com/cards/111.png?width=200&format=png
+                        width: 200
+                        height: 283
+                      occasions: []
+                    list_meta:
+                      total_count: 2
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Card'
+                  list_meta:
+                    $ref: '#/components/schemas/ListMeta'
+        '401':
+          description: Failed to authorize
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Card:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image:
+          $ref: '#/components/schemas/Image'
+          description: The image URL for this card. Typically 800x1130.
+        image_thumb:
+          $ref: '#/components/schemas/Image'
+          description: The thumbnail image URL for this card. Typically 200x283.
+        occasions:
+          type: array
+          items:
+            type: string
+          description: An array of occasions that this card is relevant for.
+      required:
+      - id
+      - image
+      - image_thumb
+      - occasions
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+      required:
+      - url
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Your Goody API key.
