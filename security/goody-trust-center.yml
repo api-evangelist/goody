@@ -1,0 +1,12 @@
+generated: '2026-07-19'
+method: searched
+probe: true
+source: https://trust.ongoody.com/
+url: https://trust.ongoody.com/
+certifications:
+- SOC 2
+evidence:
+- source: https://trust.ongoody.com/
+  keywords:
+  - soc 2
+  - trust center

@@ -1,0 +1,43 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/goody-api-openapi-original.json
+docs: https://developer.ongoody.com/introduction/overview
+authentication:
+  style: bearer API key (Commerce/Automation); OAuth2 + PKCE for MCP
+  header: 'Authorization: Bearer <key>'
+  ref: authentication/goody-authentication.yml
+idempotency:
+  supported: true
+  mechanism: >-
+    On order-batch creation the caller supplies customer_reference_id — a
+    unique/idempotent ID that stores a reference to the caller's own system,
+    letting a batch be de-duplicated against a client-side identifier.
+  field: customer_reference_id
+  scope: Order batch create (POST /v1/order_batches)
+  source: https://developer.ongoody.com/resources/changelog (2026-06-03)
+pagination:
+  styles:
+  - cursor: {params: [after, before], applies_to: catalog/list endpoints}
+  - page: {params: [page, per_page]}
+  filters: ['created_at[after]', 'created_at[before]', statuses, published, country_code]
+  response_meta:
+    field: list_meta
+    fields: [total_count]
+    schema: openapi/goody-api-openapi-original.json#/components/schemas/ListMeta
+versioning:
+  scheme: uri-path
+  current: v1
+  base_path: /v1
+error_envelope:
+  shape: '{ "error": "<message>" }'
+  content_type: application/json
+  ref: errors/goody-problem-types.yml
+rate_limit_signaling:
+  documented: false
+metadata:
+  customer_reference_id: caller-supplied reference stored on the order batch
+  commerce_end_user_id: end-user reference for Commerce API multi-tenant use
+cross_links:
+  errors: errors/goody-problem-types.yml
+  lifecycle: lifecycle/goody-lifecycle.yml
+  authentication: authentication/goody-authentication.yml

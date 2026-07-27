@@ -1,0 +1,21 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Goody API
+  version: 1.0.0
+extends: openapi/goody-api-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-19'
+    x-apievangelist-mcp-server: https://api.ongoody.com/mcp/v1
+    x-apievangelist-idempotency-field: customer_reference_id
+    x-apievangelist-webhooks: 10 events via Svix
+    x-apievangelist-compliance: [SOC 2]
+- target: $.info
+  update:
+    x-agentic-access:
+      write-consequence: physical
+      note: >-
+        Order-batch creation and autogift activation charge a payment method
+        and dispatch physical/digital gifts — treat as spend-capable operations
+        requiring explicit human confirmation.

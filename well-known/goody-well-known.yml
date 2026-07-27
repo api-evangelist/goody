@@ -1,0 +1,17 @@
+generated: '2026-07-19'
+method: searched
+host: https://api.ongoody.com
+documents:
+- path: /.well-known/oauth-authorization-server
+  status: 200
+  file: goody-oauth-authorization-server.json
+  standard: RFC 8414
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/oauth-authorization-server (host www.ongoody.com)
+  status: 404
+notes: >-
+  The OAuth 2.0 authorization-server metadata backs the Goody MCP server; it
+  advertises PKCE (S256), dynamic client registration, and the mcp.* scope set.

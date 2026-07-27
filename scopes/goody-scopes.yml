@@ -1,0 +1,40 @@
+generated: '2026-07-19'
+method: searched
+source: well-known/goody-oauth-authorization-server.json
+docs: https://developer.ongoody.com/mcp/authentication
+schemes:
+- name: mcp_oauth2
+  source: well-known/goody-oauth-authorization-server.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.ongoody.com/oauth/authorize
+    tokenUrl: https://api.ongoody.com/oauth/token
+    pkce: S256
+scopes:
+- scope: mcp.read
+  description: >-
+    Read access via the MCP server / OAuth clients: list workspaces, search
+    the catalog and contacts, price and preview gifts, read orders.
+  flows: [authorizationCode]
+  sources: [well-known/goody-oauth-authorization-server.json]
+- scope: mcp.write
+  description: >-
+    Write access short of charging: create/update contacts and contact lists,
+    cancel orders, build previews, pause autogift rules, submit feedback.
+  flows: [authorizationCode]
+  sources: [well-known/goody-oauth-authorization-server.json]
+- scope: mcp.gifts
+  description: >-
+    Send gifts / spend money: create an order batch (charges the payment
+    method) and create or activate autogift rules. Highest-consequence scope.
+  flows: [authorizationCode]
+  sources: [well-known/goody-oauth-authorization-server.json]
+- scope: chrome.write
+  description: >-
+    Scope used by Goody's browser extension / Chrome client integration.
+  flows: [authorizationCode]
+  sources: [well-known/goody-oauth-authorization-server.json]
+notes: >-
+  The MCP permission model (Read / Write / Send gifts) maps directly onto the
+  three mcp.* scopes. The REST Commerce/Automation API itself uses a bearer
+  API key with no scope surface; these scopes govern the OAuth/MCP path only.

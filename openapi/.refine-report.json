@@ -1,0 +1,36 @@
+{
+  "provider": "goody",
+  "sources": [
+    "goody-brands-api-openapi.yml",
+    "goody-cards-api-openapi.yml",
+    "goody-collections-api-openapi.yml",
+    "goody-commerce-user-payment-methods-api-openapi.yml",
+    "goody-me-api-openapi.yml",
+    "goody-order-activities-api-openapi.yml",
+    "goody-order-batches-api-openapi.yml",
+    "goody-orders-api-openapi.yml",
+    "goody-payment-methods-api-openapi.yml",
+    "goody-products-api-openapi.yml",
+    "goody-webhooks-api-openapi.yml",
+    "goody-workspaces-api-openapi.yml"
+  ],
+  "outputs": [
+    "goody-brands-api-openapi.yml",
+    "goody-cards-api-openapi.yml",
+    "goody-collections-api-openapi.yml",
+    "goody-commerce-user-payment-methods-api-openapi.yml",
+    "goody-me-api-openapi.yml",
+    "goody-order-activities-api-openapi.yml",
+    "goody-order-batches-api-openapi.yml",
+    "goody-orders-api-openapi.yml",
+    "goody-payment-methods-api-openapi.yml",
+    "goody-products-api-openapi.yml",
+    "goody-webhooks-api-openapi.yml",
+    "goody-workspaces-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

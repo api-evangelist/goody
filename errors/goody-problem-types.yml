@@ -1,0 +1,25 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/goody-api-openapi-original.json
+format: custom
+envelope:
+  content_type: application/json
+  shape: '{ "error": "<human-readable message>" }'
+  schema: openapi/goody-api-openapi-original.json#/components/schemas/Error
+notes: >-
+  Goody returns a flat JSON error object ({ "error": string }) rather than
+  RFC 9457 problem+json. Status codes below are derived from the OpenAPI
+  responses across all 23 operations.
+problems:
+- status: 400
+  title: Bad Request
+  meaning: Invalid request parameters or body (validation failure).
+  occurrences: 7
+- status: 401
+  title: Unauthorized
+  meaning: Missing or invalid API key / bearer token.
+  occurrences: 3
+- status: 404
+  title: Not Found
+  meaning: The requested resource (order, batch, collection, product) does not exist.
+  occurrences: 8

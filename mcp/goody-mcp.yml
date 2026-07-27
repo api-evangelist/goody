@@ -1,0 +1,55 @@
+generated: '2026-07-19'
+method: searched
+status: published
+source: https://developer.ongoody.com/mcp/overview
+server:
+  name: goody
+  transport: http
+  url: https://api.ongoody.com/mcp/v1
+  auth:
+    interactive: 'OAuth 2.0 authorization-code + PKCE (S256); dynamic client registration'
+    programmatic: 'personal MCP token (Authorization: Bearer)'
+    scopes: [mcp.read, mcp.write, mcp.gifts]
+  docs:
+    overview: https://developer.ongoody.com/mcp/overview
+    connect: https://developer.ongoody.com/mcp/connect
+    tools: https://developer.ongoody.com/mcp-reference/tools
+permissions:
+- name: Read
+  description: List, search, price, and preview — no state change.
+- name: Write
+  description: Create/update contacts and lists, cancel orders, pause rules, feedback.
+- name: Send gifts
+  description: Charge a payment method and send — order batches and autogift activation.
+tools:
+- {name: goody_me_get, area: Account & Workspaces, permission: Read}
+- {name: goody_workspaces_list, area: Account & Workspaces, permission: Read}
+- {name: goody_products_search, area: Discover, permission: Read}
+- {name: goody_products_get, area: Discover, permission: Read}
+- {name: goody_collections_list, area: Discover, permission: Read}
+- {name: goody_gift_of_choice_list, area: Discover, permission: Read}
+- {name: goody_cards_list, area: Discover, permission: Read}
+- {name: goody_contacts_search, area: Contacts, permission: Read}
+- {name: goody_contacts_get, area: Contacts, permission: Read}
+- {name: goody_contacts_create, area: Contacts, permission: Write}
+- {name: goody_contacts_update, area: Contacts, permission: Write}
+- {name: goody_contact_lists_list, area: Contacts, permission: Read}
+- {name: goody_contact_lists_create, area: Contacts, permission: Write}
+- {name: goody_messages_generate, area: Messages, permission: Read}
+- {name: goody_payment_methods_list, area: Payment Methods, permission: Read}
+- {name: goody_order_batches_preview, area: Send & Track, permission: Write}
+- {name: goody_order_batches_price, area: Send & Track, permission: Write}
+- {name: goody_order_batches_create, area: Send & Track, permission: Send gifts}
+- {name: goody_order_batches_list, area: Send & Track, permission: Read}
+- {name: goody_order_batches_get, area: Send & Track, permission: Read}
+- {name: goody_orders_list, area: Send & Track, permission: Read}
+- {name: goody_orders_cancel, area: Send & Track, permission: Write}
+- {name: goody_autogift_rules_list, area: Autogifts, permission: Read}
+- {name: goody_autogift_rules_create, area: Autogifts, permission: Send gifts}
+- {name: goody_autogift_rules_preview, area: Autogifts, permission: Read}
+- {name: goody_autogift_rules_activate, area: Autogifts, permission: Send gifts}
+- {name: goody_autogift_rules_pause, area: Autogifts, permission: Write}
+- {name: goody_feedback_create, area: Feedback, permission: Write}
+notes: >-
+  Official hosted MCP server (launched beta 2026-06-25). 28 tools across 8
+  areas. Spend safeguards apply to the "Send gifts" permission.

@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.ongoody.com/resources/changelog
+scheme: dated
+current_version: v1
+entries:
+- date: '2026-06-25'
+  highlights: Goody MCP server (beta) launched — connect Claude and other MCP clients to discover, draft, price, and send gifts.
+  type: addition
+- date: '2026-06-03'
+  highlights: Added customer_reference_id to OrderBatch — a unique/idempotent ID to store a reference to your own system.
+  type: addition
+- date: '2025-11-05'
+  highlights: Added endpoints to list all collections (GET /v1/collections) and retrieve an individual collection.
+  type: addition
+- date: '2025-05-21'
+  highlights: Released the Embedded Payment Form payment type for Commerce API; added creating commerce user payment methods.
+  type: addition
+- date: '2024-09-10'
+  highlights: Added custom_catalog_show_inactive param to products listing (custom catalogs); added updated_at and status to the Product schema.
+  type: addition
+- date: '2024-08-28'
+  highlights: Added variant_groups field to the Product schema.
+  type: addition
+- date: '2024-08-08'
+  highlights: Added international_shipping_tier and international_gift_cards_enabled to Order Batch Create.
+  type: addition

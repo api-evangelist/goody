@@ -1,0 +1,38 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/goody-api-openapi-original.json
+standards:
+- id: oauth2
+  conforms: true
+  evidence: MCP server uses OAuth2 authorization-code flow (well-known/oauth-authorization-server).
+- id: oauth2-pkce
+  conforms: true
+  evidence: code_challenge_methods_supported = [S256].
+- id: rfc8414-as-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns 200 with issuer/endpoints.
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint advertised (https://api.ongoody.com/oauth/register).
+- id: http-bearer
+  conforms: true
+  evidence: securitySchemes.bearer type http scheme bearer.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 'Errors use a flat { "error": string } object, not application/problem+json.'
+- id: webhooks
+  conforms: true
+  evidence: 10 documented events delivered via Svix with svix-* signature headers.
+- id: pagination
+  conforms: true
+  evidence: cursor (after/before) and page (page/per_page) paging with list_meta.total_count.
+- id: idempotency
+  conforms: true
+  evidence: customer_reference_id idempotent reference on order-batch creation.
+- id: soc2
+  conforms: true
+  evidence: SOC 2 certification published at https://trust.ongoody.com/.
+compliance:
+  published: true
+  certifications: [SOC 2]
+  source: https://trust.ongoody.com/

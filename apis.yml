@@ -1,27 +1,320 @@
 aid: goody
 name: Goody
-description: 'Goody is a company surfaced as a portfolio company of index-ventures and added to the API
-  Evangelist network as a stub for enrichment. Sector: retail. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Goody (ongoody.com) is a business and personal gifting platform that lets
+  senders deliver physical products and gift cards without needing a
+  recipient's address — the recipient accepts via a shareable gift link and
+  can swap the gift. For developers, Goody exposes a REST Commerce/Automation
+  API (base https://api.ongoody.com, with a separate sandbox at
+  api.sandbox.ongoody.com) to browse a curated product catalog, price and send
+  gift order-batches to one or many recipients, manage contacts and autogift
+  rules, and track order lifecycle. Bearer API-key auth for the REST API, plus
+  an official hosted MCP server (OAuth2 + PKCE) exposing 28 tools so agents can
+  discover, draft, price, and send gifts in natural language. Webhooks (via
+  Svix) cover the full order lifecycle. SOC 2 certified. Backed by Index
+  Ventures.
 url: https://raw.githubusercontent.com/api-evangelist/goody/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - index-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched-from-live-developer-surface
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
+image: https://www.ongoody.com/assets/frontend/assets/goody-logo-jy0bt7ba.digested.svg
 tags:
 - Company
 - Retail
-apis: []
+- Gifting
+- Gift Cards
+- E-Commerce
+- Commerce
+- Payments
+- MCP
+- Webhooks
+- Rewards
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: goody:goody-brands-api
+  name: Goody Brands API
+  description: The Brands API from Goody — 1 operation(s) for brands.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Brands
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-brands-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ongoody.com/introduction/overview
+  - type: APIReference
+    url: https://developer.ongoody.com/api-reference/order-batches/create-an-order-batch
+  - type: Authentication
+    url: https://developer.ongoody.com/commerce-api/authentication
+- aid: goody:goody-cards-api
+  name: Goody Cards API
+  description: The Cards API from Goody — 1 operation(s) for cards.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Cards
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-cards-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ongoody.com/introduction/overview
+  - type: APIReference
+    url: https://developer.ongoody.com/api-reference/order-batches/create-an-order-batch
+  - type: Authentication
+    url: https://developer.ongoody.com/commerce-api/authentication
+- aid: goody:goody-collections-api
+  name: Goody Collections API
+  description: The Collections API from Goody — 2 operation(s) for collections.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-collections-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ongoody.com/introduction/overview
+  - type: APIReference
+    url: https://developer.ongoody.com/api-reference/order-batches/create-an-order-batch
+  - type: Authentication
+    url: https://developer.ongoody.com/commerce-api/authentication
+- aid: goody:goody-commerce-user-payment-methods-api
+  name: Goody Commerce User Payment Methods API
+  description: >-
+    The Commerce User Payment Methods API from Goody — 1 operation(s) for commerce user payment methods.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Commerce User Payment Methods
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-commerce-user-payment-methods-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ongoody.com/introduction/overview
+  - type: APIReference
+    url: https://developer.ongoody.com/api-reference/order-batches/create-an-order-batch
+  - type: Authentication
+    url: https://developer.ongoody.com/commerce-api/authentication
+- aid: goody:goody-me-api
+  name: Goody Me API
+  description: The Me API from Goody — 1 operation(s) for me.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Me
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-me-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ongoody.com/introduction/overview
+  - type: APIReference
+    url: https://developer.ongoody.com/api-reference/order-batches/create-an-order-batch
+  - type: Authentication
+    url: https://developer.ongoody.com/commerce-api/authentication
+- aid: goody:goody-order-activities-api
+  name: Goody Order Activities API
+  description: The Order Activities API from Goody — 1 operation(s) for order activities.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Order Activities
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-order-activities-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ongoody.com/introduction/overview
+  - type: APIReference
+    url: https://developer.ongoody.com/api-reference/order-batches/create-an-order-batch
+  - type: Authentication
+    url: https://developer.ongoody.com/commerce-api/authentication
+- aid: goody:goody-order-batches-api
+  name: Goody Order Batches API
+  description: The Order Batches API from Goody — 5 operation(s) for order batches.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Order Batches
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-order-batches-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ongoody.com/introduction/overview
+  - type: APIReference
+    url: https://developer.ongoody.com/api-reference/order-batches/create-an-order-batch
+  - type: Authentication
+    url: https://developer.ongoody.com/commerce-api/authentication
+- aid: goody:goody-orders-api
+  name: Goody Orders API
+  description: The Orders API from Goody — 4 operation(s) for orders.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ongoody.com/introduction/overview
+  - type: APIReference
+    url: https://developer.ongoody.com/api-reference/order-batches/create-an-order-batch
+  - type: Authentication
+    url: https://developer.ongoody.com/commerce-api/authentication
+- aid: goody:goody-payment-methods-api
+  name: Goody Payment Methods API
+  description: The Payment Methods API from Goody — 1 operation(s) for payment methods.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Payment Methods
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-payment-methods-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ongoody.com/introduction/overview
+  - type: APIReference
+    url: https://developer.ongoody.com/api-reference/order-batches/create-an-order-batch
+  - type: Authentication
+    url: https://developer.ongoody.com/commerce-api/authentication
+- aid: goody:goody-products-api
+  name: Goody Products API
+  description: The Products API from Goody — 2 operation(s) for products.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-products-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ongoody.com/introduction/overview
+  - type: APIReference
+    url: https://developer.ongoody.com/api-reference/order-batches/create-an-order-batch
+  - type: Authentication
+    url: https://developer.ongoody.com/commerce-api/authentication
+- aid: goody:goody-webhooks-api
+  name: Goody Webhooks API
+  description: The Webhooks API from Goody — 2 operation(s) for webhooks.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ongoody.com/introduction/overview
+  - type: APIReference
+    url: https://developer.ongoody.com/api-reference/order-batches/create-an-order-batch
+  - type: Authentication
+    url: https://developer.ongoody.com/commerce-api/authentication
+- aid: goody:goody-workspaces-api
+  name: Goody Workspaces API
+  description: The Workspaces API from Goody — 1 operation(s) for workspaces.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Workspaces
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-workspaces-api-openapi.yml
+  - type: Documentation
+    url: https://developer.ongoody.com/introduction/overview
+  - type: APIReference
+    url: https://developer.ongoody.com/api-reference/order-batches/create-an-order-batch
+  - type: Authentication
+    url: https://developer.ongoody.com/commerce-api/authentication
 common:
+# --- link properties (identity / discoverability) ---
 - type: Website
   url: https://www.ongoody.com/
+- type: DeveloperPortal
+  url: https://developer.ongoody.com/
+- type: Documentation
+  url: https://developer.ongoody.com/introduction/overview
+- type: APIReference
+  url: https://developer.ongoody.com/api-reference/order-batches/create-an-order-batch
+- type: GettingStarted
+  url: https://developer.ongoody.com/commerce-api/authentication
+- type: GitHubOrganization
+  url: https://github.com/ongoody
+- type: Blog
+  url: https://www.ongoody.com/blog
+- type: Support
+  url: https://goody.kustomer.help/
+- type: Pricing
+  url: https://www.ongoody.com/business/pricing
+- type: SignUp
+  url: https://www.ongoody.com/business/gift-api
+- type: Login
+  url: https://www.ongoody.com/business/signin
+- type: TermsOfService
+  url: https://assets.ongoody.com/static/terms/PlusTermsAndConditions.pdf
+- type: PrivacyPolicy
+  url: https://www.ongoody.com/privacy
+# --- artifact pointers (scored) ---
+- type: ChangeLog
+  url: changelog/goody-changelog.yml
+- type: Lifecycle
+  url: lifecycle/goody-lifecycle.yml
+- type: Authentication
+  url: authentication/goody-authentication.yml
+- type: OAuthScopes
+  url: scopes/goody-scopes.yml
+- type: MCPServer
+  url: mcp/goody-mcp.yml
+- type: Webhooks
+  url: asyncapi/goody-webhooks.yml
+- type: Conventions
+  url: conventions/goody-conventions.yml
+- type: Idempotency
+  url: conventions/goody-conventions.yml
+- type: ErrorCatalog
+  url: errors/goody-problem-types.yml
+- type: Conformance
+  url: conformance/goody-conformance.yml
+- type: Compliance
+  url: https://trust.ongoody.com/
+- type: TrustCenter
+  url: security/goody-trust-center.yml
+- type: DataModel
+  url: data-model/goody-data-model.yml
+- type: Sandbox
+  url: sandbox/goody-sandbox.yml
+- type: WellKnown
+  url: well-known/goody-well-known.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/goody-agentic-access.yml
+- type: DomainSecurity
+  url: security/goody-domain-security.yml
+- type: LLMsTxt
+  url: llms/goody-llms.txt
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

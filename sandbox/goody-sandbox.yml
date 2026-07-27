@@ -1,0 +1,17 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.ongoody.com/commerce-api/authentication
+model:
+  separation: Production and Sandbox accounts are fully separate, each with its own API keys, for isolation.
+  sandbox_signup: https://sandbox.ongoody.com/business
+  sandbox_base_url: https://api.sandbox.ongoody.com
+  production_base_url: https://api.ongoody.com
+test_values:
+  note: >-
+    Goody does not publish fixed "magic" test card numbers or identifiers; the
+    sandbox is a full separate environment where gifts can be created and their
+    lifecycle exercised without real fulfillment/charges. No verbatim test
+    credentials are fabricated here.
+docs:
+  authentication: https://developer.ongoody.com/commerce-api/authentication
+  overview: https://developer.ongoody.com/introduction/overview

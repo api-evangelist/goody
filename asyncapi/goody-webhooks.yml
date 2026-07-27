@@ -1,0 +1,42 @@
+generated: '2026-07-19'
+method: searched
+type: Webhooks
+source: https://developer.ongoody.com/webhooks/overview
+platform: Svix
+delivery:
+  configured_via: Commerce API dashboard (Organization > Commerce API > app) or POST /v1/webhooks
+  subscription: subscribe to all events or a subset (Svix message filtering)
+  signature:
+    provider: Svix
+    headers: [svix-id, svix-timestamp, svix-signature]
+    verification: >-
+      Verify with the Svix library by passing the signing secret, raw request
+      body, and the svix-* headers to the verify method.
+    docs: https://developer.ongoody.com/webhooks/webhook-security
+management:
+  create: POST /v1/webhooks
+  delete: DELETE /v1/webhooks/{id}
+events:
+- id: order_batch.created
+  description: An order batch has been created in the organization.
+- id: order_batch.completed
+  description: Order batch fully processed — all recipient orders created.
+- id: order.created
+  description: Order created and ready to be opened/accepted; individual_gift_link available.
+- id: order.gift_opened
+  description: A gift link was first opened.
+- id: order.gift_accepted
+  description: Gift accepted by recipient; final costs calculated (is_swapped, cart).
+- id: order.thank_you_note_added
+  description: Recipient added a thank-you note (thank_you_note property).
+- id: order.shipped
+  description: Order shipped (first shipment in transit if multiple).
+- id: order.delivered
+  description: Order delivered (all shipments delivered if multiple).
+- id: order.canceled
+  description: An order has been canceled.
+- id: order.refunded
+  description: An order has been refunded.
+notes: >-
+  Webhook / event surface only — Goody does not publish an AsyncAPI document.
+  Captured as a webhook catalog (type Webhooks); no AsyncAPI spec is fabricated.

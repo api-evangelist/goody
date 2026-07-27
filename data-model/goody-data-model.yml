@@ -1,0 +1,56 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/goody-api-openapi-original.json#/components/schemas
+entities:
+- name: Workspace
+  description: A gifting workspace a user can send from.
+- name: Me
+  description: The connected account identity (via /v1/me).
+- name: OrderBatch
+  description: Container for one send to one or many recipients; the unit of charge.
+- name: Order
+  description: A single recipient's gift within a batch.
+- name: OrderBatchRecipient
+  description: A recipient attached to an order batch.
+- name: Cart
+  description: The set of selected products/gift options for a batch.
+- name: CartItem
+  description: A single line in a cart.
+- name: Product
+  description: A giftable product in the catalog.
+- name: ProductVariant
+  description: A purchasable variant of a product.
+- name: Brand
+  description: A brand grouping products.
+- name: Collection
+  description: A curated grouping of products.
+- name: Card
+  description: A greeting/gift card design.
+- name: PaymentMethod
+  description: A payment method chargeable for a batch.
+- name: Shipment
+  description: A shipment fulfilling an order.
+- name: MailingAddress
+  description: A recipient/shipping address.
+- name: OrderActivity
+  description: An activity/status event on an order.
+relationships:
+- {from: OrderBatch, type: has_many, to: Order, via: orders}
+- {from: OrderBatch, type: has_many, to: OrderBatchRecipient, via: recipients}
+- {from: OrderBatch, type: has_one, to: Cart, via: cart}
+- {from: OrderBatch, type: belongs_to, to: Workspace, via: workspace_id}
+- {from: OrderBatch, type: belongs_to, to: PaymentMethod, via: payment_method_id}
+- {from: OrderBatch, type: belongs_to, to: Card, via: card_id}
+- {from: Order, type: belongs_to, to: OrderBatch, via: order_batch}
+- {from: Order, type: has_many, to: Shipment, via: shipments}
+- {from: Order, type: has_many, to: OrderActivity, via: activities}
+- {from: Cart, type: has_many, to: CartItem, via: items}
+- {from: CartItem, type: belongs_to, to: Product, via: product}
+- {from: Product, type: has_many, to: ProductVariant, via: variants}
+- {from: Product, type: belongs_to, to: Brand, via: brand}
+- {from: Collection, type: has_many, to: Product, via: products}
+- {from: Shipment, type: has_one, to: MailingAddress, via: address}
+notes: >-
+  Derived from OpenAPI component schemas and id-reference input fields
+  (workspace_id, payment_method_id, card_id, etc.). Goody does not publish
+  object id-prefixes in the reference.

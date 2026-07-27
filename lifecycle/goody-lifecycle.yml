@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: searched
+source: https://developer.ongoody.com/resources/changelog
+versioning:
+  scheme: uri-path
+  current: v1
+  base_path: /v1
+  docs: https://developer.ongoody.com/introduction/overview
+environments:
+  production: https://api.ongoody.com
+  sandbox: https://api.sandbox.ongoody.com
+changelog: https://developer.ongoody.com/resources/changelog
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation/Sunset-header policy published.
+status_page: null
+sla:
+  url: null
+deprecated_operations: []
+notes: >-
+  Goody versions by URI path (/v1). Additive changelog history; no public
+  status page or documented deprecation policy found as of this pass.
