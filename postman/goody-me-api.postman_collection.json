@@ -1,0 +1,165 @@
+{
+  "info": {
+    "_postman_id": "fea15eb6-e424-4715-829b-b551f6af0b12",
+    "name": "Goody Brands Me API",
+    "description": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:45:01.000Z",
+    "updatedAt": "2026-07-28T01:45:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fea15eb6-e424-4715-829b-b551f6af0b12"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "me",
+          "item": [
+            {
+              "name": "Retrieve current user",
+              "id": "a1aaf437-e51c-4d22-8d06-f00cad02f5fc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "me"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "83601073-868a-4ad3-87c8-025c79d3b572",
+                  "name": "Me retrieved",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/me",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "me"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"email\": \"<string>\",\n  \"public_app_id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:45:02.000Z",
+                  "updatedAt": "2026-07-28T01:45:02.000Z",
+                  "uid": "35240-83601073-868a-4ad3-87c8-025c79d3b572"
+                },
+                {
+                  "id": "39244e1e-c647-4496-9c2c-87a1c45a44cb",
+                  "name": "Failed to authorize",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/me",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "me"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:45:02.000Z",
+                  "updatedAt": "2026-07-28T01:45:02.000Z",
+                  "uid": "35240-39244e1e-c647-4496-9c2c-87a1c45a44cb"
+                }
+              ],
+              "createdAt": "2026-07-28T01:45:02.000Z",
+              "updatedAt": "2026-07-28T01:45:02.000Z",
+              "uid": "35240-a1aaf437-e51c-4d22-8d06-f00cad02f5fc"
+            }
+          ],
+          "id": "192956e3-3423-4f85-b1a4-3fd8d4719926",
+          "createdAt": "2026-07-28T01:45:01.000Z",
+          "updatedAt": "2026-07-28T01:45:01.000Z",
+          "uid": "35240-192956e3-3423-4f85-b1a4-3fd8d4719926"
+        }
+      ],
+      "id": "c9cda804-d2d1-4dd8-b433-6df3aa24f688",
+      "createdAt": "2026-07-28T01:45:01.000Z",
+      "updatedAt": "2026-07-28T01:45:01.000Z",
+      "uid": "35240-c9cda804-d2d1-4dd8-b433-6df3aa24f688"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ongoody.com"
+    }
+  ]
+}

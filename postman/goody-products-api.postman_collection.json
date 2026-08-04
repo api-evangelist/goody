@@ -1,0 +1,354 @@
+{
+  "info": {
+    "_postman_id": "76814f91-62bc-42b9-b130-effa95b29294",
+    "name": "Goody Brands Products API",
+    "description": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:45:06.000Z",
+    "updatedAt": "2026-07-28T01:45:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-76814f91-62bc-42b9-b130-effa95b29294"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "products",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Retrieve a product",
+                  "id": "8d66b1fe-357f-4bbc-9ec7-1c27c420745b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/products/:id?use_custom_catalog=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "products",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limit to custom catalog only (for approved API partners)",
+                          "key": "use_custom_catalog",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "7ba753b1-7d6b-4f19-b7d5-aabf057fcbf4",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Product ID"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "6d92581d-4564-405d-b0a9-33283338ee82",
+                      "name": "Product retrieved",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/products/:id?use_custom_catalog=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "products",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Limit to custom catalog only (for approved API partners)",
+                              "key": "use_custom_catalog",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"brand\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"logo_image\": {\n      \"url\": \"<string>\",\n      \"width\": \"<integer>\",\n      \"height\": \"<integer>\"\n    },\n    \"shipping_price\": \"<integer>\",\n    \"free_shipping_minimum\": \"<integer>\",\n    \"commerce_revshare_excluded\": \"<boolean>\",\n    \"brand_values\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"brand_sets\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"images\": [\n          {\n            \"id\": \"<uuid>\",\n            \"image_large\": {\n              \"url\": \"<string>\",\n              \"width\": \"<integer>\",\n              \"height\": \"<integer>\"\n            }\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"image_large\": {\n              \"url\": \"<string>\",\n              \"width\": \"<integer>\",\n              \"height\": \"<integer>\"\n            }\n          }\n        ],\n        \"products\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Product detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Product detected>\"\n          }\n        ],\n        \"categories\": [\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"subcategories\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"subcategories\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ]\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"images\": [\n          {\n            \"id\": \"<uuid>\",\n            \"image_large\": {\n              \"url\": \"<string>\",\n              \"width\": \"<integer>\",\n              \"height\": \"<integer>\"\n            }\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"image_large\": {\n              \"url\": \"<string>\",\n              \"width\": \"<integer>\",\n              \"height\": \"<integer>\"\n            }\n          }\n        ],\n        \"products\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Product detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Product detected>\"\n          }\n        ],\n        \"categories\": [\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"subcategories\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"subcategories\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ]\n      }\n    ]\n  },\n  \"variants\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"image_large\": {\n        \"url\": \"<string>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"subtitle\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"image_large\": {\n        \"url\": \"<string>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"subtitle\": \"<string>\"\n    }\n  ],\n  \"images\": [\n    {\n      \"id\": \"<uuid>\",\n      \"image_large\": {\n        \"url\": \"<string>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"image_large\": {\n        \"url\": \"<string>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      }\n    }\n  ],\n  \"price\": \"<integer>\",\n  \"price_is_variable\": \"<boolean>\",\n  \"restricted_states\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"subtitle\": \"<string>\",\n  \"subtitle_short\": \"<string>\",\n  \"recipient_description\": \"<string>\",\n  \"variants_label\": \"<string>\",\n  \"variants_num_selectable\": \"<integer>\",\n  \"variant_groups\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"options\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"subtitle\": \"<string>\",\n          \"color\": \"<string>\",\n          \"image_large\": {\n            \"url\": \"<string>\",\n            \"width\": \"<integer>\",\n            \"height\": \"<integer>\"\n          }\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"subtitle\": \"<string>\",\n          \"color\": \"<string>\",\n          \"image_large\": {\n            \"url\": \"<string>\",\n            \"width\": \"<integer>\",\n            \"height\": \"<integer>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"options\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"subtitle\": \"<string>\",\n          \"color\": \"<string>\",\n          \"image_large\": {\n            \"url\": \"<string>\",\n            \"width\": \"<integer>\",\n            \"height\": \"<integer>\"\n          }\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"subtitle\": \"<string>\",\n          \"color\": \"<string>\",\n          \"image_large\": {\n            \"url\": \"<string>\",\n            \"width\": \"<integer>\",\n            \"height\": \"<integer>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"price_min\": \"<integer>\",\n  \"price_max\": \"<integer>\",\n  \"attributes\": [\n    {\n      \"label\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"status\": \"inactive\",\n  \"updated_at\": \"<dateTime>\",\n  \"reserved_options\": {\n    \"custom_price_tier\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:45:07.000Z",
+                      "updatedAt": "2026-07-28T01:45:07.000Z",
+                      "uid": "35240-6d92581d-4564-405d-b0a9-33283338ee82"
+                    },
+                    {
+                      "id": "f665b66d-7d58-41ad-9e0b-2520e8428016",
+                      "name": "Product not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/products/:id?use_custom_catalog=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "products",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Limit to custom catalog only (for approved API partners)",
+                              "key": "use_custom_catalog",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:45:07.000Z",
+                      "updatedAt": "2026-07-28T01:45:07.000Z",
+                      "uid": "35240-f665b66d-7d58-41ad-9e0b-2520e8428016"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:45:07.000Z",
+                  "updatedAt": "2026-07-28T01:45:07.000Z",
+                  "uid": "35240-8d66b1fe-357f-4bbc-9ec7-1c27c420745b"
+                }
+              ],
+              "id": "23db0ee2-89ea-46c2-a339-4dbc868eae20",
+              "createdAt": "2026-07-28T01:45:07.000Z",
+              "updatedAt": "2026-07-28T01:45:07.000Z",
+              "uid": "35240-23db0ee2-89ea-46c2-a339-4dbc868eae20"
+            },
+            {
+              "name": "List all active products",
+              "id": "b352171e-2e17-4612-9828-10fc488f1d33",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/products?page=1&per_page=20&use_custom_catalog=<boolean>&country_code=US&custom_catalog_show_inactive=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page for pagination, starting at 1",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Items per page for pagination",
+                      "key": "per_page",
+                      "value": "20"
+                    },
+                    {
+                      "description": "Limit to custom catalog only (for approved API partners)",
+                      "key": "use_custom_catalog",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter by a specific shipping country code",
+                      "key": "country_code",
+                      "value": "US"
+                    },
+                    {
+                      "description": "Show inactive products in the custom catalog. Only for Commerce API customers with a custom catalog.",
+                      "key": "custom_catalog_show_inactive",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "f94af5e2-3dcd-4326-8828-25ae3e25c5b1",
+                  "name": "Products retrieved",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/products?page=1&per_page=20&use_custom_catalog=<boolean>&country_code=US&custom_catalog_show_inactive=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "products"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page for pagination, starting at 1",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page for pagination",
+                          "key": "per_page",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Limit to custom catalog only (for approved API partners)",
+                          "key": "use_custom_catalog",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by a specific shipping country code",
+                          "key": "country_code",
+                          "value": "US"
+                        },
+                        {
+                          "description": "Show inactive products in the custom catalog. Only for Commerce API customers with a custom catalog.",
+                          "key": "custom_catalog_show_inactive",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"brand\": {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"logo_image\": {\n          \"url\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\"\n        },\n        \"shipping_price\": \"<integer>\",\n        \"free_shipping_minimum\": \"<integer>\",\n        \"commerce_revshare_excluded\": \"<boolean>\",\n        \"brand_values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"brand_sets\": [\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"images\": [\n              {\n                \"id\": \"<uuid>\",\n                \"image_large\": {\n                  \"url\": \"<string>\",\n                  \"width\": \"<integer>\",\n                  \"height\": \"<integer>\"\n                }\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"image_large\": {\n                  \"url\": \"<string>\",\n                  \"width\": \"<integer>\",\n                  \"height\": \"<integer>\"\n                }\n              }\n            ],\n            \"products\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Product detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Product detected>\"\n              }\n            ],\n            \"categories\": [\n              {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"subcategories\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"subcategories\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ]\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"images\": [\n              {\n                \"id\": \"<uuid>\",\n                \"image_large\": {\n                  \"url\": \"<string>\",\n                  \"width\": \"<integer>\",\n                  \"height\": \"<integer>\"\n                }\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"image_large\": {\n                  \"url\": \"<string>\",\n                  \"width\": \"<integer>\",\n                  \"height\": \"<integer>\"\n                }\n              }\n            ],\n            \"products\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Product detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Product detected>\"\n              }\n            ],\n            \"categories\": [\n              {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"subcategories\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"subcategories\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ]\n          }\n        ]\n      },\n      \"variants\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"image_large\": {\n            \"url\": \"<string>\",\n            \"width\": \"<integer>\",\n            \"height\": \"<integer>\"\n          },\n          \"subtitle\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"image_large\": {\n            \"url\": \"<string>\",\n            \"width\": \"<integer>\",\n            \"height\": \"<integer>\"\n          },\n          \"subtitle\": \"<string>\"\n        }\n      ],\n      \"images\": [\n        {\n          \"id\": \"<uuid>\",\n          \"image_large\": {\n            \"url\": \"<string>\",\n            \"width\": \"<integer>\",\n            \"height\": \"<integer>\"\n          }\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"image_large\": {\n            \"url\": \"<string>\",\n            \"width\": \"<integer>\",\n            \"height\": \"<integer>\"\n          }\n        }\n      ],\n      \"price\": \"<integer>\",\n      \"price_is_variable\": \"<boolean>\",\n      \"restricted_states\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subtitle\": \"<string>\",\n      \"subtitle_short\": \"<string>\",\n      \"recipient_description\": \"<string>\",\n      \"variants_label\": \"<string>\",\n      \"variants_num_selectable\": \"<integer>\",\n      \"variant_groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"options\": [\n            {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"subtitle\": \"<string>\",\n              \"color\": \"<string>\",\n              \"image_large\": {\n                \"url\": \"<string>\",\n                \"width\": \"<integer>\",\n                \"height\": \"<integer>\"\n              }\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"subtitle\": \"<string>\",\n              \"color\": \"<string>\",\n              \"image_large\": {\n                \"url\": \"<string>\",\n                \"width\": \"<integer>\",\n                \"height\": \"<integer>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"options\": [\n            {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"subtitle\": \"<string>\",\n              \"color\": \"<string>\",\n              \"image_large\": {\n                \"url\": \"<string>\",\n                \"width\": \"<integer>\",\n                \"height\": \"<integer>\"\n              }\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"subtitle\": \"<string>\",\n              \"color\": \"<string>\",\n              \"image_large\": {\n                \"url\": \"<string>\",\n                \"width\": \"<integer>\",\n                \"height\": \"<integer>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"price_min\": \"<integer>\",\n      \"price_max\": \"<integer>\",\n      \"attributes\": [\n        {\n          \"label\": \"<string>\",\n          \"content\": \"<string>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"content\": \"<string>\"\n        }\n      ],\n      \"status\": \"active\",\n      \"updated_at\": \"<dateTime>\",\n      \"reserved_options\": {\n        \"custom_price_tier\": \"<integer>\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"brand\": {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"logo_image\": {\n          \"url\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"height\": \"<integer>\"\n        },\n        \"shipping_price\": \"<integer>\",\n        \"free_shipping_minimum\": \"<integer>\",\n        \"commerce_revshare_excluded\": \"<boolean>\",\n        \"brand_values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"brand_sets\": [\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"images\": [\n              {\n                \"id\": \"<uuid>\",\n                \"image_large\": {\n                  \"url\": \"<string>\",\n                  \"width\": \"<integer>\",\n                  \"height\": \"<integer>\"\n                }\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"image_large\": {\n                  \"url\": \"<string>\",\n                  \"width\": \"<integer>\",\n                  \"height\": \"<integer>\"\n                }\n              }\n            ],\n            \"products\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Product detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Product detected>\"\n              }\n            ],\n            \"categories\": [\n              {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"subcategories\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"subcategories\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ]\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"images\": [\n              {\n                \"id\": \"<uuid>\",\n                \"image_large\": {\n                  \"url\": \"<string>\",\n                  \"width\": \"<integer>\",\n                  \"height\": \"<integer>\"\n                }\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"image_large\": {\n                  \"url\": \"<string>\",\n                  \"width\": \"<integer>\",\n                  \"height\": \"<integer>\"\n                }\n              }\n            ],\n            \"products\": [\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Product detected>\"\n              },\n              {\n                \"value\": \"<Circular reference to #/components/schemas/Product detected>\"\n              }\n            ],\n            \"categories\": [\n              {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"subcategories\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"subcategories\": [\n                  \"<string>\",\n                  \"<string>\"\n                ]\n              }\n            ]\n          }\n        ]\n      },\n      \"variants\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"image_large\": {\n            \"url\": \"<string>\",\n            \"width\": \"<integer>\",\n            \"height\": \"<integer>\"\n          },\n          \"subtitle\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"image_large\": {\n            \"url\": \"<string>\",\n            \"width\": \"<integer>\",\n            \"height\": \"<integer>\"\n          },\n          \"subtitle\": \"<string>\"\n        }\n      ],\n      \"images\": [\n        {\n          \"id\": \"<uuid>\",\n          \"image_large\": {\n            \"url\": \"<string>\",\n            \"width\": \"<integer>\",\n            \"height\": \"<integer>\"\n          }\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"image_large\": {\n            \"url\": \"<string>\",\n            \"width\": \"<integer>\",\n            \"height\": \"<integer>\"\n          }\n        }\n      ],\n      \"price\": \"<integer>\",\n      \"price_is_variable\": \"<boolean>\",\n      \"restricted_states\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subtitle\": \"<string>\",\n      \"subtitle_short\": \"<string>\",\n      \"recipient_description\": \"<string>\",\n      \"variants_label\": \"<string>\",\n      \"variants_num_selectable\": \"<integer>\",\n      \"variant_groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"options\": [\n            {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"subtitle\": \"<string>\",\n              \"color\": \"<string>\",\n              \"image_large\": {\n                \"url\": \"<string>\",\n                \"width\": \"<integer>\",\n                \"height\": \"<integer>\"\n              }\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"subtitle\": \"<string>\",\n              \"color\": \"<string>\",\n              \"image_large\": {\n                \"url\": \"<string>\",\n                \"width\": \"<integer>\",\n                \"height\": \"<integer>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"options\": [\n            {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"subtitle\": \"<string>\",\n              \"color\": \"<string>\",\n              \"image_large\": {\n                \"url\": \"<string>\",\n                \"width\": \"<integer>\",\n                \"height\": \"<integer>\"\n              }\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"subtitle\": \"<string>\",\n              \"color\": \"<string>\",\n              \"image_large\": {\n                \"url\": \"<string>\",\n                \"width\": \"<integer>\",\n                \"height\": \"<integer>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"price_min\": \"<integer>\",\n      \"price_max\": \"<integer>\",\n      \"attributes\": [\n        {\n          \"label\": \"<string>\",\n          \"content\": \"<string>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"content\": \"<string>\"\n        }\n      ],\n      \"status\": \"active\",\n      \"updated_at\": \"<dateTime>\",\n      \"reserved_options\": {\n        \"custom_price_tier\": \"<integer>\"\n      }\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:45:07.000Z",
+                  "updatedAt": "2026-07-28T01:45:07.000Z",
+                  "uid": "35240-f94af5e2-3dcd-4326-8828-25ae3e25c5b1"
+                }
+              ],
+              "createdAt": "2026-07-28T01:45:07.000Z",
+              "updatedAt": "2026-07-28T01:45:07.000Z",
+              "uid": "35240-b352171e-2e17-4612-9828-10fc488f1d33"
+            }
+          ],
+          "id": "41660414-d125-4c29-a3dc-4809d4843935",
+          "createdAt": "2026-07-28T01:45:07.000Z",
+          "updatedAt": "2026-07-28T01:45:07.000Z",
+          "uid": "35240-41660414-d125-4c29-a3dc-4809d4843935"
+        }
+      ],
+      "id": "ba2ef09d-ae1c-461b-876a-d10ac62b33a9",
+      "createdAt": "2026-07-28T01:45:07.000Z",
+      "updatedAt": "2026-07-28T01:45:07.000Z",
+      "uid": "35240-ba2ef09d-ae1c-461b-876a-d10ac62b33a9"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ongoody.com"
+    }
+  ]
+}

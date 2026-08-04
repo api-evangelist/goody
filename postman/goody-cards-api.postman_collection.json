@@ -1,0 +1,201 @@
+{
+  "info": {
+    "_postman_id": "44ba0f2b-13b2-41e6-b0ca-689b6aacafd4",
+    "name": "Goody Brands Cards API",
+    "description": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:44:51.000Z",
+    "updatedAt": "2026-07-28T01:44:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-44ba0f2b-13b2-41e6-b0ca-689b6aacafd4"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "cards",
+          "item": [
+            {
+              "name": "Retrieve cards",
+              "id": "044b5815-376c-43d4-80ae-9f47e0b4fca6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/cards?page=1&per_page=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "cards"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page for pagination, starting at 1",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Items per page for pagination",
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "70ab9146-9306-4fed-8703-7b11d247c0eb",
+                  "name": "Cards retrieved",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/cards?page=1&per_page=20",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "cards"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page for pagination, starting at 1",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page for pagination",
+                          "key": "per_page",
+                          "value": "20"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<uuid>\",\n      \"image\": {\n        \"url\": \"<string>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"image_thumb\": {\n        \"url\": \"<string>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"occasions\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"image\": {\n        \"url\": \"<string>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"image_thumb\": {\n        \"url\": \"<string>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"occasions\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:44:52.000Z",
+                  "updatedAt": "2026-07-28T01:44:52.000Z",
+                  "uid": "35240-70ab9146-9306-4fed-8703-7b11d247c0eb"
+                },
+                {
+                  "id": "0d66d203-650e-4f8d-b458-704d780ba01c",
+                  "name": "Failed to authorize",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/cards?page=1&per_page=20",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "cards"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page for pagination, starting at 1",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page for pagination",
+                          "key": "per_page",
+                          "value": "20"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:44:52.000Z",
+                  "updatedAt": "2026-07-28T01:44:52.000Z",
+                  "uid": "35240-0d66d203-650e-4f8d-b458-704d780ba01c"
+                }
+              ],
+              "createdAt": "2026-07-28T01:44:52.000Z",
+              "updatedAt": "2026-07-28T01:44:52.000Z",
+              "uid": "35240-044b5815-376c-43d4-80ae-9f47e0b4fca6"
+            }
+          ],
+          "id": "1308f9dd-c2ee-4b40-a838-1e4e952ce5a3",
+          "createdAt": "2026-07-28T01:44:52.000Z",
+          "updatedAt": "2026-07-28T01:44:52.000Z",
+          "uid": "35240-1308f9dd-c2ee-4b40-a838-1e4e952ce5a3"
+        }
+      ],
+      "id": "8631e305-0163-4f2f-b9de-dcdf99c619e5",
+      "createdAt": "2026-07-28T01:44:52.000Z",
+      "updatedAt": "2026-07-28T01:44:52.000Z",
+      "uid": "35240-8631e305-0163-4f2f-b9de-dcdf99c619e5"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ongoody.com"
+    }
+  ]
+}

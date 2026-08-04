@@ -1,0 +1,207 @@
+{
+  "info": {
+    "_postman_id": "015b1d22-b613-4615-8c6c-6dbc4d3225d3",
+    "name": "Goody Brands Commerce User Payment Methods API",
+    "description": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:45:00.000Z",
+    "updatedAt": "2026-07-28T01:45:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-015b1d22-b613-4615-8c6c-6dbc4d3225d3"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "commerce_user_payment_methods",
+          "item": [
+            {
+              "name": "Create a commerce user payment method",
+              "id": "a7bb974c-d16b-4784-9674-2602543640f8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cardholder_name\": \"<string>\",\n  \"commerce_end_user_id\": \"<string>\",\n  \"payment_method_type\": \"<string>\",\n  \"interim_card_key\": \"<string>\",\n  \"billing_address\": {\n    \"address_1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"address_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/commerce_user_payment_methods",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "commerce_user_payment_methods"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "14b3321d-98a6-4056-aeef-5e9039f52e2a",
+                  "name": "Commerce user payment method created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"cardholder_name\": \"<string>\",\n  \"commerce_end_user_id\": \"<string>\",\n  \"payment_method_type\": \"<string>\",\n  \"interim_card_key\": \"<string>\",\n  \"billing_address\": {\n    \"address_1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"address_2\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/commerce_user_payment_methods",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "commerce_user_payment_methods"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"card_brand\": \"<string>\",\n  \"card_last_4\": \"<string>\",\n  \"card_exp_month\": \"<integer>\",\n  \"card_exp_year\": \"<integer>\",\n  \"cardholder_name\": \"<string>\",\n  \"created_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T01:45:01.000Z",
+                  "updatedAt": "2026-07-28T01:45:01.000Z",
+                  "uid": "35240-14b3321d-98a6-4056-aeef-5e9039f52e2a"
+                },
+                {
+                  "id": "98d90b31-429b-4f57-b340-8f4c6d28ca93",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"cardholder_name\": \"<string>\",\n  \"commerce_end_user_id\": \"<string>\",\n  \"payment_method_type\": \"<string>\",\n  \"interim_card_key\": \"<string>\",\n  \"billing_address\": {\n    \"address_1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"address_2\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/commerce_user_payment_methods",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "commerce_user_payment_methods"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:45:01.000Z",
+                  "updatedAt": "2026-07-28T01:45:01.000Z",
+                  "uid": "35240-98d90b31-429b-4f57-b340-8f4c6d28ca93"
+                }
+              ],
+              "createdAt": "2026-07-28T01:45:01.000Z",
+              "updatedAt": "2026-07-28T01:45:01.000Z",
+              "uid": "35240-a7bb974c-d16b-4784-9674-2602543640f8"
+            }
+          ],
+          "id": "483913fc-7adc-4b63-a866-b6654bd16984",
+          "createdAt": "2026-07-28T01:45:01.000Z",
+          "updatedAt": "2026-07-28T01:45:01.000Z",
+          "uid": "35240-483913fc-7adc-4b63-a866-b6654bd16984"
+        }
+      ],
+      "id": "e5ecd31f-4276-4265-ba38-18359044de88",
+      "createdAt": "2026-07-28T01:45:01.000Z",
+      "updatedAt": "2026-07-28T01:45:01.000Z",
+      "uid": "35240-e5ecd31f-4276-4265-ba38-18359044de88"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ongoody.com"
+    }
+  ]
+}

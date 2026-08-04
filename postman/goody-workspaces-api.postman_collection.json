@@ -1,0 +1,122 @@
+{
+  "info": {
+    "_postman_id": "d86ee216-5f1b-41c2-903e-a1dc71c036b7",
+    "name": "Goody Brands Workspaces API",
+    "description": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:45:09.000Z",
+    "updatedAt": "2026-07-28T01:45:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d86ee216-5f1b-41c2-903e-a1dc71c036b7"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "workspaces",
+          "item": [
+            {
+              "name": "List all workspaces",
+              "id": "0382e339-b772-474d-b6a8-373240344fd5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/workspaces",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "workspaces"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "bcd11ac4-a0a6-4c23-a68a-7aa110ab4b89",
+                  "name": "Workspaces retrieved",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/workspaces",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "workspaces"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:45:09.000Z",
+                  "updatedAt": "2026-07-28T01:45:09.000Z",
+                  "uid": "35240-bcd11ac4-a0a6-4c23-a68a-7aa110ab4b89"
+                }
+              ],
+              "createdAt": "2026-07-28T01:45:09.000Z",
+              "updatedAt": "2026-07-28T01:45:09.000Z",
+              "uid": "35240-0382e339-b772-474d-b6a8-373240344fd5"
+            }
+          ],
+          "id": "d5ce09b2-5190-4e92-87ed-7555e94e88f6",
+          "createdAt": "2026-07-28T01:45:09.000Z",
+          "updatedAt": "2026-07-28T01:45:09.000Z",
+          "uid": "35240-d5ce09b2-5190-4e92-87ed-7555e94e88f6"
+        }
+      ],
+      "id": "62578d58-3a6d-4da0-b31d-39b2e9fe4081",
+      "createdAt": "2026-07-28T01:45:09.000Z",
+      "updatedAt": "2026-07-28T01:45:09.000Z",
+      "uid": "35240-62578d58-3a6d-4da0-b31d-39b2e9fe4081"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ongoody.com"
+    }
+  ]
+}

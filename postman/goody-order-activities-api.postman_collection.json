@@ -1,0 +1,176 @@
+{
+  "info": {
+    "_postman_id": "dda7dfb4-b9f8-4e9f-8d6f-0041ba46eb59",
+    "name": "Goody Brands Order Activities API",
+    "description": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:45:02.000Z",
+    "updatedAt": "2026-07-28T01:45:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-dda7dfb4-b9f8-4e9f-8d6f-0041ba46eb59"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "order_activities",
+          "item": [
+            {
+              "name": "List order activities",
+              "id": "29c785ca-3ebb-43ad-9da5-b393744dfc30",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/order_activities?page=1&per_page=20&after=<dateTime>&before=<dateTime>&statuses=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "order_activities"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page for pagination, starting at 1",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Items per page for pagination",
+                      "key": "per_page",
+                      "value": "20"
+                    },
+                    {
+                      "description": "Filter activities created at or after this timestamp (ISO 8601)",
+                      "key": "after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter activities created at or before this timestamp (ISO 8601)",
+                      "key": "before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Comma-separated list of statuses to filter by (e.g. \"created,opened,shipped\")",
+                      "key": "statuses",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "79b72340-b822-457b-aeb9-4508cc9e70a7",
+                  "name": "Order activities retrieved",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/order_activities?page=1&per_page=20&after=<dateTime>&before=<dateTime>&statuses=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "order_activities"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page for pagination, starting at 1",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page for pagination",
+                          "key": "per_page",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Filter activities created at or after this timestamp (ISO 8601)",
+                          "key": "after",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Filter activities created at or before this timestamp (ISO 8601)",
+                          "key": "before",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Comma-separated list of statuses to filter by (e.g. \"created,opened,shipped\")",
+                          "key": "statuses",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<uuid>\",\n      \"order_status\": \"shipped\",\n      \"created_at\": \"<dateTime>\",\n      \"order\": {\n        \"id\": \"<uuid>\",\n        \"recipient_first_name\": \"<string>\",\n        \"status\": \"opened\",\n        \"individual_gift_link\": \"<string>\",\n        \"cart\": {\n          \"id\": \"<uuid>\",\n          \"items\": [\n            {\n              \"id\": \"<uuid>\",\n              \"product\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"brand\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\"\n                }\n              },\n              \"quantity\": \"<integer>\"\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"product\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"brand\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\"\n                }\n              },\n              \"quantity\": \"<integer>\"\n            }\n          ]\n        },\n        \"shipments\": [\n          {\n            \"id\": \"<uuid>\",\n            \"status\": \"failed_unset_tracking\",\n            \"brand_name\": \"<string>\",\n            \"tracking_carrier\": \"<string>\",\n            \"tracking_number\": \"<string>\",\n            \"tracking_url\": \"<string>\",\n            \"shipped_at\": \"<dateTime>\",\n            \"delivered_at\": \"<dateTime>\",\n            \"delivery_eta\": \"<dateTime>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"status\": \"tracking\",\n            \"brand_name\": \"<string>\",\n            \"tracking_carrier\": \"<string>\",\n            \"tracking_number\": \"<string>\",\n            \"tracking_url\": \"<string>\",\n            \"shipped_at\": \"<dateTime>\",\n            \"delivered_at\": \"<dateTime>\",\n            \"delivery_eta\": \"<dateTime>\"\n          }\n        ],\n        \"amounts\": {\n          \"amount_product\": \"<integer>\",\n          \"amount_shipping\": \"<integer>\",\n          \"amount_pre_tax_total\": \"<integer>\",\n          \"amount_processing_fee\": \"<integer>\",\n          \"amount_credit_applied\": \"<integer>\",\n          \"amount_tax\": \"<integer>\",\n          \"amount_total\": \"<integer>\",\n          \"amount_global_relay_cost\": \"<integer>\"\n        },\n        \"sender\": {\n          \"first_name\": \"<string>\",\n          \"last_name\": \"<string>\",\n          \"email\": \"<string>\"\n        },\n        \"reference_id\": \"<string>\",\n        \"recipient_last_name\": \"<string>\",\n        \"recipient_email\": \"<string>\",\n        \"cart_selections\": [\n          {\n            \"id\": \"<uuid>\",\n            \"cart_item_id\": \"<uuid>\",\n            \"quantity_index\": \"<integer>\",\n            \"variants\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"cart_item_id\": \"<uuid>\",\n            \"quantity_index\": \"<integer>\",\n            \"variants\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"workspace_id\": \"<uuid>\",\n        \"workspace_name\": \"<string>\",\n        \"expires_at\": \"<dateTime>\",\n        \"card_id\": \"<uuid>\",\n        \"message\": \"<string>\",\n        \"thank_you_note\": \"<string>\",\n        \"view_count_recipient\": \"<integer>\",\n        \"is_swapped\": \"<boolean>\",\n        \"order_batch_id\": \"<uuid>\",\n        \"event_times\": {\n          \"created_at\": \"<dateTime>\",\n          \"notified_at\": \"<dateTime>\",\n          \"opened_at\": \"<dateTime>\",\n          \"accepted_at\": \"<dateTime>\",\n          \"pending_payment_at\": \"<dateTime>\",\n          \"paid_at\": \"<dateTime>\",\n          \"shipped_at\": \"<dateTime>\",\n          \"delivered_at\": \"<dateTime>\"\n        },\n        \"original_cart\": {\n          \"id\": \"<uuid>\",\n          \"items\": [\n            {\n              \"id\": \"<uuid>\",\n              \"product\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"brand\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\"\n                }\n              },\n              \"quantity\": \"<integer>\"\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"product\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"brand\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\"\n                }\n              },\n              \"quantity\": \"<integer>\"\n            }\n          ]\n        },\n        \"original_amounts\": {\n          \"original_amount_product\": \"<integer>\",\n          \"original_amount_shipping\": \"<integer>\",\n          \"original_amount_credit_applied\": \"<integer>\",\n          \"original_amount_pre_tax_total\": \"<integer>\"\n        },\n        \"payment_link\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"order_status\": \"failed\",\n      \"created_at\": \"<dateTime>\",\n      \"order\": {\n        \"id\": \"<uuid>\",\n        \"recipient_first_name\": \"<string>\",\n        \"status\": \"shipped\",\n        \"individual_gift_link\": \"<string>\",\n        \"cart\": {\n          \"id\": \"<uuid>\",\n          \"items\": [\n            {\n              \"id\": \"<uuid>\",\n              \"product\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"brand\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\"\n                }\n              },\n              \"quantity\": \"<integer>\"\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"product\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"brand\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\"\n                }\n              },\n              \"quantity\": \"<integer>\"\n            }\n          ]\n        },\n        \"shipments\": [\n          {\n            \"id\": \"<uuid>\",\n            \"status\": \"tracking\",\n            \"brand_name\": \"<string>\",\n            \"tracking_carrier\": \"<string>\",\n            \"tracking_number\": \"<string>\",\n            \"tracking_url\": \"<string>\",\n            \"shipped_at\": \"<dateTime>\",\n            \"delivered_at\": \"<dateTime>\",\n            \"delivery_eta\": \"<dateTime>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"status\": \"failed\",\n            \"brand_name\": \"<string>\",\n            \"tracking_carrier\": \"<string>\",\n            \"tracking_number\": \"<string>\",\n            \"tracking_url\": \"<string>\",\n            \"shipped_at\": \"<dateTime>\",\n            \"delivered_at\": \"<dateTime>\",\n            \"delivery_eta\": \"<dateTime>\"\n          }\n        ],\n        \"amounts\": {\n          \"amount_product\": \"<integer>\",\n          \"amount_shipping\": \"<integer>\",\n          \"amount_pre_tax_total\": \"<integer>\",\n          \"amount_processing_fee\": \"<integer>\",\n          \"amount_credit_applied\": \"<integer>\",\n          \"amount_tax\": \"<integer>\",\n          \"amount_total\": \"<integer>\",\n          \"amount_global_relay_cost\": \"<integer>\"\n        },\n        \"sender\": {\n          \"first_name\": \"<string>\",\n          \"last_name\": \"<string>\",\n          \"email\": \"<string>\"\n        },\n        \"reference_id\": \"<string>\",\n        \"recipient_last_name\": \"<string>\",\n        \"recipient_email\": \"<string>\",\n        \"cart_selections\": [\n          {\n            \"id\": \"<uuid>\",\n            \"cart_item_id\": \"<uuid>\",\n            \"quantity_index\": \"<integer>\",\n            \"variants\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"cart_item_id\": \"<uuid>\",\n            \"quantity_index\": \"<integer>\",\n            \"variants\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"workspace_id\": \"<uuid>\",\n        \"workspace_name\": \"<string>\",\n        \"expires_at\": \"<dateTime>\",\n        \"card_id\": \"<uuid>\",\n        \"message\": \"<string>\",\n        \"thank_you_note\": \"<string>\",\n        \"view_count_recipient\": \"<integer>\",\n        \"is_swapped\": \"<boolean>\",\n        \"order_batch_id\": \"<uuid>\",\n        \"event_times\": {\n          \"created_at\": \"<dateTime>\",\n          \"notified_at\": \"<dateTime>\",\n          \"opened_at\": \"<dateTime>\",\n          \"accepted_at\": \"<dateTime>\",\n          \"pending_payment_at\": \"<dateTime>\",\n          \"paid_at\": \"<dateTime>\",\n          \"shipped_at\": \"<dateTime>\",\n          \"delivered_at\": \"<dateTime>\"\n        },\n        \"original_cart\": {\n          \"id\": \"<uuid>\",\n          \"items\": [\n            {\n              \"id\": \"<uuid>\",\n              \"product\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"brand\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\"\n                }\n              },\n              \"quantity\": \"<integer>\"\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"product\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\",\n                \"brand\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\"\n                }\n              },\n              \"quantity\": \"<integer>\"\n            }\n          ]\n        },\n        \"original_amounts\": {\n          \"original_amount_product\": \"<integer>\",\n          \"original_amount_shipping\": \"<integer>\",\n          \"original_amount_credit_applied\": \"<integer>\",\n          \"original_amount_pre_tax_total\": \"<integer>\"\n        },\n        \"payment_link\": \"<string>\"\n      }\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:45:03.000Z",
+                  "updatedAt": "2026-07-28T01:45:03.000Z",
+                  "uid": "35240-79b72340-b822-457b-aeb9-4508cc9e70a7"
+                }
+              ],
+              "createdAt": "2026-07-28T01:45:03.000Z",
+              "updatedAt": "2026-07-28T01:45:03.000Z",
+              "uid": "35240-29c785ca-3ebb-43ad-9da5-b393744dfc30"
+            }
+          ],
+          "id": "971bae35-f3c2-4552-9727-6b4ad4c8e042",
+          "createdAt": "2026-07-28T01:45:03.000Z",
+          "updatedAt": "2026-07-28T01:45:03.000Z",
+          "uid": "35240-971bae35-f3c2-4552-9727-6b4ad4c8e042"
+        }
+      ],
+      "id": "da27767b-6748-4653-993d-59c9206152c5",
+      "createdAt": "2026-07-28T01:45:03.000Z",
+      "updatedAt": "2026-07-28T01:45:03.000Z",
+      "uid": "35240-da27767b-6748-4653-993d-59c9206152c5"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ongoody.com"
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "info": {
+    "_postman_id": "9c671926-fef7-4963-b0ae-5362cab41f0c",
+    "name": "Goody Brands Payment Methods API",
+    "description": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:45:06.000Z",
+    "updatedAt": "2026-07-28T01:45:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9c671926-fef7-4963-b0ae-5362cab41f0c"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "payment_methods",
+          "item": [
+            {
+              "name": "List all payment methods",
+              "id": "7fa2cbb8-7574-4a51-b159-8d190d1fe448",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/payment_methods",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "payment_methods"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "3ce47540-8ff0-42b0-aaba-02b4c3422148",
+                  "name": "Payment methods retrieved",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_methods",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_methods"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"cardholder_name\": \"<string>\",\n      \"balance\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"cardholder_name\": \"<string>\",\n      \"balance\": \"<integer>\"\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:45:06.000Z",
+                  "updatedAt": "2026-07-28T01:45:06.000Z",
+                  "uid": "35240-3ce47540-8ff0-42b0-aaba-02b4c3422148"
+                },
+                {
+                  "id": "5ab2066c-9e12-4312-985b-75529a0137f7",
+                  "name": "Failed to authorize",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/payment_methods",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "payment_methods"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:45:06.000Z",
+                  "updatedAt": "2026-07-28T01:45:06.000Z",
+                  "uid": "35240-5ab2066c-9e12-4312-985b-75529a0137f7"
+                }
+              ],
+              "createdAt": "2026-07-28T01:45:06.000Z",
+              "updatedAt": "2026-07-28T01:45:06.000Z",
+              "uid": "35240-7fa2cbb8-7574-4a51-b159-8d190d1fe448"
+            }
+          ],
+          "id": "71d2506f-f9d3-42bd-9053-87a728624ab6",
+          "createdAt": "2026-07-28T01:45:06.000Z",
+          "updatedAt": "2026-07-28T01:45:06.000Z",
+          "uid": "35240-71d2506f-f9d3-42bd-9053-87a728624ab6"
+        }
+      ],
+      "id": "18757f1d-40b0-4d09-8c3a-627cfcffdd68",
+      "createdAt": "2026-07-28T01:45:06.000Z",
+      "updatedAt": "2026-07-28T01:45:06.000Z",
+      "uid": "35240-18757f1d-40b0-4d09-8c3a-627cfcffdd68"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ongoody.com"
+    }
+  ]
+}

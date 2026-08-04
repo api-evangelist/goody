@@ -1,0 +1,1169 @@
+{
+  "info": {
+    "_postman_id": "da20458c-4f77-419a-9644-b9243a9af5e4",
+    "name": "Goody Brands Order Batches API",
+    "description": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:45:04.000Z",
+    "updatedAt": "2026-07-28T01:45:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-da20458c-4f77-419a-9644-b9243a9af5e4"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "order_batches",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "orders",
+                  "item": [
+                    {
+                      "name": "Retrieve orders for an order batch",
+                      "id": "0c0f9745-2c5f-4d14-b306-bf0358a4a813",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/order_batches/:id/orders?page=1&per_page=20",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "order_batches",
+                            ":id",
+                            "orders"
+                          ],
+                          "query": [
+                            {
+                              "description": "Page for pagination, starting at 1",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Items per page for pagination",
+                              "key": "per_page",
+                              "value": "20"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "d20c735e-7cd8-4862-828c-7753c047729c",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Order batch ID"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "d003a01c-2944-43d0-81c0-3af3ce9b3a60",
+                          "name": "Orders retrieved with pagination",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/order_batches/:id/orders?page=1&per_page=20",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "order_batches",
+                                ":id",
+                                "orders"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Page for pagination, starting at 1",
+                                  "key": "page",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Items per page for pagination",
+                                  "key": "per_page",
+                                  "value": "20"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"id\": \"<uuid>\",\n      \"recipient_first_name\": \"<string>\",\n      \"status\": \"ordered\",\n      \"individual_gift_link\": \"<string>\",\n      \"cart\": {\n        \"id\": \"<uuid>\",\n        \"items\": [\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          }\n        ]\n      },\n      \"shipments\": [\n        {\n          \"id\": \"<uuid>\",\n          \"status\": \"pending\",\n          \"brand_name\": \"<string>\",\n          \"tracking_carrier\": \"<string>\",\n          \"tracking_number\": \"<string>\",\n          \"tracking_url\": \"<string>\",\n          \"shipped_at\": \"<dateTime>\",\n          \"delivered_at\": \"<dateTime>\",\n          \"delivery_eta\": \"<dateTime>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"status\": \"pending\",\n          \"brand_name\": \"<string>\",\n          \"tracking_carrier\": \"<string>\",\n          \"tracking_number\": \"<string>\",\n          \"tracking_url\": \"<string>\",\n          \"shipped_at\": \"<dateTime>\",\n          \"delivered_at\": \"<dateTime>\",\n          \"delivery_eta\": \"<dateTime>\"\n        }\n      ],\n      \"amounts\": {\n        \"amount_product\": \"<integer>\",\n        \"amount_shipping\": \"<integer>\",\n        \"amount_pre_tax_total\": \"<integer>\",\n        \"amount_processing_fee\": \"<integer>\",\n        \"amount_credit_applied\": \"<integer>\",\n        \"amount_tax\": \"<integer>\",\n        \"amount_total\": \"<integer>\",\n        \"amount_global_relay_cost\": \"<integer>\"\n      },\n      \"sender\": {\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"email\": \"<string>\"\n      },\n      \"reference_id\": \"<string>\",\n      \"recipient_last_name\": \"<string>\",\n      \"recipient_email\": \"<string>\",\n      \"cart_selections\": [\n        {\n          \"id\": \"<uuid>\",\n          \"cart_item_id\": \"<uuid>\",\n          \"quantity_index\": \"<integer>\",\n          \"variants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"cart_item_id\": \"<uuid>\",\n          \"quantity_index\": \"<integer>\",\n          \"variants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"workspace_id\": \"<uuid>\",\n      \"workspace_name\": \"<string>\",\n      \"expires_at\": \"<dateTime>\",\n      \"card_id\": \"<uuid>\",\n      \"message\": \"<string>\",\n      \"thank_you_note\": \"<string>\",\n      \"view_count_recipient\": \"<integer>\",\n      \"is_swapped\": \"<boolean>\",\n      \"order_batch_id\": \"<uuid>\",\n      \"event_times\": {\n        \"created_at\": \"<dateTime>\",\n        \"notified_at\": \"<dateTime>\",\n        \"opened_at\": \"<dateTime>\",\n        \"accepted_at\": \"<dateTime>\",\n        \"pending_payment_at\": \"<dateTime>\",\n        \"paid_at\": \"<dateTime>\",\n        \"shipped_at\": \"<dateTime>\",\n        \"delivered_at\": \"<dateTime>\"\n      },\n      \"original_cart\": {\n        \"id\": \"<uuid>\",\n        \"items\": [\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          }\n        ]\n      },\n      \"original_amounts\": {\n        \"original_amount_product\": \"<integer>\",\n        \"original_amount_shipping\": \"<integer>\",\n        \"original_amount_credit_applied\": \"<integer>\",\n        \"original_amount_pre_tax_total\": \"<integer>\"\n      },\n      \"payment_link\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"recipient_first_name\": \"<string>\",\n      \"status\": \"shipped\",\n      \"individual_gift_link\": \"<string>\",\n      \"cart\": {\n        \"id\": \"<uuid>\",\n        \"items\": [\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          }\n        ]\n      },\n      \"shipments\": [\n        {\n          \"id\": \"<uuid>\",\n          \"status\": \"pending\",\n          \"brand_name\": \"<string>\",\n          \"tracking_carrier\": \"<string>\",\n          \"tracking_number\": \"<string>\",\n          \"tracking_url\": \"<string>\",\n          \"shipped_at\": \"<dateTime>\",\n          \"delivered_at\": \"<dateTime>\",\n          \"delivery_eta\": \"<dateTime>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"status\": \"delivered_override\",\n          \"brand_name\": \"<string>\",\n          \"tracking_carrier\": \"<string>\",\n          \"tracking_number\": \"<string>\",\n          \"tracking_url\": \"<string>\",\n          \"shipped_at\": \"<dateTime>\",\n          \"delivered_at\": \"<dateTime>\",\n          \"delivery_eta\": \"<dateTime>\"\n        }\n      ],\n      \"amounts\": {\n        \"amount_product\": \"<integer>\",\n        \"amount_shipping\": \"<integer>\",\n        \"amount_pre_tax_total\": \"<integer>\",\n        \"amount_processing_fee\": \"<integer>\",\n        \"amount_credit_applied\": \"<integer>\",\n        \"amount_tax\": \"<integer>\",\n        \"amount_total\": \"<integer>\",\n        \"amount_global_relay_cost\": \"<integer>\"\n      },\n      \"sender\": {\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"email\": \"<string>\"\n      },\n      \"reference_id\": \"<string>\",\n      \"recipient_last_name\": \"<string>\",\n      \"recipient_email\": \"<string>\",\n      \"cart_selections\": [\n        {\n          \"id\": \"<uuid>\",\n          \"cart_item_id\": \"<uuid>\",\n          \"quantity_index\": \"<integer>\",\n          \"variants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"cart_item_id\": \"<uuid>\",\n          \"quantity_index\": \"<integer>\",\n          \"variants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"workspace_id\": \"<uuid>\",\n      \"workspace_name\": \"<string>\",\n      \"expires_at\": \"<dateTime>\",\n      \"card_id\": \"<uuid>\",\n      \"message\": \"<string>\",\n      \"thank_you_note\": \"<string>\",\n      \"view_count_recipient\": \"<integer>\",\n      \"is_swapped\": \"<boolean>\",\n      \"order_batch_id\": \"<uuid>\",\n      \"event_times\": {\n        \"created_at\": \"<dateTime>\",\n        \"notified_at\": \"<dateTime>\",\n        \"opened_at\": \"<dateTime>\",\n        \"accepted_at\": \"<dateTime>\",\n        \"pending_payment_at\": \"<dateTime>\",\n        \"paid_at\": \"<dateTime>\",\n        \"shipped_at\": \"<dateTime>\",\n        \"delivered_at\": \"<dateTime>\"\n      },\n      \"original_cart\": {\n        \"id\": \"<uuid>\",\n        \"items\": [\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          }\n        ]\n      },\n      \"original_amounts\": {\n        \"original_amount_product\": \"<integer>\",\n        \"original_amount_shipping\": \"<integer>\",\n        \"original_amount_credit_applied\": \"<integer>\",\n        \"original_amount_pre_tax_total\": \"<integer>\"\n      },\n      \"payment_link\": \"<string>\"\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:45:04.000Z",
+                          "updatedAt": "2026-07-28T01:45:04.000Z",
+                          "uid": "35240-d003a01c-2944-43d0-81c0-3af3ce9b3a60"
+                        },
+                        {
+                          "id": "492c43c7-a1aa-4be1-91ce-dce457189d09",
+                          "name": "Fail to retrieve when page is 0",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/order_batches/:id/orders?page=1&per_page=20",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "order_batches",
+                                ":id",
+                                "orders"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Page for pagination, starting at 1",
+                                  "key": "page",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Items per page for pagination",
+                                  "key": "per_page",
+                                  "value": "20"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"error\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\"\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:45:04.000Z",
+                          "updatedAt": "2026-07-28T01:45:04.000Z",
+                          "uid": "35240-492c43c7-a1aa-4be1-91ce-dce457189d09"
+                        },
+                        {
+                          "id": "c046c760-24a3-4539-b9c6-dcfd12cd661d",
+                          "name": "Not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/order_batches/:id/orders?page=1&per_page=20",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "order_batches",
+                                ":id",
+                                "orders"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Page for pagination, starting at 1",
+                                  "key": "page",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Items per page for pagination",
+                                  "key": "per_page",
+                                  "value": "20"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:45:04.000Z",
+                          "updatedAt": "2026-07-28T01:45:04.000Z",
+                          "uid": "35240-c046c760-24a3-4539-b9c6-dcfd12cd661d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:45:04.000Z",
+                      "updatedAt": "2026-07-28T01:45:04.000Z",
+                      "uid": "35240-0c0f9745-2c5f-4d14-b306-bf0358a4a813"
+                    }
+                  ],
+                  "id": "7d0a9b01-b7f1-4979-984b-1c50e4f251cd",
+                  "createdAt": "2026-07-28T01:45:04.000Z",
+                  "updatedAt": "2026-07-28T01:45:04.000Z",
+                  "uid": "35240-7d0a9b01-b7f1-4979-984b-1c50e4f251cd"
+                },
+                {
+                  "name": "recipients",
+                  "item": [
+                    {
+                      "name": "Retrieve recipients for an order batch",
+                      "id": "ebf7ad2c-f7df-4a10-a1ca-283ce5cbcb7a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/order_batches/:id/recipients?page=1&per_page=20",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "order_batches",
+                            ":id",
+                            "recipients"
+                          ],
+                          "query": [
+                            {
+                              "description": "Page for pagination, starting at 1",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Items per page for pagination",
+                              "key": "per_page",
+                              "value": "20"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "10cc2d60-6d5b-46ae-92fe-d1e95fecaadf",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Order batch ID"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "0211035a-a102-4a93-a281-459f52ce72a5",
+                          "name": "Recipients retrieved with pagination",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/order_batches/:id/recipients?page=1&per_page=20",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "order_batches",
+                                ":id",
+                                "recipients"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Page for pagination, starting at 1",
+                                  "key": "page",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Items per page for pagination",
+                                  "key": "per_page",
+                                  "value": "20"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:45:04.000Z",
+                          "updatedAt": "2026-07-28T01:45:04.000Z",
+                          "uid": "35240-0211035a-a102-4a93-a281-459f52ce72a5"
+                        },
+                        {
+                          "id": "85eaa8bb-26d3-4eda-aded-ebc8ed71e360",
+                          "name": "Fail to retrieve when page is 0",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/order_batches/:id/recipients?page=1&per_page=20",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "order_batches",
+                                ":id",
+                                "recipients"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Page for pagination, starting at 1",
+                                  "key": "page",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Items per page for pagination",
+                                  "key": "per_page",
+                                  "value": "20"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"error\": \"<string>\"\n    },\n    {\n      \"error\": \"<string>\"\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:45:04.000Z",
+                          "updatedAt": "2026-07-28T01:45:04.000Z",
+                          "uid": "35240-85eaa8bb-26d3-4eda-aded-ebc8ed71e360"
+                        },
+                        {
+                          "id": "e542e364-e71e-40dc-a137-5094f07d0f65",
+                          "name": "Not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/order_batches/:id/recipients?page=1&per_page=20",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "order_batches",
+                                ":id",
+                                "recipients"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Page for pagination, starting at 1",
+                                  "key": "page",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Items per page for pagination",
+                                  "key": "per_page",
+                                  "value": "20"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:45:04.000Z",
+                          "updatedAt": "2026-07-28T01:45:04.000Z",
+                          "uid": "35240-e542e364-e71e-40dc-a137-5094f07d0f65"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:45:04.000Z",
+                      "updatedAt": "2026-07-28T01:45:04.000Z",
+                      "uid": "35240-ebf7ad2c-f7df-4a10-a1ca-283ce5cbcb7a"
+                    }
+                  ],
+                  "id": "7bf27d1d-127f-4b92-807c-290d87f61a7d",
+                  "createdAt": "2026-07-28T01:45:04.000Z",
+                  "updatedAt": "2026-07-28T01:45:04.000Z",
+                  "uid": "35240-7bf27d1d-127f-4b92-807c-290d87f61a7d"
+                },
+                {
+                  "name": "Retrieve an order batch",
+                  "id": "76b8a679-2e84-428a-a723-3bdbf0e6b253",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/order_batches/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "order_batches",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "30cc0927-2498-4bf7-8d0b-b36ea0156c4e",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Order batch ID"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "394ebbcb-b1b2-49dd-be97-5c0ff0d7df8f",
+                      "name": "Scheduled order batch retrieved",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/order_batches/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "order_batches",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<uuid>\",\n  \"send_status\": \"canceled\",\n  \"orders_preview\": [\n    {\n      \"id\": \"<uuid>\",\n      \"recipient_first_name\": \"<string>\",\n      \"status\": \"created\",\n      \"individual_gift_link\": \"<string>\",\n      \"cart\": {\n        \"id\": \"<uuid>\",\n        \"items\": [\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          }\n        ]\n      },\n      \"shipments\": [\n        {\n          \"id\": \"<uuid>\",\n          \"status\": \"shipped\",\n          \"brand_name\": \"<string>\",\n          \"tracking_carrier\": \"<string>\",\n          \"tracking_number\": \"<string>\",\n          \"tracking_url\": \"<string>\",\n          \"shipped_at\": \"<dateTime>\",\n          \"delivered_at\": \"<dateTime>\",\n          \"delivery_eta\": \"<dateTime>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"status\": \"failed\",\n          \"brand_name\": \"<string>\",\n          \"tracking_carrier\": \"<string>\",\n          \"tracking_number\": \"<string>\",\n          \"tracking_url\": \"<string>\",\n          \"shipped_at\": \"<dateTime>\",\n          \"delivered_at\": \"<dateTime>\",\n          \"delivery_eta\": \"<dateTime>\"\n        }\n      ],\n      \"amounts\": {\n        \"amount_product\": \"<integer>\",\n        \"amount_shipping\": \"<integer>\",\n        \"amount_pre_tax_total\": \"<integer>\",\n        \"amount_processing_fee\": \"<integer>\",\n        \"amount_credit_applied\": \"<integer>\",\n        \"amount_tax\": \"<integer>\",\n        \"amount_total\": \"<integer>\",\n        \"amount_global_relay_cost\": \"<integer>\"\n      },\n      \"sender\": {\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"email\": \"<string>\"\n      },\n      \"reference_id\": \"<string>\",\n      \"recipient_last_name\": \"<string>\",\n      \"recipient_email\": \"<string>\",\n      \"cart_selections\": [\n        {\n          \"id\": \"<uuid>\",\n          \"cart_item_id\": \"<uuid>\",\n          \"quantity_index\": \"<integer>\",\n          \"variants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"cart_item_id\": \"<uuid>\",\n          \"quantity_index\": \"<integer>\",\n          \"variants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"workspace_id\": \"<uuid>\",\n      \"workspace_name\": \"<string>\",\n      \"expires_at\": \"<dateTime>\",\n      \"card_id\": \"<uuid>\",\n      \"message\": \"<string>\",\n      \"thank_you_note\": \"<string>\",\n      \"view_count_recipient\": \"<integer>\",\n      \"is_swapped\": \"<boolean>\",\n      \"order_batch_id\": \"<uuid>\",\n      \"event_times\": {\n        \"created_at\": \"<dateTime>\",\n        \"notified_at\": \"<dateTime>\",\n        \"opened_at\": \"<dateTime>\",\n        \"accepted_at\": \"<dateTime>\",\n        \"pending_payment_at\": \"<dateTime>\",\n        \"paid_at\": \"<dateTime>\",\n        \"shipped_at\": \"<dateTime>\",\n        \"delivered_at\": \"<dateTime>\"\n      },\n      \"original_cart\": {\n        \"id\": \"<uuid>\",\n        \"items\": [\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          }\n        ]\n      },\n      \"original_amounts\": {\n        \"original_amount_product\": \"<integer>\",\n        \"original_amount_shipping\": \"<integer>\",\n        \"original_amount_credit_applied\": \"<integer>\",\n        \"original_amount_pre_tax_total\": \"<integer>\"\n      },\n      \"payment_link\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"recipient_first_name\": \"<string>\",\n      \"status\": \"created\",\n      \"individual_gift_link\": \"<string>\",\n      \"cart\": {\n        \"id\": \"<uuid>\",\n        \"items\": [\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          }\n        ]\n      },\n      \"shipments\": [\n        {\n          \"id\": \"<uuid>\",\n          \"status\": \"failed\",\n          \"brand_name\": \"<string>\",\n          \"tracking_carrier\": \"<string>\",\n          \"tracking_number\": \"<string>\",\n          \"tracking_url\": \"<string>\",\n          \"shipped_at\": \"<dateTime>\",\n          \"delivered_at\": \"<dateTime>\",\n          \"delivery_eta\": \"<dateTime>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"status\": \"delivered\",\n          \"brand_name\": \"<string>\",\n          \"tracking_carrier\": \"<string>\",\n          \"tracking_number\": \"<string>\",\n          \"tracking_url\": \"<string>\",\n          \"shipped_at\": \"<dateTime>\",\n          \"delivered_at\": \"<dateTime>\",\n          \"delivery_eta\": \"<dateTime>\"\n        }\n      ],\n      \"amounts\": {\n        \"amount_product\": \"<integer>\",\n        \"amount_shipping\": \"<integer>\",\n        \"amount_pre_tax_total\": \"<integer>\",\n        \"amount_processing_fee\": \"<integer>\",\n        \"amount_credit_applied\": \"<integer>\",\n        \"amount_tax\": \"<integer>\",\n        \"amount_total\": \"<integer>\",\n        \"amount_global_relay_cost\": \"<integer>\"\n      },\n      \"sender\": {\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"email\": \"<string>\"\n      },\n      \"reference_id\": \"<string>\",\n      \"recipient_last_name\": \"<string>\",\n      \"recipient_email\": \"<string>\",\n      \"cart_selections\": [\n        {\n          \"id\": \"<uuid>\",\n          \"cart_item_id\": \"<uuid>\",\n          \"quantity_index\": \"<integer>\",\n          \"variants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"cart_item_id\": \"<uuid>\",\n          \"quantity_index\": \"<integer>\",\n          \"variants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"workspace_id\": \"<uuid>\",\n      \"workspace_name\": \"<string>\",\n      \"expires_at\": \"<dateTime>\",\n      \"card_id\": \"<uuid>\",\n      \"message\": \"<string>\",\n      \"thank_you_note\": \"<string>\",\n      \"view_count_recipient\": \"<integer>\",\n      \"is_swapped\": \"<boolean>\",\n      \"order_batch_id\": \"<uuid>\",\n      \"event_times\": {\n        \"created_at\": \"<dateTime>\",\n        \"notified_at\": \"<dateTime>\",\n        \"opened_at\": \"<dateTime>\",\n        \"accepted_at\": \"<dateTime>\",\n        \"pending_payment_at\": \"<dateTime>\",\n        \"paid_at\": \"<dateTime>\",\n        \"shipped_at\": \"<dateTime>\",\n        \"delivered_at\": \"<dateTime>\"\n      },\n      \"original_cart\": {\n        \"id\": \"<uuid>\",\n        \"items\": [\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          }\n        ]\n      },\n      \"original_amounts\": {\n        \"original_amount_product\": \"<integer>\",\n        \"original_amount_shipping\": \"<integer>\",\n        \"original_amount_credit_applied\": \"<integer>\",\n        \"original_amount_pre_tax_total\": \"<integer>\"\n      },\n      \"payment_link\": \"<string>\"\n    }\n  ],\n  \"orders_count\": \"<integer>\",\n  \"cart\": {\n    \"id\": \"<uuid>\",\n    \"items\": [\n      {\n        \"id\": \"<uuid>\",\n        \"product\": {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"brand\": {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\"\n          }\n        },\n        \"quantity\": \"<integer>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"product\": {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"brand\": {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\"\n          }\n        },\n        \"quantity\": \"<integer>\"\n      }\n    ]\n  },\n  \"from_name\": \"<string>\",\n  \"recipients_preview\": [\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  ],\n  \"recipients_count\": \"<integer>\",\n  \"sender\": {\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"reference_id\": \"<string>\",\n  \"message\": \"<string>\",\n  \"is_scheduled_send\": \"<boolean>\",\n  \"scheduled_send_on\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"send_method\": \"link_multiple_custom_list\",\n  \"batch_name\": \"<string>\",\n  \"card_id\": \"<uuid>\",\n  \"workspace_id\": \"<uuid>\",\n  \"workspace_name\": \"<string>\",\n  \"customer_reference_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:45:04.000Z",
+                      "updatedAt": "2026-07-28T01:45:04.000Z",
+                      "uid": "35240-394ebbcb-b1b2-49dd-be97-5c0ff0d7df8f"
+                    },
+                    {
+                      "id": "00147fe4-ee3c-49d7-95b3-fe3b61fb14e8",
+                      "name": "Not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/order_batches/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "order_batches",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:45:04.000Z",
+                      "updatedAt": "2026-07-28T01:45:04.000Z",
+                      "uid": "35240-00147fe4-ee3c-49d7-95b3-fe3b61fb14e8"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:45:04.000Z",
+                  "updatedAt": "2026-07-28T01:45:04.000Z",
+                  "uid": "35240-76b8a679-2e84-428a-a723-3bdbf0e6b253"
+                }
+              ],
+              "id": "70962324-272e-43bf-9d8d-766be1a5a5f8",
+              "createdAt": "2026-07-28T01:45:04.000Z",
+              "updatedAt": "2026-07-28T01:45:04.000Z",
+              "uid": "35240-70962324-272e-43bf-9d8d-766be1a5a5f8"
+            },
+            {
+              "name": "price",
+              "item": [
+                {
+                  "name": "Calculate the price for an order batch",
+                  "id": "00f94640-0bbc-4b9b-8a67-fdf9abf1a6cc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"recipients\": [\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    },\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    }\n  ],\n  \"cart\": {\n    \"items\": [\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  },\n  \"send_method\": \"direct_send\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/order_batches/price",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "order_batches",
+                        "price"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "9d03c3bf-3900-43fc-9c8e-fe138a7fb2c6",
+                      "name": "Order batch price calculated",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"recipients\": [\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    },\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    }\n  ],\n  \"cart\": {\n    \"items\": [\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  },\n  \"send_method\": \"direct_send\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/order_batches/price",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "order_batches",
+                            "price"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"cart_price_estimate\": {\n    \"price_product\": \"<integer>\",\n    \"price_shipping\": \"<integer>\",\n    \"price_processing_fee\": \"<integer>\",\n    \"price_pre_tax\": \"<integer>\",\n    \"price_est_tax_low\": \"<integer>\",\n    \"price_est_tax_high\": \"<integer>\",\n    \"price_est_total_low\": \"<integer>\",\n    \"price_est_total_high\": \"<integer>\"\n  },\n  \"total_price_estimate\": {\n    \"recipients\": \"<integer>\",\n    \"est_tax_calculated\": \"<integer>\",\n    \"est_total_calculated\": \"<integer>\",\n    \"est_group_total_low\": \"<integer>\",\n    \"est_group_total_high\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:45:04.000Z",
+                      "updatedAt": "2026-07-28T01:45:04.000Z",
+                      "uid": "35240-9d03c3bf-3900-43fc-9c8e-fe138a7fb2c6"
+                    },
+                    {
+                      "id": "e8b1b1b7-6a57-45ab-96f6-967d44b46532",
+                      "name": "Invalid parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"recipients\": [\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    },\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    }\n  ],\n  \"cart\": {\n    \"items\": [\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  },\n  \"send_method\": \"direct_send\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/order_batches/price",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "order_batches",
+                            "price"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:45:04.000Z",
+                      "updatedAt": "2026-07-28T01:45:04.000Z",
+                      "uid": "35240-e8b1b1b7-6a57-45ab-96f6-967d44b46532"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:45:04.000Z",
+                  "updatedAt": "2026-07-28T01:45:04.000Z",
+                  "uid": "35240-00f94640-0bbc-4b9b-8a67-fdf9abf1a6cc"
+                }
+              ],
+              "id": "cc3ef483-6a34-45bb-ab21-c8253884368e",
+              "createdAt": "2026-07-28T01:45:04.000Z",
+              "updatedAt": "2026-07-28T01:45:04.000Z",
+              "uid": "35240-cc3ef483-6a34-45bb-ab21-c8253884368e"
+            },
+            {
+              "name": "Create an order batch",
+              "id": "720acb2e-be88-40cf-9351-407fb0fd4759",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from_name\": \"<string>\",\n  \"recipients\": [\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    },\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    }\n  ],\n  \"cart\": {\n    \"items\": [\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  },\n  \"send_method\": \"link_multiple_custom_list\",\n  \"message\": \"<string>\",\n  \"card_id\": \"<uuid>\",\n  \"payment_method_id\": \"<string>\",\n  \"workspace_id\": \"<uuid>\",\n  \"scheduled_send_on\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"swap\": \"disabled\",\n  \"international_shipping_tier\": \"full\",\n  \"international_gift_cards_enabled\": \"<boolean>\",\n  \"notifications_enabled\": \"<boolean>\",\n  \"commerce_end_user_id\": \"<string>\",\n  \"customer_reference_id\": \"<string>\",\n  \"reserved_options\": {\n    \"custom_price_tier\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/order_batches",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "order_batches"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "dab9d2fe-7eb9-477a-a465-29828c80dd06",
+                  "name": "Order batch created using product URL in cart",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"from_name\": \"<string>\",\n  \"recipients\": [\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    },\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    }\n  ],\n  \"cart\": {\n    \"items\": [\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  },\n  \"send_method\": \"link_multiple_custom_list\",\n  \"message\": \"<string>\",\n  \"card_id\": \"<uuid>\",\n  \"payment_method_id\": \"<string>\",\n  \"workspace_id\": \"<uuid>\",\n  \"scheduled_send_on\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"swap\": \"disabled\",\n  \"international_shipping_tier\": \"full\",\n  \"international_gift_cards_enabled\": \"<boolean>\",\n  \"notifications_enabled\": \"<boolean>\",\n  \"commerce_end_user_id\": \"<string>\",\n  \"customer_reference_id\": \"<string>\",\n  \"reserved_options\": {\n    \"custom_price_tier\": \"<integer>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/order_batches",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "order_batches"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"send_status\": \"canceled\",\n  \"orders_preview\": [\n    {\n      \"id\": \"<uuid>\",\n      \"recipient_first_name\": \"<string>\",\n      \"status\": \"created\",\n      \"individual_gift_link\": \"<string>\",\n      \"cart\": {\n        \"id\": \"<uuid>\",\n        \"items\": [\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          }\n        ]\n      },\n      \"shipments\": [\n        {\n          \"id\": \"<uuid>\",\n          \"status\": \"shipped\",\n          \"brand_name\": \"<string>\",\n          \"tracking_carrier\": \"<string>\",\n          \"tracking_number\": \"<string>\",\n          \"tracking_url\": \"<string>\",\n          \"shipped_at\": \"<dateTime>\",\n          \"delivered_at\": \"<dateTime>\",\n          \"delivery_eta\": \"<dateTime>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"status\": \"failed\",\n          \"brand_name\": \"<string>\",\n          \"tracking_carrier\": \"<string>\",\n          \"tracking_number\": \"<string>\",\n          \"tracking_url\": \"<string>\",\n          \"shipped_at\": \"<dateTime>\",\n          \"delivered_at\": \"<dateTime>\",\n          \"delivery_eta\": \"<dateTime>\"\n        }\n      ],\n      \"amounts\": {\n        \"amount_product\": \"<integer>\",\n        \"amount_shipping\": \"<integer>\",\n        \"amount_pre_tax_total\": \"<integer>\",\n        \"amount_processing_fee\": \"<integer>\",\n        \"amount_credit_applied\": \"<integer>\",\n        \"amount_tax\": \"<integer>\",\n        \"amount_total\": \"<integer>\",\n        \"amount_global_relay_cost\": \"<integer>\"\n      },\n      \"sender\": {\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"email\": \"<string>\"\n      },\n      \"reference_id\": \"<string>\",\n      \"recipient_last_name\": \"<string>\",\n      \"recipient_email\": \"<string>\",\n      \"cart_selections\": [\n        {\n          \"id\": \"<uuid>\",\n          \"cart_item_id\": \"<uuid>\",\n          \"quantity_index\": \"<integer>\",\n          \"variants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"cart_item_id\": \"<uuid>\",\n          \"quantity_index\": \"<integer>\",\n          \"variants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"workspace_id\": \"<uuid>\",\n      \"workspace_name\": \"<string>\",\n      \"expires_at\": \"<dateTime>\",\n      \"card_id\": \"<uuid>\",\n      \"message\": \"<string>\",\n      \"thank_you_note\": \"<string>\",\n      \"view_count_recipient\": \"<integer>\",\n      \"is_swapped\": \"<boolean>\",\n      \"order_batch_id\": \"<uuid>\",\n      \"event_times\": {\n        \"created_at\": \"<dateTime>\",\n        \"notified_at\": \"<dateTime>\",\n        \"opened_at\": \"<dateTime>\",\n        \"accepted_at\": \"<dateTime>\",\n        \"pending_payment_at\": \"<dateTime>\",\n        \"paid_at\": \"<dateTime>\",\n        \"shipped_at\": \"<dateTime>\",\n        \"delivered_at\": \"<dateTime>\"\n      },\n      \"original_cart\": {\n        \"id\": \"<uuid>\",\n        \"items\": [\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          }\n        ]\n      },\n      \"original_amounts\": {\n        \"original_amount_product\": \"<integer>\",\n        \"original_amount_shipping\": \"<integer>\",\n        \"original_amount_credit_applied\": \"<integer>\",\n        \"original_amount_pre_tax_total\": \"<integer>\"\n      },\n      \"payment_link\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"recipient_first_name\": \"<string>\",\n      \"status\": \"created\",\n      \"individual_gift_link\": \"<string>\",\n      \"cart\": {\n        \"id\": \"<uuid>\",\n        \"items\": [\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          }\n        ]\n      },\n      \"shipments\": [\n        {\n          \"id\": \"<uuid>\",\n          \"status\": \"failed\",\n          \"brand_name\": \"<string>\",\n          \"tracking_carrier\": \"<string>\",\n          \"tracking_number\": \"<string>\",\n          \"tracking_url\": \"<string>\",\n          \"shipped_at\": \"<dateTime>\",\n          \"delivered_at\": \"<dateTime>\",\n          \"delivery_eta\": \"<dateTime>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"status\": \"delivered\",\n          \"brand_name\": \"<string>\",\n          \"tracking_carrier\": \"<string>\",\n          \"tracking_number\": \"<string>\",\n          \"tracking_url\": \"<string>\",\n          \"shipped_at\": \"<dateTime>\",\n          \"delivered_at\": \"<dateTime>\",\n          \"delivery_eta\": \"<dateTime>\"\n        }\n      ],\n      \"amounts\": {\n        \"amount_product\": \"<integer>\",\n        \"amount_shipping\": \"<integer>\",\n        \"amount_pre_tax_total\": \"<integer>\",\n        \"amount_processing_fee\": \"<integer>\",\n        \"amount_credit_applied\": \"<integer>\",\n        \"amount_tax\": \"<integer>\",\n        \"amount_total\": \"<integer>\",\n        \"amount_global_relay_cost\": \"<integer>\"\n      },\n      \"sender\": {\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"email\": \"<string>\"\n      },\n      \"reference_id\": \"<string>\",\n      \"recipient_last_name\": \"<string>\",\n      \"recipient_email\": \"<string>\",\n      \"cart_selections\": [\n        {\n          \"id\": \"<uuid>\",\n          \"cart_item_id\": \"<uuid>\",\n          \"quantity_index\": \"<integer>\",\n          \"variants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"cart_item_id\": \"<uuid>\",\n          \"quantity_index\": \"<integer>\",\n          \"variants\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"workspace_id\": \"<uuid>\",\n      \"workspace_name\": \"<string>\",\n      \"expires_at\": \"<dateTime>\",\n      \"card_id\": \"<uuid>\",\n      \"message\": \"<string>\",\n      \"thank_you_note\": \"<string>\",\n      \"view_count_recipient\": \"<integer>\",\n      \"is_swapped\": \"<boolean>\",\n      \"order_batch_id\": \"<uuid>\",\n      \"event_times\": {\n        \"created_at\": \"<dateTime>\",\n        \"notified_at\": \"<dateTime>\",\n        \"opened_at\": \"<dateTime>\",\n        \"accepted_at\": \"<dateTime>\",\n        \"pending_payment_at\": \"<dateTime>\",\n        \"paid_at\": \"<dateTime>\",\n        \"shipped_at\": \"<dateTime>\",\n        \"delivered_at\": \"<dateTime>\"\n      },\n      \"original_cart\": {\n        \"id\": \"<uuid>\",\n        \"items\": [\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          }\n        ]\n      },\n      \"original_amounts\": {\n        \"original_amount_product\": \"<integer>\",\n        \"original_amount_shipping\": \"<integer>\",\n        \"original_amount_credit_applied\": \"<integer>\",\n        \"original_amount_pre_tax_total\": \"<integer>\"\n      },\n      \"payment_link\": \"<string>\"\n    }\n  ],\n  \"orders_count\": \"<integer>\",\n  \"cart\": {\n    \"id\": \"<uuid>\",\n    \"items\": [\n      {\n        \"id\": \"<uuid>\",\n        \"product\": {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"brand\": {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\"\n          }\n        },\n        \"quantity\": \"<integer>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"product\": {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"brand\": {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\"\n          }\n        },\n        \"quantity\": \"<integer>\"\n      }\n    ]\n  },\n  \"from_name\": \"<string>\",\n  \"recipients_preview\": [\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  ],\n  \"recipients_count\": \"<integer>\",\n  \"sender\": {\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"reference_id\": \"<string>\",\n  \"message\": \"<string>\",\n  \"is_scheduled_send\": \"<boolean>\",\n  \"scheduled_send_on\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"send_method\": \"link_multiple_custom_list\",\n  \"batch_name\": \"<string>\",\n  \"card_id\": \"<uuid>\",\n  \"workspace_id\": \"<uuid>\",\n  \"workspace_name\": \"<string>\",\n  \"customer_reference_id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:45:04.000Z",
+                  "updatedAt": "2026-07-28T01:45:04.000Z",
+                  "uid": "35240-dab9d2fe-7eb9-477a-a465-29828c80dd06"
+                },
+                {
+                  "id": "21926814-6771-47e1-ad59-4ba56a622485",
+                  "name": "Bad request when using invalid product URL in cart",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"from_name\": \"<string>\",\n  \"recipients\": [\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    },\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    }\n  ],\n  \"cart\": {\n    \"items\": [\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  },\n  \"send_method\": \"link_multiple_custom_list\",\n  \"message\": \"<string>\",\n  \"card_id\": \"<uuid>\",\n  \"payment_method_id\": \"<string>\",\n  \"workspace_id\": \"<uuid>\",\n  \"scheduled_send_on\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"swap\": \"disabled\",\n  \"international_shipping_tier\": \"full\",\n  \"international_gift_cards_enabled\": \"<boolean>\",\n  \"notifications_enabled\": \"<boolean>\",\n  \"commerce_end_user_id\": \"<string>\",\n  \"customer_reference_id\": \"<string>\",\n  \"reserved_options\": {\n    \"custom_price_tier\": \"<integer>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/order_batches",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "order_batches"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:45:04.000Z",
+                  "updatedAt": "2026-07-28T01:45:04.000Z",
+                  "uid": "35240-21926814-6771-47e1-ad59-4ba56a622485"
+                }
+              ],
+              "createdAt": "2026-07-28T01:45:04.000Z",
+              "updatedAt": "2026-07-28T01:45:04.000Z",
+              "uid": "35240-720acb2e-be88-40cf-9351-407fb0fd4759"
+            },
+            {
+              "name": "List order batches",
+              "id": "9fe19724-209b-4dd5-a2b8-f8783242545a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/order_batches?page=1&per_page=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "order_batches"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page for pagination, starting at 1",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Items per page for pagination",
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "20131f55-9765-46b6-a774-0572c9c58555",
+                  "name": "Order batches retrieved",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/order_batches?page=1&per_page=20",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "order_batches"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page for pagination, starting at 1",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page for pagination",
+                          "key": "per_page",
+                          "value": "20"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<uuid>\",\n      \"send_status\": \"canceled\",\n      \"orders_preview\": [\n        {\n          \"id\": \"<uuid>\",\n          \"recipient_first_name\": \"<string>\",\n          \"status\": \"failed\",\n          \"individual_gift_link\": \"<string>\",\n          \"cart\": {\n            \"id\": \"<uuid>\",\n            \"items\": [\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              }\n            ]\n          },\n          \"shipments\": [\n            {\n              \"id\": \"<uuid>\",\n              \"status\": \"pending\",\n              \"brand_name\": \"<string>\",\n              \"tracking_carrier\": \"<string>\",\n              \"tracking_number\": \"<string>\",\n              \"tracking_url\": \"<string>\",\n              \"shipped_at\": \"<dateTime>\",\n              \"delivered_at\": \"<dateTime>\",\n              \"delivery_eta\": \"<dateTime>\"\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"status\": \"delivered_override\",\n              \"brand_name\": \"<string>\",\n              \"tracking_carrier\": \"<string>\",\n              \"tracking_number\": \"<string>\",\n              \"tracking_url\": \"<string>\",\n              \"shipped_at\": \"<dateTime>\",\n              \"delivered_at\": \"<dateTime>\",\n              \"delivery_eta\": \"<dateTime>\"\n            }\n          ],\n          \"amounts\": {\n            \"amount_product\": \"<integer>\",\n            \"amount_shipping\": \"<integer>\",\n            \"amount_pre_tax_total\": \"<integer>\",\n            \"amount_processing_fee\": \"<integer>\",\n            \"amount_credit_applied\": \"<integer>\",\n            \"amount_tax\": \"<integer>\",\n            \"amount_total\": \"<integer>\",\n            \"amount_global_relay_cost\": \"<integer>\"\n          },\n          \"sender\": {\n            \"first_name\": \"<string>\",\n            \"last_name\": \"<string>\",\n            \"email\": \"<string>\"\n          },\n          \"reference_id\": \"<string>\",\n          \"recipient_last_name\": \"<string>\",\n          \"recipient_email\": \"<string>\",\n          \"cart_selections\": [\n            {\n              \"id\": \"<uuid>\",\n              \"cart_item_id\": \"<uuid>\",\n              \"quantity_index\": \"<integer>\",\n              \"variants\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"cart_item_id\": \"<uuid>\",\n              \"quantity_index\": \"<integer>\",\n              \"variants\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"workspace_id\": \"<uuid>\",\n          \"workspace_name\": \"<string>\",\n          \"expires_at\": \"<dateTime>\",\n          \"card_id\": \"<uuid>\",\n          \"message\": \"<string>\",\n          \"thank_you_note\": \"<string>\",\n          \"view_count_recipient\": \"<integer>\",\n          \"is_swapped\": \"<boolean>\",\n          \"order_batch_id\": \"<uuid>\",\n          \"event_times\": {\n            \"created_at\": \"<dateTime>\",\n            \"notified_at\": \"<dateTime>\",\n            \"opened_at\": \"<dateTime>\",\n            \"accepted_at\": \"<dateTime>\",\n            \"pending_payment_at\": \"<dateTime>\",\n            \"paid_at\": \"<dateTime>\",\n            \"shipped_at\": \"<dateTime>\",\n            \"delivered_at\": \"<dateTime>\"\n          },\n          \"original_cart\": {\n            \"id\": \"<uuid>\",\n            \"items\": [\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              }\n            ]\n          },\n          \"original_amounts\": {\n            \"original_amount_product\": \"<integer>\",\n            \"original_amount_shipping\": \"<integer>\",\n            \"original_amount_credit_applied\": \"<integer>\",\n            \"original_amount_pre_tax_total\": \"<integer>\"\n          },\n          \"payment_link\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"recipient_first_name\": \"<string>\",\n          \"status\": \"canceled\",\n          \"individual_gift_link\": \"<string>\",\n          \"cart\": {\n            \"id\": \"<uuid>\",\n            \"items\": [\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              }\n            ]\n          },\n          \"shipments\": [\n            {\n              \"id\": \"<uuid>\",\n              \"status\": \"failed\",\n              \"brand_name\": \"<string>\",\n              \"tracking_carrier\": \"<string>\",\n              \"tracking_number\": \"<string>\",\n              \"tracking_url\": \"<string>\",\n              \"shipped_at\": \"<dateTime>\",\n              \"delivered_at\": \"<dateTime>\",\n              \"delivery_eta\": \"<dateTime>\"\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"status\": \"delivered_override\",\n              \"brand_name\": \"<string>\",\n              \"tracking_carrier\": \"<string>\",\n              \"tracking_number\": \"<string>\",\n              \"tracking_url\": \"<string>\",\n              \"shipped_at\": \"<dateTime>\",\n              \"delivered_at\": \"<dateTime>\",\n              \"delivery_eta\": \"<dateTime>\"\n            }\n          ],\n          \"amounts\": {\n            \"amount_product\": \"<integer>\",\n            \"amount_shipping\": \"<integer>\",\n            \"amount_pre_tax_total\": \"<integer>\",\n            \"amount_processing_fee\": \"<integer>\",\n            \"amount_credit_applied\": \"<integer>\",\n            \"amount_tax\": \"<integer>\",\n            \"amount_total\": \"<integer>\",\n            \"amount_global_relay_cost\": \"<integer>\"\n          },\n          \"sender\": {\n            \"first_name\": \"<string>\",\n            \"last_name\": \"<string>\",\n            \"email\": \"<string>\"\n          },\n          \"reference_id\": \"<string>\",\n          \"recipient_last_name\": \"<string>\",\n          \"recipient_email\": \"<string>\",\n          \"cart_selections\": [\n            {\n              \"id\": \"<uuid>\",\n              \"cart_item_id\": \"<uuid>\",\n              \"quantity_index\": \"<integer>\",\n              \"variants\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"cart_item_id\": \"<uuid>\",\n              \"quantity_index\": \"<integer>\",\n              \"variants\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"workspace_id\": \"<uuid>\",\n          \"workspace_name\": \"<string>\",\n          \"expires_at\": \"<dateTime>\",\n          \"card_id\": \"<uuid>\",\n          \"message\": \"<string>\",\n          \"thank_you_note\": \"<string>\",\n          \"view_count_recipient\": \"<integer>\",\n          \"is_swapped\": \"<boolean>\",\n          \"order_batch_id\": \"<uuid>\",\n          \"event_times\": {\n            \"created_at\": \"<dateTime>\",\n            \"notified_at\": \"<dateTime>\",\n            \"opened_at\": \"<dateTime>\",\n            \"accepted_at\": \"<dateTime>\",\n            \"pending_payment_at\": \"<dateTime>\",\n            \"paid_at\": \"<dateTime>\",\n            \"shipped_at\": \"<dateTime>\",\n            \"delivered_at\": \"<dateTime>\"\n          },\n          \"original_cart\": {\n            \"id\": \"<uuid>\",\n            \"items\": [\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              }\n            ]\n          },\n          \"original_amounts\": {\n            \"original_amount_product\": \"<integer>\",\n            \"original_amount_shipping\": \"<integer>\",\n            \"original_amount_credit_applied\": \"<integer>\",\n            \"original_amount_pre_tax_total\": \"<integer>\"\n          },\n          \"payment_link\": \"<string>\"\n        }\n      ],\n      \"orders_count\": \"<integer>\",\n      \"cart\": {\n        \"id\": \"<uuid>\",\n        \"items\": [\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          }\n        ]\n      },\n      \"from_name\": \"<string>\",\n      \"recipients_preview\": [\n        {\n          \"first_name\": \"<string>\",\n          \"last_name\": \"<string>\",\n          \"email\": \"<string>\"\n        },\n        {\n          \"first_name\": \"<string>\",\n          \"last_name\": \"<string>\",\n          \"email\": \"<string>\"\n        }\n      ],\n      \"recipients_count\": \"<integer>\",\n      \"sender\": {\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"email\": \"<string>\"\n      },\n      \"reference_id\": \"<string>\",\n      \"message\": \"<string>\",\n      \"is_scheduled_send\": \"<boolean>\",\n      \"scheduled_send_on\": \"<dateTime>\",\n      \"expires_at\": \"<dateTime>\",\n      \"send_method\": \"direct_send\",\n      \"batch_name\": \"<string>\",\n      \"card_id\": \"<uuid>\",\n      \"workspace_id\": \"<uuid>\",\n      \"workspace_name\": \"<string>\",\n      \"customer_reference_id\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"send_status\": \"canceled\",\n      \"orders_preview\": [\n        {\n          \"id\": \"<uuid>\",\n          \"recipient_first_name\": \"<string>\",\n          \"status\": \"accepted\",\n          \"individual_gift_link\": \"<string>\",\n          \"cart\": {\n            \"id\": \"<uuid>\",\n            \"items\": [\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              }\n            ]\n          },\n          \"shipments\": [\n            {\n              \"id\": \"<uuid>\",\n              \"status\": \"delivered_override\",\n              \"brand_name\": \"<string>\",\n              \"tracking_carrier\": \"<string>\",\n              \"tracking_number\": \"<string>\",\n              \"tracking_url\": \"<string>\",\n              \"shipped_at\": \"<dateTime>\",\n              \"delivered_at\": \"<dateTime>\",\n              \"delivery_eta\": \"<dateTime>\"\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"status\": \"failed\",\n              \"brand_name\": \"<string>\",\n              \"tracking_carrier\": \"<string>\",\n              \"tracking_number\": \"<string>\",\n              \"tracking_url\": \"<string>\",\n              \"shipped_at\": \"<dateTime>\",\n              \"delivered_at\": \"<dateTime>\",\n              \"delivery_eta\": \"<dateTime>\"\n            }\n          ],\n          \"amounts\": {\n            \"amount_product\": \"<integer>\",\n            \"amount_shipping\": \"<integer>\",\n            \"amount_pre_tax_total\": \"<integer>\",\n            \"amount_processing_fee\": \"<integer>\",\n            \"amount_credit_applied\": \"<integer>\",\n            \"amount_tax\": \"<integer>\",\n            \"amount_total\": \"<integer>\",\n            \"amount_global_relay_cost\": \"<integer>\"\n          },\n          \"sender\": {\n            \"first_name\": \"<string>\",\n            \"last_name\": \"<string>\",\n            \"email\": \"<string>\"\n          },\n          \"reference_id\": \"<string>\",\n          \"recipient_last_name\": \"<string>\",\n          \"recipient_email\": \"<string>\",\n          \"cart_selections\": [\n            {\n              \"id\": \"<uuid>\",\n              \"cart_item_id\": \"<uuid>\",\n              \"quantity_index\": \"<integer>\",\n              \"variants\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"cart_item_id\": \"<uuid>\",\n              \"quantity_index\": \"<integer>\",\n              \"variants\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"workspace_id\": \"<uuid>\",\n          \"workspace_name\": \"<string>\",\n          \"expires_at\": \"<dateTime>\",\n          \"card_id\": \"<uuid>\",\n          \"message\": \"<string>\",\n          \"thank_you_note\": \"<string>\",\n          \"view_count_recipient\": \"<integer>\",\n          \"is_swapped\": \"<boolean>\",\n          \"order_batch_id\": \"<uuid>\",\n          \"event_times\": {\n            \"created_at\": \"<dateTime>\",\n            \"notified_at\": \"<dateTime>\",\n            \"opened_at\": \"<dateTime>\",\n            \"accepted_at\": \"<dateTime>\",\n            \"pending_payment_at\": \"<dateTime>\",\n            \"paid_at\": \"<dateTime>\",\n            \"shipped_at\": \"<dateTime>\",\n            \"delivered_at\": \"<dateTime>\"\n          },\n          \"original_cart\": {\n            \"id\": \"<uuid>\",\n            \"items\": [\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              }\n            ]\n          },\n          \"original_amounts\": {\n            \"original_amount_product\": \"<integer>\",\n            \"original_amount_shipping\": \"<integer>\",\n            \"original_amount_credit_applied\": \"<integer>\",\n            \"original_amount_pre_tax_total\": \"<integer>\"\n          },\n          \"payment_link\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"recipient_first_name\": \"<string>\",\n          \"status\": \"ordered\",\n          \"individual_gift_link\": \"<string>\",\n          \"cart\": {\n            \"id\": \"<uuid>\",\n            \"items\": [\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              }\n            ]\n          },\n          \"shipments\": [\n            {\n              \"id\": \"<uuid>\",\n              \"status\": \"pending\",\n              \"brand_name\": \"<string>\",\n              \"tracking_carrier\": \"<string>\",\n              \"tracking_number\": \"<string>\",\n              \"tracking_url\": \"<string>\",\n              \"shipped_at\": \"<dateTime>\",\n              \"delivered_at\": \"<dateTime>\",\n              \"delivery_eta\": \"<dateTime>\"\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"status\": \"failed_unset_tracking\",\n              \"brand_name\": \"<string>\",\n              \"tracking_carrier\": \"<string>\",\n              \"tracking_number\": \"<string>\",\n              \"tracking_url\": \"<string>\",\n              \"shipped_at\": \"<dateTime>\",\n              \"delivered_at\": \"<dateTime>\",\n              \"delivery_eta\": \"<dateTime>\"\n            }\n          ],\n          \"amounts\": {\n            \"amount_product\": \"<integer>\",\n            \"amount_shipping\": \"<integer>\",\n            \"amount_pre_tax_total\": \"<integer>\",\n            \"amount_processing_fee\": \"<integer>\",\n            \"amount_credit_applied\": \"<integer>\",\n            \"amount_tax\": \"<integer>\",\n            \"amount_total\": \"<integer>\",\n            \"amount_global_relay_cost\": \"<integer>\"\n          },\n          \"sender\": {\n            \"first_name\": \"<string>\",\n            \"last_name\": \"<string>\",\n            \"email\": \"<string>\"\n          },\n          \"reference_id\": \"<string>\",\n          \"recipient_last_name\": \"<string>\",\n          \"recipient_email\": \"<string>\",\n          \"cart_selections\": [\n            {\n              \"id\": \"<uuid>\",\n              \"cart_item_id\": \"<uuid>\",\n              \"quantity_index\": \"<integer>\",\n              \"variants\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"id\": \"<uuid>\",\n              \"cart_item_id\": \"<uuid>\",\n              \"quantity_index\": \"<integer>\",\n              \"variants\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"workspace_id\": \"<uuid>\",\n          \"workspace_name\": \"<string>\",\n          \"expires_at\": \"<dateTime>\",\n          \"card_id\": \"<uuid>\",\n          \"message\": \"<string>\",\n          \"thank_you_note\": \"<string>\",\n          \"view_count_recipient\": \"<integer>\",\n          \"is_swapped\": \"<boolean>\",\n          \"order_batch_id\": \"<uuid>\",\n          \"event_times\": {\n            \"created_at\": \"<dateTime>\",\n            \"notified_at\": \"<dateTime>\",\n            \"opened_at\": \"<dateTime>\",\n            \"accepted_at\": \"<dateTime>\",\n            \"pending_payment_at\": \"<dateTime>\",\n            \"paid_at\": \"<dateTime>\",\n            \"shipped_at\": \"<dateTime>\",\n            \"delivered_at\": \"<dateTime>\"\n          },\n          \"original_cart\": {\n            \"id\": \"<uuid>\",\n            \"items\": [\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              },\n              {\n                \"id\": \"<uuid>\",\n                \"product\": {\n                  \"id\": \"<uuid>\",\n                  \"name\": \"<string>\",\n                  \"brand\": {\n                    \"id\": \"<uuid>\",\n                    \"name\": \"<string>\"\n                  }\n                },\n                \"quantity\": \"<integer>\"\n              }\n            ]\n          },\n          \"original_amounts\": {\n            \"original_amount_product\": \"<integer>\",\n            \"original_amount_shipping\": \"<integer>\",\n            \"original_amount_credit_applied\": \"<integer>\",\n            \"original_amount_pre_tax_total\": \"<integer>\"\n          },\n          \"payment_link\": \"<string>\"\n        }\n      ],\n      \"orders_count\": \"<integer>\",\n      \"cart\": {\n        \"id\": \"<uuid>\",\n        \"items\": [\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"product\": {\n              \"id\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"brand\": {\n                \"id\": \"<uuid>\",\n                \"name\": \"<string>\"\n              }\n            },\n            \"quantity\": \"<integer>\"\n          }\n        ]\n      },\n      \"from_name\": \"<string>\",\n      \"recipients_preview\": [\n        {\n          \"first_name\": \"<string>\",\n          \"last_name\": \"<string>\",\n          \"email\": \"<string>\"\n        },\n        {\n          \"first_name\": \"<string>\",\n          \"last_name\": \"<string>\",\n          \"email\": \"<string>\"\n        }\n      ],\n      \"recipients_count\": \"<integer>\",\n      \"sender\": {\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"email\": \"<string>\"\n      },\n      \"reference_id\": \"<string>\",\n      \"message\": \"<string>\",\n      \"is_scheduled_send\": \"<boolean>\",\n      \"scheduled_send_on\": \"<dateTime>\",\n      \"expires_at\": \"<dateTime>\",\n      \"send_method\": \"link_multiple_custom_list\",\n      \"batch_name\": \"<string>\",\n      \"card_id\": \"<uuid>\",\n      \"workspace_id\": \"<uuid>\",\n      \"workspace_name\": \"<string>\",\n      \"customer_reference_id\": \"<string>\"\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:45:04.000Z",
+                  "updatedAt": "2026-07-28T01:45:04.000Z",
+                  "uid": "35240-20131f55-9765-46b6-a774-0572c9c58555"
+                }
+              ],
+              "createdAt": "2026-07-28T01:45:04.000Z",
+              "updatedAt": "2026-07-28T01:45:04.000Z",
+              "uid": "35240-9fe19724-209b-4dd5-a2b8-f8783242545a"
+            }
+          ],
+          "id": "1da34dc1-17c3-4ae9-8ee0-7c22c1e81ca2",
+          "createdAt": "2026-07-28T01:45:04.000Z",
+          "updatedAt": "2026-07-28T01:45:04.000Z",
+          "uid": "35240-1da34dc1-17c3-4ae9-8ee0-7c22c1e81ca2"
+        }
+      ],
+      "id": "f7189686-e3fb-4f6a-9b44-e784f189600f",
+      "createdAt": "2026-07-28T01:45:04.000Z",
+      "updatedAt": "2026-07-28T01:45:04.000Z",
+      "uid": "35240-f7189686-e3fb-4f6a-9b44-e784f189600f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.ongoody.com"
+    }
+  ]
+}
