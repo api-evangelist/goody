@@ -247,6 +247,8 @@ apis:
   - type: Authentication
     url: https://developer.ongoody.com/commerce-api/authentication
 common:
+- type: Overlay
+  url: overlays/goody-api-overlay.yaml
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/goody/overview
 # --- link properties (identity / discoverability) ---
