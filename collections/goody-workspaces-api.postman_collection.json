@@ -1,0 +1,117 @@
+{
+  "item": [
+    {
+      "id": "843fdf74-d397-43d7-b88f-ed67e517ad52",
+      "name": "Workspaces",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "381e9c07-a100-49a8-b652-d5ba9a1cf5c0",
+          "name": "List all workspaces",
+          "request": {
+            "name": "List all workspaces",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "workspaces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2310d60c-de02-4e82-b4c0-4027cc1cf2ec",
+              "name": "Workspaces retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workspaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"541e9673-649e-4977-8e8b-3cee52fd7b68\",\n      \"name\": \"Workspace 1\"\n    },\n    {\n      \"id\": \"ed05606e-d6ba-4b9f-baf3-bde2cbbf0a72\",\n      \"name\": \"Workspace 2\"\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": 2\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ongoody.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "71b75e0b-c8f4-4d49-83bc-00dfb472aaf7",
+    "name": "Goody Brands Workspaces API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+      "type": "text/plain"
+    }
+  }
+}

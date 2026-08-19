@@ -1,0 +1,190 @@
+{
+  "item": [
+    {
+      "id": "2154b44a-ea81-4fde-8fef-89a6ce8f122f",
+      "name": "Commerce User Payment Methods",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be41f12d-7021-4db9-8d2d-8b616a01dbf9",
+          "name": "Create a commerce user payment method",
+          "request": {
+            "name": "Create a commerce user payment method",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "commerce_user_payment_methods"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cardholder_name\": \"<string>\",\n  \"commerce_end_user_id\": \"<string>\",\n  \"payment_method_type\": \"<string>\",\n  \"interim_card_key\": \"<string>\",\n  \"billing_address\": {\n    \"address_1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"country\": \"<string>\",\n    \"address_2\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7955d655-706a-470c-9ac7-643218b47ccf",
+              "name": "Commerce user payment method created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "commerce_user_payment_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cardholder_name\": \"John Doe\",\n  \"commerce_end_user_id\": \"test_user_pm_2331d26e\",\n  \"payment_method_type\": \"card\",\n  \"interim_card_key\": \"X9edbacqt1CBCRRKRLkuiINj\",\n  \"billing_address\": {\n    \"address_1\": \"123 Main St\",\n    \"address_2\": \"Apt 4B\",\n    \"city\": \"New York\",\n    \"state\": \"NY\",\n    \"postal_code\": \"10001\",\n    \"country\": \"US\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7e77b629-5ea9-4bd5-8191-a67a402ccd26\",\n  \"card_brand\": \"mastercard\",\n  \"card_last_4\": \"4444\",\n  \"card_exp_month\": 12,\n  \"card_exp_year\": 2034,\n  \"cardholder_name\": \"John Doe\",\n  \"created_at\": \"2026-06-03T12:24:05Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f26c950-0ea7-46ec-8903-fc197efe8c75",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "commerce_user_payment_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cardholder_name\": \"John Doe\",\n  \"commerce_end_user_id\": \"test_user_pm_2331d26e\",\n  \"payment_method_type\": \"card\",\n  \"interim_card_key\": \"X9edbacqt1CBCRRKRLkuiINj\",\n  \"billing_address\": {\n    \"address_1\": \"123 Main St\",\n    \"address_2\": \"Apt 4B\",\n    \"city\": \"New York\",\n    \"state\": \"NY\",\n    \"postal_code\": \"10001\",\n    \"country\": \"US\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Your card was declined.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ongoody.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "307ba6f9-df3d-4c76-9070-d84385259fc0",
+    "name": "Goody Brands Commerce User Payment Methods API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+      "type": "text/plain"
+    }
+  }
+}

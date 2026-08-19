@@ -1,0 +1,342 @@
+{
+  "item": [
+    {
+      "id": "ad9603f8-d0f6-4e05-806c-632486d7e5a2",
+      "name": "Products",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9439a71c-987c-44f6-9302-43d5b5d9c504",
+          "name": "List all active products",
+          "request": {
+            "name": "List all active products",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page for pagination, starting at 1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20",
+                  "description": "Items per page for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "use_custom_catalog",
+                  "value": "<boolean>",
+                  "description": "Limit to custom catalog only (for approved API partners)"
+                },
+                {
+                  "disabled": false,
+                  "key": "country_code",
+                  "value": "US",
+                  "description": "Filter by a specific shipping country code"
+                },
+                {
+                  "disabled": false,
+                  "key": "custom_catalog_show_inactive",
+                  "value": "<boolean>",
+                  "description": "Show inactive products in the custom catalog. Only for Commerce API customers with a custom catalog."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bcef17ac-05db-4965-bffe-d3a3b17a9150",
+              "name": "Products retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    },
+                    {
+                      "key": "use_custom_catalog",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "country_code",
+                      "value": "US"
+                    },
+                    {
+                      "key": "custom_catalog_show_inactive",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"83bd1170-9352-427d-85aa-e2bcf3c323c8\",\n      \"name\": \"Six Cookies\",\n      \"brand\": {\n        \"id\": \"2a294fe7-ecac-40c2-ae3f-1c931ae68720\",\n        \"name\": \"Nerissa Littel\",\n        \"logo_image\": null,\n        \"shipping_price\": 1000,\n        \"free_shipping_minimum\": null,\n        \"brand_values\": [\n          \"Sustainable\"\n        ]\n      },\n      \"subtitle\": null,\n      \"subtitle_short\": null,\n      \"recipient_description\": \"\",\n      \"variants_label\": \"option\",\n      \"variants_num_selectable\": 3,\n      \"variants\": [\n        {\n          \"id\": \"5dea5349-cf6c-4b67-8ace-309557f16f9f\",\n          \"name\": \"Chocolate Chip\",\n          \"subtitle\": \"Classic chocolate chip.\",\n          \"image_large\": null\n        },\n        {\n          \"id\": \"7324cbd9-0c83-4d79-90ec-c793ab0023af\",\n          \"name\": \"Oatmeal\",\n          \"subtitle\": \"Delicious oatmeal.\",\n          \"image_large\": null\n        },\n        {\n          \"id\": \"928b21ea-a7a3-4ad2-aa6c-f30b23f10faa\",\n          \"name\": \"Sugar\",\n          \"subtitle\": \"Tasty sugar.\",\n          \"image_large\": null\n        }\n      ],\n      \"variant_groups\": [],\n      \"images\": [],\n      \"price\": 1000,\n      \"price_is_variable\": false,\n      \"restricted_states\": [],\n      \"attributes\": [\n        {\n          \"label\": \"Where it's made\",\n          \"content\": \"Made in Miami, FL\"\n        }\n      ],\n      \"updated_at\": \"2026-06-03T12:25:19Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"id\": \"94d0582f-f37b-45e4-b4d6-188ddd41e499\",\n      \"name\": \"Dozen Cookies\",\n      \"brand\": {\n        \"id\": \"2a294fe7-ecac-40c2-ae3f-1c931ae68720\",\n        \"name\": \"Nerissa Littel\",\n        \"logo_image\": null,\n        \"shipping_price\": 1000,\n        \"free_shipping_minimum\": null,\n        \"brand_values\": [\n          \"Sustainable\"\n        ]\n      },\n      \"subtitle\": null,\n      \"subtitle_short\": null,\n      \"recipient_description\": \"\",\n      \"variants_label\": \"option\",\n      \"variants_num_selectable\": 3,\n      \"variants\": [\n        {\n          \"id\": \"d63f8e89-a7cb-4607-8f8b-1f347be4d1b6\",\n          \"name\": \"Chocolate Chip\",\n          \"subtitle\": \"Classic chocolate chip.\",\n          \"image_large\": null\n        },\n        {\n          \"id\": \"b197404c-c331-4676-8580-290b2bebe353\",\n          \"name\": \"Oatmeal\",\n          \"subtitle\": \"Delicious oatmeal.\",\n          \"image_large\": null\n        },\n        {\n          \"id\": \"1e2c60a4-6513-48a6-a696-021e5c2d3093\",\n          \"name\": \"Sugar\",\n          \"subtitle\": \"Tasty sugar.\",\n          \"image_large\": null\n        }\n      ],\n      \"variant_groups\": [],\n      \"images\": [],\n      \"price\": 1000,\n      \"price_is_variable\": false,\n      \"restricted_states\": [],\n      \"attributes\": [],\n      \"updated_at\": \"2026-06-03T12:25:19Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"id\": \"a169b309-6166-4382-b020-8d571c7f2b95\",\n      \"name\": \"Cookie Box\",\n      \"brand\": {\n        \"id\": \"2a294fe7-ecac-40c2-ae3f-1c931ae68720\",\n        \"name\": \"Nerissa Littel\",\n        \"logo_image\": null,\n        \"shipping_price\": 1000,\n        \"free_shipping_minimum\": null,\n        \"brand_values\": [\n          \"Sustainable\"\n        ]\n      },\n      \"subtitle\": null,\n      \"subtitle_short\": null,\n      \"recipient_description\": \"\",\n      \"variants_label\": \"option\",\n      \"variants_num_selectable\": 1,\n      \"variants\": [\n        {\n          \"id\": \"badeeb1c-8847-40d9-b7f9-d118723f51f1\",\n          \"name\": \"Grey / Chocolate Chip\",\n          \"subtitle\": null,\n          \"image_large\": null\n        },\n        {\n          \"id\": \"01f20566-5645-4c32-9f79-222c5c1f1407\",\n          \"name\": \"Grey / Oatmeal\",\n          \"subtitle\": null,\n          \"image_large\": null\n        },\n        {\n          \"id\": \"b7fc2aad-b490-47af-b73f-7cc5aa55697a\",\n          \"name\": \"Grey / Sugar\",\n          \"subtitle\": null,\n          \"image_large\": null\n        },\n        {\n          \"id\": \"72f5b1fb-5085-4218-8c60-a356d35b3be1\",\n          \"name\": \"Purple / Chocolate Chip\",\n          \"subtitle\": null,\n          \"image_large\": null\n        },\n        {\n          \"id\": \"2ec977b6-4333-4e20-a8dc-dca2cc27fb6d\",\n          \"name\": \"Purple / Oatmeal\",\n          \"subtitle\": null,\n          \"image_large\": null\n        },\n        {\n          \"id\": \"2a060efb-a11e-4858-a547-939ca630977c\",\n          \"name\": \"Purple / Sugar\",\n          \"subtitle\": null,\n          \"image_large\": null\n        }\n      ],\n      \"variant_groups\": [\n        {\n          \"id\": \"6dba80e5-2bd7-49fe-bffb-7739c0574d48\",\n          \"name\": \"Box Color\",\n          \"options\": [\n            {\n              \"id\": \"b24e07dc-bc75-4425-83fa-4d212e83114a\",\n              \"name\": \"Grey\",\n              \"subtitle\": null,\n              \"color\": null,\n              \"image_large\": null\n            },\n            {\n              \"id\": \"1a7794e5-95cc-4308-a1f0-48925271e49c\",\n              \"name\": \"Purple\",\n              \"subtitle\": null,\n              \"color\": null,\n              \"image_large\": null\n            }\n          ]\n        },\n        {\n          \"id\": \"4f2acf33-9f5d-4117-b3f4-8eb82517bc07\",\n          \"name\": \"Flavor\",\n          \"options\": [\n            {\n              \"id\": \"e849793c-c0d3-409a-b915-bbce6be5b37c\",\n              \"name\": \"Chocolate Chip\",\n              \"subtitle\": null,\n              \"color\": null,\n              \"image_large\": null\n            },\n            {\n              \"id\": \"5f22280f-64e7-4d8c-a42a-1030e2153b77\",\n              \"name\": \"Oatmeal\",\n              \"subtitle\": null,\n              \"color\": null,\n              \"image_large\": null\n            },\n            {\n              \"id\": \"e8323403-4ba5-4893-b747-969a4bc2259e\",\n              \"name\": \"Sugar\",\n              \"subtitle\": null,\n              \"color\": null,\n              \"image_large\": null\n            }\n          ]\n        }\n      ],\n      \"images\": [],\n      \"price\": 1000,\n      \"price_is_variable\": false,\n      \"restricted_states\": [],\n      \"attributes\": [],\n      \"updated_at\": \"2026-06-03T12:25:19Z\",\n      \"status\": \"active\"\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": 3\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af7d03b4-d5b5-4a0b-8ca1-1fd182c88e9c",
+          "name": "Retrieve a product",
+          "request": {
+            "name": "Retrieve a product",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "products",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "use_custom_catalog",
+                  "value": "<boolean>",
+                  "description": "Limit to custom catalog only (for approved API partners)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Product ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a8209ac0-c98f-474c-8ffc-f148a7452fc2",
+              "name": "Product retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "use_custom_catalog",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Product ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"42bee678-617c-4925-a30e-783bcd9772d1\",\n  \"name\": \"Six Cookies\",\n  \"brand\": {\n    \"id\": \"e663f830-efbd-4cc9-b46d-7ee2a6459017\",\n    \"name\": \"Gov. Gerardo Gerhold\",\n    \"logo_image\": null,\n    \"shipping_price\": 1000,\n    \"free_shipping_minimum\": null,\n    \"brand_values\": []\n  },\n  \"subtitle\": null,\n  \"subtitle_short\": null,\n  \"recipient_description\": \"\",\n  \"variants_label\": \"option\",\n  \"variants_num_selectable\": 3,\n  \"variants\": [\n    {\n      \"id\": \"9e918c3b-7d28-428d-8578-a5ddd66a7859\",\n      \"name\": \"Chocolate Chip\",\n      \"subtitle\": \"Classic chocolate chip.\",\n      \"image_large\": null\n    },\n    {\n      \"id\": \"8c22f783-0386-479d-8eda-441ff27e1373\",\n      \"name\": \"Oatmeal\",\n      \"subtitle\": \"Delicious oatmeal.\",\n      \"image_large\": null\n    },\n    {\n      \"id\": \"32997c3f-39f3-44c8-a277-018eb9c83fef\",\n      \"name\": \"Sugar\",\n      \"subtitle\": \"Tasty sugar.\",\n      \"image_large\": null\n    }\n  ],\n  \"variant_groups\": [],\n  \"images\": [],\n  \"price\": 1000,\n  \"price_is_variable\": false,\n  \"restricted_states\": [],\n  \"attributes\": [],\n  \"updated_at\": \"2026-06-03T12:25:20Z\",\n  \"status\": \"active\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c12b13a5-3652-4049-8fb0-6b7e50fc163e",
+              "name": "Product not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "use_custom_catalog",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Product ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Product not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ongoody.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "85e013e8-7088-4b21-b0c3-69a9142f19ce",
+    "name": "Goody Brands Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+      "type": "text/plain"
+    }
+  }
+}

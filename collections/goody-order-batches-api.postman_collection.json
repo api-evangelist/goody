@@ -1,0 +1,1120 @@
+{
+  "item": [
+    {
+      "id": "b9b1b8fd-8280-49bd-ac59-202f520e6233",
+      "name": "Order Batches",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "867f5023-83de-4225-92e7-ec8967855273",
+          "name": "Create an order batch",
+          "request": {
+            "name": "Create an order batch",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "order_batches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from_name\": \"<string>\",\n  \"recipients\": [\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    },\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    }\n  ],\n  \"cart\": {\n    \"items\": [\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  },\n  \"send_method\": \"<string>\",\n  \"message\": \"<string>\",\n  \"card_id\": \"<uuid>\",\n  \"payment_method_id\": \"<string>\",\n  \"workspace_id\": \"<uuid>\",\n  \"scheduled_send_on\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"swap\": \"<string>\",\n  \"international_shipping_tier\": \"<string>\",\n  \"international_gift_cards_enabled\": \"<boolean>\",\n  \"notifications_enabled\": \"<boolean>\",\n  \"commerce_end_user_id\": \"<string>\",\n  \"customer_reference_id\": \"<string>\",\n  \"reserved_options\": {\n    \"custom_price_tier\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b0ab537d-48f4-4cfa-a979-0b9136596d7d",
+              "name": "Order batch created using product URL in cart",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from_name\": \"John\",\n  \"message\": \"Thank you!\",\n  \"send_method\": \"link_multiple_custom_list\",\n  \"payment_method_id\": null,\n  \"workspace_id\": null,\n  \"card_id\": \"fbbe04d8-2568-4f95-ab68-4589b757c521\",\n  \"recipients\": [\n    {\n      \"first_name\": \"Alena\",\n      \"last_name\": \"Kenter\",\n      \"email\": \"alena@ongoody.com\"\n    },\n    {\n      \"first_name\": \"Michael\",\n      \"last_name\": \"Franci\",\n      \"email\": \"michael@ongoody.com\"\n    }\n  ],\n  \"cart\": {\n    \"items\": [\n      {\n        \"product_id\": \"48680ddb-37b2-48b3-8380-226c07bdede2\",\n        \"quantity\": 1\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"2fe7a598-bff4-4a4a-a423-47d9a6464a40\",\n  \"send_status\": \"complete\",\n  \"from_name\": \"John\",\n  \"message\": \"Thank you!\",\n  \"orders_count\": 2,\n  \"orders_preview\": [\n    {\n      \"id\": \"a3316403-9b84-4b55-92d6-453dcc3e5b48\",\n      \"status\": \"created\",\n      \"individual_gift_link\": \"https://gifts.ongoody.com/gift/3KwUVkzoygOD0OyNQba9bg4h\",\n      \"recipient_first_name\": \"Alena\",\n      \"recipient_last_name\": \"Kenter\",\n      \"recipient_email\": \"alena@ongoody.com\",\n      \"card_id\": \"fbbe04d8-2568-4f95-ab68-4589b757c521\",\n      \"message\": \"Thank you!\",\n      \"thank_you_note\": null,\n      \"view_count_recipient\": 0,\n      \"is_swapped\": false,\n      \"order_batch_id\": \"2fe7a598-bff4-4a4a-a423-47d9a6464a40\",\n      \"expires_at\": null,\n      \"cart\": {\n        \"id\": \"4d42623b-4842-4f16-b58d-d346181bf688\",\n        \"items\": [\n          {\n            \"id\": \"9c8547f2-7331-4084-9b29-042c4b5e74e4\",\n            \"quantity\": 1,\n            \"product\": {\n              \"id\": \"48680ddb-37b2-48b3-8380-226c07bdede2\",\n              \"name\": \"Cookies\",\n              \"brand\": {\n                \"id\": \"002daabe-9cd2-486f-9729-11b7df740105\",\n                \"name\": \"Cookie Company\"\n              }\n            }\n          }\n        ]\n      },\n      \"shipments\": [],\n      \"amounts\": {\n        \"amount_product\": 1000,\n        \"amount_shipping\": 1000,\n        \"amount_processing_fee\": 100,\n        \"amount_pre_tax_total\": 2100,\n        \"amount_tax\": null,\n        \"amount_total\": null,\n        \"amount_global_relay_cost\": null\n      },\n      \"sender\": {\n        \"first_name\": \"Test\",\n        \"last_name\": \"User\",\n        \"email\": \"15558842084@test.ongoody.com\"\n      },\n      \"workspace_id\": \"a1002766-acb7-432c-ada3-d832309d1353\",\n      \"workspace_name\": \"Test Team\",\n      \"original_cart\": null,\n      \"original_amounts\": null,\n      \"reference_id\": \"JEUYIPRNHZX6C1K4RZMSCV7G\",\n      \"payment_link\": null\n    },\n    {\n      \"id\": \"0033096f-637b-408d-821b-59c60aadfc01\",\n      \"status\": \"created\",\n      \"individual_gift_link\": \"https://gifts.ongoody.com/gift/DP31GxMZ5rOWRwollNdi8HCN\",\n      \"recipient_first_name\": \"Michael\",\n      \"recipient_last_name\": \"Franci\",\n      \"recipient_email\": \"michael@ongoody.com\",\n      \"card_id\": \"fbbe04d8-2568-4f95-ab68-4589b757c521\",\n      \"message\": \"Thank you!\",\n      \"thank_you_note\": null,\n      \"view_count_recipient\": 0,\n      \"is_swapped\": false,\n      \"order_batch_id\": \"2fe7a598-bff4-4a4a-a423-47d9a6464a40\",\n      \"expires_at\": null,\n      \"cart\": {\n        \"id\": \"4d42623b-4842-4f16-b58d-d346181bf688\",\n        \"items\": [\n          {\n            \"id\": \"9c8547f2-7331-4084-9b29-042c4b5e74e4\",\n            \"quantity\": 1,\n            \"product\": {\n              \"id\": \"48680ddb-37b2-48b3-8380-226c07bdede2\",\n              \"name\": \"Cookies\",\n              \"brand\": {\n                \"id\": \"002daabe-9cd2-486f-9729-11b7df740105\",\n                \"name\": \"Cookie Company\"\n              }\n            }\n          }\n        ]\n      },\n      \"shipments\": [],\n      \"amounts\": {\n        \"amount_product\": 1000,\n        \"amount_shipping\": 1000,\n        \"amount_processing_fee\": 100,\n        \"amount_pre_tax_total\": 2100,\n        \"amount_tax\": null,\n        \"amount_total\": null,\n        \"amount_global_relay_cost\": null\n      },\n      \"sender\": {\n        \"first_name\": \"Test\",\n        \"last_name\": \"User\",\n        \"email\": \"15558842084@test.ongoody.com\"\n      },\n      \"workspace_id\": \"a1002766-acb7-432c-ada3-d832309d1353\",\n      \"workspace_name\": \"Test Team\",\n      \"original_cart\": null,\n      \"original_amounts\": null,\n      \"reference_id\": \"OSPHLVULRNQDZQYT080V1ZOF\",\n      \"payment_link\": null\n    }\n  ],\n  \"recipients_count\": 2,\n  \"recipients_preview\": [\n    {\n      \"first_name\": \"Alena\",\n      \"last_name\": \"Kenter\",\n      \"email\": \"alena@ongoody.com\"\n    },\n    {\n      \"first_name\": \"Michael\",\n      \"last_name\": \"Franci\",\n      \"email\": \"michael@ongoody.com\"\n    }\n  ],\n  \"cart\": {\n    \"id\": \"4d42623b-4842-4f16-b58d-d346181bf688\",\n    \"items\": [\n      {\n        \"id\": \"9c8547f2-7331-4084-9b29-042c4b5e74e4\",\n        \"quantity\": 1,\n        \"product\": {\n          \"id\": \"48680ddb-37b2-48b3-8380-226c07bdede2\",\n          \"name\": \"Cookies\",\n          \"brand\": {\n            \"id\": \"002daabe-9cd2-486f-9729-11b7df740105\",\n            \"name\": \"Cookie Company\"\n          }\n        }\n      }\n    ]\n  },\n  \"is_scheduled_send\": false,\n  \"scheduled_send_on\": null,\n  \"expires_at\": null,\n  \"send_method\": \"link_multiple_custom_list\",\n  \"batch_name\": \"Alena Kenter and Michael Franci\",\n  \"card_id\": \"fbbe04d8-2568-4f95-ab68-4589b757c521\",\n  \"sender\": {\n    \"first_name\": \"Test\",\n    \"last_name\": \"User\",\n    \"email\": \"15558842084@test.ongoody.com\"\n  },\n  \"workspace_id\": \"a1002766-acb7-432c-ada3-d832309d1353\",\n  \"workspace_name\": \"Test Team\",\n  \"reference_id\": \"NJNJ27PDL9JAKIEBYPFUFAHG\",\n  \"customer_reference_id\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6ccfd1b-2aa6-435f-b900-4edb7c646da1",
+              "name": "Bad request when using invalid product URL in cart",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from_name\": \"John\",\n  \"message\": \"Thank you!\",\n  \"send_method\": \"link_multiple_custom_list\",\n  \"payment_method_id\": null,\n  \"workspace_id\": null,\n  \"card_id\": \"fbbe04d8-2568-4f95-ab68-4589b757c521\",\n  \"recipients\": [\n    {\n      \"first_name\": \"Alena\",\n      \"last_name\": \"Kenter\",\n      \"email\": \"alena@ongoody.com\"\n    },\n    {\n      \"first_name\": \"Michael\",\n      \"last_name\": \"Franci\",\n      \"email\": \"michael@ongoody.com\"\n    }\n  ],\n  \"cart\": {\n    \"items\": [\n      {\n        \"product_id\": \"48680ddb-37b2-48b3-8380-226c07bdede2\",\n        \"quantity\": 1\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Recipients can't be blank\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f39a1b2a-70bd-46c0-837b-d937934acb54",
+          "name": "List order batches",
+          "request": {
+            "name": "List order batches",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "order_batches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page for pagination, starting at 1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20",
+                  "description": "Items per page for pagination"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "964bcc2e-fec3-4c71-9443-fe9875d00867",
+              "name": "Order batches retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_batches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"662b8afb-b89d-4b74-87ef-df032f8c65d8\",\n      \"send_status\": \"complete\",\n      \"from_name\": \"Earle\",\n      \"message\": null,\n      \"orders_count\": 2,\n      \"orders_preview\": [\n        {\n          \"id\": \"b2f9ca52-ec39-4381-8465-0b01a37d0504\",\n          \"status\": \"created\",\n          \"individual_gift_link\": \"https://gifts.ongoody.com/gift/ZIOM9VVVMANJBKL6JZSMRUD2\",\n          \"recipient_first_name\": \"Alena\",\n          \"recipient_last_name\": \"Kenter\",\n          \"recipient_email\": \"alena@ongoody.com\",\n          \"card_id\": \"2ca309cc-2f7c-4da9-9b4c-dce1dc662e31\",\n          \"message\": \"Test Message\",\n          \"thank_you_note\": null,\n          \"view_count_recipient\": 0,\n          \"is_swapped\": false,\n          \"order_batch_id\": \"662b8afb-b89d-4b74-87ef-df032f8c65d8\",\n          \"expires_at\": null,\n          \"cart\": {\n            \"id\": \"fe880b4a-473d-4165-9ffd-edfd0bbc6518\",\n            \"items\": [\n              {\n                \"id\": \"0e82cf86-1b6d-482a-9002-19edcef5d910\",\n                \"quantity\": 1,\n                \"product\": {\n                  \"id\": \"a78ee9d6-9c49-4aa5-889d-60483e512d53\",\n                  \"name\": \"Cookies\",\n                  \"brand\": {\n                    \"id\": \"c7f4ed50-0f22-446c-be7d-42cac2678426\",\n                    \"name\": \"Cookie Company\"\n                  }\n                }\n              }\n            ]\n          },\n          \"shipments\": [],\n          \"amounts\": {\n            \"amount_product\": 2000,\n            \"amount_shipping\": 500,\n            \"amount_processing_fee\": 0,\n            \"amount_pre_tax_total\": 2500,\n            \"amount_tax\": null,\n            \"amount_total\": null,\n            \"amount_global_relay_cost\": null\n          },\n          \"sender\": {\n            \"first_name\": \"Test\",\n            \"last_name\": \"User\",\n            \"email\": \"15551755323@test.ongoody.com\"\n          },\n          \"workspace_id\": \"908e78c2-64af-4ec2-a481-d0f6ef426633\",\n          \"workspace_name\": \"Test Team\",\n          \"original_cart\": null,\n          \"original_amounts\": null,\n          \"reference_id\": \"JEKZSQZHKWTEASSQXWGKES7B\",\n          \"payment_link\": null\n        },\n        {\n          \"id\": \"dd90fb27-2082-416b-aac7-d7648994ec9f\",\n          \"status\": \"created\",\n          \"individual_gift_link\": \"https://gifts.ongoody.com/gift/3QWOSUUTJ53MIABA4YDEZ9IA\",\n          \"recipient_first_name\": \"Michael\",\n          \"recipient_last_name\": \"Franci\",\n          \"recipient_email\": \"michael@ongoody.com\",\n          \"card_id\": \"2ca309cc-2f7c-4da9-9b4c-dce1dc662e31\",\n          \"message\": \"Test Message\",\n          \"thank_you_note\": null,\n          \"view_count_recipient\": 0,\n          \"is_swapped\": false,\n          \"order_batch_id\": \"662b8afb-b89d-4b74-87ef-df032f8c65d8\",\n          \"expires_at\": null,\n          \"cart\": {\n            \"id\": \"fe880b4a-473d-4165-9ffd-edfd0bbc6518\",\n            \"items\": [\n              {\n                \"id\": \"0e82cf86-1b6d-482a-9002-19edcef5d910\",\n                \"quantity\": 1,\n                \"product\": {\n                  \"id\": \"a78ee9d6-9c49-4aa5-889d-60483e512d53\",\n                  \"name\": \"Cookies\",\n                  \"brand\": {\n                    \"id\": \"c7f4ed50-0f22-446c-be7d-42cac2678426\",\n                    \"name\": \"Cookie Company\"\n                  }\n                }\n              }\n            ]\n          },\n          \"shipments\": [],\n          \"amounts\": {\n            \"amount_product\": 2000,\n            \"amount_shipping\": 500,\n            \"amount_processing_fee\": 0,\n            \"amount_pre_tax_total\": 2500,\n            \"amount_tax\": null,\n            \"amount_total\": null,\n            \"amount_global_relay_cost\": null\n          },\n          \"sender\": {\n            \"first_name\": \"Test\",\n            \"last_name\": \"User\",\n            \"email\": \"15551755323@test.ongoody.com\"\n          },\n          \"workspace_id\": \"908e78c2-64af-4ec2-a481-d0f6ef426633\",\n          \"workspace_name\": \"Test Team\",\n          \"original_cart\": null,\n          \"original_amounts\": null,\n          \"reference_id\": \"GJZVQDFTQ3NIRIV8Y0EWHAWA\",\n          \"payment_link\": null\n        }\n      ],\n      \"recipients_count\": 2,\n      \"recipients_preview\": [\n        {\n          \"first_name\": \"Alena\",\n          \"last_name\": \"Kenter\",\n          \"email\": \"alena@ongoody.com\"\n        },\n        {\n          \"first_name\": \"Michael\",\n          \"last_name\": \"Franci\",\n          \"email\": \"michael@ongoody.com\"\n        }\n      ],\n      \"cart\": {\n        \"id\": \"fe880b4a-473d-4165-9ffd-edfd0bbc6518\",\n        \"items\": [\n          {\n            \"id\": \"0e82cf86-1b6d-482a-9002-19edcef5d910\",\n            \"quantity\": 1,\n            \"product\": {\n              \"id\": \"a78ee9d6-9c49-4aa5-889d-60483e512d53\",\n              \"name\": \"Cookies\",\n              \"brand\": {\n                \"id\": \"c7f4ed50-0f22-446c-be7d-42cac2678426\",\n                \"name\": \"Cookie Company\"\n              }\n            }\n          }\n        ]\n      },\n      \"is_scheduled_send\": false,\n      \"scheduled_send_on\": null,\n      \"expires_at\": null,\n      \"send_method\": null,\n      \"batch_name\": \"Thank You from Deckow, Skiles and Denesik\",\n      \"card_id\": \"2ca309cc-2f7c-4da9-9b4c-dce1dc662e31\",\n      \"sender\": {\n        \"first_name\": \"Test\",\n        \"last_name\": \"User\",\n        \"email\": \"15551755323@test.ongoody.com\"\n      },\n      \"workspace_id\": \"908e78c2-64af-4ec2-a481-d0f6ef426633\",\n      \"workspace_name\": \"Test Team\",\n      \"reference_id\": \"VCXKQ3P55QNWMIXM42AQNRSP\",\n      \"customer_reference_id\": null\n    },\n    {\n      \"id\": \"18745c22-33a8-4146-ac42-7eb59a2f45a4\",\n      \"send_status\": \"complete\",\n      \"from_name\": \"Adalberto\",\n      \"message\": null,\n      \"orders_count\": 2,\n      \"orders_preview\": [\n        {\n          \"id\": \"6e97677a-547c-45d2-89c9-2cc3a1d5d604\",\n          \"status\": \"created\",\n          \"individual_gift_link\": \"https://gifts.ongoody.com/gift/35PRSIKOV4P2G9OZWMFAWCR0\",\n          \"recipient_first_name\": \"Alena\",\n          \"recipient_last_name\": \"Kenter\",\n          \"recipient_email\": \"alena@ongoody.com\",\n          \"card_id\": \"2ca309cc-2f7c-4da9-9b4c-dce1dc662e31\",\n          \"message\": \"Test Message\",\n          \"thank_you_note\": null,\n          \"view_count_recipient\": 0,\n          \"is_swapped\": false,\n          \"order_batch_id\": \"18745c22-33a8-4146-ac42-7eb59a2f45a4\",\n          \"expires_at\": null,\n          \"cart\": {\n            \"id\": \"a767e193-97a9-471d-9551-b5bc71d36539\",\n            \"items\": [\n              {\n                \"id\": \"d1390002-1cd9-4111-a880-f56774fd9e20\",\n                \"quantity\": 1,\n                \"product\": {\n                  \"id\": \"ea295df7-33f2-42b3-a629-127a90a2d2e5\",\n                  \"name\": \"Cookies\",\n                  \"brand\": {\n                    \"id\": \"c7f4ed50-0f22-446c-be7d-42cac2678426\",\n                    \"name\": \"Cookie Company\"\n                  }\n                }\n              }\n            ]\n          },\n          \"shipments\": [],\n          \"amounts\": {\n            \"amount_product\": 2000,\n            \"amount_shipping\": 500,\n            \"amount_processing_fee\": 0,\n            \"amount_pre_tax_total\": 2500,\n            \"amount_tax\": null,\n            \"amount_total\": null,\n            \"amount_global_relay_cost\": null\n          },\n          \"sender\": {\n            \"first_name\": \"Test\",\n            \"last_name\": \"User\",\n            \"email\": \"15551755323@test.ongoody.com\"\n          },\n          \"workspace_id\": \"908e78c2-64af-4ec2-a481-d0f6ef426633\",\n          \"workspace_name\": \"Test Team\",\n          \"original_cart\": null,\n          \"original_amounts\": null,\n          \"reference_id\": \"XP16H0ZWJKHDR1RSYTMGY77O\",\n          \"payment_link\": null\n        },\n        {\n          \"id\": \"8e9f0b28-272b-4f03-8ce0-bd26f99fe872\",\n          \"status\": \"created\",\n          \"individual_gift_link\": \"https://gifts.ongoody.com/gift/NENDELIMNGZR1QHFXWOZCRWY\",\n          \"recipient_first_name\": \"Michael\",\n          \"recipient_last_name\": \"Franci\",\n          \"recipient_email\": \"michael@ongoody.com\",\n          \"card_id\": \"2ca309cc-2f7c-4da9-9b4c-dce1dc662e31\",\n          \"message\": \"Test Message\",\n          \"thank_you_note\": null,\n          \"view_count_recipient\": 0,\n          \"is_swapped\": false,\n          \"order_batch_id\": \"18745c22-33a8-4146-ac42-7eb59a2f45a4\",\n          \"expires_at\": null,\n          \"cart\": {\n            \"id\": \"a767e193-97a9-471d-9551-b5bc71d36539\",\n            \"items\": [\n              {\n                \"id\": \"d1390002-1cd9-4111-a880-f56774fd9e20\",\n                \"quantity\": 1,\n                \"product\": {\n                  \"id\": \"ea295df7-33f2-42b3-a629-127a90a2d2e5\",\n                  \"name\": \"Cookies\",\n                  \"brand\": {\n                    \"id\": \"c7f4ed50-0f22-446c-be7d-42cac2678426\",\n                    \"name\": \"Cookie Company\"\n                  }\n                }\n              }\n            ]\n          },\n          \"shipments\": [],\n          \"amounts\": {\n            \"amount_product\": 2000,\n            \"amount_shipping\": 500,\n            \"amount_processing_fee\": 0,\n            \"amount_pre_tax_total\": 2500,\n            \"amount_tax\": null,\n            \"amount_total\": null,\n            \"amount_global_relay_cost\": null\n          },\n          \"sender\": {\n            \"first_name\": \"Test\",\n            \"last_name\": \"User\",\n            \"email\": \"15551755323@test.ongoody.com\"\n          },\n          \"workspace_id\": \"908e78c2-64af-4ec2-a481-d0f6ef426633\",\n          \"workspace_name\": \"Test Team\",\n          \"original_cart\": null,\n          \"original_amounts\": null,\n          \"reference_id\": \"9GINXHEOEVJQH15WCAXBJMHO\",\n          \"payment_link\": null\n        }\n      ],\n      \"recipients_count\": 2,\n      \"recipients_preview\": [\n        {\n          \"first_name\": \"Alena\",\n          \"last_name\": \"Kenter\",\n          \"email\": \"alena@ongoody.com\"\n        },\n        {\n          \"first_name\": \"Michael\",\n          \"last_name\": \"Franci\",\n          \"email\": \"michael@ongoody.com\"\n        }\n      ],\n      \"cart\": {\n        \"id\": \"a767e193-97a9-471d-9551-b5bc71d36539\",\n        \"items\": [\n          {\n            \"id\": \"d1390002-1cd9-4111-a880-f56774fd9e20\",\n            \"quantity\": 1,\n            \"product\": {\n              \"id\": \"ea295df7-33f2-42b3-a629-127a90a2d2e5\",\n              \"name\": \"Cookies\",\n              \"brand\": {\n                \"id\": \"c7f4ed50-0f22-446c-be7d-42cac2678426\",\n                \"name\": \"Cookie Company\"\n              }\n            }\n          }\n        ]\n      },\n      \"is_scheduled_send\": false,\n      \"scheduled_send_on\": null,\n      \"expires_at\": null,\n      \"send_method\": null,\n      \"batch_name\": \"Thank You from Turcotte and Sons\",\n      \"card_id\": \"2ca309cc-2f7c-4da9-9b4c-dce1dc662e31\",\n      \"sender\": {\n        \"first_name\": \"Test\",\n        \"last_name\": \"User\",\n        \"email\": \"15551755323@test.ongoody.com\"\n      },\n      \"workspace_id\": \"908e78c2-64af-4ec2-a481-d0f6ef426633\",\n      \"workspace_name\": \"Test Team\",\n      \"reference_id\": \"WE0MZ3QWJKUCHI1KCF9JZGWX\",\n      \"customer_reference_id\": null\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": 2\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91f0fa52-7add-4ab4-92a1-068cc7e2f0d0",
+          "name": "Retrieve orders for an order batch",
+          "request": {
+            "name": "Retrieve orders for an order batch",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "order_batches",
+                ":id",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page for pagination, starting at 1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20",
+                  "description": "Items per page for pagination"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Order batch ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "67b916d1-2a88-4eb6-8a7f-5206a1c32710",
+              "name": "Orders retrieved with pagination",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_batches",
+                    ":id",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Order batch ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"94070873-ca63-402d-b1d4-871792e946a4\",\n      \"status\": \"created\",\n      \"individual_gift_link\": \"https://gifts.ongoody.com/gift/QOXS2IPF7MD9NDBO3MT6EOCR\",\n      \"recipient_first_name\": \"Alena\",\n      \"recipient_last_name\": \"Kenter\",\n      \"recipient_email\": \"alena@ongoody.com\",\n      \"card_id\": \"220a5e06-1869-4bf5-b956-e2e89357fea6\",\n      \"message\": \"Test Message\",\n      \"thank_you_note\": null,\n      \"view_count_recipient\": 0,\n      \"is_swapped\": false,\n      \"order_batch_id\": \"626cef5e-da38-4b18-bd36-cb1e4e7b414a\",\n      \"expires_at\": null,\n      \"cart\": {\n        \"id\": \"56268e8c-3e23-48a0-ba08-fe6398962623\",\n        \"items\": [\n          {\n            \"id\": \"6bcbd5bc-dd2e-4b84-a0f3-5d1e82598ff5\",\n            \"quantity\": 1,\n            \"product\": {\n              \"id\": \"5ec12187-f822-4003-b02c-b14a0d11eee5\",\n              \"name\": \"Cookies\",\n              \"brand\": {\n                \"id\": \"e1a3c711-56e1-4642-909f-69f3658a6b75\",\n                \"name\": \"Cookie Company\"\n              }\n            }\n          }\n        ]\n      },\n      \"shipments\": [],\n      \"amounts\": {\n        \"amount_product\": 2000,\n        \"amount_shipping\": 500,\n        \"amount_processing_fee\": 0,\n        \"amount_pre_tax_total\": 2500,\n        \"amount_tax\": null,\n        \"amount_total\": null,\n        \"amount_global_relay_cost\": null\n      },\n      \"sender\": {\n        \"first_name\": \"Test\",\n        \"last_name\": \"User\",\n        \"email\": \"15556911048@test.ongoody.com\"\n      },\n      \"workspace_id\": \"40356d26-fa43-43b4-b5f8-c96190a509d3\",\n      \"workspace_name\": \"Test Team\",\n      \"original_cart\": null,\n      \"original_amounts\": null,\n      \"reference_id\": \"KCVPLQAHOINGEBYUCLP10ORQ\",\n      \"payment_link\": null\n    },\n    {\n      \"id\": \"cfd611e8-a1c3-4f8e-9d4f-ddda4874e18d\",\n      \"status\": \"created\",\n      \"individual_gift_link\": \"https://gifts.ongoody.com/gift/U1MVTFYO3YBKRDOPNSGCZGR0\",\n      \"recipient_first_name\": \"Michael\",\n      \"recipient_last_name\": \"Franci\",\n      \"recipient_email\": \"michael@ongoody.com\",\n      \"card_id\": \"220a5e06-1869-4bf5-b956-e2e89357fea6\",\n      \"message\": \"Test Message\",\n      \"thank_you_note\": null,\n      \"view_count_recipient\": 0,\n      \"is_swapped\": false,\n      \"order_batch_id\": \"626cef5e-da38-4b18-bd36-cb1e4e7b414a\",\n      \"expires_at\": null,\n      \"cart\": {\n        \"id\": \"56268e8c-3e23-48a0-ba08-fe6398962623\",\n        \"items\": [\n          {\n            \"id\": \"6bcbd5bc-dd2e-4b84-a0f3-5d1e82598ff5\",\n            \"quantity\": 1,\n            \"product\": {\n              \"id\": \"5ec12187-f822-4003-b02c-b14a0d11eee5\",\n              \"name\": \"Cookies\",\n              \"brand\": {\n                \"id\": \"e1a3c711-56e1-4642-909f-69f3658a6b75\",\n                \"name\": \"Cookie Company\"\n              }\n            }\n          }\n        ]\n      },\n      \"shipments\": [],\n      \"amounts\": {\n        \"amount_product\": 2000,\n        \"amount_shipping\": 500,\n        \"amount_processing_fee\": 0,\n        \"amount_pre_tax_total\": 2500,\n        \"amount_tax\": null,\n        \"amount_total\": null,\n        \"amount_global_relay_cost\": null\n      },\n      \"sender\": {\n        \"first_name\": \"Test\",\n        \"last_name\": \"User\",\n        \"email\": \"15556911048@test.ongoody.com\"\n      },\n      \"workspace_id\": \"40356d26-fa43-43b4-b5f8-c96190a509d3\",\n      \"workspace_name\": \"Test Team\",\n      \"original_cart\": null,\n      \"original_amounts\": null,\n      \"reference_id\": \"IQTU7HZWUCYMZDZOB2BPXSR5\",\n      \"payment_link\": null\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": 2\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70dce8e1-4080-4305-986a-89d67bcd3cff",
+              "name": "Fail to retrieve when page is 0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_batches",
+                    ":id",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Order batch ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Page must be greater than 0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d8c7702-3e07-4263-a1f4-307bdea19c79",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_batches",
+                    ":id",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Order batch ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Order batch not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ad7213d-769d-439a-ba1c-c24f92735b52",
+          "name": "Calculate the price for an order batch",
+          "request": {
+            "name": "Calculate the price for an order batch",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "order_batches",
+                "price"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipients\": [\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    },\n    {\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"mailing_address\": {\n        \"address_1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"postal_code\": \"<string>\",\n        \"country\": \"<string>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"address_2\": \"<string>\"\n      }\n    }\n  ],\n  \"cart\": {\n    \"items\": [\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"product_id\": \"<uuid>\",\n        \"quantity\": \"<integer>\",\n        \"product_url\": \"<string>\",\n        \"variable_price\": \"<integer>\",\n        \"variants\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  },\n  \"send_method\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1e7fabcc-b688-4eb8-b235-1b2a2957f0bf",
+              "name": "Order batch price calculated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_batches",
+                    "price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"send_method\": \"direct_send\",\n  \"recipients\": [\n    {\n      \"first_name\": \"Alena\",\n      \"last_name\": \"Kenter\",\n      \"email\": \"alena@example.com\",\n      \"mailing_address\": {\n        \"first_name\": \"Alena\",\n        \"last_name\": \"Kenter\",\n        \"address_1\": \"140 E 55th St\",\n        \"address_2\": \"\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"postal_code\": \"10022\",\n        \"country\": \"US\"\n      }\n    }\n  ],\n  \"cart\": {\n    \"items\": [\n      {\n        \"product_id\": \"65c4e577-4226-4a2f-8298-aaffd3e34081\",\n        \"quantity\": 1\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cart_price\": {\n    \"price_product\": 1000,\n    \"price_shipping\": 1000,\n    \"price_processing_fee\": 100,\n    \"price_pre_tax\": 2100,\n    \"price_est_tax_low\": 0,\n    \"price_est_tax_high\": 210,\n    \"price_est_total_low\": 2100,\n    \"price_est_total_high\": 2310\n  },\n  \"total_price\": {\n    \"recipients\": 2,\n    \"est_group_total_low\": 4200,\n    \"est_group_total_high\": 4620\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67c89615-1c6b-4c0c-b3c2-bccce8e79d43",
+              "name": "Invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_batches",
+                    "price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"send_method\": \"direct_send\",\n  \"recipients\": [\n    {\n      \"first_name\": \"Alena\",\n      \"last_name\": \"Kenter\",\n      \"email\": \"alena@example.com\",\n      \"mailing_address\": {\n        \"first_name\": \"Alena\",\n        \"last_name\": \"Kenter\",\n        \"address_1\": \"140 E 55th St\",\n        \"address_2\": \"\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"postal_code\": \"10022\",\n        \"country\": \"US\"\n      }\n    }\n  ],\n  \"cart\": {\n    \"items\": [\n      {\n        \"product_id\": \"65c4e577-4226-4a2f-8298-aaffd3e34081\",\n        \"quantity\": 1\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Product not found: invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09f0716e-38b9-4bed-9d14-83bdfbcc7fac",
+          "name": "Retrieve recipients for an order batch",
+          "request": {
+            "name": "Retrieve recipients for an order batch",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "order_batches",
+                ":id",
+                "recipients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page for pagination, starting at 1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20",
+                  "description": "Items per page for pagination"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Order batch ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2adef2c2-5b7c-4d4b-a84f-8c215793e3c8",
+              "name": "Recipients retrieved with pagination",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_batches",
+                    ":id",
+                    "recipients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Order batch ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"first_name\": \"Alena\",\n      \"last_name\": \"Kenter\",\n      \"email\": \"alena@ongoody.com\"\n    },\n    {\n      \"first_name\": \"Michael\",\n      \"last_name\": \"Franci\",\n      \"email\": \"michael@ongoody.com\"\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": 2\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "445ef0b5-e4ee-4818-a3c3-f6364f993f89",
+              "name": "Fail to retrieve when page is 0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_batches",
+                    ":id",
+                    "recipients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Order batch ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Page must be greater than 0\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c2eceae-9a5f-4340-b571-9b6f7dcdbb03",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_batches",
+                    ":id",
+                    "recipients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Order batch ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Order batch not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f53d6f2-8dc1-4252-aa47-e53743bd8f1c",
+          "name": "Retrieve an order batch",
+          "request": {
+            "name": "Retrieve an order batch",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "order_batches",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Order batch ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "07479202-55b1-4e9f-8003-4b4daaf208e0",
+              "name": "Scheduled order batch retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_batches",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Order batch ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"dfd218b5-37f8-4069-a5c7-4f8bc48e5e8c\",\n  \"send_status\": \"complete\",\n  \"from_name\": \"Mazie\",\n  \"message\": null,\n  \"orders_count\": 2,\n  \"orders_preview\": [\n    {\n      \"id\": \"57aaa9f5-0166-4177-8825-89ad8df75c9f\",\n      \"status\": \"created\",\n      \"individual_gift_link\": \"https://gifts.ongoody.com/gift/ZP805XNFVVSWDMWJVZZCBXRE\",\n      \"recipient_first_name\": \"Alena\",\n      \"recipient_last_name\": \"Kenter\",\n      \"recipient_email\": \"alena@ongoody.com\",\n      \"card_id\": \"8a876f42-af16-4482-9214-53ae2c321931\",\n      \"message\": \"Test Message\",\n      \"thank_you_note\": null,\n      \"view_count_recipient\": 0,\n      \"is_swapped\": false,\n      \"order_batch_id\": \"dfd218b5-37f8-4069-a5c7-4f8bc48e5e8c\",\n      \"expires_at\": null,\n      \"cart\": {\n        \"id\": \"19785b2a-74a5-4e93-a8bf-6ec87e27de3d\",\n        \"items\": [\n          {\n            \"id\": \"db87cd41-81bf-49f1-9bb3-16ea3015cc3c\",\n            \"quantity\": 1,\n            \"product\": {\n              \"id\": \"22f52b4c-acde-4891-aa63-02cf698a6af9\",\n              \"name\": \"Cookies\",\n              \"brand\": {\n                \"id\": \"00c260d8-6378-4475-928c-ca2da7be08c1\",\n                \"name\": \"Cookie Company\"\n              }\n            }\n          }\n        ]\n      },\n      \"shipments\": [],\n      \"amounts\": {\n        \"amount_product\": 2000,\n        \"amount_shipping\": 500,\n        \"amount_processing_fee\": 0,\n        \"amount_pre_tax_total\": 2500,\n        \"amount_tax\": null,\n        \"amount_total\": null,\n        \"amount_global_relay_cost\": null\n      },\n      \"sender\": {\n        \"first_name\": \"Test\",\n        \"last_name\": \"User\",\n        \"email\": \"15556954782@test.ongoody.com\"\n      },\n      \"workspace_id\": \"47a907e7-d145-483d-9c4a-fb0e9a7363fa\",\n      \"workspace_name\": \"Test Team\",\n      \"original_cart\": null,\n      \"original_amounts\": null,\n      \"reference_id\": \"AWIFURRCYGWDENFMTG76TBME\",\n      \"payment_link\": null\n    },\n    {\n      \"id\": \"1e103420-c7fe-408e-9694-3be6bdd5e9a3\",\n      \"status\": \"created\",\n      \"individual_gift_link\": \"https://gifts.ongoody.com/gift/XKUPBQEKN4F9WMGYJN7AINOX\",\n      \"recipient_first_name\": \"Michael\",\n      \"recipient_last_name\": \"Franci\",\n      \"recipient_email\": \"michael@ongoody.com\",\n      \"card_id\": \"8a876f42-af16-4482-9214-53ae2c321931\",\n      \"message\": \"Test Message\",\n      \"thank_you_note\": null,\n      \"view_count_recipient\": 0,\n      \"is_swapped\": false,\n      \"order_batch_id\": \"dfd218b5-37f8-4069-a5c7-4f8bc48e5e8c\",\n      \"expires_at\": null,\n      \"cart\": {\n        \"id\": \"19785b2a-74a5-4e93-a8bf-6ec87e27de3d\",\n        \"items\": [\n          {\n            \"id\": \"db87cd41-81bf-49f1-9bb3-16ea3015cc3c\",\n            \"quantity\": 1,\n            \"product\": {\n              \"id\": \"22f52b4c-acde-4891-aa63-02cf698a6af9\",\n              \"name\": \"Cookies\",\n              \"brand\": {\n                \"id\": \"00c260d8-6378-4475-928c-ca2da7be08c1\",\n                \"name\": \"Cookie Company\"\n              }\n            }\n          }\n        ]\n      },\n      \"shipments\": [],\n      \"amounts\": {\n        \"amount_product\": 2000,\n        \"amount_shipping\": 500,\n        \"amount_processing_fee\": 0,\n        \"amount_pre_tax_total\": 2500,\n        \"amount_tax\": null,\n        \"amount_total\": null,\n        \"amount_global_relay_cost\": null\n      },\n      \"sender\": {\n        \"first_name\": \"Test\",\n        \"last_name\": \"User\",\n        \"email\": \"15556954782@test.ongoody.com\"\n      },\n      \"workspace_id\": \"47a907e7-d145-483d-9c4a-fb0e9a7363fa\",\n      \"workspace_name\": \"Test Team\",\n      \"original_cart\": null,\n      \"original_amounts\": null,\n      \"reference_id\": \"JTVTIGXD4DQY7HW7NOF9UGHQ\",\n      \"payment_link\": null\n    }\n  ],\n  \"recipients_count\": 2,\n  \"recipients_preview\": [\n    {\n      \"first_name\": \"Alena\",\n      \"last_name\": \"Kenter\",\n      \"email\": \"alena@ongoody.com\"\n    },\n    {\n      \"first_name\": \"Michael\",\n      \"last_name\": \"Franci\",\n      \"email\": \"michael@ongoody.com\"\n    }\n  ],\n  \"cart\": {\n    \"id\": \"19785b2a-74a5-4e93-a8bf-6ec87e27de3d\",\n    \"items\": [\n      {\n        \"id\": \"db87cd41-81bf-49f1-9bb3-16ea3015cc3c\",\n        \"quantity\": 1,\n        \"product\": {\n          \"id\": \"22f52b4c-acde-4891-aa63-02cf698a6af9\",\n          \"name\": \"Cookies\",\n          \"brand\": {\n            \"id\": \"00c260d8-6378-4475-928c-ca2da7be08c1\",\n            \"name\": \"Cookie Company\"\n          }\n        }\n      }\n    ]\n  },\n  \"is_scheduled_send\": false,\n  \"scheduled_send_on\": null,\n  \"expires_at\": null,\n  \"send_method\": null,\n  \"batch_name\": \"Thank You from Reilly Group\",\n  \"card_id\": \"8a876f42-af16-4482-9214-53ae2c321931\",\n  \"sender\": {\n    \"first_name\": \"Test\",\n    \"last_name\": \"User\",\n    \"email\": \"15556954782@test.ongoody.com\"\n  },\n  \"workspace_id\": \"47a907e7-d145-483d-9c4a-fb0e9a7363fa\",\n  \"workspace_name\": \"Test Team\",\n  \"reference_id\": \"CDYCAULRK68D61XP4TYMYGMT\",\n  \"customer_reference_id\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1aad183b-4b61-490e-9b56-c505a8d249f1",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_batches",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Order batch ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Order batch not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ongoody.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "282722b6-3f00-4e89-b14a-372d90503816",
+    "name": "Goody Brands Order Batches API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+      "type": "text/plain"
+    }
+  }
+}

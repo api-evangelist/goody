@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Goody Brands Products API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all active products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ongoody.com/v1/products",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page for pagination, starting at 1"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Items per page for pagination"
+              },
+              {
+                "name": "use_custom_catalog",
+                "value": "",
+                "type": "query",
+                "description": "Limit to custom catalog only (for approved API partners)"
+              },
+              {
+                "name": "country_code",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a specific shipping country code"
+              },
+              {
+                "name": "custom_catalog_show_inactive",
+                "value": "",
+                "type": "query",
+                "description": "Show inactive products in the custom catalog. Only for Commerce API customers with a custom catalog."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all active products"
+        },
+        {
+          "info": {
+            "name": "Retrieve a product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ongoody.com/v1/products/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Product ID"
+              },
+              {
+                "name": "use_custom_catalog",
+                "value": "",
+                "type": "query",
+                "description": "Limit to custom catalog only (for approved API partners)"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a product"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

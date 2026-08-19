@@ -1,0 +1,192 @@
+{
+  "item": [
+    {
+      "id": "8b3d340c-2799-4710-91c6-a46478a2b937",
+      "name": "Cards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dd111d19-6b7c-4df7-be77-f1042cf6e10d",
+          "name": "Retrieve cards",
+          "request": {
+            "name": "Retrieve cards",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "cards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page for pagination, starting at 1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20",
+                  "description": "Items per page for pagination"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bd69511f-1735-4a28-b318-5da0b9dbf34b",
+              "name": "Cards retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"9f6a0a5e-bbd5-4bb6-bd6d-c6eaab586522\",\n      \"image\": {\n        \"url\": \"https://assets.ongoody.com/cards/222.png?format=png\",\n        \"width\": 800,\n        \"height\": 1130\n      },\n      \"image_thumb\": {\n        \"url\": \"https://assets.ongoody.com/cards/222.png?width=200&format=png\",\n        \"width\": 200,\n        \"height\": 283\n      },\n      \"occasions\": [\n        \"Congratulations\",\n        \"Onboarding\"\n      ]\n    },\n    {\n      \"id\": \"addda4f1-f501-4dfe-9b1d-fa53c8814c85\",\n      \"image\": {\n        \"url\": \"https://assets.ongoody.com/cards/111.png?format=png\",\n        \"width\": 800,\n        \"height\": 1130\n      },\n      \"image_thumb\": {\n        \"url\": \"https://assets.ongoody.com/cards/111.png?width=200&format=png\",\n        \"width\": 200,\n        \"height\": 283\n      },\n      \"occasions\": []\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": 2\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdc25758-fefb-4584-a393-8204ad229947",
+              "name": "Failed to authorize",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ongoody.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bfef2368-9ff9-40a0-914a-5484e61356b8",
+    "name": "Goody Brands Cards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "item": [
+    {
+      "id": "84ce2fa2-ea29-4f71-bfb8-bb869fed09b6",
+      "name": "Order Activities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e17bda6f-6256-4267-9aab-405a49ce206f",
+          "name": "List order activities",
+          "request": {
+            "name": "List order activities",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "order_activities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page for pagination, starting at 1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20",
+                  "description": "Items per page for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<dateTime>",
+                  "description": "Filter activities created at or after this timestamp (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<dateTime>",
+                  "description": "Filter activities created at or before this timestamp (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "statuses",
+                  "value": "<string>",
+                  "description": "Comma-separated list of statuses to filter by (e.g. \"created,opened,shipped\")"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "18602afd-a775-4e4d-a995-bb806cd1f5b0",
+              "name": "Order activities retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_activities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "statuses",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"2f7fda94-5e06-42a4-b856-010a83afe76d\",\n      \"order_status\": \"opened\",\n      \"created_at\": \"2026-06-03T12:24:10Z\",\n      \"order\": {\n        \"id\": \"e3d4235a-9367-4bff-a0dd-a9339784cac2\",\n        \"status\": \"opened\",\n        \"individual_gift_link\": \"https://gifts.ongoody.com/gift/MAWESE8CCGYUEHZBDNFNH8V8\",\n        \"recipient_first_name\": \"Recipient\",\n        \"recipient_last_name\": \"Smith\",\n        \"recipient_email\": null,\n        \"card_id\": \"ffdb7f07-1d78-4e0c-ac3d-580394c9eea6\",\n        \"message\": \"Test Message\",\n        \"thank_you_note\": null,\n        \"view_count_recipient\": 0,\n        \"is_swapped\": false,\n        \"order_batch_id\": \"93b36a7e-2de8-495c-8192-fc45be4c970e\",\n        \"expires_at\": null,\n        \"cart\": {\n          \"id\": \"1d2b284b-9a88-4ea1-8b0b-1ca983d214c9\",\n          \"items\": [\n            {\n              \"id\": \"9acd31ae-a9bd-43e4-9b7d-dd6ace754184\",\n              \"quantity\": 1,\n              \"product\": {\n                \"id\": \"b55b1c75-d69a-42fd-a1d3-aaa881db000d\",\n                \"name\": \"Cookies\",\n                \"brand\": {\n                  \"id\": \"c710da1e-18d0-46b2-93c1-7b91f93603c5\",\n                  \"name\": \"Cookie Company\"\n                }\n              }\n            }\n          ]\n        },\n        \"shipments\": [],\n        \"amounts\": {\n          \"amount_product\": 0,\n          \"amount_shipping\": 0,\n          \"amount_processing_fee\": 0,\n          \"amount_pre_tax_total\": 0,\n          \"amount_tax\": null,\n          \"amount_total\": null,\n          \"amount_global_relay_cost\": null\n        },\n        \"sender\": {\n          \"first_name\": \"Test\",\n          \"last_name\": \"User\",\n          \"email\": \"15554158553@test.ongoody.com\"\n        },\n        \"workspace_id\": \"7fb09027-7350-46bc-954a-ee9c2b4f5126\",\n        \"workspace_name\": \"Test Team\",\n        \"original_cart\": null,\n        \"original_amounts\": null,\n        \"reference_id\": \"DRKRUKB5XGWRB7VRKNZBWN5Q\",\n        \"payment_link\": null\n      }\n    },\n    {\n      \"id\": \"542c1b8b-2819-44fd-a79b-a5e07018a7a8\",\n      \"order_status\": \"created\",\n      \"created_at\": \"2026-06-03T12:24:10Z\",\n      \"order\": {\n        \"id\": \"e3d4235a-9367-4bff-a0dd-a9339784cac2\",\n        \"status\": \"opened\",\n        \"individual_gift_link\": \"https://gifts.ongoody.com/gift/MAWESE8CCGYUEHZBDNFNH8V8\",\n        \"recipient_first_name\": \"Recipient\",\n        \"recipient_last_name\": \"Smith\",\n        \"recipient_email\": null,\n        \"card_id\": \"ffdb7f07-1d78-4e0c-ac3d-580394c9eea6\",\n        \"message\": \"Test Message\",\n        \"thank_you_note\": null,\n        \"view_count_recipient\": 0,\n        \"is_swapped\": false,\n        \"order_batch_id\": \"93b36a7e-2de8-495c-8192-fc45be4c970e\",\n        \"expires_at\": null,\n        \"cart\": {\n          \"id\": \"1d2b284b-9a88-4ea1-8b0b-1ca983d214c9\",\n          \"items\": [\n            {\n              \"id\": \"9acd31ae-a9bd-43e4-9b7d-dd6ace754184\",\n              \"quantity\": 1,\n              \"product\": {\n                \"id\": \"b55b1c75-d69a-42fd-a1d3-aaa881db000d\",\n                \"name\": \"Cookies\",\n                \"brand\": {\n                  \"id\": \"c710da1e-18d0-46b2-93c1-7b91f93603c5\",\n                  \"name\": \"Cookie Company\"\n                }\n              }\n            }\n          ]\n        },\n        \"shipments\": [],\n        \"amounts\": {\n          \"amount_product\": 0,\n          \"amount_shipping\": 0,\n          \"amount_processing_fee\": 0,\n          \"amount_pre_tax_total\": 0,\n          \"amount_tax\": null,\n          \"amount_total\": null,\n          \"amount_global_relay_cost\": null\n        },\n        \"sender\": {\n          \"first_name\": \"Test\",\n          \"last_name\": \"User\",\n          \"email\": \"15554158553@test.ongoody.com\"\n        },\n        \"workspace_id\": \"7fb09027-7350-46bc-954a-ee9c2b4f5126\",\n        \"workspace_name\": \"Test Team\",\n        \"original_cart\": null,\n        \"original_amounts\": null,\n        \"reference_id\": \"DRKRUKB5XGWRB7VRKNZBWN5Q\",\n        \"payment_link\": null\n      }\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": 2\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ongoody.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "244824a0-88a6-4976-8e00-2f6eb7e710e1",
+    "name": "Goody Brands Order Activities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+      "type": "text/plain"
+    }
+  }
+}

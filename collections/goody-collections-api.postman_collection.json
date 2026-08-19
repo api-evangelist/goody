@@ -1,0 +1,305 @@
+{
+  "item": [
+    {
+      "id": "6ca7891a-b5ee-4b64-b09b-a42f57a58724",
+      "name": "Collections",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2d5bc7a8-8972-42b2-b023-811931e5930b",
+          "name": "List collections",
+          "request": {
+            "name": "List collections",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (starts at 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20",
+                  "description": "Number of collections to return per page (maximum 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "published",
+                  "value": "<boolean>",
+                  "description": "Return only published collections when true"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9bd2333b-2a0e-454c-a765-72ecdf2b90d0",
+              "name": "Collections retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    },
+                    {
+                      "key": "published",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"9afab2f9-6411-4e7f-9f7d-ecf27e00491a\",\n      \"workspace_id\": \"633e3b64-1ab4-4439-b44a-8c3a069cfd76\",\n      \"title\": \"Expedite Web Enabled Infrastructures\",\n      \"is_published\": false,\n      \"published_price\": null,\n      \"product\": null,\n      \"published_version\": null\n    },\n    {\n      \"id\": \"7f50f2ba-e070-4e33-a107-3ddfe4c771dc\",\n      \"workspace_id\": \"633e3b64-1ab4-4439-b44a-8c3a069cfd76\",\n      \"title\": \"Office Favorites\",\n      \"is_published\": true,\n      \"published_price\": null,\n      \"product\": null,\n      \"published_version\": {\n        \"id\": \"3b6af2d7-74e3-4201-8dfc-88cfacbdde91\",\n        \"title\": \"Office Favorites\",\n        \"subtitle\": \"Curated treats for the whole team\",\n        \"multiple_select_mode\": \"disabled\",\n        \"multiple_select_count\": null,\n        \"multiple_select_price\": null,\n        \"international_shipping_tier\": \"standard\",\n        \"international_gift_cards_enabled\": false,\n        \"display_interface\": \"single_page\",\n        \"header_image\": null\n      }\n    }\n  ],\n  \"list_meta\": {\n    \"total_count\": 2\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5b20a39-74c4-4d3f-825e-2f19d7a32943",
+          "name": "Retrieve a collection",
+          "request": {
+            "name": "Retrieve a collection",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "collections",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Collection ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "76984769-4d2c-4f4f-bcb3-79051e1227b6",
+              "name": "Collection retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "collections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Collection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7f50f2ba-e070-4e33-a107-3ddfe4c771dc\",\n  \"workspace_id\": \"633e3b64-1ab4-4439-b44a-8c3a069cfd76\",\n  \"title\": \"Office Favorites\",\n  \"is_published\": true,\n  \"published_price\": null,\n  \"product\": null,\n  \"published_version\": {\n    \"id\": \"3b6af2d7-74e3-4201-8dfc-88cfacbdde91\",\n    \"title\": \"Office Favorites\",\n    \"subtitle\": \"Curated treats for the whole team\",\n    \"multiple_select_mode\": \"disabled\",\n    \"multiple_select_count\": null,\n    \"multiple_select_price\": null,\n    \"international_shipping_tier\": \"standard\",\n    \"international_gift_cards_enabled\": false,\n    \"display_interface\": \"single_page\",\n    \"header_image\": null,\n    \"collection_categories\": [\n      {\n        \"id\": \"ed3c56cd-d90c-4815-8caf-fd4c79b7fd46\",\n        \"name\": \"Treats & Sips\",\n        \"is_featured\": true,\n        \"position\": 1,\n        \"collection_products\": [\n          {\n            \"id\": \"a7fe8bd9-3023-4037-8cc4-60e141f00e62\",\n            \"product\": {\n              \"id\": \"e2b9f659-e01e-430b-aa16-14a22158cd36\",\n              \"name\": \"Craft Coffee Kit\",\n              \"brand\": {\n                \"id\": \"7141fe00-a619-41c5-ac6a-b54342412f6d\",\n                \"name\": \"Cookie Company\",\n                \"logo_image\": null,\n                \"shipping_price\": 1000,\n                \"free_shipping_minimum\": null,\n                \"brand_values\": []\n              },\n              \"subtitle\": null,\n              \"subtitle_short\": null,\n              \"recipient_description\": \"\",\n              \"variants_label\": null,\n              \"variants_num_selectable\": null,\n              \"variants\": [],\n              \"variant_groups\": [],\n              \"images\": [],\n              \"price\": 1000,\n              \"price_is_variable\": false,\n              \"restricted_states\": [],\n              \"attributes\": [],\n              \"updated_at\": \"2026-06-03T12:24:04Z\",\n              \"status\": \"active\"\n            }\n          },\n          {\n            \"id\": \"3ceb6404-75ed-4be7-a022-e4afdf078749\",\n            \"product\": {\n              \"id\": \"bae8372a-4325-4c5c-b58d-57e8f0a891ad\",\n              \"name\": \"Artisan Snack Box\",\n              \"brand\": {\n                \"id\": \"7141fe00-a619-41c5-ac6a-b54342412f6d\",\n                \"name\": \"Cookie Company\",\n                \"logo_image\": null,\n                \"shipping_price\": 1000,\n                \"free_shipping_minimum\": null,\n                \"brand_values\": []\n              },\n              \"subtitle\": null,\n              \"subtitle_short\": null,\n              \"recipient_description\": \"\",\n              \"variants_label\": null,\n              \"variants_num_selectable\": null,\n              \"variants\": [],\n              \"variant_groups\": [],\n              \"images\": [],\n              \"price\": 1000,\n              \"price_is_variable\": false,\n              \"restricted_states\": [],\n              \"attributes\": [],\n              \"updated_at\": \"2026-06-03T12:24:04Z\",\n              \"status\": \"active\"\n            }\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03628f56-3d09-4ef3-b41d-a096c5cf9b9c",
+              "name": "Collection not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "collections",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Collection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Collection not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ongoody.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "920bdfe6-e72e-4384-9e26-3e3e1c960b51",
+    "name": "Goody Brands Collections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Goody Support\n Email: support@ongoody.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Goody Brands Order Activities API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Order Activities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List order activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ongoody.com/v1/order_activities",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page for pagination, starting at 1"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Items per page for pagination"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Filter activities created at or after this timestamp (ISO 8601)"
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "Filter activities created at or before this timestamp (ISO 8601)"
+              },
+              {
+                "name": "statuses",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of statuses to filter by (e.g. \"created,opened,shipped\")"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List order activities"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
