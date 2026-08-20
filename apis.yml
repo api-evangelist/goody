@@ -45,6 +45,17 @@ tags:
 - Commerce
 - Payments
 - MCP
+- Webhook
+- Rewards
+tags_raw:
+- Company
+- Retail
+- Gifting
+- Gift Cards
+- E-Commerce
+- Commerce
+- Payments
+- MCP
 - Webhooks
 - Rewards
 maintainers:
@@ -91,6 +102,8 @@ apis:
   humanURL: https://developer.ongoody.com/introduction/overview
   baseURL: https://api.ongoody.com
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -172,6 +185,8 @@ apis:
   humanURL: https://developer.ongoody.com/introduction/overview
   baseURL: https://api.ongoody.com
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -204,6 +219,8 @@ apis:
   humanURL: https://developer.ongoody.com/introduction/overview
   baseURL: https://api.ongoody.com
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -220,6 +237,8 @@ apis:
   humanURL: https://developer.ongoody.com/introduction/overview
   baseURL: https://api.ongoody.com
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
