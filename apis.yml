@@ -278,6 +278,9 @@ apis:
   - type: Authentication
     url: https://developer.ongoody.com/commerce-api/authentication
 common:
+- type: CapabilityMap
+  url: capabilities/goody-capability-edges.yml
+  name: Goody Business Capability Map
 - type: Overlay
   url: overlays/goody-api-overlay.yaml
 - type: PostmanWorkspace

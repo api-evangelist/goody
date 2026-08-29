@@ -1,0 +1,36 @@
+slug: goody
+provider: Goody
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Retail & Consumer Goods
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Orders
+  spec_file: goody-orders-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.75
+  evidence: POST /v1/orders/{id}/cancel  Cancel an order; GET /v1/orders/{id}  Retrieve an order; schemas
+    Order, Cart, OrderStatus, Shipment
+  reason: Full order lifecycle operations (retrieve, list, cancel, update expiration) over consumer gift
+    orders with cart and shipment detail — order fulfilment management.
+- tag: Order Batches
+  spec_file: goody-order-batches-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.7
+  evidence: POST /v1/order_batches  Create an order batch; GET /v1/order_batches/{id}/recipients  Retrieve
+    recipients for an order batch; POST /v1/order_batches/price
+  reason: Creates and prices batches of gift orders with recipients and carts, then exposes the resulting
+    orders — order capture and fulfilment orchestration. Pricing here is order totalling, not pricing
+    strategy.
