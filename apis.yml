@@ -267,6 +267,8 @@ apis:
   humanURL: https://developer.ongoody.com/introduction/overview
   baseURL: https://api.ongoody.com
   tags:
+  - Workspace
+  tags_raw:
   - Workspaces
   properties:
   - type: OpenAPI
