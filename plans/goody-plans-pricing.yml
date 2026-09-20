@@ -1,0 +1,35 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.ongoody.com/business/pricing
+sources:
+- https://www.ongoody.com/business/pricing
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T131751
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+published: true
+note: Business gifting platform pricing page; Pro price is when billed annually. Team tier is contact-sales.
+  $20 gift credit offered on signup.
+plan_count: 3
+currency: USD
+plans:
+- name: Starter
+  price_text: $0Forever
+  price: 0
+  currency: USD
+  period: none
+  included_quota: Send unlimited gifts in the US, UK, and Canada.
+- name: Pro
+  price_text: $20/month/user
+  price: 20
+  currency: USD
+  period: month
+  unit: user
+  included_quota: Everything in Starter, plus international gifts, gift cards, digital branding
+- name: Team
+  price_text: Chat with us
+  period: none
+  included_quota: Everything in Pro, plus unlimited seats

@@ -280,6 +280,8 @@ apis:
   - type: Authentication
     url: https://developer.ongoody.com/commerce-api/authentication
 common:
+- type: Plans
+  url: plans/goody-plans-pricing.yml
 - type: CapabilityMap
   url: capabilities/goody-capability-edges.yml
   name: Goody Business Capability Map
