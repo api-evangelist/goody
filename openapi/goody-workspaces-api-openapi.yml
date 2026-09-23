@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Goody Brands Workspaces API
+  title: Goody Workspaces API
   version: 1.0.0
   contact:
     name: Goody Support
@@ -44,8 +44,16 @@ paths:
                       $ref: '#/components/schemas/Workspace'
                   list_meta:
                     $ref: '#/components/schemas/ListMeta'
+      operationId: getV1Workspaces
+      x-operation-id-source: derived
 components:
   schemas:
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
     Workspace:
       type: object
       properties:
@@ -57,12 +65,6 @@ components:
       required:
       - id
       - name
-    ListMeta:
-      type: object
-      properties:
-        total_count:
-          type: integer
-          description: The total number of items in this list.
   securitySchemes:
     bearer:
       type: http

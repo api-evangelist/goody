@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Goody Brands Order Activities API
+  title: Goody Order Activities API
   version: 1.0.0
   contact:
     name: Goody Support
@@ -41,26 +41,29 @@ paths:
       - name: after
         in: query
         schema:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           description: ISO 8601
-          nullable: true
         description: Filter activities created at or after this timestamp (ISO 8601)
         required: false
       - name: before
         in: query
         schema:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           description: ISO 8601
-          nullable: true
         description: Filter activities created at or before this timestamp (ISO 8601)
         required: false
       - name: statuses
         in: query
         schema:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         description: Comma-separated list of statuses to filter by (e.g. "created,opened,shipped")
         required: false
       responses:
@@ -177,6 +180,8 @@ paths:
                       $ref: '#/components/schemas/OrderActivity'
                   list_meta:
                     $ref: '#/components/schemas/ListMeta'
+      operationId: getV1OrderActivities
+      x-operation-id-source: derived
 components:
   schemas:
     Order:
@@ -189,11 +194,13 @@ components:
         recipient_first_name:
           type: string
         recipient_last_name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         recipient_email:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         status:
           $ref: '#/components/schemas/OrderStatus'
         individual_gift_link:
@@ -203,41 +210,48 @@ components:
           $ref: '#/components/schemas/Cart'
           description: The cart currently on this order. If the order is a gift that was swapped, `cart` displays the most recent products selected (i.e. post-swap).
         cart_selections:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/CartSelection'
           description: Product variant selections for each cart product. Only for commerce app orders.
-          nullable: true
         shipments:
           type: array
           items:
             $ref: '#/components/schemas/Shipment'
           description: A list of the shipments for the order.
         workspace_id:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uuid
-          nullable: true
           description: Organizations are sub-divided into workspaces. Orders are contained in workspaces, identified by this ID.
         workspace_name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         expires_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
           description: For gifts, the date and time the gift is set to expire.
-          nullable: true
         card_id:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uuid
-          nullable: true
           description: The digital greeting card on this gift.
         message:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: The message in this gift, provided by the sender.
         thank_you_note:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: A thank you note sent by the recipient.
         view_count_recipient:
           type: integer
@@ -260,34 +274,41 @@ components:
               type: integer
               description: Total cost of shipping for this order.
             amount_processing_fee:
-              type: integer
-              nullable: true
+              type:
+              - integer
+              - 'null'
               description: Total cost of processing fees for this order.
             amount_credit_applied:
-              type: integer
-              nullable: true
+              type:
+              - integer
+              - 'null'
               description: Total amount of credit applied to this order.
             amount_pre_tax_total:
               type: integer
               description: Total cost of the products, shipping, and processing fees in this order.
             amount_tax:
-              type: integer
-              nullable: true
+              type:
+              - integer
+              - 'null'
               description: Total tax for this order.
             amount_total:
-              type: integer
-              nullable: true
+              type:
+              - integer
+              - 'null'
               description: Total cost of the products, shipping, processing fees, tax, and global shipping costs in this order.
             amount_global_relay_cost:
-              type: integer
-              nullable: true
+              type:
+              - integer
+              - 'null'
               description: Total cost of global shipping for this order through the Global Relay service.
           required:
           - amount_product
           - amount_shipping
           - amount_pre_tax_total
         event_times:
-          type: object
+          type:
+          - object
+          - 'null'
           description: Only provided when calling the /orders/:id endpoint.
           properties:
             created_at:
@@ -295,70 +316,81 @@ components:
               format: date-time
               description: ISO 8601
             notified_at:
-              type: string
+              type:
+              - string
+              - 'null'
               format: date-time
               description: When the recipient was notified of the order.
-              nullable: true
             opened_at:
-              type: string
+              type:
+              - string
+              - 'null'
               format: date-time
               description: For gifts, when the recipient opened the order.
-              nullable: true
             accepted_at:
-              type: string
+              type:
+              - string
+              - 'null'
               format: date-time
               description: For gifts, when the recipient accepted the order.
-              nullable: true
             pending_payment_at:
-              type: string
+              type:
+              - string
+              - 'null'
               format: date-time
               description: When the order entered pending payment status.
-              nullable: true
             paid_at:
-              type: string
+              type:
+              - string
+              - 'null'
               format: date-time
               description: When the order was paid for.
-              nullable: true
             shipped_at:
-              type: string
+              type:
+              - string
+              - 'null'
               format: date-time
               description: When the order was first shipped. If there are multiple shipments, this is when the first shipment shipped.
-              nullable: true
             delivered_at:
-              type: string
+              type:
+              - string
+              - 'null'
               format: date-time
               description: When the order was delivered. If there are multiple shipments, this is when all shipments were delivered.
-              nullable: true
           required:
           - created_at
-          nullable: true
         original_cart:
           $ref: '#/components/schemas/Cart'
           description: If this order is a gift that was swapped, this displays the original cart that was sent to the recipient.
-          nullable: true
         original_amounts:
-          type: object
+          type:
+          - object
+          - 'null'
           description: If this order is a gift that was swapped, this displays the original amounts of the cart that was sent to the recipient.
           properties:
             original_amount_product:
-              type: integer
-              nullable: true
+              type:
+              - integer
+              - 'null'
             original_amount_shipping:
-              type: integer
-              nullable: true
+              type:
+              - integer
+              - 'null'
             original_amount_credit_applied:
-              type: integer
-              nullable: true
+              type:
+              - integer
+              - 'null'
             original_amount_pre_tax_total:
-              type: integer
-              nullable: true
-          nullable: true
+              type:
+              - integer
+              - 'null'
         sender:
           $ref: '#/components/schemas/Sender'
           description: The Goody user who sent this order.
         payment_link:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: For commerce apps using Hosted Payment, the payment link for the gift with the credit card entry form. Available when the gift is in `pending_payment` status (after it has been accepted).
         reference_id:
           type: string
@@ -373,6 +405,25 @@ components:
       - amounts
       - sender
       - reference_id
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+    Sender:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+      required:
+      - first_name
+      - last_name
+      - email
     OrderActivityStatus:
       type: string
       enum:
@@ -386,57 +437,16 @@ components:
       - failed
       - pending_user_approval
       description: The status of the order activity event. Mapped from internal statuses using the same logic as order status.
-    Shipment:
+    Cart:
       type: object
       properties:
         id:
           type: string
           format: uuid
-        status:
-          type: string
-          enum:
-          - pending
-          - tracking
-          - shipped
-          - delivered
-          - delivered_override
-          - failed
-          - failed_unset_tracking
-          - failed_with_reship
-        brand_name:
-          type: string
-          description: The name of the brand that this shipment is from.
-        tracking_carrier:
-          type: string
-          nullable: true
-          description: The carrier for this shipment, e.g. UPS.
-        tracking_number:
-          type: string
-          nullable: true
-          description: Only for approved distribution partners.
-        tracking_url:
-          type: string
-          nullable: true
-          description: Only for approved distribution partners.
-        shipped_at:
-          type: string
-          format: date-time
-          description: ISO 8601
-          nullable: true
-        delivered_at:
-          type: string
-          format: date-time
-          description: ISO 8601
-          nullable: true
-        delivery_eta:
-          type: string
-          format: date-time
-          description: The estimated delivery time of this shipment.
-          nullable: true
-      required:
-      - id
-      - status
-      - brand_name
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
     OrderStatus:
       type: string
       enum:
@@ -451,19 +461,30 @@ components:
       - delivered
       - failed
       - canceled
-    Sender:
+    CartSelection:
       type: object
+      description: Product variant selections for a specific gift cart product.
       properties:
-        first_name:
+        id:
           type: string
-        last_name:
+          format: uuid
+        cart_item_id:
           type: string
-        email:
-          type: string
+          format: uuid
+          description: The cart item ID this selection belongs to. Match this with cart.items[].id.
+        quantity_index:
+          type: integer
+          description: The index of this selection within multiple quantities of the same product. If a given cart product has multiple quantities, this will be 0 for the first unit, 1 for the second unit, etc.
+        variants:
+          type: array
+          items:
+            type: string
+          description: The selected variants for this product selection and quantity index.
       required:
-      - first_name
-      - last_name
-      - email
+      - id
+      - cart_item_id
+      - quantity_index
+      - variants
     OrderActivity:
       type: object
       description: An order activity represents a status change event for an order.
@@ -486,22 +507,6 @@ components:
       - order_status
       - created_at
       - order
-    ListMeta:
-      type: object
-      properties:
-        total_count:
-          type: integer
-          description: The total number of items in this list.
-    Cart:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CartItem'
     CartItem:
       type: object
       properties:
@@ -538,30 +543,63 @@ components:
       - id
       - product
       - quantity
-    CartSelection:
+    Shipment:
       type: object
-      description: Product variant selections for a specific gift cart product.
       properties:
         id:
           type: string
           format: uuid
-        cart_item_id:
+        status:
           type: string
-          format: uuid
-          description: The cart item ID this selection belongs to. Match this with cart.items[].id.
-        quantity_index:
-          type: integer
-          description: The index of this selection within multiple quantities of the same product. If a given cart product has multiple quantities, this will be 0 for the first unit, 1 for the second unit, etc.
-        variants:
-          type: array
-          items:
-            type: string
-          description: The selected variants for this product selection and quantity index.
+          enum:
+          - pending
+          - tracking
+          - shipped
+          - delivered
+          - delivered_override
+          - failed
+          - failed_unset_tracking
+          - failed_with_reship
+        brand_name:
+          type: string
+          description: The name of the brand that this shipment is from.
+        tracking_carrier:
+          type:
+          - string
+          - 'null'
+          description: The carrier for this shipment, e.g. UPS.
+        tracking_number:
+          type:
+          - string
+          - 'null'
+          description: Only for approved distribution partners.
+        tracking_url:
+          type:
+          - string
+          - 'null'
+          description: Only for approved distribution partners.
+        shipped_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: ISO 8601
+        delivered_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: ISO 8601
+        delivery_eta:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The estimated delivery time of this shipment.
       required:
       - id
-      - cart_item_id
-      - quantity_index
-      - variants
+      - status
+      - brand_name
   securitySchemes:
     bearer:
       type: http

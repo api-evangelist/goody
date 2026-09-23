@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Goody Brands Collections API
+  title: Goody Collections API
   version: 1.0.0
   contact:
     name: Goody Support
@@ -88,6 +88,8 @@ paths:
                       $ref: '#/components/schemas/Collection'
                   list_meta:
                     $ref: '#/components/schemas/ListMeta'
+      operationId: getV1Collections
+      x-operation-id-source: derived
   /v1/collections/{id}:
     get:
       summary: Retrieve a collection
@@ -195,278 +197,10 @@ paths:
                     error: Collection not found
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: getV1CollectionsById
+      x-operation-id-source: derived
 components:
   schemas:
-    CollectionProduct:
-      type: object
-      description: Represents a product that can be selected within a collection.
-      properties:
-        id:
-          type: string
-          format: uuid
-        product:
-          $ref: '#/components/schemas/Product'
-      required:
-      - id
-      - product
-    ProductVariantGroup:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the variant group, e.g. "Size" or "Color".
-        options:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductVariantGroupOption'
-      required:
-      - id
-      - name
-    ProductImage:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        image_large:
-          $ref: '#/components/schemas/Image'
-      required:
-      - id
-      - image_large
-    CollectionVersion:
-      type: object
-      description: Details about a version of a collection.
-      properties:
-        id:
-          type: string
-          format: uuid
-        title:
-          type: string
-          nullable: true
-        subtitle:
-          type: string
-          nullable: true
-        multiple_select_mode:
-          type: string
-          enum:
-          - disabled
-          - item_count
-          - max_price
-          description: Controls how many items recipients can select from the collection.
-        multiple_select_count:
-          type: integer
-          nullable: true
-          description: When multiple_select_mode is item_count, the number of items recipients may choose.
-        multiple_select_price:
-          type: integer
-          nullable: true
-          description: When multiple_select_mode is max_price, the spending limit in cents.
-        international_shipping_tier:
-          type: string
-          description: Shipping tier applied to the collection (e.g. standard, full).
-        international_gift_cards_enabled:
-          type: boolean
-          description: Whether international gift cards are available when swapping products.
-        header_image:
-          $ref: '#/components/schemas/Image'
-          nullable: true
-        collection_categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/CollectionCategory'
-          description: Categories and their products included in this version, ordered by position.
-          nullable: true
-      required:
-      - id
-      - multiple_select_mode
-      - international_shipping_tier
-      - international_gift_cards_enabled
-    Product:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        brand:
-          $ref: '#/components/schemas/Brand'
-        subtitle:
-          type: string
-          nullable: true
-          description: A description of this product.
-        subtitle_short:
-          type: string
-          nullable: true
-          description: An optional one-line description of this product. When provided, it overrides the subtitle when displayed in areas with less space. Not always provided.
-        recipient_description:
-          type: string
-          nullable: true
-          description: An optional description of this product with custom verbiage for recipients. When provided, it overrides the subtitle for the product when displayed to the recipient. Falls back to the subtitle.
-        variants_label:
-          type: string
-          nullable: true
-          description: The label for the variants of this product, e.g. "Size" or "Color".
-        variants_num_selectable:
-          type: integer
-          nullable: true
-          description: The number of variants that can be selected for this product. For example, if this is a t-shirt, then this would be 1, since you can only select one size. If this were a build-a-box of chocolates, this could be 3 if you could select 3 flavor variants.
-        variants:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductVariant'
-        variant_groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductVariantGroup'
-          description: For products that have multiple types of variants, such as both Color and Size, this array contains each group and the options for each group. All variant group permutations have a variant generated for them, constructed from the options in the order of the groups, separated by ` / `, e.g. `Medium / Black` when the groups are Size and Color.
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductImage'
-        price:
-          type: integer
-          description: The price of the product, in cents.
-        price_is_variable:
-          type: boolean
-          description: Whether the price of this product is variable. If true, then the price can be set by the sender.
-        price_min:
-          type: integer
-          nullable: true
-          description: The minimum price of the product, in cents. Only used if price_is_variable is true.
-        price_max:
-          type: integer
-          nullable: true
-          description: The maximum price of the product, in cents. Only used if price_is_variable is true.
-        restricted_states:
-          type: array
-          items:
-            type: string
-            description: The US states that this product cannot be shipped to.
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductAttribute'
-          description: An array of attributes that describe this product.
-        status:
-          type: string
-          enum:
-          - active
-          - inactive
-          description: Whether this product is active. Since the product catalog only returns active products by default, this is always `true`, except if you are a Commerce API customer using a custom catalog, and are pulling products with the `custom_catalog_show_inactive` flag.
-        updated_at:
-          type: string
-          format: date-time
-          description: The date and time this product was last updated, ISO 8601 format. This is bumped when the product, brand, product variants, product attributes, or product images are updated.
-        reserved_options:
-          type: object
-          description: For approved API partners only.
-          properties:
-            custom_price_tier:
-              type: integer
-              nullable: true
-              description: For approved API partners only. A custom price tier for this product.
-          nullable: true
-      required:
-      - id
-      - name
-      - brand
-      - variants
-      - images
-      - price
-      - price_is_variable
-      - restricted_states
-    Brand:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        logo_image:
-          $ref: '#/components/schemas/Image'
-          nullable: true
-          description: The logo image for this brand.
-        shipping_price:
-          type: integer
-          description: The price of shipping for this brand, in cents.
-        free_shipping_minimum:
-          type: integer
-          description: When set and when the product price is above this amount, shipping is free. In cents. Products in a cart for this brand can combine to reach this threshold.
-          nullable: true
-        commerce_revshare_excluded:
-          type: boolean
-          description: Whether this brand is excluded from the commerce revenue share. Only displayed on the products endpoint when using a commerce app.
-          nullable: true
-        brand_values:
-          type: array
-          items:
-            type: string
-          description: An array of brand values for this brand. Potential values are USA Made, Social Impact Driven, Sustainable, Gluten Free, Vegan, Kosher Certified, Female Founded, AAPI Founded, BIPOC Founded, Black Founded, LGBTQ+ Founded, and Hispanic Founded.
-        brand_sets:
-          type: array
-          items:
-            $ref: '#/components/schemas/BrandSet'
-          description: An array of brand sets for this brand. Only included when using the brands endpoint.
-          nullable: true
-      required:
-      - id
-      - name
-    Collection:
-      type: object
-      description: A collection is a curated group of products that recipients can select from.
-      properties:
-        id:
-          type: string
-          format: uuid
-        workspace_id:
-          type: string
-          format: uuid
-          description: Workspace that owns this collection.
-        title:
-          type: string
-          nullable: true
-        is_published:
-          type: boolean
-          description: Indicates whether the collection currently has a published version.
-        published_price:
-          type: integer
-          nullable: true
-          description: Price for the published collection in cents, including shipping.
-        product:
-          $ref: '#/components/schemas/Product'
-          description: The product that represents the collection when published. Null for unpublished collections. To send this collection, send the product ID in the cart
-          nullable: true
-        published_version:
-          $ref: '#/components/schemas/CollectionVersion'
-          description: Details about the published version of this collection. Null for unpublished collections.
-          nullable: true
-      required:
-      - id
-      - workspace_id
-      - is_published
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
-      required:
-      - url
     CollectionCategory:
       type: object
       description: A category of products within a collection version. All products are assigned a category.
@@ -502,10 +236,10 @@ components:
           type: string
         image_large:
           $ref: '#/components/schemas/Image'
-          nullable: true
         subtitle:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       required:
       - id
       - name
@@ -520,6 +254,203 @@ components:
       required:
       - id
       - image_large
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        brand:
+          $ref: '#/components/schemas/Brand'
+        subtitle:
+          type:
+          - string
+          - 'null'
+          description: A description of this product.
+        subtitle_short:
+          type:
+          - string
+          - 'null'
+          description: An optional one-line description of this product. When provided, it overrides the subtitle when displayed in areas with less space. Not always provided.
+        recipient_description:
+          type:
+          - string
+          - 'null'
+          description: An optional description of this product with custom verbiage for recipients. When provided, it overrides the subtitle for the product when displayed to the recipient. Falls back to the subtitle.
+        variants_label:
+          type:
+          - string
+          - 'null'
+          description: The label for the variants of this product, e.g. "Size" or "Color".
+        variants_num_selectable:
+          type:
+          - integer
+          - 'null'
+          description: The number of variants that can be selected for this product. For example, if this is a t-shirt, then this would be 1, since you can only select one size. If this were a build-a-box of chocolates, this could be 3 if you could select 3 flavor variants.
+        variants:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariant'
+        variant_groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariantGroup'
+          description: For products that have multiple types of variants, such as both Color and Size, this array contains each group and the options for each group. All variant group permutations have a variant generated for them, constructed from the options in the order of the groups, separated by ` / `, e.g. `Medium / Black` when the groups are Size and Color.
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductImage'
+        price:
+          type: integer
+          description: The price of the product, in cents.
+        price_is_variable:
+          type: boolean
+          description: Whether the price of this product is variable. If true, then the price can be set by the sender.
+        price_min:
+          type:
+          - integer
+          - 'null'
+          description: The minimum price of the product, in cents. Only used if price_is_variable is true.
+        price_max:
+          type:
+          - integer
+          - 'null'
+          description: The maximum price of the product, in cents. Only used if price_is_variable is true.
+        restricted_states:
+          type: array
+          items:
+            type: string
+            description: The US states that this product cannot be shipped to.
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductAttribute'
+          description: An array of attributes that describe this product.
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          description: Whether this product is active. Since the product catalog only returns active products by default, this is always `true`, except if you are a Commerce API customer using a custom catalog, and are pulling products with the `custom_catalog_show_inactive` flag.
+        updated_at:
+          type: string
+          format: date-time
+          description: The date and time this product was last updated, ISO 8601 format. This is bumped when the product, brand, product variants, product attributes, or product images are updated.
+        reserved_options:
+          type:
+          - object
+          - 'null'
+          description: For approved API partners only.
+          properties:
+            custom_price_tier:
+              type:
+              - integer
+              - 'null'
+              description: For approved API partners only. A custom price tier for this product.
+      required:
+      - id
+      - name
+      - brand
+      - variants
+      - images
+      - price
+      - price_is_variable
+      - restricted_states
+    ProductVariantGroupOption:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the variant group option, e.g. "Small" for the "Size" variant group.
+        subtitle:
+          type:
+          - string
+          - 'null'
+        color:
+          type:
+          - string
+          - 'null'
+          description: The hex color code for this option, e.g. "#000000", if any.
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - name
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+    ProductAttribute:
+      type: object
+      properties:
+        label:
+          type: string
+          description: The label for this attribute, e.g. "Materials".
+        content:
+          type: string
+          description: The content for this attribute, e.g. "80% cotton, 20% elastane". This can be text or sanitized HTML (you might choose to sanitize the HTML as well). Allowed elements are a (href allowed), div, img (src, width height, alt allowed), span, p, br, strong, b, em, i, ol, ul, li, and hr.
+      required:
+      - label
+      - content
+    CollectionVersion:
+      type: object
+      description: Details about a version of a collection.
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type:
+          - string
+          - 'null'
+        subtitle:
+          type:
+          - string
+          - 'null'
+        multiple_select_mode:
+          type: string
+          enum:
+          - disabled
+          - item_count
+          - max_price
+          description: Controls how many items recipients can select from the collection.
+        multiple_select_count:
+          type:
+          - integer
+          - 'null'
+          description: When multiple_select_mode is item_count, the number of items recipients may choose.
+        multiple_select_price:
+          type:
+          - integer
+          - 'null'
+          description: When multiple_select_mode is max_price, the spending limit in cents.
+        international_shipping_tier:
+          type: string
+          description: Shipping tier applied to the collection (e.g. standard, full).
+        international_gift_cards_enabled:
+          type: boolean
+          description: Whether international gift cards are available when swapping products.
+        header_image:
+          $ref: '#/components/schemas/Image'
+        collection_categories:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CollectionCategory'
+          description: Categories and their products included in this version, ordered by position.
+      required:
+      - id
+      - multiple_select_mode
+      - international_shipping_tier
+      - international_gift_cards_enabled
     BrandSet:
       type: object
       description: A brand set represents a collection of products from a brand.
@@ -547,7 +478,7 @@ components:
       required:
       - id
       - name
-    ProductVariantGroupOption:
+    ProductVariantGroup:
       type: object
       properties:
         id:
@@ -555,20 +486,76 @@ components:
           format: uuid
         name:
           type: string
-          description: The name of the variant group option, e.g. "Small" for the "Size" variant group.
-        subtitle:
-          type: string
-          nullable: true
-        color:
-          type: string
-          nullable: true
-          description: The hex color code for this option, e.g. "#000000", if any.
-        image_large:
-          $ref: '#/components/schemas/Image'
-          nullable: true
+          description: The name of the variant group, e.g. "Size" or "Color".
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariantGroupOption'
       required:
       - id
       - name
+    Brand:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        logo_image:
+          $ref: '#/components/schemas/Image'
+          description: The logo image for this brand.
+        shipping_price:
+          type: integer
+          description: The price of shipping for this brand, in cents.
+        free_shipping_minimum:
+          type:
+          - integer
+          - 'null'
+          description: When set and when the product price is above this amount, shipping is free. In cents. Products in a cart for this brand can combine to reach this threshold.
+        commerce_revshare_excluded:
+          type:
+          - boolean
+          - 'null'
+          description: Whether this brand is excluded from the commerce revenue share. Only displayed on the products endpoint when using a commerce app.
+        brand_values:
+          type: array
+          items:
+            type: string
+          description: An array of brand values for this brand. Potential values are USA Made, Social Impact Driven, Sustainable, Gluten Free, Vegan, Kosher Certified, Female Founded, AAPI Founded, BIPOC Founded, Black Founded, LGBTQ+ Founded, and Hispanic Founded.
+        brand_sets:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/BrandSet'
+          description: An array of brand sets for this brand. Only included when using the brands endpoint.
+      required:
+      - id
+      - name
+    ProductImage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - image_large
+    CollectionProduct:
+      type: object
+      description: Represents a product that can be selected within a collection.
+      properties:
+        id:
+          type: string
+          format: uuid
+        product:
+          $ref: '#/components/schemas/Product'
+      required:
+      - id
+      - product
     BrandSetCategory:
       type: object
       properties:
@@ -585,24 +572,57 @@ components:
       required:
       - id
       - name
-    ListMeta:
+    Error:
       type: object
       properties:
-        total_count:
-          type: integer
-          description: The total number of items in this list.
-    ProductAttribute:
-      type: object
-      properties:
-        label:
+        error:
           type: string
-          description: The label for this attribute, e.g. "Materials".
-        content:
-          type: string
-          description: The content for this attribute, e.g. "80% cotton, 20% elastane". This can be text or sanitized HTML (you might choose to sanitize the HTML as well). Allowed elements are a (href allowed), div, img (src, width height, alt allowed), span, p, br, strong, b, em, i, ol, ul, li, and hr.
       required:
-      - label
-      - content
+      - error
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+      required:
+      - url
+    Collection:
+      type: object
+      description: A collection is a curated group of products that recipients can select from.
+      properties:
+        id:
+          type: string
+          format: uuid
+        workspace_id:
+          type: string
+          format: uuid
+          description: Workspace that owns this collection.
+        title:
+          type:
+          - string
+          - 'null'
+        is_published:
+          type: boolean
+          description: Indicates whether the collection currently has a published version.
+        published_price:
+          type:
+          - integer
+          - 'null'
+          description: Price for the published collection in cents, including shipping.
+        product:
+          $ref: '#/components/schemas/Product'
+          description: The product that represents the collection when published. Null for unpublished collections. To send this collection, send the product ID in the cart
+        published_version:
+          $ref: '#/components/schemas/CollectionVersion'
+          description: Details about the published version of this collection. Null for unpublished collections.
+      required:
+      - id
+      - workspace_id
+      - is_published
   securitySchemes:
     bearer:
       type: http

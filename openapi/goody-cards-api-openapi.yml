@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Goody Brands Cards API
+  title: Goody Cards API
   version: 1.0.0
   contact:
     name: Goody Support
@@ -86,6 +86,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: getV1Cards
+      x-operation-id-source: derived
 components:
   schemas:
     Card:
@@ -110,13 +112,6 @@ components:
       - image
       - image_thumb
       - occasions
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error
     Image:
       type: object
       properties:
@@ -134,6 +129,13 @@ components:
         total_count:
           type: integer
           description: The total number of items in this list.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
   securitySchemes:
     bearer:
       type: http

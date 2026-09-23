@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Goody Brands Me API
+  title: Goody Me API
   version: 1.0.0
   contact:
     name: Goody Support
@@ -33,8 +33,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: getV1Me
+      x-operation-id-source: derived
 components:
   schemas:
+    Me:
+      type: object
+      properties:
+        email:
+          type:
+          - string
+          - 'null'
+        public_app_id:
+          type:
+          - string
+          - 'null'
     Error:
       type: object
       properties:
@@ -42,15 +55,6 @@ components:
           type: string
       required:
       - error
-    Me:
-      type: object
-      properties:
-        email:
-          type: string
-          nullable: true
-        public_app_id:
-          type: string
-          nullable: true
   securitySchemes:
     bearer:
       type: http

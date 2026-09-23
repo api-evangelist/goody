@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Goody Brands Payment Methods API
+  title: Goody Payment Methods API
   version: 1.0.0
   contact:
     name: Goody Support
@@ -56,15 +56,16 @@ paths:
                     error: Unauthorized
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: getV1PaymentMethods
+      x-operation-id-source: derived
 components:
   schemas:
-    Error:
+    ListMeta:
       type: object
       properties:
-        error:
-          type: string
-      required:
-      - error
+        total_count:
+          type: integer
+          description: The total number of items in this list.
     PaymentMethod:
       type: object
       properties:
@@ -73,22 +74,25 @@ components:
         name:
           type: string
         cardholder_name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: For payment methods with a cardholder name, returns the name on the card.
         balance:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
           description: For payment methods with a balance, returns the available balance on the payment method.
       required:
       - id
       - name
-    ListMeta:
+    Error:
       type: object
       properties:
-        total_count:
-          type: integer
-          description: The total number of items in this list.
+        error:
+          type: string
+      required:
+      - error
   securitySchemes:
     bearer:
       type: http

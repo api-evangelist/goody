@@ -1,18 +1,7 @@
 {
   "provider": "goody",
   "sources": [
-    "goody-brands-api-openapi.yml",
-    "goody-cards-api-openapi.yml",
-    "goody-collections-api-openapi.yml",
-    "goody-commerce-user-payment-methods-api-openapi.yml",
-    "goody-me-api-openapi.yml",
-    "goody-order-activities-api-openapi.yml",
-    "goody-order-batches-api-openapi.yml",
-    "goody-orders-api-openapi.yml",
-    "goody-payment-methods-api-openapi.yml",
-    "goody-products-api-openapi.yml",
-    "goody-webhooks-api-openapi.yml",
-    "goody-workspaces-api-openapi.yml"
+    "_original/goody-api-openapi-original.json"
   ],
   "outputs": [
     "goody-brands-api-openapi.yml",
@@ -31,6 +20,35 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "goody-api-openapi-original.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "goody-api-openapi-original.json: declared missing tag: Brands",
+    "goody-api-openapi-original.json: declared missing tag: Cards",
+    "goody-api-openapi-original.json: declared missing tag: Collections",
+    "goody-api-openapi-original.json: declared missing tag: Commerce User Payment Methods",
+    "goody-api-openapi-original.json: declared missing tag: Me",
+    "goody-api-openapi-original.json: declared missing tag: Order Activities",
+    "goody-api-openapi-original.json: declared missing tag: Order Batches",
+    "goody-api-openapi-original.json: declared missing tag: Orders",
+    "goody-api-openapi-original.json: declared missing tag: Payment Methods",
+    "goody-api-openapi-original.json: declared missing tag: Products",
+    "goody-api-openapi-original.json: declared missing tag: Webhooks",
+    "goody-api-openapi-original.json: declared missing tag: Workspaces",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "goody-brands-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "goody-cards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "goody-collections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "goody-commerce-user-payment-methods-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "goody-me-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "goody-order-activities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "goody-order-batches-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "goody-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "goody-payment-methods-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "goody-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "goody-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "goody-workspaces-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

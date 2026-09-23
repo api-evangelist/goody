@@ -1,0 +1,1 @@
+{"resource":"https://api.ongoody.com/mcp/v1","authorization_servers":["https://api.ongoody.com"],"bearer_methods_supported":["header"],"scopes_supported":["mcp.read","mcp.write","mcp.gifts"]}
