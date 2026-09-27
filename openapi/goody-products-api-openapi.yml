@@ -311,34 +311,17 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ProductVariant:
+    Image:
       type: object
       properties:
-        id:
+        url:
           type: string
-          format: uuid
-        name:
-          type: string
-        image_large:
-          $ref: '#/components/schemas/Image'
-        subtitle:
-          type:
-          - string
-          - 'null'
+        width:
+          type: integer
+        height:
+          type: integer
       required:
-      - id
-      - name
-    BrandSetImage:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        image_large:
-          $ref: '#/components/schemas/Image'
-      required:
-      - id
-      - image_large
+      - url
     Product:
       type: object
       properties:
@@ -443,6 +426,64 @@ components:
       - price
       - price_is_variable
       - restricted_states
+    ProductImage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - image_large
+    ProductAttribute:
+      type: object
+      properties:
+        label:
+          type: string
+          description: The label for this attribute, e.g. "Materials".
+        content:
+          type: string
+          description: The content for this attribute, e.g. "80% cotton, 20% elastane". This can be text or sanitized HTML (you might choose to sanitize the HTML as well). Allowed elements are a (href allowed), div, img (src, width height, alt allowed), span, p, br, strong, b, em, i, ol, ul, li, and hr.
+      required:
+      - label
+      - content
+    BrandSetImage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - image_large
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+    ProductVariant:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        image_large:
+          $ref: '#/components/schemas/Image'
+        subtitle:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - name
     ProductVariantGroupOption:
       type: object
       properties:
@@ -466,24 +507,38 @@ components:
       required:
       - id
       - name
-    ListMeta:
+    ProductVariantGroup:
       type: object
       properties:
-        total_count:
-          type: integer
-          description: The total number of items in this list.
-    ProductAttribute:
-      type: object
-      properties:
-        label:
+        id:
           type: string
-          description: The label for this attribute, e.g. "Materials".
-        content:
+          format: uuid
+        name:
           type: string
-          description: The content for this attribute, e.g. "80% cotton, 20% elastane". This can be text or sanitized HTML (you might choose to sanitize the HTML as well). Allowed elements are a (href allowed), div, img (src, width height, alt allowed), span, p, br, strong, b, em, i, ol, ul, li, and hr.
+          description: The name of the variant group, e.g. "Size" or "Color".
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariantGroupOption'
       required:
-      - label
-      - content
+      - id
+      - name
+    BrandSetCategory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        subcategories:
+          type: array
+          items:
+            type: string
+          description: An array of subcategory names within this category.
+      required:
+      - id
+      - name
     BrandSet:
       type: object
       description: A brand set represents a collection of products from a brand.
@@ -508,22 +563,6 @@ components:
           items:
             $ref: '#/components/schemas/BrandSetCategory'
           description: An array of categories this brand set belongs to.
-      required:
-      - id
-      - name
-    ProductVariantGroup:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the variant group, e.g. "Size" or "Color".
-        options:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductVariantGroupOption'
       required:
       - id
       - name
@@ -566,51 +605,12 @@ components:
       required:
       - id
       - name
-    ProductImage:
+    ListMeta:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        image_large:
-          $ref: '#/components/schemas/Image'
-      required:
-      - id
-      - image_large
-    BrandSetCategory:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        subcategories:
-          type: array
-          items:
-            type: string
-          description: An array of subcategory names within this category.
-      required:
-      - id
-      - name
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-        width:
+        total_count:
           type: integer
-        height:
-          type: integer
-      required:
-      - url
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error
+          description: The total number of items in this list.
   securitySchemes:
     bearer:
       type: http

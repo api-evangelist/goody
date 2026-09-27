@@ -90,6 +90,24 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+      required:
+      - url
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
     Card:
       type: object
       properties:
@@ -112,30 +130,12 @@ components:
       - image
       - image_thumb
       - occasions
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
-      required:
-      - url
     ListMeta:
       type: object
       properties:
         total_count:
           type: integer
           description: The total number of items in this list.
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error
   securitySchemes:
     bearer:
       type: http

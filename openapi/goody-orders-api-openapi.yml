@@ -719,109 +719,6 @@ components:
       - amounts
       - sender
       - reference_id
-    ListMeta:
-      type: object
-      properties:
-        total_count:
-          type: integer
-          description: The total number of items in this list.
-    Sender:
-      type: object
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-      required:
-      - first_name
-      - last_name
-      - email
-    Cart:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CartItem'
-    OrderStatus:
-      type: string
-      enum:
-      - created
-      - notified
-      - opened
-      - accepted
-      - pending_payment
-      - paid
-      - ordered
-      - shipped
-      - delivered
-      - failed
-      - canceled
-    CartSelection:
-      type: object
-      description: Product variant selections for a specific gift cart product.
-      properties:
-        id:
-          type: string
-          format: uuid
-        cart_item_id:
-          type: string
-          format: uuid
-          description: The cart item ID this selection belongs to. Match this with cart.items[].id.
-        quantity_index:
-          type: integer
-          description: The index of this selection within multiple quantities of the same product. If a given cart product has multiple quantities, this will be 0 for the first unit, 1 for the second unit, etc.
-        variants:
-          type: array
-          items:
-            type: string
-          description: The selected variants for this product selection and quantity index.
-      required:
-      - id
-      - cart_item_id
-      - quantity_index
-      - variants
-    CartItem:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        product:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-            name:
-              type: string
-            brand:
-              type: object
-              description: The brand that this product is from.
-              properties:
-                id:
-                  type: string
-                  format: uuid
-                name:
-                  type: string
-              required:
-              - id
-              - name
-          required:
-          - id
-          - name
-          - brand
-        quantity:
-          type: integer
-      required:
-      - id
-      - product
-      - quantity
     Shipment:
       type: object
       properties:
@@ -879,6 +776,40 @@ components:
       - id
       - status
       - brand_name
+    Cart:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+    CartSelection:
+      type: object
+      description: Product variant selections for a specific gift cart product.
+      properties:
+        id:
+          type: string
+          format: uuid
+        cart_item_id:
+          type: string
+          format: uuid
+          description: The cart item ID this selection belongs to. Match this with cart.items[].id.
+        quantity_index:
+          type: integer
+          description: The index of this selection within multiple quantities of the same product. If a given cart product has multiple quantities, this will be 0 for the first unit, 1 for the second unit, etc.
+        variants:
+          type: array
+          items:
+            type: string
+          description: The selected variants for this product selection and quantity index.
+      required:
+      - id
+      - cart_item_id
+      - quantity_index
+      - variants
     Error:
       type: object
       properties:
@@ -886,6 +817,75 @@ components:
           type: string
       required:
       - error
+    Sender:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+      required:
+      - first_name
+      - last_name
+      - email
+    CartItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        product:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            brand:
+              type: object
+              description: The brand that this product is from.
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+              required:
+              - id
+              - name
+          required:
+          - id
+          - name
+          - brand
+        quantity:
+          type: integer
+      required:
+      - id
+      - product
+      - quantity
+    OrderStatus:
+      type: string
+      enum:
+      - created
+      - notified
+      - opened
+      - accepted
+      - pending_payment
+      - paid
+      - ordered
+      - shipped
+      - delivered
+      - failed
+      - canceled
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
   securitySchemes:
     bearer:
       type: http
