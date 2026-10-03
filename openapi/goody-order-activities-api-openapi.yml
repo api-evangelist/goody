@@ -184,6 +184,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Cart:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
     Order:
       type: object
       description: An individual order contains the gift link to be sent to the recipient (if applicable) and other information about the order.
@@ -405,73 +415,25 @@ components:
       - amounts
       - sender
       - reference_id
-    Shipment:
+    ListMeta:
       type: object
       properties:
-        id:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+    Sender:
+      type: object
+      properties:
+        first_name:
           type: string
-          format: uuid
-        status:
+        last_name:
           type: string
-          enum:
-          - pending
-          - tracking
-          - shipped
-          - delivered
-          - delivered_override
-          - failed
-          - failed_unset_tracking
-          - failed_with_reship
-        brand_name:
+        email:
           type: string
-          description: The name of the brand that this shipment is from.
-        tracking_carrier:
-          type:
-          - string
-          - 'null'
-          description: The carrier for this shipment, e.g. UPS.
-        tracking_number:
-          type:
-          - string
-          - 'null'
-          description: Only for approved distribution partners.
-        tracking_url:
-          type:
-          - string
-          - 'null'
-          description: Only for approved distribution partners.
-        shipped_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: ISO 8601
-        delivered_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: ISO 8601
-        delivery_eta:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: The estimated delivery time of this shipment.
       required:
-      - id
-      - status
-      - brand_name
-    Cart:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CartItem'
+      - first_name
+      - last_name
+      - email
     CartSelection:
       type: object
       description: Product variant selections for a specific gift cart product.
@@ -496,19 +458,19 @@ components:
       - cart_item_id
       - quantity_index
       - variants
-    Sender:
-      type: object
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-      required:
-      - first_name
-      - last_name
-      - email
+    OrderActivityStatus:
+      type: string
+      enum:
+      - created
+      - opened
+      - pending_payment
+      - paid
+      - ordered
+      - shipped
+      - delivered
+      - failed
+      - pending_user_approval
+      description: The status of the order activity event. Mapped from internal statuses using the same logic as order status.
     CartItem:
       type: object
       properties:
@@ -567,19 +529,63 @@ components:
       - order_status
       - created_at
       - order
-    OrderActivityStatus:
-      type: string
-      enum:
-      - created
-      - opened
-      - pending_payment
-      - paid
-      - ordered
-      - shipped
-      - delivered
-      - failed
-      - pending_user_approval
-      description: The status of the order activity event. Mapped from internal statuses using the same logic as order status.
+    Shipment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - pending
+          - tracking
+          - shipped
+          - delivered
+          - delivered_override
+          - failed
+          - failed_unset_tracking
+          - failed_with_reship
+        brand_name:
+          type: string
+          description: The name of the brand that this shipment is from.
+        tracking_carrier:
+          type:
+          - string
+          - 'null'
+          description: The carrier for this shipment, e.g. UPS.
+        tracking_number:
+          type:
+          - string
+          - 'null'
+          description: Only for approved distribution partners.
+        tracking_url:
+          type:
+          - string
+          - 'null'
+          description: Only for approved distribution partners.
+        shipped_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: ISO 8601
+        delivered_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: ISO 8601
+        delivery_eta:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The estimated delivery time of this shipment.
+      required:
+      - id
+      - status
+      - brand_name
     OrderStatus:
       type: string
       enum:
@@ -594,12 +600,6 @@ components:
       - delivered
       - failed
       - canceled
-    ListMeta:
-      type: object
-      properties:
-        total_count:
-          type: integer
-          description: The total number of items in this list.
   securitySchemes:
     bearer:
       type: http

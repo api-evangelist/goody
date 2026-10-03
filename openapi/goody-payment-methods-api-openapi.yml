@@ -60,13 +60,12 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Error:
+    ListMeta:
       type: object
       properties:
-        error:
-          type: string
-      required:
-      - error
+        total_count:
+          type: integer
+          description: The total number of items in this list.
     PaymentMethod:
       type: object
       properties:
@@ -87,12 +86,13 @@ components:
       required:
       - id
       - name
-    ListMeta:
+    Error:
       type: object
       properties:
-        total_count:
-          type: integer
-          description: The total number of items in this list.
+        error:
+          type: string
+      required:
+      - error
   securitySchemes:
     bearer:
       type: http

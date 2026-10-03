@@ -48,6 +48,12 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
     Workspace:
       type: object
       properties:
@@ -59,12 +65,6 @@ components:
       required:
       - id
       - name
-    ListMeta:
-      type: object
-      properties:
-        total_count:
-          type: integer
-          description: The total number of items in this list.
   securitySchemes:
     bearer:
       type: http
