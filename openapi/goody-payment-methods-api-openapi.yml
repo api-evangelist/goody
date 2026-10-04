@@ -60,6 +60,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
     ListMeta:
       type: object
       properties:
@@ -86,13 +93,6 @@ components:
       required:
       - id
       - name
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error
   securitySchemes:
     bearer:
       type: http

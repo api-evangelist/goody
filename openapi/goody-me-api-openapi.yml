@@ -37,6 +37,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
     Me:
       type: object
       properties:
@@ -48,13 +55,6 @@ components:
           type:
           - string
           - 'null'
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error
   securitySchemes:
     bearer:
       type: http

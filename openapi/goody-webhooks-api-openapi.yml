@@ -103,6 +103,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
     WebhookInput:
       type: object
       description: Input parameters for a webhook endpoint.
@@ -117,13 +124,6 @@ components:
           items:
             type: string
           description: Filter the events you want to get webhooks for. Refer to the Webhooks list for the event names.
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error
   securitySchemes:
     bearer:
       type: http

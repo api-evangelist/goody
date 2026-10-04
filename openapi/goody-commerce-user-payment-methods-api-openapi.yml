@@ -75,39 +75,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    CommerceUserPaymentMethod:
-      type: object
-      properties:
-        id:
-          type: string
-        card_brand:
-          type:
-          - string
-          - 'null'
-          description: Brand of the card, e.g. 'Visa' or 'Mastercard'.
-        card_last_4:
-          type:
-          - string
-          - 'null'
-          description: Last 4 digits of the card number.
-        card_exp_month:
-          type:
-          - integer
-          - 'null'
-        card_exp_year:
-          type:
-          - integer
-          - 'null'
-        cardholder_name:
-          type:
-          - string
-          - 'null'
-        created_at:
-          type: string
-          format: date-time
-          description: Date and time the payment method was created, ISO 8601 format.
-      required:
-      - id
     CommerceUserPaymentMethodInput:
       type: object
       properties:
@@ -160,6 +127,39 @@ components:
           type: string
       required:
       - error
+    CommerceUserPaymentMethod:
+      type: object
+      properties:
+        id:
+          type: string
+        card_brand:
+          type:
+          - string
+          - 'null'
+          description: Brand of the card, e.g. 'Visa' or 'Mastercard'.
+        card_last_4:
+          type:
+          - string
+          - 'null'
+          description: Last 4 digits of the card number.
+        card_exp_month:
+          type:
+          - integer
+          - 'null'
+        card_exp_year:
+          type:
+          - integer
+          - 'null'
+        cardholder_name:
+          type:
+          - string
+          - 'null'
+        created_at:
+          type: string
+          format: date-time
+          description: Date and time the payment method was created, ISO 8601 format.
+      required:
+      - id
   securitySchemes:
     bearer:
       type: http

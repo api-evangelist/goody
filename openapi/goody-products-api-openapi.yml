@@ -311,69 +311,7 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    BrandSetImage:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        image_large:
-          $ref: '#/components/schemas/Image'
-      required:
-      - id
-      - image_large
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
-      required:
-      - url
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error
-    ListMeta:
-      type: object
-      properties:
-        total_count:
-          type: integer
-          description: The total number of items in this list.
-    BrandSet:
-      type: object
-      description: A brand set represents a collection of products from a brand.
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/BrandSetImage'
-          description: An array of images for this brand set.
-        products:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-          description: An array of products in this brand set.
-        categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/BrandSetCategory'
-          description: An array of categories this brand set belongs to.
-      required:
-      - id
-      - name
-    ProductVariantGroupOption:
+    ProductVariantGroup:
       type: object
       properties:
         id:
@@ -381,18 +319,11 @@ components:
           format: uuid
         name:
           type: string
-          description: The name of the variant group option, e.g. "Small" for the "Size" variant group.
-        subtitle:
-          type:
-          - string
-          - 'null'
-        color:
-          type:
-          - string
-          - 'null'
-          description: The hex color code for this option, e.g. "#000000", if any.
-        image_large:
-          $ref: '#/components/schemas/Image'
+          description: The name of the variant group, e.g. "Size" or "Color".
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariantGroupOption'
       required:
       - id
       - name
@@ -408,6 +339,39 @@ components:
       required:
       - label
       - content
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+      required:
+      - url
+    BrandSetCategory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        subcategories:
+          type: array
+          items:
+            type: string
+          description: An array of subcategory names within this category.
+      required:
+      - id
+      - name
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
     Product:
       type: object
       properties:
@@ -551,38 +515,13 @@ components:
       required:
       - id
       - name
-    BrandSetCategory:
+    Error:
       type: object
       properties:
-        id:
+        error:
           type: string
-          format: uuid
-        name:
-          type: string
-        subcategories:
-          type: array
-          items:
-            type: string
-          description: An array of subcategory names within this category.
       required:
-      - id
-      - name
-    ProductVariantGroup:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the variant group, e.g. "Size" or "Color".
-        options:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductVariantGroupOption'
-      required:
-      - id
-      - name
+      - error
     ProductImage:
       type: object
       properties:
@@ -608,6 +547,67 @@ components:
           type:
           - string
           - 'null'
+      required:
+      - id
+      - name
+    BrandSet:
+      type: object
+      description: A brand set represents a collection of products from a brand.
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSetImage'
+          description: An array of images for this brand set.
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+          description: An array of products in this brand set.
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSetCategory'
+          description: An array of categories this brand set belongs to.
+      required:
+      - id
+      - name
+    BrandSetImage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - image_large
+    ProductVariantGroupOption:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the variant group option, e.g. "Small" for the "Size" variant group.
+        subtitle:
+          type:
+          - string
+          - 'null'
+        color:
+          type:
+          - string
+          - 'null'
+          description: The hex color code for this option, e.g. "#000000", if any.
+        image_large:
+          $ref: '#/components/schemas/Image'
       required:
       - id
       - name

@@ -201,30 +201,7 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    BrandSetImage:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        image_large:
-          $ref: '#/components/schemas/Image'
-      required:
-      - id
-      - image_large
-    CollectionProduct:
-      type: object
-      description: Represents a product that can be selected within a collection.
-      properties:
-        id:
-          type: string
-          format: uuid
-        product:
-          $ref: '#/components/schemas/Product'
-      required:
-      - id
-      - product
-    ProductVariant:
+    ProductVariantGroup:
       type: object
       properties:
         id:
@@ -232,12 +209,11 @@ components:
           format: uuid
         name:
           type: string
-        image_large:
-          $ref: '#/components/schemas/Image'
-        subtitle:
-          type:
-          - string
-          - 'null'
+          description: The name of the variant group, e.g. "Size" or "Color".
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariantGroupOption'
       required:
       - id
       - name
@@ -254,133 +230,33 @@ components:
         total_count:
           type: integer
           description: The total number of items in this list.
-    BrandSet:
-      type: object
-      description: A brand set represents a collection of products from a brand.
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/BrandSetImage'
-          description: An array of images for this brand set.
-        products:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-          description: An array of products in this brand set.
-        categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/BrandSetCategory'
-          description: An array of categories this brand set belongs to.
-      required:
-      - id
-      - name
-    CollectionVersion:
-      type: object
-      description: Details about a version of a collection.
-      properties:
-        id:
-          type: string
-          format: uuid
-        title:
-          type:
-          - string
-          - 'null'
-        subtitle:
-          type:
-          - string
-          - 'null'
-        multiple_select_mode:
-          type: string
-          enum:
-          - disabled
-          - item_count
-          - max_price
-          description: Controls how many items recipients can select from the collection.
-        multiple_select_count:
-          type:
-          - integer
-          - 'null'
-          description: When multiple_select_mode is item_count, the number of items recipients may choose.
-        multiple_select_price:
-          type:
-          - integer
-          - 'null'
-          description: When multiple_select_mode is max_price, the spending limit in cents.
-        international_shipping_tier:
-          type: string
-          description: Shipping tier applied to the collection (e.g. standard, full).
-        international_gift_cards_enabled:
-          type: boolean
-          description: Whether international gift cards are available when swapping products.
-        header_image:
-          $ref: '#/components/schemas/Image'
-        collection_categories:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CollectionCategory'
-          description: Categories and their products included in this version, ordered by position.
-      required:
-      - id
-      - multiple_select_mode
-      - international_shipping_tier
-      - international_gift_cards_enabled
-    ProductVariantGroupOption:
+    Image:
       type: object
       properties:
-        id:
+        url:
           type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the variant group option, e.g. "Small" for the "Size" variant group.
-        subtitle:
-          type:
-          - string
-          - 'null'
-        color:
-          type:
-          - string
-          - 'null'
-          description: The hex color code for this option, e.g. "#000000", if any.
-        image_large:
-          $ref: '#/components/schemas/Image'
-      required:
-      - id
-      - name
-    CollectionCategory:
-      type: object
-      description: A category of products within a collection version. All products are assigned a category.
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        is_featured:
-          type: boolean
-          description: Whether this category is considered the "featured" category.
-        position:
+        width:
           type: integer
-        collection_products:
+        height:
+          type: integer
+      required:
+      - url
+    BrandSetCategory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        subcategories:
           type: array
           items:
-            $ref: '#/components/schemas/CollectionProduct'
-          description: Products assigned to this category in their display order.
+            type: string
+          description: An array of subcategory names within this category.
       required:
       - id
       - name
-      - is_featured
-      - position
-      - collection_products
     Product:
       type: object
       properties:
@@ -485,17 +361,6 @@ components:
       - price
       - price_is_variable
       - restricted_states
-    ProductImage:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        image_large:
-          $ref: '#/components/schemas/Image'
-      required:
-      - id
-      - image_large
     Brand:
       type: object
       properties:
@@ -535,22 +400,6 @@ components:
       required:
       - id
       - name
-    BrandSetCategory:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        subcategories:
-          type: array
-          items:
-            type: string
-          description: An array of subcategory names within this category.
-      required:
-      - id
-      - name
     ProductAttribute:
       type: object
       properties:
@@ -563,7 +412,82 @@ components:
       required:
       - label
       - content
-    ProductVariantGroup:
+    CollectionVersion:
+      type: object
+      description: Details about a version of a collection.
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type:
+          - string
+          - 'null'
+        subtitle:
+          type:
+          - string
+          - 'null'
+        multiple_select_mode:
+          type: string
+          enum:
+          - disabled
+          - item_count
+          - max_price
+          description: Controls how many items recipients can select from the collection.
+        multiple_select_count:
+          type:
+          - integer
+          - 'null'
+          description: When multiple_select_mode is item_count, the number of items recipients may choose.
+        multiple_select_price:
+          type:
+          - integer
+          - 'null'
+          description: When multiple_select_mode is max_price, the spending limit in cents.
+        international_shipping_tier:
+          type: string
+          description: Shipping tier applied to the collection (e.g. standard, full).
+        international_gift_cards_enabled:
+          type: boolean
+          description: Whether international gift cards are available when swapping products.
+        header_image:
+          $ref: '#/components/schemas/Image'
+        collection_categories:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CollectionCategory'
+          description: Categories and their products included in this version, ordered by position.
+      required:
+      - id
+      - multiple_select_mode
+      - international_shipping_tier
+      - international_gift_cards_enabled
+    CollectionProduct:
+      type: object
+      description: Represents a product that can be selected within a collection.
+      properties:
+        id:
+          type: string
+          format: uuid
+        product:
+          $ref: '#/components/schemas/Product'
+      required:
+      - id
+      - product
+    ProductImage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - image_large
+    ProductVariant:
       type: object
       properties:
         id:
@@ -571,25 +495,42 @@ components:
           format: uuid
         name:
           type: string
-          description: The name of the variant group, e.g. "Size" or "Color".
-        options:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductVariantGroupOption'
+        image_large:
+          $ref: '#/components/schemas/Image'
+        subtitle:
+          type:
+          - string
+          - 'null'
       required:
       - id
       - name
-    Image:
+    BrandSet:
       type: object
+      description: A brand set represents a collection of products from a brand.
       properties:
-        url:
+        id:
           type: string
-        width:
-          type: integer
-        height:
-          type: integer
+          format: uuid
+        name:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSetImage'
+          description: An array of images for this brand set.
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+          description: An array of products in this brand set.
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSetCategory'
+          description: An array of categories this brand set belongs to.
       required:
-      - url
+      - id
+      - name
     Collection:
       type: object
       description: A collection is a curated group of products that recipients can select from.
@@ -623,6 +564,65 @@ components:
       - id
       - workspace_id
       - is_published
+    BrandSetImage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - image_large
+    ProductVariantGroupOption:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the variant group option, e.g. "Small" for the "Size" variant group.
+        subtitle:
+          type:
+          - string
+          - 'null'
+        color:
+          type:
+          - string
+          - 'null'
+          description: The hex color code for this option, e.g. "#000000", if any.
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - name
+    CollectionCategory:
+      type: object
+      description: A category of products within a collection version. All products are assigned a category.
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        is_featured:
+          type: boolean
+          description: Whether this category is considered the "featured" category.
+        position:
+          type: integer
+        collection_products:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionProduct'
+          description: Products assigned to this category in their display order.
+      required:
+      - id
+      - name
+      - is_featured
+      - position
+      - collection_products
   securitySchemes:
     bearer:
       type: http
