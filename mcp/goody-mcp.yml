@@ -118,3 +118,20 @@ deployment:
   probe: gated
   checked: '2026-08-12'
   source: catalog MCP census
+rfc9728:
+  endpoint: https://api.ongoody.com/mcp/v1
+  metadata_url: https://api.ongoody.com/.well-known/oauth-protected-resource/mcp/v1
+  discovered_via: WWW-Authenticate resource_metadata on an anonymous POST initialize
+  fetched: '2026-09-25'
+  http_status: 200
+  content_type: application/json
+  document:
+    resource: https://api.ongoody.com/mcp/v1
+    authorization_servers:
+    - https://api.ongoody.com
+    scopes_supported:
+    - mcp.read
+    - mcp.write
+    - mcp.gifts
+    bearer_methods_supported:
+    - header
