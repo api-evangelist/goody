@@ -1,0 +1,228 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/goody/integrations
+- https://composio.dev/toolkits/goody
+checked:
+- https://composio.dev/toolkits/goody
+- https://monid.ai/tools/goody
+- https://n8n.io/integrations/goody/
+- https://zapier.com/apps/goody/integrations
+summary: null
+marketplace_apps:
+- marketplace: zapier
+  channel: ipaas-listing
+  app: goody
+  url: https://zapier.com/apps/goody/integrations
+  external_url: https://www.ongoody.com/
+  partner_tier: BRONZE
+  triggers:
+  - key: order_batch_completed
+    label: Order Batch – Completed
+  - key: order_batch_created
+    label: Order Batch – Created
+  - key: order_created
+    label: Order – Created
+  - key: order_delivered
+    label: Order – Delivered
+  - key: order_gift_accepted
+    label: Order – Gift Accepted
+  - key: order_gift_opened
+    label: Order – Gift Opened
+  - key: order_shipped
+    label: Order – Shipped
+  - key: order_thank_you_note_added
+    label: Order – Thank You Note Added
+  actions:
+  - key: cancel_order
+    label: Cancel Order
+  - key: create_order_batch_gift
+    label: Create Order Batch – Gift
+  searches:
+  - key: get_orders_in_order_batch
+    label: Get Orders in Order Batch
+  - key: get_order_batch_by_id
+    label: Get Order Batch by ID
+  - key: get_order_by_id
+    label: Get Order by ID
+- marketplace: composio
+  channel: agent-gateway
+  app: goody
+  url: https://composio.dev/toolkits/goody
+  identity: action-prefix
+  actions:
+  - key: GOODY_CALCULATE_PRICE_FOR_ORDER_BATCH
+  - key: GOODY_CREATE_WEBHOOK
+  - key: GOODY_DELETE_WEBHOOK
+  - key: GOODY_LIST_ALL_ACTIVE_CARDS
+  - key: GOODY_LIST_ALL_ACTIVE_PRODUCTS
+  - key: GOODY_LIST_ALL_ORDERS
+  - key: GOODY_LIST_ALL_ORDER_BATCHES
+  - key: GOODY_LIST_ALL_PAYMENT_METHODS
+  - key: GOODY_LIST_ALL_WORKSPACES
+  - key: GOODY_LIST_COLLECTIONS
+  - key: GOODY_LIST_ORDER_ACTIVITIES
+  - key: GOODY_RETRIEVE_CURRENT_USER
+  - key: GOODY_RETRIEVE_PRODUCT
+edges:
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Salesforce
+  partner: salesforce
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/salesforce
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://www.salesforce.com/
+- partner_name: Marketo
+  partner: marketo
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/marketo
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://marketo.com/
+- partner_name: QuickBooks Online
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/quickbooks
+  direction: third-party
+  category: Accounting
+  partner_url: http://intuit.com/
+- partner_name: Mighty Networks
+  partner: mighty-networks
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/mightynetworks
+  direction: third-party
+  category: Website Builders
+  partner_url: http://www.mightynetworks.com/
+- partner_name: BambooHR
+  partner: bamboohr
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/bamboohr
+  direction: third-party
+  category: HR Talent & Recruitment
+  partner_url: https://www.bamboohr.com/lp/c-hr-saas-software/d/?utm_source=PT&utm_medium=MKP&utm_campaign=Zapi-TR-FreeTrialR-20181111-01&utm_content=blank&utm_term=blank
+- partner_name: Lob
+  partner: lob
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/lob
+  direction: third-party
+  category: Printing
+  partner_url: https://www.lob.com/
+- partner_name: Simplesat
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/simplesat
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.simplesat.io/
+- partner_name: Surefire
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/surefireapp
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://www.surefiresoftware.co.uk/
+templates:
+- title: Create or update HubSpot contacts when new orders are created in Goody
+  url: https://zapier.com/apps/goody/integrations/hubspot/1745169/create-or-update-hubspot-contacts-when-new-orders-are-created-in-goody
+  apps:
+  - goody
+  - hubspot
+- title: Create rows in Google Sheets when new Goody gifts are accepted
+  url: https://zapier.com/apps/goody/integrations/google-sheets/1527575/create-rows-in-google-sheets-when-new-goody-gifts-are-accepted
+  apps:
+  - goody
+  - google-sheets
+- title: Send Goody gifts to new contacts added to a HubSpot list
+  url: https://zapier.com/apps/goody/integrations/hubspot/1456841/send-goody-gifts-to-new-contacts-added-to-a-hubspot-list
+  apps:
+  - hubspot
+  - goody
+- title: Send Goody gifts to new contacts added to HubSpot
+  url: https://zapier.com/apps/goody/integrations/hubspot/1527527/send-goody-gifts-to-new-contacts-added-to-hubspot
+  apps:
+  - hubspot
+  - goody
+- title: Send Goody gifts for new SurveyMonkey responses
+  url: https://zapier.com/apps/goody/integrations/surveymonkey/1527544/send-goody-gifts-for-new-surveymonkey-responses
+  apps:
+  - surveymonkey
+  - goody
+- title: Send Goody gifts for new Qualtrics survey responses
+  url: https://zapier.com/apps/goody/integrations/qualtrics/1527545/send-goody-gifts-for-new-qualtrics-survey-responses
+  apps:
+  - qualtrics
+  - goody
+- title: Send Goody gifts for new Google Forms responses
+  url: https://zapier.com/apps/goody/integrations/google-forms/1527548/send-goody-gifts-for-new-google-forms-responses
+  apps:
+  - google-forms
+  - goody
+- title: Send Goody gifts for new Typeform entries
+  url: https://zapier.com/apps/goody/integrations/typeform/1527551/send-goody-gifts-for-new-typeform-entries
+  apps:
+  - typeform
+  - goody
+- title: Send Goody gifts for newly completed DocuSign envelopes
+  url: https://zapier.com/apps/docusign/integrations/goody/1527552/send-goody-gifts-for-newly-completed-docusign-envelopes
+  apps:
+  - docusign
+  - goody
+- title: Send Goody gifts to new Marketo leads
+  url: https://zapier.com/apps/goody/integrations/marketo/1527554/send-goody-gifts-to-new-marketo-leads
+  apps:
+  - marketo
+  - goody
+- title: Send Slack channel messages when new Goody gifts are accepted
+  url: https://zapier.com/apps/goody/integrations/slack/1527556/send-slack-channel-messages-when-new-goody-gifts-are-accepted
+  apps:
+  - goody
+  - slack
+- title: Send Slack channel messages for new Goody thank you notes
+  url: https://zapier.com/apps/goody/integrations/slack/1527569/send-slack-channel-messages-for-new-goody-thank-you-notes
+  apps:
+  - goody
+  - slack
+template_total: 20
