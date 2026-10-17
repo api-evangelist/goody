@@ -63,6 +63,129 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ProductVariantGroupOption:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the variant group option, e.g. "Small" for the "Size" variant group.
+        subtitle:
+          type:
+          - string
+          - 'null'
+        color:
+          type:
+          - string
+          - 'null'
+          description: The hex color code for this option, e.g. "#000000", if any.
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - name
+    BrandSetImage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - image_large
+    Brand:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        logo_image:
+          $ref: '#/components/schemas/Image'
+          description: The logo image for this brand.
+        shipping_price:
+          type: integer
+          description: The price of shipping for this brand, in cents.
+        free_shipping_minimum:
+          type:
+          - integer
+          - 'null'
+          description: When set and when the product price is above this amount, shipping is free. In cents. Products in a cart for this brand can combine to reach this threshold.
+        commerce_revshare_excluded:
+          type:
+          - boolean
+          - 'null'
+          description: Whether this brand is excluded from the commerce revenue share. Only displayed on the products endpoint when using a commerce app.
+        brand_values:
+          type: array
+          items:
+            type: string
+          description: An array of brand values for this brand. Potential values are USA Made, Social Impact Driven, Sustainable, Gluten Free, Vegan, Kosher Certified, Female Founded, AAPI Founded, BIPOC Founded, Black Founded, LGBTQ+ Founded, and Hispanic Founded.
+        brand_sets:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/BrandSet'
+          description: An array of brand sets for this brand. Only included when using the brands endpoint.
+      required:
+      - id
+      - name
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+    BrandSetCategory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        subcategories:
+          type: array
+          items:
+            type: string
+          description: An array of subcategory names within this category.
+      required:
+      - id
+      - name
+    ProductVariant:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        image_large:
+          $ref: '#/components/schemas/Image'
+        subtitle:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - name
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+      required:
+      - url
     ProductVariantGroup:
       type: object
       properties:
@@ -79,23 +202,6 @@ components:
       required:
       - id
       - name
-    ListMeta:
-      type: object
-      properties:
-        total_count:
-          type: integer
-          description: The total number of items in this list.
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
-      required:
-      - url
     ProductAttribute:
       type: object
       properties:
@@ -108,19 +214,41 @@ components:
       required:
       - label
       - content
-    BrandSetCategory:
+    ProductImage:
       type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - image_large
+    BrandSet:
+      type: object
+      description: A brand set represents a collection of products from a brand.
       properties:
         id:
           type: string
           format: uuid
         name:
           type: string
-        subcategories:
+        images:
           type: array
           items:
-            type: string
-          description: An array of subcategory names within this category.
+            $ref: '#/components/schemas/BrandSetImage'
+          description: An array of images for this brand set.
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+          description: An array of products in this brand set.
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSetCategory'
+          description: An array of categories this brand set belongs to.
       required:
       - id
       - name
@@ -228,134 +356,6 @@ components:
       - price
       - price_is_variable
       - restricted_states
-    Brand:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        logo_image:
-          $ref: '#/components/schemas/Image'
-          description: The logo image for this brand.
-        shipping_price:
-          type: integer
-          description: The price of shipping for this brand, in cents.
-        free_shipping_minimum:
-          type:
-          - integer
-          - 'null'
-          description: When set and when the product price is above this amount, shipping is free. In cents. Products in a cart for this brand can combine to reach this threshold.
-        commerce_revshare_excluded:
-          type:
-          - boolean
-          - 'null'
-          description: Whether this brand is excluded from the commerce revenue share. Only displayed on the products endpoint when using a commerce app.
-        brand_values:
-          type: array
-          items:
-            type: string
-          description: An array of brand values for this brand. Potential values are USA Made, Social Impact Driven, Sustainable, Gluten Free, Vegan, Kosher Certified, Female Founded, AAPI Founded, BIPOC Founded, Black Founded, LGBTQ+ Founded, and Hispanic Founded.
-        brand_sets:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/BrandSet'
-          description: An array of brand sets for this brand. Only included when using the brands endpoint.
-      required:
-      - id
-      - name
-    BrandSet:
-      type: object
-      description: A brand set represents a collection of products from a brand.
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/BrandSetImage'
-          description: An array of images for this brand set.
-        products:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-          description: An array of products in this brand set.
-        categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/BrandSetCategory'
-          description: An array of categories this brand set belongs to.
-      required:
-      - id
-      - name
-    ProductVariant:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        image_large:
-          $ref: '#/components/schemas/Image'
-        subtitle:
-          type:
-          - string
-          - 'null'
-      required:
-      - id
-      - name
-    ProductImage:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        image_large:
-          $ref: '#/components/schemas/Image'
-      required:
-      - id
-      - image_large
-    BrandSetImage:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        image_large:
-          $ref: '#/components/schemas/Image'
-      required:
-      - id
-      - image_large
-    ProductVariantGroupOption:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the variant group option, e.g. "Small" for the "Size" variant group.
-        subtitle:
-          type:
-          - string
-          - 'null'
-        color:
-          type:
-          - string
-          - 'null'
-          description: The hex color code for this option, e.g. "#000000", if any.
-        image_large:
-          $ref: '#/components/schemas/Image'
-      required:
-      - id
-      - name
   securitySchemes:
     bearer:
       type: http

@@ -90,6 +90,28 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Card:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image:
+          $ref: '#/components/schemas/Image'
+          description: The image URL for this card. Typically 800x1130.
+        image_thumb:
+          $ref: '#/components/schemas/Image'
+          description: The thumbnail image URL for this card. Typically 200x283.
+        occasions:
+          type: array
+          items:
+            type: string
+          description: An array of occasions that this card is relevant for.
+      required:
+      - id
+      - image
+      - image_thumb
+      - occasions
     Error:
       type: object
       properties:
@@ -114,28 +136,6 @@ components:
           type: integer
       required:
       - url
-    Card:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        image:
-          $ref: '#/components/schemas/Image'
-          description: The image URL for this card. Typically 800x1130.
-        image_thumb:
-          $ref: '#/components/schemas/Image'
-          description: The thumbnail image URL for this card. Typically 200x283.
-        occasions:
-          type: array
-          items:
-            type: string
-          description: An array of occasions that this card is relevant for.
-      required:
-      - id
-      - image
-      - image_thumb
-      - occasions
   securitySchemes:
     bearer:
       type: http

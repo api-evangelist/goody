@@ -1516,146 +1516,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    OrderBatchPriceInput:
-      type: object
-      description: Input parameters for an order batch price calculation.
-      properties:
-        recipients:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecipientInput'
-        cart:
-          $ref: '#/components/schemas/CartInput'
-        send_method:
-          $ref: '#/components/schemas/OrderBatchSendMethod'
-      required:
-      - recipients
-      - cart
-      - send_method
-    RecipientInput:
-      type: object
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-        phone:
-          type:
-          - string
-          - 'null'
-          description: Optional. Phone number for text notifications. E164 format (e.g. +15552347890), US only.
-        mailing_address:
-          $ref: '#/components/schemas/MailingAddress'
-          description: Optional mailing address to pre-populate into the order. This field is only available for approved API partners.
-      required:
-      - first_name
-    OrderBatchPrice:
-      type: object
-      description: The price for an order batch (all in cents).
-      properties:
-        cart_price_estimate:
-          $ref: '#/components/schemas/OrderBatchPriceCart'
-        total_price_estimate:
-          $ref: '#/components/schemas/OrderBatchPriceTotal'
-      required:
-      - cart_price
-      - total_price
-    CartItemInput:
-      type: object
-      properties:
-        product_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          description: ID of the product. Preferred over URL since this is always stable. Either `product_id` or `product_url` must be provided.
-        product_url:
-          type:
-          - string
-          - 'null'
-          description: URL of the product. Either `product_id` or `product_url` must be provided.
-        quantity:
-          type: integer
-        variable_price:
-          type: integer
-          description: If this product has a variable price (e.g. a flex gift or a gift card), then this must be provided. A positive integer represented in cents.
-        variants:
-          type: array
-          items:
-            type: string
-          description: An array of variant names (not IDs). When using the Direct Send send method with a product with variants, the variants must be provided. The length of the array must be equal to `variants_num_selectable` on the product, and the variants must come from the names of the `varaints` on the product. For example, for a t-shirt with `variants_num_selectable` = 1 and variants S, M, L, pass ['M']. Or, for a box of cookies with `variants_num_selectable` = 2 and variants Sugar, Caramel, Chocolate, pass ['Sugar', 'Chocolate'].
-      required:
-      - product_id
-      - quantity
-    Cart:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CartItem'
-    CartInput:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CartItemInput'
-          description: An array of cart items.
-    ListMeta:
-      type: object
-      properties:
-        total_count:
-          type: integer
-          description: The total number of items in this list.
-    OrderBatchPriceTotal:
-      type: object
-      description: Total price estimates for the entire order batch in cents. This includes all recipients.
-      properties:
-        recipients:
-          type: integer
-          description: Number of recipients in the batch
-        est_tax_calculated:
-          type:
-          - integer
-          - 'null'
-          description: 'Direct send: calculated tax estimate when addresses are provided'
-        est_total_calculated:
-          type:
-          - integer
-          - 'null'
-          description: Calculated total estimate when addresses are provided
-        est_group_total_low:
-          type:
-          - integer
-          - 'null'
-          description: Estimated minimum group total
-        est_group_total_high:
-          type:
-          - integer
-          - 'null'
-          description: Estimated maximum group total
-      required:
-      - recipients
-    OrderBatchSendStatus:
-      type: string
-      enum:
-      - pending
-      - complete
-      - failed
-      - canceled
-    OrderBatchSendMethod:
-      type: string
-      enum:
-      - email_and_link
-      - link_multiple_custom_list
-      - direct_send
-      description: The method for sending a order batch. `email_and_link` sends a gift email to the recipient (specify `email` for each recipient). `link_multiple_custom_list` generates a gift link without an automatic email. `direct_send` ships the product directly to the recipient (specify `mailing_address` for each recipient). For more information, see [Send Methods](/introduction/send-methods).
     MailingAddress:
       type: object
       properties:
@@ -1690,6 +1550,32 @@ components:
       - state
       - postal_code
       - country
+    OrderBatchPriceInput:
+      type: object
+      description: Input parameters for an order batch price calculation.
+      properties:
+        recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecipientInput'
+        cart:
+          $ref: '#/components/schemas/CartInput'
+        send_method:
+          $ref: '#/components/schemas/OrderBatchSendMethod'
+      required:
+      - recipients
+      - cart
+      - send_method
+    Cart:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
     Error:
       type: object
       properties:
@@ -1697,131 +1583,59 @@ components:
           type: string
       required:
       - error
-    Sender:
+    OrderBatchInternationalShippingTier:
+      type: string
+      enum:
+      - disabled
+      - standard
+      - full
+      description: Whether to enable international shipping on this order. `disabled` (default) only enables US shipping on this order. `standard` combined with `international_gift_cards_enabled` enables international gift cards. `full` enables the full global catalog for 100+ countries, with additional tax, duties, and freight costs.
+    CartSelection:
       type: object
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-      required:
-      - first_name
-      - last_name
-      - email
-    OrderBatchRecipient:
-      type: object
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-      required:
-      - first_name
-    OrderBatch:
-      type: object
-      description: An order batch is the primary resource created by the API. Order batches contain an array of orders.
+      description: Product variant selections for a specific gift cart product.
       properties:
         id:
           type: string
           format: uuid
-        send_status:
-          $ref: '#/components/schemas/OrderBatchSendStatus'
-          description: The `pending` status indicates that an order batch is being prepared to be sent out. If it is not scheduled, it is being sent asynchronously. If it is scheduled, it will stay in `pending` state until the scheduled time is reached, at which point it will be processed and moved to `complete`. When it is in `pending` status, no orders are created yet. When the order batch is in `complete` status, all orders are created and available.
-        from_name:
+        cart_item_id:
           type: string
-          description: The name of the sender. This is displayed on the order and notifications.
-        message:
-          type:
-          - string
-          - 'null'
-          description: The message in this order batch, provided by the sender.
-        orders_count:
+          format: uuid
+          description: The cart item ID this selection belongs to. Match this with cart.items[].id.
+        quantity_index:
           type: integer
-          description: The total number of orders in this order batch. This might be blank if the order batch is scheduled for the future, or it could be fewer than the recipient count if the order batch is in the process of being sent.
-        orders_preview:
+          description: The index of this selection within multiple quantities of the same product. If a given cart product has multiple quantities, this will be 0 for the first unit, 1 for the second unit, etc.
+        variants:
           type: array
           items:
-            $ref: '#/components/schemas/Order'
-          description: A preview of the first 10 orders in this order batch. To paginate through all of the orders, use the `/order_batches/:id/orders` endpoint with `?page&per_page`. If your use case never sends more than 10 orders in a single batch, you can use this field instead of calling `/order_batches/:id/orders`. For order batches with more than 10 recipients, this array will be empty while the orders are asynchronously created in the background.
-        recipients_count:
-          type: integer
-          description: The total number of recipients in this order batch.
-        recipients_preview:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderBatchRecipient'
-          description: A preview of the first 10 recipients in this order batch. To see all of the recipients, use `/order_batches/:id/recipients`. Recipients contain the original contact information provided for each recipient when the order batch was created.
-        cart:
-          $ref: '#/components/schemas/Cart'
-          description: The cart that was sent for this order batch. This is the original cart that was created for this order batch. If individual orders were swapped, this still remains the same, whereas orders' `cart` would change if they were swapped.
-        is_scheduled_send:
-          type: boolean
-          description: Whether this order batch was set up as a scheduled send. This stays as `true` after the scheduled send is complete. To determine if the order batch is scheduled to be sent for the future, check if `status` is `pending` and `scheduled_send_on` is in the future. When a order batch is scheduled, orders are only created on the scheduled send date.
-        scheduled_send_on:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: The date and time the order batch is scheduled to be sent. This will be `null` if the order batch is not a scheduled send. This field remains after the scheduled send completes. ISO 8601, UTC.
-        expires_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: The date and time the order batch is set to expire. ISO 8601, UTC.
-        send_method:
-          $ref: '#/components/schemas/OrderBatchSendMethod'
-        batch_name:
-          type:
-          - string
-          - 'null'
-          description: An internal name for the order batch, falling back to an auto-generated batch name. Not displayed to recipients.
-        card_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          description: The digital greeting card on this order batch.
-        sender:
-          $ref: '#/components/schemas/Sender'
-          description: The sender of the order batch.
-        workspace_id:
-          type:
-          - string
-          - 'null'
-          format: uuid
-          description: Organizations are sub-divided into workspaces. Order batches are contained in workspaces, identified by this ID.
-        workspace_name:
-          type:
-          - string
-          - 'null'
-        reference_id:
-          type: string
-          description: The reference ID displayed on receipts and other locations as the ID for this order batch.
-        customer_reference_id:
-          type:
-          - string
-          - 'null'
-          description: A unique client-supplied reference for this order batch, provided on creation to prevent duplicate order batches. Returns the value sent when the batch was created, or `null` if none was provided.
+            type: string
+          description: The selected variants for this product selection and quantity index.
       required:
       - id
-      - send_status
-      - orders_preview
-      - orders_count
-      - cart
-      - from_name
-      - recipients_preview
-      - recipients_count
-      - sender
-      - reference_id
+      - cart_item_id
+      - quantity_index
+      - variants
+    OrderStatus:
+      type: string
+      enum:
+      - created
+      - notified
+      - opened
+      - accepted
+      - pending_payment
+      - paid
+      - ordered
+      - shipped
+      - delivered
+      - failed
+      - canceled
+    CartInput:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItemInput'
+          description: An array of cart items.
     OrderBatchInput:
       type: object
       description: Input parameters for an order batch.
@@ -1899,30 +1713,180 @@ components:
       - recipients
       - cart
       - send_method
-    CartSelection:
+    OrderBatchPrice:
       type: object
-      description: Product variant selections for a specific gift cart product.
+      description: The price for an order batch (all in cents).
+      properties:
+        cart_price_estimate:
+          $ref: '#/components/schemas/OrderBatchPriceCart'
+        total_price_estimate:
+          $ref: '#/components/schemas/OrderBatchPriceTotal'
+      required:
+      - cart_price
+      - total_price
+    OrderBatchRecipient:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+      required:
+      - first_name
+    OrderBatchSendStatus:
+      type: string
+      enum:
+      - pending
+      - complete
+      - failed
+      - canceled
+    Sender:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+      required:
+      - first_name
+      - last_name
+      - email
+    Shipment:
+      type: object
       properties:
         id:
           type: string
           format: uuid
-        cart_item_id:
+        status:
           type: string
-          format: uuid
-          description: The cart item ID this selection belongs to. Match this with cart.items[].id.
-        quantity_index:
-          type: integer
-          description: The index of this selection within multiple quantities of the same product. If a given cart product has multiple quantities, this will be 0 for the first unit, 1 for the second unit, etc.
-        variants:
-          type: array
-          items:
-            type: string
-          description: The selected variants for this product selection and quantity index.
+          enum:
+          - pending
+          - tracking
+          - shipped
+          - delivered
+          - delivered_override
+          - failed
+          - failed_unset_tracking
+          - failed_with_reship
+        brand_name:
+          type: string
+          description: The name of the brand that this shipment is from.
+        tracking_carrier:
+          type:
+          - string
+          - 'null'
+          description: The carrier for this shipment, e.g. UPS.
+        tracking_number:
+          type:
+          - string
+          - 'null'
+          description: Only for approved distribution partners.
+        tracking_url:
+          type:
+          - string
+          - 'null'
+          description: Only for approved distribution partners.
+        shipped_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: ISO 8601
+        delivered_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: ISO 8601
+        delivery_eta:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The estimated delivery time of this shipment.
       required:
       - id
-      - cart_item_id
-      - quantity_index
-      - variants
+      - status
+      - brand_name
+    CartItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        product:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            brand:
+              type: object
+              description: The brand that this product is from.
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+              required:
+              - id
+              - name
+          required:
+          - id
+          - name
+          - brand
+        quantity:
+          type: integer
+      required:
+      - id
+      - product
+      - quantity
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+    OrderBatchPriceTotal:
+      type: object
+      description: Total price estimates for the entire order batch in cents. This includes all recipients.
+      properties:
+        recipients:
+          type: integer
+          description: Number of recipients in the batch
+        est_tax_calculated:
+          type:
+          - integer
+          - 'null'
+          description: 'Direct send: calculated tax estimate when addresses are provided'
+        est_total_calculated:
+          type:
+          - integer
+          - 'null'
+          description: Calculated total estimate when addresses are provided
+        est_group_total_low:
+          type:
+          - integer
+          - 'null'
+          description: Estimated minimum group total
+        est_group_total_high:
+          type:
+          - integer
+          - 'null'
+          description: Estimated maximum group total
+      required:
+      - recipients
     OrderBatchPriceCart:
       type: object
       description: Prices for a single recipient's cart in cents. This represents the price for each recipient in the order batch.
@@ -1960,70 +1924,6 @@ components:
       - price_est_tax_high
       - price_est_total_low
       - price_est_total_high
-    CartItem:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        product:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-            name:
-              type: string
-            brand:
-              type: object
-              description: The brand that this product is from.
-              properties:
-                id:
-                  type: string
-                  format: uuid
-                name:
-                  type: string
-              required:
-              - id
-              - name
-          required:
-          - id
-          - name
-          - brand
-        quantity:
-          type: integer
-      required:
-      - id
-      - product
-      - quantity
-    OrderBatchInternationalShippingTier:
-      type: string
-      enum:
-      - disabled
-      - standard
-      - full
-      description: Whether to enable international shipping on this order. `disabled` (default) only enables US shipping on this order. `standard` combined with `international_gift_cards_enabled` enables international gift cards. `full` enables the full global catalog for 100+ countries, with additional tax, duties, and freight costs.
-    OrderStatus:
-      type: string
-      enum:
-      - created
-      - notified
-      - opened
-      - accepted
-      - pending_payment
-      - paid
-      - ordered
-      - shipped
-      - delivered
-      - failed
-      - canceled
-    OrderBatchSwap:
-      type: string
-      enum:
-      - single
-      - multiple
-      - disabled
-      description: What method to use to allow recipients to swap their gift. `single` (default) allows the recipient to swap the gift for one item, with hidden gift prices. `multiple` allows them to swap for multiple items up to the gift cost, with gift prices shown. `disabled` disables swapping on the gift. For gift collections (gift of choice), this must not be `disabled`.
     Order:
       type: object
       description: An individual order contains the gift link to be sent to the recipient (if applicable) and other information about the order.
@@ -2245,63 +2145,163 @@ components:
       - amounts
       - sender
       - reference_id
-    Shipment:
+    RecipientInput:
       type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone:
+          type:
+          - string
+          - 'null'
+          description: Optional. Phone number for text notifications. E164 format (e.g. +15552347890), US only.
+        mailing_address:
+          $ref: '#/components/schemas/MailingAddress'
+          description: Optional mailing address to pre-populate into the order. This field is only available for approved API partners.
+      required:
+      - first_name
+    OrderBatch:
+      type: object
+      description: An order batch is the primary resource created by the API. Order batches contain an array of orders.
       properties:
         id:
           type: string
           format: uuid
-        status:
+        send_status:
+          $ref: '#/components/schemas/OrderBatchSendStatus'
+          description: The `pending` status indicates that an order batch is being prepared to be sent out. If it is not scheduled, it is being sent asynchronously. If it is scheduled, it will stay in `pending` state until the scheduled time is reached, at which point it will be processed and moved to `complete`. When it is in `pending` status, no orders are created yet. When the order batch is in `complete` status, all orders are created and available.
+        from_name:
           type: string
-          enum:
-          - pending
-          - tracking
-          - shipped
-          - delivered
-          - delivered_override
-          - failed
-          - failed_unset_tracking
-          - failed_with_reship
-        brand_name:
+          description: The name of the sender. This is displayed on the order and notifications.
+        message:
+          type:
+          - string
+          - 'null'
+          description: The message in this order batch, provided by the sender.
+        orders_count:
+          type: integer
+          description: The total number of orders in this order batch. This might be blank if the order batch is scheduled for the future, or it could be fewer than the recipient count if the order batch is in the process of being sent.
+        orders_preview:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+          description: A preview of the first 10 orders in this order batch. To paginate through all of the orders, use the `/order_batches/:id/orders` endpoint with `?page&per_page`. If your use case never sends more than 10 orders in a single batch, you can use this field instead of calling `/order_batches/:id/orders`. For order batches with more than 10 recipients, this array will be empty while the orders are asynchronously created in the background.
+        recipients_count:
+          type: integer
+          description: The total number of recipients in this order batch.
+        recipients_preview:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderBatchRecipient'
+          description: A preview of the first 10 recipients in this order batch. To see all of the recipients, use `/order_batches/:id/recipients`. Recipients contain the original contact information provided for each recipient when the order batch was created.
+        cart:
+          $ref: '#/components/schemas/Cart'
+          description: The cart that was sent for this order batch. This is the original cart that was created for this order batch. If individual orders were swapped, this still remains the same, whereas orders' `cart` would change if they were swapped.
+        is_scheduled_send:
+          type: boolean
+          description: Whether this order batch was set up as a scheduled send. This stays as `true` after the scheduled send is complete. To determine if the order batch is scheduled to be sent for the future, check if `status` is `pending` and `scheduled_send_on` is in the future. When a order batch is scheduled, orders are only created on the scheduled send date.
+        scheduled_send_on:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time the order batch is scheduled to be sent. This will be `null` if the order batch is not a scheduled send. This field remains after the scheduled send completes. ISO 8601, UTC.
+        expires_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time the order batch is set to expire. ISO 8601, UTC.
+        send_method:
+          $ref: '#/components/schemas/OrderBatchSendMethod'
+        batch_name:
+          type:
+          - string
+          - 'null'
+          description: An internal name for the order batch, falling back to an auto-generated batch name. Not displayed to recipients.
+        card_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: The digital greeting card on this order batch.
+        sender:
+          $ref: '#/components/schemas/Sender'
+          description: The sender of the order batch.
+        workspace_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: Organizations are sub-divided into workspaces. Order batches are contained in workspaces, identified by this ID.
+        workspace_name:
+          type:
+          - string
+          - 'null'
+        reference_id:
           type: string
-          description: The name of the brand that this shipment is from.
-        tracking_carrier:
+          description: The reference ID displayed on receipts and other locations as the ID for this order batch.
+        customer_reference_id:
           type:
           - string
           - 'null'
-          description: The carrier for this shipment, e.g. UPS.
-        tracking_number:
-          type:
-          - string
-          - 'null'
-          description: Only for approved distribution partners.
-        tracking_url:
-          type:
-          - string
-          - 'null'
-          description: Only for approved distribution partners.
-        shipped_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: ISO 8601
-        delivered_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: ISO 8601
-        delivery_eta:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: The estimated delivery time of this shipment.
+          description: A unique client-supplied reference for this order batch, provided on creation to prevent duplicate order batches. Returns the value sent when the batch was created, or `null` if none was provided.
       required:
       - id
-      - status
-      - brand_name
+      - send_status
+      - orders_preview
+      - orders_count
+      - cart
+      - from_name
+      - recipients_preview
+      - recipients_count
+      - sender
+      - reference_id
+    OrderBatchSendMethod:
+      type: string
+      enum:
+      - email_and_link
+      - link_multiple_custom_list
+      - direct_send
+      description: The method for sending a order batch. `email_and_link` sends a gift email to the recipient (specify `email` for each recipient). `link_multiple_custom_list` generates a gift link without an automatic email. `direct_send` ships the product directly to the recipient (specify `mailing_address` for each recipient). For more information, see [Send Methods](/introduction/send-methods).
+    OrderBatchSwap:
+      type: string
+      enum:
+      - single
+      - multiple
+      - disabled
+      description: What method to use to allow recipients to swap their gift. `single` (default) allows the recipient to swap the gift for one item, with hidden gift prices. `multiple` allows them to swap for multiple items up to the gift cost, with gift prices shown. `disabled` disables swapping on the gift. For gift collections (gift of choice), this must not be `disabled`.
+    CartItemInput:
+      type: object
+      properties:
+        product_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: ID of the product. Preferred over URL since this is always stable. Either `product_id` or `product_url` must be provided.
+        product_url:
+          type:
+          - string
+          - 'null'
+          description: URL of the product. Either `product_id` or `product_url` must be provided.
+        quantity:
+          type: integer
+        variable_price:
+          type: integer
+          description: If this product has a variable price (e.g. a flex gift or a gift card), then this must be provided. A positive integer represented in cents.
+        variants:
+          type: array
+          items:
+            type: string
+          description: An array of variant names (not IDs). When using the Direct Send send method with a product with variants, the variants must be provided. The length of the array must be equal to `variants_num_selectable` on the product, and the variants must come from the names of the `varaints` on the product. For example, for a t-shirt with `variants_num_selectable` = 1 and variants S, M, L, pass ['M']. Or, for a box of cookies with `variants_num_selectable` = 2 and variants Sugar, Caramel, Chocolate, pass ['Sugar', 'Chocolate'].
+      required:
+      - product_id
+      - quantity
   securitySchemes:
     bearer:
       type: http

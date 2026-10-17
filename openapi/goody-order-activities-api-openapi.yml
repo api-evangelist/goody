@@ -184,107 +184,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    CartItem:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        product:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-            name:
-              type: string
-            brand:
-              type: object
-              description: The brand that this product is from.
-              properties:
-                id:
-                  type: string
-                  format: uuid
-                name:
-                  type: string
-              required:
-              - id
-              - name
-          required:
-          - id
-          - name
-          - brand
-        quantity:
-          type: integer
-      required:
-      - id
-      - product
-      - quantity
-    OrderStatus:
-      type: string
-      enum:
-      - created
-      - notified
-      - opened
-      - accepted
-      - pending_payment
-      - paid
-      - ordered
-      - shipped
-      - delivered
-      - failed
-      - canceled
-    Cart:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CartItem'
-    ListMeta:
-      type: object
-      properties:
-        total_count:
-          type: integer
-          description: The total number of items in this list.
-    OrderActivity:
-      type: object
-      description: An order activity represents a status change event for an order.
-      properties:
-        id:
-          type: string
-          format: uuid
-        order_status:
-          $ref: '#/components/schemas/OrderActivityStatus'
-          description: The status that the order transitioned to.
-        created_at:
-          type: string
-          format: date-time
-          description: When this activity occurred.
-        order:
-          $ref: '#/components/schemas/Order'
-          description: The current state of the order.
-      required:
-      - id
-      - order_status
-      - created_at
-      - order
-    Sender:
-      type: object
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-      required:
-      - first_name
-      - last_name
-      - email
     OrderActivityStatus:
       type: string
       enum:
@@ -298,63 +197,49 @@ components:
       - failed
       - pending_user_approval
       description: The status of the order activity event. Mapped from internal statuses using the same logic as order status.
-    Shipment:
+    ListMeta:
       type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+    Sender:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+      required:
+      - first_name
+      - last_name
+      - email
+    CartSelection:
+      type: object
+      description: Product variant selections for a specific gift cart product.
       properties:
         id:
           type: string
           format: uuid
-        status:
+        cart_item_id:
           type: string
-          enum:
-          - pending
-          - tracking
-          - shipped
-          - delivered
-          - delivered_override
-          - failed
-          - failed_unset_tracking
-          - failed_with_reship
-        brand_name:
-          type: string
-          description: The name of the brand that this shipment is from.
-        tracking_carrier:
-          type:
-          - string
-          - 'null'
-          description: The carrier for this shipment, e.g. UPS.
-        tracking_number:
-          type:
-          - string
-          - 'null'
-          description: Only for approved distribution partners.
-        tracking_url:
-          type:
-          - string
-          - 'null'
-          description: Only for approved distribution partners.
-        shipped_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: ISO 8601
-        delivered_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: ISO 8601
-        delivery_eta:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: The estimated delivery time of this shipment.
+          format: uuid
+          description: The cart item ID this selection belongs to. Match this with cart.items[].id.
+        quantity_index:
+          type: integer
+          description: The index of this selection within multiple quantities of the same product. If a given cart product has multiple quantities, this will be 0 for the first unit, 1 for the second unit, etc.
+        variants:
+          type: array
+          items:
+            type: string
+          description: The selected variants for this product selection and quantity index.
       required:
       - id
-      - status
-      - brand_name
+      - cart_item_id
+      - quantity_index
+      - variants
     Order:
       type: object
       description: An individual order contains the gift link to be sent to the recipient (if applicable) and other information about the order.
@@ -576,30 +461,145 @@ components:
       - amounts
       - sender
       - reference_id
-    CartSelection:
+    Cart:
       type: object
-      description: Product variant selections for a specific gift cart product.
       properties:
         id:
           type: string
           format: uuid
-        cart_item_id:
-          type: string
-          format: uuid
-          description: The cart item ID this selection belongs to. Match this with cart.items[].id.
-        quantity_index:
-          type: integer
-          description: The index of this selection within multiple quantities of the same product. If a given cart product has multiple quantities, this will be 0 for the first unit, 1 for the second unit, etc.
-        variants:
+        items:
           type: array
           items:
-            type: string
-          description: The selected variants for this product selection and quantity index.
+            $ref: '#/components/schemas/CartItem'
+    OrderStatus:
+      type: string
+      enum:
+      - created
+      - notified
+      - opened
+      - accepted
+      - pending_payment
+      - paid
+      - ordered
+      - shipped
+      - delivered
+      - failed
+      - canceled
+    Shipment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - pending
+          - tracking
+          - shipped
+          - delivered
+          - delivered_override
+          - failed
+          - failed_unset_tracking
+          - failed_with_reship
+        brand_name:
+          type: string
+          description: The name of the brand that this shipment is from.
+        tracking_carrier:
+          type:
+          - string
+          - 'null'
+          description: The carrier for this shipment, e.g. UPS.
+        tracking_number:
+          type:
+          - string
+          - 'null'
+          description: Only for approved distribution partners.
+        tracking_url:
+          type:
+          - string
+          - 'null'
+          description: Only for approved distribution partners.
+        shipped_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: ISO 8601
+        delivered_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: ISO 8601
+        delivery_eta:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The estimated delivery time of this shipment.
       required:
       - id
-      - cart_item_id
-      - quantity_index
-      - variants
+      - status
+      - brand_name
+    CartItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        product:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            brand:
+              type: object
+              description: The brand that this product is from.
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+              required:
+              - id
+              - name
+          required:
+          - id
+          - name
+          - brand
+        quantity:
+          type: integer
+      required:
+      - id
+      - product
+      - quantity
+    OrderActivity:
+      type: object
+      description: An order activity represents a status change event for an order.
+      properties:
+        id:
+          type: string
+          format: uuid
+        order_status:
+          $ref: '#/components/schemas/OrderActivityStatus'
+          description: The status that the order transitioned to.
+        created_at:
+          type: string
+          format: date-time
+          description: When this activity occurred.
+        order:
+          $ref: '#/components/schemas/Order'
+          description: The current state of the order.
+      required:
+      - id
+      - order_status
+      - created_at
+      - order
   securitySchemes:
     bearer:
       type: http
