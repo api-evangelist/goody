@@ -1,0 +1,214 @@
+openapi: 3.2.0
+info:
+  title: Goody Gift Templates API
+  version: 1.0.0
+  contact:
+    name: Goody Support
+    email: support@ongoody.com
+servers:
+- url: https://api.ongoody.com
+  description: Production
+- url: https://api.sandbox.ongoody.com
+  description: Sandbox
+tags:
+- name: Gift Templates
+paths:
+  /v1/gift_templates:
+    get:
+      summary: List all gift templates
+      tags:
+      - Gift Templates
+      security:
+      - bearer: []
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+        description: Page for pagination, starting at 1
+        required: false
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          default: 20
+          minimum: 1
+          maximum: 100
+        description: Items per page for pagination
+        required: false
+      responses:
+        '200':
+          description: Gift templates retrieved
+          content:
+            application/json:
+              examples:
+                Gift templates retrieved:
+                  value:
+                    data:
+                    - id: 185ff722-3b18-41e5-84c1-256c0d8782ed
+                      name: Thank you
+                      shared: false
+                      card_id: 076453b7-0f57-45d5-b1bd-608abb36895e
+                      card_image_url: http://goody.localhost:3000/dev/assets//tmp/pixel20260728-1089767-m5frkm.png?format=png
+                      product_summary: Poke
+                      product_thumbnail_urls: []
+                      product_count: 1
+                      price_product: 1000
+                      free_shipping: false
+                      created_at: '2026-07-28T20:20:07Z'
+                      updated_at: '2026-07-28T20:20:07Z'
+                    - id: 60851164-e763-4ba7-b4ca-d278d0ee4261
+                      name: Welcome gift
+                      shared: false
+                      card_id: 076453b7-0f57-45d5-b1bd-608abb36895e
+                      card_image_url: http://goody.localhost:3000/dev/assets//tmp/pixel20260728-1089767-m5frkm.png?format=png
+                      product_summary: Ebiten maki
+                      product_thumbnail_urls: []
+                      product_count: 1
+                      price_product: 1000
+                      free_shipping: false
+                      created_at: '2026-07-28T20:20:07Z'
+                      updated_at: '2026-07-28T20:20:07Z'
+                    list_meta:
+                      total_count: 2
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/GiftTemplate'
+                  list_meta:
+                    $ref: '#/components/schemas/ListMeta'
+      operationId: getV1GiftTemplates
+      x-operation-id-source: derived
+  /v1/gift_templates/{id}:
+    get:
+      summary: Retrieve a gift template
+      tags:
+      - Gift Templates
+      security:
+      - bearer: []
+      parameters:
+      - name: id
+        in: path
+        description: Gift template ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Gift template retrieved
+          content:
+            application/json:
+              examples:
+                Gift template retrieved:
+                  value:
+                    id: 5cac6bf6-64b2-48d8-a74c-3c30a9a511f7
+                    name: Welcome gift
+                    shared: false
+                    card_id: 076453b7-0f57-45d5-b1bd-608abb36895e
+                    card_image_url: http://goody.localhost:3000/dev/assets//tmp/pixel20260728-1089767-m5frkm.png?format=png
+                    product_summary: Barbecue Ribs
+                    product_thumbnail_urls: []
+                    product_count: 1
+                    price_product: 1000
+                    free_shipping: false
+                    created_at: '2026-07-28T20:20:08Z'
+                    updated_at: '2026-07-28T20:20:08Z'
+              schema:
+                $ref: '#/components/schemas/GiftTemplate'
+        '404':
+          description: Gift template not found
+          content:
+            application/json:
+              examples:
+                Gift template not found:
+                  value:
+                    error: Gift template not found
+              schema:
+                $ref: '#/components/schemas/Error'
+      operationId: getV1GiftTemplatesById
+      x-operation-id-source: derived
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+    GiftTemplate:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: A human-facing label for the template.
+        shared:
+          type: boolean
+          description: Whether the template was shared with the user by someone else (vs. owned by the user). Always false today, since templates are Goody-curated and available to everyone.
+        card_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: The greeting card attached to the template, if any.
+        card_image_url:
+          type:
+          - string
+          - 'null'
+          description: The URL of the template's greeting card image, if any.
+        product_summary:
+          type: string
+          description: A comma-separated summary of the products in the template.
+        product_thumbnail_urls:
+          type: array
+          items:
+            type: string
+          description: Thumbnail image URLs for up to 4 of the template's products, for collage-style previews. Products without images are skipped.
+        product_count:
+          type: integer
+          description: The total number of products in the template (may exceed the number of thumbnails).
+        price_product:
+          type:
+          - integer
+          - 'null'
+          description: The products subtotal in USD cents a sender pays for this template, before shipping, fees, and tax. Uses the stored flex-gift/gift-card amount where one applies. Null when a component price is unknown.
+        free_shipping:
+          type: boolean
+          description: Whether every product in the template ships free (the brand ships everything free, or the item's price clears the brand's free-shipping minimum).
+        created_at:
+          type: string
+          format: date-time
+          description: ISO 8601
+        updated_at:
+          type: string
+          format: date-time
+          description: ISO 8601
+      required:
+      - id
+      - name
+      - shared
+      - product_summary
+      - product_thumbnail_urls
+      - product_count
+      - free_shipping
+      - created_at
+      - updated_at
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Your Goody API key.

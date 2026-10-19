@@ -37,13 +37,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error
     Me:
       type: object
       properties:
@@ -51,10 +44,28 @@ components:
           type:
           - string
           - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+          description: The user's display name, prefilled into a gift's From field. Present for user tokens; null when unset.
         public_app_id:
           type:
           - string
           - 'null'
+        can_send_smart_links:
+          type: boolean
+          description: Whether this user can create Smart Links (the "Gift link" send). Present for user tokens.
+        can_find_emails:
+          type: boolean
+          description: Whether this user can use the LinkedIn email lookup (a Goody Pro feature). Present for user tokens.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
   securitySchemes:
     bearer:
       type: http

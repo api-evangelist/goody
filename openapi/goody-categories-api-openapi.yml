@@ -1,0 +1,84 @@
+openapi: 3.2.0
+info:
+  title: Goody Categories API
+  version: 1.0.0
+  contact:
+    name: Goody Support
+    email: support@ongoody.com
+servers:
+- url: https://api.ongoody.com
+  description: Production
+- url: https://api.sandbox.ongoody.com
+  description: Sandbox
+tags:
+- name: Categories
+paths:
+  /v1/categories:
+    get:
+      summary: List storefront categories
+      tags:
+      - Categories
+      security:
+      - bearer: []
+      responses:
+        '200':
+          description: Categories retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Category'
+                  list_meta:
+                    $ref: '#/components/schemas/ListMeta'
+      operationId: getV1Categories
+      x-operation-id-source: derived
+components:
+  schemas:
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+    Category:
+      type: object
+      description: A storefront category, usable as a products filter. A category can appear in the store's "Categories" navigation, its "Occasions" navigation, both, or neither.
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        icon:
+          type:
+          - string
+          - 'null'
+          description: URL of the category's SVG icon.
+        categories_set:
+          type: boolean
+          description: Whether this category appears in the "Categories" navigation set.
+        occasions_set:
+          type: boolean
+          description: Whether this category appears in the "Occasions" navigation set.
+        slug:
+          type:
+          - string
+          - 'null'
+          description: Stable identifier for well-known categories (e.g. "all").
+        is_featured:
+          type: boolean
+          description: Whether this is the store's default landing category.
+      required:
+      - id
+      - name
+      - categories_set
+      - occasions_set
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Your Goody API key.

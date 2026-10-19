@@ -1,0 +1,75 @@
+openapi: 3.2.0
+info:
+  title: Goody Shipping Countries API
+  version: 1.0.0
+  contact:
+    name: Goody Support
+    email: support@ongoody.com
+servers:
+- url: https://api.ongoody.com
+  description: Production
+- url: https://api.sandbox.ongoody.com
+  description: Sandbox
+tags:
+- name: Shipping Countries
+paths:
+  /v1/shipping_countries:
+    get:
+      summary: List shipping countries
+      tags:
+      - Shipping Countries
+      security:
+      - bearer: []
+      description: Lists the countries Goody can ship to, with the shipping groups each belongs to. Countries in the `domestic` group support domestic shipping (and the domestic-only product filter).
+      responses:
+        '200':
+          description: Shipping countries retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ShippingCountry'
+                  list_meta:
+                    $ref: '#/components/schemas/ListMeta'
+      operationId: getV1ShippingCountries
+      x-operation-id-source: derived
+components:
+  schemas:
+    ShippingCountry:
+      type: object
+      description: A country Goody can ship to, with the shipping groups it belongs to. Countries in the "domestic" group support the domestic-only product filter.
+      properties:
+        code:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+        name:
+          type: string
+        groups:
+          type: array
+          items:
+            type: string
+            enum:
+            - domestic
+            - global
+            - gift_card
+            - ddu
+          description: The shipping groups this country belongs to.
+      required:
+      - code
+      - name
+      - groups
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Your Goody API key.

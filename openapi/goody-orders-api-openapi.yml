@@ -35,33 +35,33 @@ paths:
               examples:
                 Order canceled:
                   value:
-                    id: 04505127-3b1c-4488-b5f4-1c85e6befe53
+                    id: f3206fde-e664-42c1-994e-2d0527dd5e6f
                     status: failed
-                    individual_gift_link: https://gifts.ongoody.com/gift/GIOORGY1KFPCECWSRIPGV5BY
-                    recipient_first_name: Michael
-                    recipient_last_name: Franci
-                    recipient_email: michael@ongoody.com
-                    card_id: 1030e98b-3d80-4aa1-a348-069c2037dd70
+                    individual_gift_link: https://gifts.ongoody.com/gift/VJZCFOJ1PZR19H118PYEACBN
+                    recipient_first_name: Alena
+                    recipient_last_name: Kenter
+                    recipient_email: alena@ongoody.com
+                    card_id: b35722d2-63e2-44bc-8aa6-e7a5b81de6cf
                     message: Test Message
                     thank_you_note: null
                     view_count_recipient: 0
                     is_swapped: false
-                    order_batch_id: 4f57be1a-5ac1-4f0b-a830-bda27c8e063c
+                    order_batch_id: aca624bf-b3e3-41b5-b10e-b55cb023fc1c
                     expires_at: null
                     cart:
-                      id: 59b0d301-27c7-453e-95e9-a82dc0f8af0b
+                      id: a8bfe1a7-6398-464b-953b-adba314ba6cd
                       items:
-                      - id: d8d7bfc9-8496-4b77-8e9c-d084cef94cd7
+                      - id: f954628b-8d27-4663-b06f-ac2535e3ca2c
                         quantity: 1
                         product:
-                          id: f2a5701d-dc75-455b-b932-8d01310b2153
+                          id: 303ce55c-bbb9-4687-8512-94b5bf28f2b3
                           name: Cookies
                           brand:
-                            id: 064854e3-a0c5-49b4-8406-5e6e86834702
+                            id: b6b10b59-489a-496d-bbee-a34af480c841
                             name: Cookie Company
                     cart_selections:
-                    - id: beb8b93e-7224-44b2-96f2-a9e9d46dc0b0
-                      cart_item_id: bb9735b7-ec0b-4b92-8011-1bac5c3ed5fd
+                    - id: 42958692-1669-47c0-8048-a5909234d753
+                      cart_item_id: 0d135774-2b1d-4971-85ac-a434a7f153d5
                       quantity_index: 0
                       variants: []
                     shipments: []
@@ -76,12 +76,12 @@ paths:
                     sender:
                       first_name: Test
                       last_name: User
-                      email: 15550002890@test.ongoody.com
-                    workspace_id: 3e276f0f-8863-445e-9ed2-0a3b1abdeb45
+                      email: 15550841805@test.ongoody.com
+                    workspace_id: 1d8cb3f2-8a30-48ce-8016-49d1a809c1e9
                     workspace_name: Test Team
                     original_cart: null
                     original_amounts: null
-                    reference_id: CV44HAL5HRQ10SHWDBZ2IS9T
+                    reference_id: YD6CSBYB8IHDGNUHGRU6WYLW
                     payment_link: null
               schema:
                 $ref: '#/components/schemas/Order'
@@ -151,29 +151,29 @@ paths:
                 Orders retrieved:
                   value:
                     data:
-                    - id: 7a449dc9-8a31-4a90-abbd-19143552aa52
+                    - id: 54e000fb-01fc-41f2-9cec-18bc1833bcc0
                       status: created
-                      individual_gift_link: https://gifts.ongoody.com/gift/1FE9DWTJC4T85G8QN5SDB3LH
+                      individual_gift_link: https://gifts.ongoody.com/gift/SNT3JYVMQAA4DWSKDWKRIEZD
                       recipient_first_name: Michael
                       recipient_last_name: Franci
                       recipient_email: michael@ongoody.com
-                      card_id: 2d738268-5496-43e1-ad4d-cca8b7810fc3
+                      card_id: a417e783-0c5b-4275-b433-896a22999b64
                       message: Test Message
                       thank_you_note: null
                       view_count_recipient: 0
                       is_swapped: false
-                      order_batch_id: 9e3ede84-8280-479f-ac9b-9007bb45a23c
+                      order_batch_id: 08346a9b-8a44-4146-ae91-67051c186f44
                       expires_at: null
                       cart:
-                        id: 987e757c-8faa-42b2-8845-3f98794a7b5b
+                        id: 866dd087-69a8-42d1-962c-0bbfb8adc718
                         items:
-                        - id: fdd90649-ed42-461f-8672-f9cc3f051bc9
+                        - id: f3fcd952-3153-44e0-a330-06e968b6afd3
                           quantity: 1
                           product:
-                            id: 31de335c-3a0e-4dcf-807f-9f32e7ccc108
+                            id: 1530a31b-156e-44b6-9446-59a685682506
                             name: Cookies
                             brand:
-                              id: 46ab78f4-729a-4b31-9cbc-32266daedd04
+                              id: 9fbeb360-3a0d-4175-bbcf-883bc988f326
                               name: Cookie Company
                       shipments: []
                       amounts:
@@ -187,36 +187,36 @@ paths:
                       sender:
                         first_name: Test
                         last_name: User
-                        email: 15552492933@test.ongoody.com
-                      workspace_id: 01e3dd01-1967-4069-9edc-d6755de1b7f3
+                        email: 15559259559@test.ongoody.com
+                      workspace_id: 2ac30583-5135-4cf5-b2ec-a846777b11a1
                       workspace_name: Test Team
                       original_cart: null
                       original_amounts: null
-                      reference_id: BTGGI5EEFNIHTGXXEJ16CDCJ
+                      reference_id: ET7KLLIIZWCU7YRMTE83JFD7
                       payment_link: null
-                    - id: d248f1c5-44e8-432b-8941-5a93f6eec845
+                    - id: c9a41517-33d8-4e6b-9a5a-c8cbf5240bbe
                       status: created
-                      individual_gift_link: https://gifts.ongoody.com/gift/JKVE5ZLZADLVN2GRUJUSARIW
+                      individual_gift_link: https://gifts.ongoody.com/gift/3NOYHZ6XFPMI9MNGAODNKVAW
                       recipient_first_name: Alena
                       recipient_last_name: Kenter
                       recipient_email: alena@ongoody.com
-                      card_id: 2d738268-5496-43e1-ad4d-cca8b7810fc3
+                      card_id: a417e783-0c5b-4275-b433-896a22999b64
                       message: Test Message
                       thank_you_note: null
                       view_count_recipient: 0
                       is_swapped: false
-                      order_batch_id: 9e3ede84-8280-479f-ac9b-9007bb45a23c
+                      order_batch_id: 08346a9b-8a44-4146-ae91-67051c186f44
                       expires_at: null
                       cart:
-                        id: 987e757c-8faa-42b2-8845-3f98794a7b5b
+                        id: 866dd087-69a8-42d1-962c-0bbfb8adc718
                         items:
-                        - id: fdd90649-ed42-461f-8672-f9cc3f051bc9
+                        - id: f3fcd952-3153-44e0-a330-06e968b6afd3
                           quantity: 1
                           product:
-                            id: 31de335c-3a0e-4dcf-807f-9f32e7ccc108
+                            id: 1530a31b-156e-44b6-9446-59a685682506
                             name: Cookies
                             brand:
-                              id: 46ab78f4-729a-4b31-9cbc-32266daedd04
+                              id: 9fbeb360-3a0d-4175-bbcf-883bc988f326
                               name: Cookie Company
                       shipments: []
                       amounts:
@@ -230,12 +230,12 @@ paths:
                       sender:
                         first_name: Test
                         last_name: User
-                        email: 15552492933@test.ongoody.com
-                      workspace_id: 01e3dd01-1967-4069-9edc-d6755de1b7f3
+                        email: 15559259559@test.ongoody.com
+                      workspace_id: 2ac30583-5135-4cf5-b2ec-a846777b11a1
                       workspace_name: Test Team
                       original_cart: null
                       original_amounts: null
-                      reference_id: 4XLDWNOT1MFZROIUSJ8K84Y8
+                      reference_id: NNJZORU9OE4VSKOFS6FQIDOT
                       payment_link: null
                     list_meta:
                       total_count: 2
@@ -272,33 +272,33 @@ paths:
               examples:
                 Order retrieved:
                   value:
-                    id: 2bcc47f6-bea1-4ac6-a103-0c686b075c21
+                    id: 9e2271ba-20b1-42ae-b489-aed295db48f5
                     status: created
-                    individual_gift_link: https://gifts.ongoody.com/gift/WXN0IOGPRNLMHWT950JGP9SC
+                    individual_gift_link: https://gifts.ongoody.com/gift/QUDPYMMGXLWGT6DYMAWFQ2H4
                     recipient_first_name: Alena
                     recipient_last_name: Kenter
                     recipient_email: alena@ongoody.com
-                    card_id: d39f10a0-1c28-4ee7-93f6-739ba625e3a2
+                    card_id: 0cdb4355-bda7-4998-b30f-6c50bc0b12bf
                     message: Test Message
                     thank_you_note: null
                     view_count_recipient: 0
                     is_swapped: false
-                    order_batch_id: fc6fb6d4-2917-48f3-9ef3-3c0fad91bb5b
+                    order_batch_id: 2750ce00-b930-44e1-8b6b-4393e7154fe3
                     expires_at: null
                     cart:
-                      id: 1a3f74fe-a2e4-4327-933d-f238d81c467c
+                      id: 7a56ffdf-c774-44c3-b337-3f60fcb19442
                       items:
-                      - id: fd780305-dfa9-402e-b1af-1a1592ab3030
+                      - id: b01a3894-8f22-436f-b7cd-bd813aa9bfa2
                         quantity: 1
                         product:
-                          id: afe33526-cdc6-462d-9353-ddcf9a1f8e6e
+                          id: 0294a412-62de-4de6-8590-2dc5d078c4bc
                           name: Cookies
                           brand:
-                            id: 8f93b70d-fb3a-44e3-9f95-6e698024017c
+                            id: a3a64693-57e0-48a0-a8a0-bd83d3ed4fc6
                             name: Cookie Company
                     cart_selections:
-                    - id: 7fc69885-8518-4fe1-bda6-9863d92c334b
-                      cart_item_id: 69310000-b564-404f-b780-2d1ab7841952
+                    - id: 8cd29fd2-fec7-496f-96b2-a73be0c15a21
+                      cart_item_id: 7b0d0f2c-26dd-4ac2-9c97-aff69a704aa8
                       quantity_index: 0
                       variants: []
                     shipments: []
@@ -313,14 +313,14 @@ paths:
                     sender:
                       first_name: Test
                       last_name: User
-                      email: 15558314938@test.ongoody.com
-                    workspace_id: ca507888-8d3c-4608-aed9-8cb07034cade
+                      email: 15554590002@test.ongoody.com
+                    workspace_id: dcd9a4e1-e94c-4b4b-bcbe-3630087ec81d
                     workspace_name: Test Team
                     original_cart: null
                     original_amounts: null
-                    reference_id: QGIMV1BPGSJ3DA58T4MACS03
+                    reference_id: RSXME5OKIXA8HJ9DCCEDULIW
                     event_times:
-                      created_at: '2026-06-03T12:25:15Z'
+                      created_at: '2026-07-28T20:20:53Z'
                       notified_at: null
                       opened_at: null
                       accepted_at: null
@@ -332,33 +332,33 @@ paths:
                     payment_link: null
                 Order with cart selections:
                   value:
-                    id: 95c9fe72-43e7-4e44-bc5b-6f212679e46e
+                    id: 78abd38e-a83e-4e40-a5e7-ca3fdeb67a34
                     status: created
-                    individual_gift_link: https://gifts.ongoody.com/gift/QMNNZXOJHXRCFISDUGI3SH53
+                    individual_gift_link: https://gifts.ongoody.com/gift/RJJEYU9PZOECFTGGCV8XKLUX
                     recipient_first_name: Alena
                     recipient_last_name: Kenter
                     recipient_email: alena@ongoody.com
-                    card_id: ef0f8cbc-9c70-41bc-9c28-8bc7ac73baa7
+                    card_id: a20621b5-e02d-4318-aa75-ad2c65239406
                     message: Test Message
                     thank_you_note: null
                     view_count_recipient: 0
                     is_swapped: false
-                    order_batch_id: ee8f2bb2-71e0-40a0-88df-fda475db9922
+                    order_batch_id: f85caaab-7665-4e1c-994c-c3bd30000557
                     expires_at: null
                     cart:
-                      id: 18fd065d-9625-435e-889f-c1b78d302bfb
+                      id: 705bf7ca-f577-43fa-881e-a20aec32b0dd
                       items:
-                      - id: f37a5857-cb81-4c12-9e29-ccce23bc760d
+                      - id: 3dc3a2ab-6c2c-46f2-92e8-807006888255
                         quantity: 1
                         product:
-                          id: 5475f9cf-50a8-45f4-8df1-05c6485abcc3
+                          id: 12e69e41-c40f-47a3-808b-919418d7469b
                           name: Cookies
                           brand:
-                            id: fd608245-aae8-48e7-9bc2-4a23afdafcfa
+                            id: d0ec754e-7a1b-413e-a995-fbb1ae0682a8
                             name: Cookie Company
                     cart_selections:
-                    - id: df58d307-9653-4dac-bef0-e019df472cda
-                      cart_item_id: f37a5857-cb81-4c12-9e29-ccce23bc760d
+                    - id: 81c7837e-ddc5-4ee7-a431-111d05c59039
+                      cart_item_id: 3dc3a2ab-6c2c-46f2-92e8-807006888255
                       quantity_index: 0
                       variants:
                       - Black
@@ -374,14 +374,14 @@ paths:
                     sender:
                       first_name: Test
                       last_name: User
-                      email: 15552247945@test.ongoody.com
-                    workspace_id: f6ef00ac-44fd-450a-9d43-6d6532305a9e
+                      email: 15553505122@test.ongoody.com
+                    workspace_id: 50957355-4cb8-4ea0-ae5c-3cb4750cc064
                     workspace_name: Test Team
                     original_cart: null
                     original_amounts: null
-                    reference_id: PNC93R4LTVFFLMDHKKRDZDAR
+                    reference_id: 8LJUYRARLIZXPIPO3EUGH3VR
                     event_times:
-                      created_at: '2026-06-03T12:25:15Z'
+                      created_at: '2026-07-28T20:20:53Z'
                       notified_at: null
                       opened_at: null
                       accepted_at: null
@@ -428,29 +428,29 @@ paths:
               examples:
                 Expiration updated:
                   value:
-                    id: e87c260d-011c-4b0e-9878-a61e4cb05797
+                    id: 9932c3fa-84c1-491e-a3c0-ecb3cb6a6eb5
                     status: created
-                    individual_gift_link: https://gifts.ongoody.com/gift/NVFEBIPXKRHEQSMLTOS1YWQ2
-                    recipient_first_name: Alena
-                    recipient_last_name: Kenter
-                    recipient_email: alena@ongoody.com
-                    card_id: c9095d35-d256-4fcd-92e9-7593290a0030
+                    individual_gift_link: https://gifts.ongoody.com/gift/88LEZPKRAPNKRZA2GTJNHJSI
+                    recipient_first_name: Michael
+                    recipient_last_name: Franci
+                    recipient_email: michael@ongoody.com
+                    card_id: 74e2e411-50ec-4449-9c30-b45ce42bb460
                     message: Test Message
                     thank_you_note: null
                     view_count_recipient: 0
                     is_swapped: false
-                    order_batch_id: 698a9466-f372-4317-ace4-bb21b2ac8a85
+                    order_batch_id: 88a9a66d-9bb2-412d-a7c6-e1c8ed447514
                     expires_at: '2022-02-01T00:00:00Z'
                     cart:
-                      id: a6821fed-292b-42a2-b32e-8e87d7832c87
+                      id: b685d989-5a01-46e6-bcc7-876489b0d9b1
                       items:
-                      - id: 1c110452-f8e9-441d-83e8-48c003e1f85a
+                      - id: c86cd524-8174-47f2-9c14-0c7cd77d8255
                         quantity: 1
                         product:
-                          id: 12ad03c2-640c-425a-9721-e91d2871b5aa
+                          id: 9361abe6-1983-4f46-b3de-56becb402bdf
                           name: Cookies
                           brand:
-                            id: b8fed488-5934-42fc-a0dd-76af3355bb35
+                            id: f61eaba4-0266-4535-9b15-f4ff55d29e34
                             name: Cookie Company
                     shipments: []
                     amounts:
@@ -464,12 +464,12 @@ paths:
                     sender:
                       first_name: Test
                       last_name: User
-                      email: 15558690162@test.ongoody.com
-                    workspace_id: 8412c9de-f6c7-4780-830f-7e3573078b3c
+                      email: 15556677506@test.ongoody.com
+                    workspace_id: 95278c35-3920-47b2-bd4c-db484cb98cb5
                     workspace_name: Test Team
                     original_cart: null
                     original_amounts: null
-                    reference_id: A7T4NOKKSHXYVTGPSFDYFVZW
+                    reference_id: 1FAZ82ONLHS6EQYRXA9TOEH5
                     payment_link: null
               schema:
                 $ref: '#/components/schemas/Order'
@@ -498,13 +498,87 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Error:
+    CartItem:
       type: object
       properties:
-        error:
+        id:
           type: string
+          format: uuid
+        product:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            brand:
+              type: object
+              description: The brand that this product is from.
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+              required:
+              - id
+              - name
+            price:
+              type:
+              - integer
+              - 'null'
+              description: Catalog price in USD cents. Only present on `/order_batches?cloneable=true` listings.
+            cart_eligible:
+              type: boolean
+              description: Whether this product can share a cart with other products. Only present on `/order_batches?cloneable=true` listings.
+            is_collection:
+              type: boolean
+              description: Whether this product is a collection. Collections carry their own recipient-experience settings (multi-select, shipping), so batch-level swap and international options do not apply to them. Only present on `/order_batches?cloneable=true` listings.
+            image_url:
+              type:
+              - string
+              - 'null'
+              description: A thumbnail image URL for the product. Only present on `/order_batches?cloneable=true` listings.
+          required:
+          - id
+          - name
+          - brand
+        quantity:
+          type: integer
+        variants:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: The variants chosen by the sender for this line, if any. Only present on `/order_batches?cloneable=true` listings.
+        variable_price:
+          type:
+          - integer
+          - 'null'
+          description: For flex gifts and gift cards, the amount (in cents) the sender originally chose; `null` for fixed-price products. Only present on `/order_batches?cloneable=true` listings.
+        free_shipping:
+          type: boolean
+          description: Whether this line item ships free on its own (per-item rule; lines from the same brand may still combine to reach a free-shipping minimum). Only present on `/order_batches?cloneable=true` listings.
       required:
-      - error
+      - id
+      - product
+      - quantity
+    OrderStatus:
+      type: string
+      enum:
+      - created
+      - notified
+      - opened
+      - accepted
+      - pending_payment
+      - paid
+      - ordered
+      - shipped
+      - delivered
+      - failed
+      - canceled
     ListMeta:
       type: object
       properties:
@@ -548,6 +622,80 @@ components:
       - cart_item_id
       - quantity_index
       - variants
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+    Cart:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+    Shipment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - pending
+          - tracking
+          - shipped
+          - delivered
+          - delivered_override
+          - failed
+          - failed_unset_tracking
+          - failed_with_reship
+        brand_name:
+          type: string
+          description: The name of the brand that this shipment is from.
+        tracking_carrier:
+          type:
+          - string
+          - 'null'
+          description: The carrier for this shipment, e.g. UPS.
+        tracking_number:
+          type:
+          - string
+          - 'null'
+          description: Only for approved distribution partners.
+        tracking_url:
+          type:
+          - string
+          - 'null'
+          description: Only for approved distribution partners.
+        shipped_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: ISO 8601
+        delivered_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: ISO 8601
+        delivery_eta:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The estimated delivery time of this shipment.
+      required:
+      - id
+      - status
+      - brand_name
     Order:
       type: object
       description: An individual order contains the gift link to be sent to the recipient (if applicable) and other information about the order.
@@ -617,6 +765,23 @@ components:
           - string
           - 'null'
           description: A thank you note sent by the recipient.
+        form_responses:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            properties:
+              question:
+                type: string
+                description: The question text as shown to the recipient when they accepted.
+              answer:
+                type: string
+                description: The recipient's answer. For multiple-select questions, the selected options are joined with "; ".
+            required:
+            - question
+            - answer
+          description: Recipient answers to the custom form attached to this gift. Only present when the recipient submitted at least one answer.
         view_count_recipient:
           type: integer
           description: The number of times the recipient viewed the gift.
@@ -769,123 +934,6 @@ components:
       - amounts
       - sender
       - reference_id
-    OrderStatus:
-      type: string
-      enum:
-      - created
-      - notified
-      - opened
-      - accepted
-      - pending_payment
-      - paid
-      - ordered
-      - shipped
-      - delivered
-      - failed
-      - canceled
-    Cart:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CartItem'
-    Shipment:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        status:
-          type: string
-          enum:
-          - pending
-          - tracking
-          - shipped
-          - delivered
-          - delivered_override
-          - failed
-          - failed_unset_tracking
-          - failed_with_reship
-        brand_name:
-          type: string
-          description: The name of the brand that this shipment is from.
-        tracking_carrier:
-          type:
-          - string
-          - 'null'
-          description: The carrier for this shipment, e.g. UPS.
-        tracking_number:
-          type:
-          - string
-          - 'null'
-          description: Only for approved distribution partners.
-        tracking_url:
-          type:
-          - string
-          - 'null'
-          description: Only for approved distribution partners.
-        shipped_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: ISO 8601
-        delivered_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: ISO 8601
-        delivery_eta:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: The estimated delivery time of this shipment.
-      required:
-      - id
-      - status
-      - brand_name
-    CartItem:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        product:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-            name:
-              type: string
-            brand:
-              type: object
-              description: The brand that this product is from.
-              properties:
-                id:
-                  type: string
-                  format: uuid
-                name:
-                  type: string
-              required:
-              - id
-              - name
-          required:
-          - id
-          - name
-          - brand
-        quantity:
-          type: integer
-      required:
-      - id
-      - product
-      - quantity
   securitySchemes:
     bearer:
       type: http

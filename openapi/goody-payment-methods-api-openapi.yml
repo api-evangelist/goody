@@ -29,10 +29,10 @@ paths:
                 Payment methods retrieved:
                   value:
                     data:
-                    - id: 915d4077-5f47-43fb-87ba-f2f385933a35
+                    - id: 44b05451-c791-46a9-b0e4-0fcacf7cf44b
                       name: Visa 1234
                       cardholder_name: Card 1
-                    - id: b66f3c41-3574-428f-8f84-d78c18564619
+                    - id: f29504ef-9079-49ef-b1dc-085b687b5dd8
                       name: Mastercard 5678
                       cardholder_name: Card 2
                     list_meta:
@@ -60,19 +60,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error
-    ListMeta:
-      type: object
-      properties:
-        total_count:
-          type: integer
-          description: The total number of items in this list.
     PaymentMethod:
       type: object
       properties:
@@ -93,6 +80,19 @@ components:
       required:
       - id
       - name
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
   securitySchemes:
     bearer:
       type: http

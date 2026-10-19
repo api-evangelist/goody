@@ -283,6 +283,46 @@ apis:
     url: https://developer.ongoody.com/api-reference/order-batches/create-an-order-batch
   - type: Authentication
     url: https://developer.ongoody.com/commerce-api/authentication
+- aid: goody:goody-categories-api
+  name: Goody Categories API
+  description: The Categories API from Goody — 1 operation(s) for categories.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-categories-api-openapi.yml
+- aid: goody:goody-gift-templates-api
+  name: Goody Gift Templates API
+  description: The Gift Templates API from Goody — 2 operation(s) for gift templates.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Gift Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-gift-templates-api-openapi.yml
+- aid: goody:goody-gifts-of-choice-api
+  name: Goody Gifts of Choice API
+  description: The Gifts of Choice API from Goody — 1 operation(s) for gifts of choice.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Gifts of Choice
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-gifts-of-choice-api-openapi.yml
+- aid: goody:goody-shipping-countries-api
+  name: Goody Shipping Countries API
+  description: The Shipping Countries API from Goody — 1 operation(s) for shipping countries.
+  humanURL: https://developer.ongoody.com/introduction/overview
+  baseURL: https://api.ongoody.com
+  tags:
+  - Shipping Countries
+  properties:
+  - type: OpenAPI
+    url: openapi/goody-shipping-countries-api-openapi.yml
 common:
 - type: Pricing
   url: https://www.ongoody.com/business/pricing

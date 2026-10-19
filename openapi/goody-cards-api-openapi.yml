@@ -38,6 +38,12 @@ paths:
           maximum: 100
         description: Items per page for pagination
         required: false
+      - name: custom
+        in: query
+        schema:
+          type: boolean
+        description: Return the caller's custom cards (their own, their organization's, and their teams') instead of Goody's stock cards.
+        required: false
       responses:
         '200':
           description: Cards retrieved
@@ -47,7 +53,7 @@ paths:
                 Cards retrieved:
                   value:
                     data:
-                    - id: 9f6a0a5e-bbd5-4bb6-bd6d-c6eaab586522
+                    - id: 30e815ce-68b9-4723-a4a2-49c23b47eb98
                       image:
                         url: https://assets.ongoody.com/cards/222.png?format=png
                         width: 800
@@ -59,7 +65,7 @@ paths:
                       occasions:
                       - Congratulations
                       - Onboarding
-                    - id: addda4f1-f501-4dfe-9b1d-fa53c8814c85
+                    - id: 6b6fcb88-bca6-4c29-a0a6-95d937656fe8
                       image:
                         url: https://assets.ongoody.com/cards/111.png?format=png
                         width: 800

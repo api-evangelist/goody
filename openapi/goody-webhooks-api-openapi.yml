@@ -29,7 +29,7 @@ paths:
               examples:
                 Webhook endpoint created:
                   value:
-                    id: 106b2d34-eea8-4de3-8e41-46f6bb65a8c3
+                    id: 1585e884-559a-4a50-8821-eedc401eb38e
               schema:
                 type: object
                 properties:
@@ -103,13 +103,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error
     WebhookInput:
       type: object
       description: Input parameters for a webhook endpoint.
@@ -124,6 +117,13 @@ components:
           items:
             type: string
           description: Filter the events you want to get webhooks for. Refer to the Webhooks list for the event names.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
   securitySchemes:
     bearer:
       type: http

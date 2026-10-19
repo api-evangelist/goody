@@ -57,6 +57,44 @@ paths:
           type: boolean
         description: Show inactive products in the custom catalog. Only for Commerce API customers with a custom catalog.
         required: false
+      - name: brand_id
+        in: query
+        schema:
+          type: string
+        description: Limit to products from a specific brand
+        required: false
+      - name: category_id
+        in: query
+        schema:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        description: Limit to products in a category (see the categories endpoint). Accepts a single ID or an array of IDs.
+        required: false
+      - name: min_price
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+        description: Limit to products priced at or above this amount, in cents
+        required: false
+      - name: max_price
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+        description: Limit to products priced at or below this amount, in cents
+        required: false
+      - name: brand_values
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+        description: Limit to products whose brand has at least one of these brand values (e.g. Sustainable, Female Founded)
+        required: false
       responses:
         '200':
           description: Products retrieved
@@ -66,85 +104,11 @@ paths:
                 Products retrieved:
                   value:
                     data:
-                    - id: 83bd1170-9352-427d-85aa-e2bcf3c323c8
-                      name: Six Cookies
-                      brand:
-                        id: 2a294fe7-ecac-40c2-ae3f-1c931ae68720
-                        name: Nerissa Littel
-                        logo_image: null
-                        shipping_price: 1000
-                        free_shipping_minimum: null
-                        brand_values:
-                        - Sustainable
-                      subtitle: null
-                      subtitle_short: null
-                      recipient_description: ''
-                      variants_label: option
-                      variants_num_selectable: 3
-                      variants:
-                      - id: 5dea5349-cf6c-4b67-8ace-309557f16f9f
-                        name: Chocolate Chip
-                        subtitle: Classic chocolate chip.
-                        image_large: null
-                      - id: 7324cbd9-0c83-4d79-90ec-c793ab0023af
-                        name: Oatmeal
-                        subtitle: Delicious oatmeal.
-                        image_large: null
-                      - id: 928b21ea-a7a3-4ad2-aa6c-f30b23f10faa
-                        name: Sugar
-                        subtitle: Tasty sugar.
-                        image_large: null
-                      variant_groups: []
-                      images: []
-                      price: 1000
-                      price_is_variable: false
-                      restricted_states: []
-                      attributes:
-                      - label: Where it's made
-                        content: Made in Miami, FL
-                      updated_at: '2026-06-03T12:25:19Z'
-                      status: active
-                    - id: 94d0582f-f37b-45e4-b4d6-188ddd41e499
-                      name: Dozen Cookies
-                      brand:
-                        id: 2a294fe7-ecac-40c2-ae3f-1c931ae68720
-                        name: Nerissa Littel
-                        logo_image: null
-                        shipping_price: 1000
-                        free_shipping_minimum: null
-                        brand_values:
-                        - Sustainable
-                      subtitle: null
-                      subtitle_short: null
-                      recipient_description: ''
-                      variants_label: option
-                      variants_num_selectable: 3
-                      variants:
-                      - id: d63f8e89-a7cb-4607-8f8b-1f347be4d1b6
-                        name: Chocolate Chip
-                        subtitle: Classic chocolate chip.
-                        image_large: null
-                      - id: b197404c-c331-4676-8580-290b2bebe353
-                        name: Oatmeal
-                        subtitle: Delicious oatmeal.
-                        image_large: null
-                      - id: 1e2c60a4-6513-48a6-a696-021e5c2d3093
-                        name: Sugar
-                        subtitle: Tasty sugar.
-                        image_large: null
-                      variant_groups: []
-                      images: []
-                      price: 1000
-                      price_is_variable: false
-                      restricted_states: []
-                      attributes: []
-                      updated_at: '2026-06-03T12:25:19Z'
-                      status: active
-                    - id: a169b309-6166-4382-b020-8d571c7f2b95
+                    - id: 7d560507-26e8-4042-9fd2-382698db4d8f
                       name: Cookie Box
                       brand:
-                        id: 2a294fe7-ecac-40c2-ae3f-1c931ae68720
-                        name: Nerissa Littel
+                        id: 939d0a1d-d461-4fce-b911-4fa37ddb71eb
+                        name: Jeremiah Haag PhD
                         logo_image: null
                         shipping_price: 1000
                         free_shipping_minimum: null
@@ -156,58 +120,58 @@ paths:
                       variants_label: option
                       variants_num_selectable: 1
                       variants:
-                      - id: badeeb1c-8847-40d9-b7f9-d118723f51f1
+                      - id: 49dbe73a-40c8-45ce-a817-9aff732d1e01
                         name: Grey / Chocolate Chip
                         subtitle: null
                         image_large: null
-                      - id: 01f20566-5645-4c32-9f79-222c5c1f1407
+                      - id: 0d13f069-0fac-4b8f-9d2f-73f75255f3c8
                         name: Grey / Oatmeal
                         subtitle: null
                         image_large: null
-                      - id: b7fc2aad-b490-47af-b73f-7cc5aa55697a
+                      - id: 6fb84f13-2ea9-4d6b-9bba-02d557ccd277
                         name: Grey / Sugar
                         subtitle: null
                         image_large: null
-                      - id: 72f5b1fb-5085-4218-8c60-a356d35b3be1
+                      - id: 17fd1615-4c2b-4dff-b208-c8c37e533ee4
                         name: Purple / Chocolate Chip
                         subtitle: null
                         image_large: null
-                      - id: 2ec977b6-4333-4e20-a8dc-dca2cc27fb6d
+                      - id: 2d82b15b-3732-475c-943a-80e7ce95ca2c
                         name: Purple / Oatmeal
                         subtitle: null
                         image_large: null
-                      - id: 2a060efb-a11e-4858-a547-939ca630977c
+                      - id: 27be1b6a-999b-4501-a115-2ed673b6decb
                         name: Purple / Sugar
                         subtitle: null
                         image_large: null
                       variant_groups:
-                      - id: 6dba80e5-2bd7-49fe-bffb-7739c0574d48
+                      - id: 09dc5fbd-384d-46bf-b3fd-07ac96bf9ce0
                         name: Box Color
                         options:
-                        - id: b24e07dc-bc75-4425-83fa-4d212e83114a
+                        - id: d25db9aa-6909-4f88-9802-68b4430c5476
                           name: Grey
                           subtitle: null
                           color: null
                           image_large: null
-                        - id: 1a7794e5-95cc-4308-a1f0-48925271e49c
+                        - id: 94121f3a-8797-4d54-bdd3-95f3098de2cc
                           name: Purple
                           subtitle: null
                           color: null
                           image_large: null
-                      - id: 4f2acf33-9f5d-4117-b3f4-8eb82517bc07
+                      - id: f3bbc632-ca52-46f4-9675-7072140811a2
                         name: Flavor
                         options:
-                        - id: e849793c-c0d3-409a-b915-bbce6be5b37c
+                        - id: 51fbe1d8-b69c-46ce-8dfd-e8c7c852354d
                           name: Chocolate Chip
                           subtitle: null
                           color: null
                           image_large: null
-                        - id: 5f22280f-64e7-4d8c-a42a-1030e2153b77
+                        - id: d28b85fb-0f04-4261-b303-59a0020e70c9
                           name: Oatmeal
                           subtitle: null
                           color: null
                           image_large: null
-                        - id: e8323403-4ba5-4893-b747-969a4bc2259e
+                        - id: 3a28a81b-bb66-48d9-b85b-4e4048a2a61f
                           name: Sugar
                           subtitle: null
                           color: null
@@ -215,9 +179,110 @@ paths:
                       images: []
                       price: 1000
                       price_is_variable: false
+                      cart_eligible: true
+                      price_min: 1000
+                      price_max: 1000
+                      gift_card: null
                       restricted_states: []
+                      shipping_country_group:
+                        domestic:
+                        - US
+                        global: []
+                        gift_card: []
                       attributes: []
-                      updated_at: '2026-06-03T12:25:19Z'
+                      updated_at: '2026-07-28T20:21:04Z'
+                      status: active
+                    - id: e904a2a5-badb-458b-b758-3d8ded9b34d8
+                      name: Six Cookies
+                      brand:
+                        id: 939d0a1d-d461-4fce-b911-4fa37ddb71eb
+                        name: Jeremiah Haag PhD
+                        logo_image: null
+                        shipping_price: 1000
+                        free_shipping_minimum: null
+                        brand_values:
+                        - Sustainable
+                      subtitle: null
+                      subtitle_short: null
+                      recipient_description: ''
+                      variants_label: option
+                      variants_num_selectable: 3
+                      variants:
+                      - id: 95644a01-3479-4e78-b8a4-633682aa06c0
+                        name: Chocolate Chip
+                        subtitle: Classic chocolate chip.
+                        image_large: null
+                      - id: 27d38d66-dbda-4264-9d0d-b91182fbb829
+                        name: Oatmeal
+                        subtitle: Delicious oatmeal.
+                        image_large: null
+                      - id: 5def021d-3dff-4f8e-b85f-004134ad2e91
+                        name: Sugar
+                        subtitle: Tasty sugar.
+                        image_large: null
+                      variant_groups: []
+                      images: []
+                      price: 1000
+                      price_is_variable: false
+                      cart_eligible: true
+                      price_min: 1000
+                      price_max: 1000
+                      gift_card: null
+                      restricted_states: []
+                      shipping_country_group:
+                        domestic:
+                        - US
+                        global: []
+                        gift_card: []
+                      attributes:
+                      - label: Where it's made
+                        content: Made in Miami, FL
+                      updated_at: '2026-07-28T20:21:04Z'
+                      status: active
+                    - id: fcc348de-5cd4-425a-b1e1-647b536bdfdd
+                      name: Dozen Cookies
+                      brand:
+                        id: 939d0a1d-d461-4fce-b911-4fa37ddb71eb
+                        name: Jeremiah Haag PhD
+                        logo_image: null
+                        shipping_price: 1000
+                        free_shipping_minimum: null
+                        brand_values:
+                        - Sustainable
+                      subtitle: null
+                      subtitle_short: null
+                      recipient_description: ''
+                      variants_label: option
+                      variants_num_selectable: 3
+                      variants:
+                      - id: 0f96b087-3493-43c6-a7f5-f84c49f96cfc
+                        name: Chocolate Chip
+                        subtitle: Classic chocolate chip.
+                        image_large: null
+                      - id: 4ad1165e-21cf-4876-9be4-8f092d3e15d3
+                        name: Oatmeal
+                        subtitle: Delicious oatmeal.
+                        image_large: null
+                      - id: efd918c4-aad0-498b-9fee-76f640ecbfab
+                        name: Sugar
+                        subtitle: Tasty sugar.
+                        image_large: null
+                      variant_groups: []
+                      images: []
+                      price: 1000
+                      price_is_variable: false
+                      cart_eligible: true
+                      price_min: 1000
+                      price_max: 1000
+                      gift_card: null
+                      restricted_states: []
+                      shipping_country_group:
+                        domestic:
+                        - US
+                        global: []
+                        gift_card: []
+                      attributes: []
+                      updated_at: '2026-07-28T20:21:04Z'
                       status: active
                     list_meta:
                       total_count: 3
@@ -246,6 +311,13 @@ paths:
         required: true
         schema:
           type: string
+      - name: country_code
+        in: query
+        schema:
+          type: string
+          default: US
+        description: Look up the product in a specific shipping country's catalog. Products are scoped to a country (default US), so a product that only ships elsewhere — e.g. an international gift card — 404s unless its country is passed here.
+        required: false
       - name: use_custom_catalog
         in: query
         schema:
@@ -260,11 +332,11 @@ paths:
               examples:
                 Product retrieved:
                   value:
-                    id: 42bee678-617c-4925-a30e-783bcd9772d1
+                    id: 14eaedb5-b1cf-48c5-9408-948490dcc0ba
                     name: Six Cookies
                     brand:
-                      id: e663f830-efbd-4cc9-b46d-7ee2a6459017
-                      name: Gov. Gerardo Gerhold
+                      id: 39873d74-8ed8-47a3-a5c3-65b7b916b36b
+                      name: Ruby Emmerich
                       logo_image: null
                       shipping_price: 1000
                       free_shipping_minimum: null
@@ -275,15 +347,15 @@ paths:
                     variants_label: option
                     variants_num_selectable: 3
                     variants:
-                    - id: 9e918c3b-7d28-428d-8578-a5ddd66a7859
+                    - id: 83827f45-7be0-4b79-861f-d3cfd927aa52
                       name: Chocolate Chip
                       subtitle: Classic chocolate chip.
                       image_large: null
-                    - id: 8c22f783-0386-479d-8eda-441ff27e1373
+                    - id: bc07e5e4-c5ed-4318-b1f4-d2d979a2c4a1
                       name: Oatmeal
                       subtitle: Delicious oatmeal.
                       image_large: null
-                    - id: 32997c3f-39f3-44c8-a277-018eb9c83fef
+                    - id: 1753dd70-8070-48f5-8044-b8fa660fe869
                       name: Sugar
                       subtitle: Tasty sugar.
                       image_large: null
@@ -291,9 +363,18 @@ paths:
                     images: []
                     price: 1000
                     price_is_variable: false
+                    cart_eligible: true
+                    price_min: 1000
+                    price_max: 1000
+                    gift_card: null
                     restricted_states: []
+                    shipping_country_group:
+                      domestic:
+                      - US
+                      global: []
+                      gift_card: []
                     attributes: []
-                    updated_at: '2026-06-03T12:25:20Z'
+                    updated_at: '2026-07-28T20:21:05Z'
                     status: active
               schema:
                 $ref: '#/components/schemas/Product'
@@ -311,67 +392,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    BrandSet:
-      type: object
-      description: A brand set represents a collection of products from a brand.
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/BrandSetImage'
-          description: An array of images for this brand set.
-        products:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-          description: An array of products in this brand set.
-        categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/BrandSetCategory'
-          description: An array of categories this brand set belongs to.
-      required:
-      - id
-      - name
-    ProductVariantGroupOption:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the variant group option, e.g. "Small" for the "Size" variant group.
-        subtitle:
-          type:
-          - string
-          - 'null'
-        color:
-          type:
-          - string
-          - 'null'
-          description: The hex color code for this option, e.g. "#000000", if any.
-        image_large:
-          $ref: '#/components/schemas/Image'
-      required:
-      - id
-      - name
-    BrandSetImage:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        image_large:
-          $ref: '#/components/schemas/Image'
-      required:
-      - id
-      - image_large
     Brand:
       type: object
       properties:
@@ -401,6 +421,22 @@ components:
           items:
             type: string
           description: An array of brand values for this brand. Potential values are USA Made, Social Impact Driven, Sustainable, Gluten Free, Vegan, Kosher Certified, Female Founded, AAPI Founded, BIPOC Founded, Black Founded, LGBTQ+ Founded, and Hispanic Founded.
+        subtitle:
+          type:
+          - string
+          - 'null'
+          description: A short marketing description of the brand. Only included when using the brands endpoint.
+        tile_image:
+          $ref: '#/components/schemas/Image'
+          description: The square tile image for this brand. Only included when using the brands endpoint.
+        header_image:
+          $ref: '#/components/schemas/Image'
+          description: The wide header image for this brand. Only included when using the brands endpoint.
+        price_min:
+          type:
+          - integer
+          - 'null'
+          description: The lowest product price among this brand's listed products, in cents. Only included when using the brands endpoint.
         brand_sets:
           type:
           - array
@@ -417,74 +453,6 @@ components:
         total_count:
           type: integer
           description: The total number of items in this list.
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-      required:
-      - error
-    BrandSetCategory:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        subcategories:
-          type: array
-          items:
-            type: string
-          description: An array of subcategory names within this category.
-      required:
-      - id
-      - name
-    ProductVariant:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        image_large:
-          $ref: '#/components/schemas/Image'
-        subtitle:
-          type:
-          - string
-          - 'null'
-      required:
-      - id
-      - name
-    ProductVariantGroup:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the variant group, e.g. "Size" or "Color".
-        options:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductVariantGroupOption'
-      required:
-      - id
-      - name
-    ProductAttribute:
-      type: object
-      properties:
-        label:
-          type: string
-          description: The label for this attribute, e.g. "Materials".
-        content:
-          type: string
-          description: The content for this attribute, e.g. "80% cotton, 20% elastane". This can be text or sanitized HTML (you might choose to sanitize the HTML as well). Allowed elements are a (href allowed), div, img (src, width height, alt allowed), span, p, br, strong, b, em, i, ol, ul, li, and hr.
-      required:
-      - label
-      - content
     ProductImage:
       type: object
       properties:
@@ -496,17 +464,6 @@ components:
       required:
       - id
       - image_large
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
-      required:
-      - url
     Product:
       type: object
       properties:
@@ -576,6 +533,9 @@ components:
           items:
             type: string
             description: The US states that this product cannot be shipped to.
+        cart_eligible:
+          type: boolean
+          description: Whether this product can be combined with others in a single gift. False for products that must be sent on their own, such as gift cards, alcohol, custom stores, gift of choice, and collections.
         attributes:
           type: array
           items:
@@ -602,6 +562,44 @@ components:
               - integer
               - 'null'
               description: For approved API partners only. A custom price tier for this product.
+        gift_card:
+          type:
+          - object
+          - 'null'
+          description: Present only for gift card products. Use to tell a gift card apart from a variable-price flex gift and to enforce its amount rules. All amounts here are in the card's native currency (the units a gift card's `variable_price` is spent in).
+          properties:
+            currency:
+              type:
+              - string
+              - 'null'
+              description: The gift card currency, e.g. "USD".
+            currency_rate:
+              type:
+              - number
+              - 'null'
+              description: Native currency units per USD (native_amount / currency_rate = USD amount), for showing the USD a sender pays on a non-USD card. Always 1 for USD; null when the rate is temporarily unavailable, in which case treat the amount as native-only.
+            denominations:
+              type:
+              - array
+              - 'null'
+              items:
+                type: integer
+              description: The fixed set of allowed amounts, in native-currency cents. Null when the gift card is a sliding scale, in which case use value_restrictions.
+            value_restrictions:
+              type:
+              - object
+              - 'null'
+              description: For a sliding-scale gift card, the inclusive native-currency-cent bounds a sender may fund. Null for fixed-denomination cards (use denominations instead).
+              properties:
+                min:
+                  type: integer
+                  description: Minimum fundable amount, in native-currency cents.
+                max:
+                  type: integer
+                  description: Maximum fundable amount, in native-currency cents.
+              required:
+              - min
+              - max
       required:
       - id
       - name
@@ -611,6 +609,147 @@ components:
       - price
       - price_is_variable
       - restricted_states
+      - cart_eligible
+    ProductVariant:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        image_large:
+          $ref: '#/components/schemas/Image'
+        subtitle:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - name
+    ProductVariantGroup:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the variant group, e.g. "Size" or "Color".
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariantGroupOption'
+      required:
+      - id
+      - name
+    BrandSetCategory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        subcategories:
+          type: array
+          items:
+            type: string
+          description: An array of subcategory names within this category.
+      required:
+      - id
+      - name
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+      required:
+      - url
+    BrandSetImage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - image_large
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+    ProductAttribute:
+      type: object
+      properties:
+        label:
+          type: string
+          description: The label for this attribute, e.g. "Materials".
+        content:
+          type: string
+          description: The content for this attribute, e.g. "80% cotton, 20% elastane". This can be text or sanitized HTML (you might choose to sanitize the HTML as well). Allowed elements are a (href allowed), div, img (src, width height, alt allowed), span, p, br, strong, b, em, i, ol, ul, li, and hr.
+      required:
+      - label
+      - content
+    BrandSet:
+      type: object
+      description: A brand set represents a collection of products from a brand.
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSetImage'
+          description: An array of images for this brand set.
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+          description: An array of products in this brand set.
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSetCategory'
+          description: An array of categories this brand set belongs to.
+      required:
+      - id
+      - name
+    ProductVariantGroupOption:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the variant group option, e.g. "Small" for the "Size" variant group.
+        subtitle:
+          type:
+          - string
+          - 'null'
+        color:
+          type:
+          - string
+          - 'null'
+          description: The hex color code for this option, e.g. "#000000", if any.
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - name
   securitySchemes:
     bearer:
       type: http

@@ -29,9 +29,9 @@ paths:
                 Workspaces retrieved:
                   value:
                     data:
-                    - id: 541e9673-649e-4977-8e8b-3cee52fd7b68
+                    - id: 40689dd7-8cbe-4a4c-82f7-dcbae14cc9c0
                       name: Workspace 1
-                    - id: ed05606e-d6ba-4b9f-baf3-bde2cbbf0a72
+                    - id: 0099a428-9264-4b69-96ca-b3a8e05ad6a8
                       name: Workspace 2
                     list_meta:
                       total_count: 2

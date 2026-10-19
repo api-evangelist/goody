@@ -75,33 +75,33 @@ paths:
                 Order activities retrieved:
                   value:
                     data:
-                    - id: 2f7fda94-5e06-42a4-b856-010a83afe76d
+                    - id: 8e78abef-249a-495e-8ddf-0843fe96627a
                       order_status: opened
-                      created_at: '2026-06-03T12:24:10Z'
+                      created_at: '2026-07-28T20:20:13Z'
                       order:
-                        id: e3d4235a-9367-4bff-a0dd-a9339784cac2
+                        id: eacd383b-aa90-4a28-a683-cb104625afb2
                         status: opened
-                        individual_gift_link: https://gifts.ongoody.com/gift/MAWESE8CCGYUEHZBDNFNH8V8
+                        individual_gift_link: https://gifts.ongoody.com/gift/X5RQOXFWRPDCGRLKVMJF6OFE
                         recipient_first_name: Recipient
                         recipient_last_name: Smith
                         recipient_email: null
-                        card_id: ffdb7f07-1d78-4e0c-ac3d-580394c9eea6
+                        card_id: 5825dda3-bf71-466b-bc08-f939ccd100be
                         message: Test Message
                         thank_you_note: null
                         view_count_recipient: 0
                         is_swapped: false
-                        order_batch_id: 93b36a7e-2de8-495c-8192-fc45be4c970e
+                        order_batch_id: 6622c37c-ae81-464b-8dfe-0ad6838004c2
                         expires_at: null
                         cart:
-                          id: 1d2b284b-9a88-4ea1-8b0b-1ca983d214c9
+                          id: 9db7c144-d96d-4cab-87e5-fbab0a9f3aab
                           items:
-                          - id: 9acd31ae-a9bd-43e4-9b7d-dd6ace754184
+                          - id: 5a5d350c-9be7-41e7-9aff-73a77690879d
                             quantity: 1
                             product:
-                              id: b55b1c75-d69a-42fd-a1d3-aaa881db000d
+                              id: a765d068-351e-4342-b2a7-ce726279636b
                               name: Cookies
                               brand:
-                                id: c710da1e-18d0-46b2-93c1-7b91f93603c5
+                                id: e639d927-fc75-4c15-8578-19635cb097f1
                                 name: Cookie Company
                         shipments: []
                         amounts:
@@ -115,40 +115,40 @@ paths:
                         sender:
                           first_name: Test
                           last_name: User
-                          email: 15554158553@test.ongoody.com
-                        workspace_id: 7fb09027-7350-46bc-954a-ee9c2b4f5126
+                          email: 15557054220@test.ongoody.com
+                        workspace_id: 0f272130-1e9a-4e82-9517-1f9419d4ffdf
                         workspace_name: Test Team
                         original_cart: null
                         original_amounts: null
-                        reference_id: DRKRUKB5XGWRB7VRKNZBWN5Q
+                        reference_id: EJJ3A2BYMU4AGNVM4SGE0YBD
                         payment_link: null
-                    - id: 542c1b8b-2819-44fd-a79b-a5e07018a7a8
+                    - id: 6b57f605-3894-4f02-8c28-3a9500cd1a69
                       order_status: created
-                      created_at: '2026-06-03T12:24:10Z'
+                      created_at: '2026-07-28T20:20:13Z'
                       order:
-                        id: e3d4235a-9367-4bff-a0dd-a9339784cac2
+                        id: eacd383b-aa90-4a28-a683-cb104625afb2
                         status: opened
-                        individual_gift_link: https://gifts.ongoody.com/gift/MAWESE8CCGYUEHZBDNFNH8V8
+                        individual_gift_link: https://gifts.ongoody.com/gift/X5RQOXFWRPDCGRLKVMJF6OFE
                         recipient_first_name: Recipient
                         recipient_last_name: Smith
                         recipient_email: null
-                        card_id: ffdb7f07-1d78-4e0c-ac3d-580394c9eea6
+                        card_id: 5825dda3-bf71-466b-bc08-f939ccd100be
                         message: Test Message
                         thank_you_note: null
                         view_count_recipient: 0
                         is_swapped: false
-                        order_batch_id: 93b36a7e-2de8-495c-8192-fc45be4c970e
+                        order_batch_id: 6622c37c-ae81-464b-8dfe-0ad6838004c2
                         expires_at: null
                         cart:
-                          id: 1d2b284b-9a88-4ea1-8b0b-1ca983d214c9
+                          id: 9db7c144-d96d-4cab-87e5-fbab0a9f3aab
                           items:
-                          - id: 9acd31ae-a9bd-43e4-9b7d-dd6ace754184
+                          - id: 5a5d350c-9be7-41e7-9aff-73a77690879d
                             quantity: 1
                             product:
-                              id: b55b1c75-d69a-42fd-a1d3-aaa881db000d
+                              id: a765d068-351e-4342-b2a7-ce726279636b
                               name: Cookies
                               brand:
-                                id: c710da1e-18d0-46b2-93c1-7b91f93603c5
+                                id: e639d927-fc75-4c15-8578-19635cb097f1
                                 name: Cookie Company
                         shipments: []
                         amounts:
@@ -162,12 +162,12 @@ paths:
                         sender:
                           first_name: Test
                           last_name: User
-                          email: 15554158553@test.ongoody.com
-                        workspace_id: 7fb09027-7350-46bc-954a-ee9c2b4f5126
+                          email: 15557054220@test.ongoody.com
+                        workspace_id: 0f272130-1e9a-4e82-9517-1f9419d4ffdf
                         workspace_name: Test Team
                         original_cart: null
                         original_amounts: null
-                        reference_id: DRKRUKB5XGWRB7VRKNZBWN5Q
+                        reference_id: EJJ3A2BYMU4AGNVM4SGE0YBD
                         payment_link: null
                     list_meta:
                       total_count: 2
@@ -184,19 +184,109 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    OrderActivityStatus:
+    CartItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        product:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            brand:
+              type: object
+              description: The brand that this product is from.
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+              required:
+              - id
+              - name
+            price:
+              type:
+              - integer
+              - 'null'
+              description: Catalog price in USD cents. Only present on `/order_batches?cloneable=true` listings.
+            cart_eligible:
+              type: boolean
+              description: Whether this product can share a cart with other products. Only present on `/order_batches?cloneable=true` listings.
+            is_collection:
+              type: boolean
+              description: Whether this product is a collection. Collections carry their own recipient-experience settings (multi-select, shipping), so batch-level swap and international options do not apply to them. Only present on `/order_batches?cloneable=true` listings.
+            image_url:
+              type:
+              - string
+              - 'null'
+              description: A thumbnail image URL for the product. Only present on `/order_batches?cloneable=true` listings.
+          required:
+          - id
+          - name
+          - brand
+        quantity:
+          type: integer
+        variants:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: The variants chosen by the sender for this line, if any. Only present on `/order_batches?cloneable=true` listings.
+        variable_price:
+          type:
+          - integer
+          - 'null'
+          description: For flex gifts and gift cards, the amount (in cents) the sender originally chose; `null` for fixed-price products. Only present on `/order_batches?cloneable=true` listings.
+        free_shipping:
+          type: boolean
+          description: Whether this line item ships free on its own (per-item rule; lines from the same brand may still combine to reach a free-shipping minimum). Only present on `/order_batches?cloneable=true` listings.
+      required:
+      - id
+      - product
+      - quantity
+    OrderActivity:
+      type: object
+      description: An order activity represents a status change event for an order.
+      properties:
+        id:
+          type: string
+          format: uuid
+        order_status:
+          $ref: '#/components/schemas/OrderActivityStatus'
+          description: The status that the order transitioned to.
+        created_at:
+          type: string
+          format: date-time
+          description: When this activity occurred.
+        order:
+          $ref: '#/components/schemas/Order'
+          description: The current state of the order.
+      required:
+      - id
+      - order_status
+      - created_at
+      - order
+    OrderStatus:
       type: string
       enum:
       - created
+      - notified
       - opened
+      - accepted
       - pending_payment
       - paid
       - ordered
       - shipped
       - delivered
       - failed
-      - pending_user_approval
-      description: The status of the order activity event. Mapped from internal statuses using the same logic as order status.
+      - canceled
     ListMeta:
       type: object
       properties:
@@ -240,6 +330,86 @@ components:
       - cart_item_id
       - quantity_index
       - variants
+    Cart:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+    Shipment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - pending
+          - tracking
+          - shipped
+          - delivered
+          - delivered_override
+          - failed
+          - failed_unset_tracking
+          - failed_with_reship
+        brand_name:
+          type: string
+          description: The name of the brand that this shipment is from.
+        tracking_carrier:
+          type:
+          - string
+          - 'null'
+          description: The carrier for this shipment, e.g. UPS.
+        tracking_number:
+          type:
+          - string
+          - 'null'
+          description: Only for approved distribution partners.
+        tracking_url:
+          type:
+          - string
+          - 'null'
+          description: Only for approved distribution partners.
+        shipped_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: ISO 8601
+        delivered_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: ISO 8601
+        delivery_eta:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The estimated delivery time of this shipment.
+      required:
+      - id
+      - status
+      - brand_name
+    OrderActivityStatus:
+      type: string
+      enum:
+      - created
+      - opened
+      - pending_payment
+      - paid
+      - ordered
+      - shipped
+      - delivered
+      - failed
+      - pending_user_approval
+      description: The status of the order activity event. Mapped from internal statuses using the same logic as order status.
     Order:
       type: object
       description: An individual order contains the gift link to be sent to the recipient (if applicable) and other information about the order.
@@ -309,6 +479,23 @@ components:
           - string
           - 'null'
           description: A thank you note sent by the recipient.
+        form_responses:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            properties:
+              question:
+                type: string
+                description: The question text as shown to the recipient when they accepted.
+              answer:
+                type: string
+                description: The recipient's answer. For multiple-select questions, the selected options are joined with "; ".
+            required:
+            - question
+            - answer
+          description: Recipient answers to the custom form attached to this gift. Only present when the recipient submitted at least one answer.
         view_count_recipient:
           type: integer
           description: The number of times the recipient viewed the gift.
@@ -461,145 +648,6 @@ components:
       - amounts
       - sender
       - reference_id
-    Cart:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CartItem'
-    OrderStatus:
-      type: string
-      enum:
-      - created
-      - notified
-      - opened
-      - accepted
-      - pending_payment
-      - paid
-      - ordered
-      - shipped
-      - delivered
-      - failed
-      - canceled
-    Shipment:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        status:
-          type: string
-          enum:
-          - pending
-          - tracking
-          - shipped
-          - delivered
-          - delivered_override
-          - failed
-          - failed_unset_tracking
-          - failed_with_reship
-        brand_name:
-          type: string
-          description: The name of the brand that this shipment is from.
-        tracking_carrier:
-          type:
-          - string
-          - 'null'
-          description: The carrier for this shipment, e.g. UPS.
-        tracking_number:
-          type:
-          - string
-          - 'null'
-          description: Only for approved distribution partners.
-        tracking_url:
-          type:
-          - string
-          - 'null'
-          description: Only for approved distribution partners.
-        shipped_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: ISO 8601
-        delivered_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: ISO 8601
-        delivery_eta:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: The estimated delivery time of this shipment.
-      required:
-      - id
-      - status
-      - brand_name
-    CartItem:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        product:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-            name:
-              type: string
-            brand:
-              type: object
-              description: The brand that this product is from.
-              properties:
-                id:
-                  type: string
-                  format: uuid
-                name:
-                  type: string
-              required:
-              - id
-              - name
-          required:
-          - id
-          - name
-          - brand
-        quantity:
-          type: integer
-      required:
-      - id
-      - product
-      - quantity
-    OrderActivity:
-      type: object
-      description: An order activity represents a status change event for an order.
-      properties:
-        id:
-          type: string
-          format: uuid
-        order_status:
-          $ref: '#/components/schemas/OrderActivityStatus'
-          description: The status that the order transitioned to.
-        created_at:
-          type: string
-          format: date-time
-          description: When this activity occurred.
-        order:
-          $ref: '#/components/schemas/Order'
-          description: The current state of the order.
-      required:
-      - id
-      - order_status
-      - created_at
-      - order
   securitySchemes:
     bearer:
       type: http

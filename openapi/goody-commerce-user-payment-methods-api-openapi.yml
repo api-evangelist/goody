@@ -29,13 +29,13 @@ paths:
               examples:
                 Commerce user payment method created:
                   value:
-                    id: 7e77b629-5ea9-4bd5-8191-a67a402ccd26
+                    id: 327645ec-3057-42de-b5ea-1769b4ccbea3
                     card_brand: mastercard
                     card_last_4: '4444'
                     card_exp_month: 12
                     card_exp_year: 2034
                     cardholder_name: John Doe
-                    created_at: '2026-06-03T12:24:05Z'
+                    created_at: '2026-07-28T20:20:04Z'
               schema:
                 $ref: '#/components/schemas/CommerceUserPaymentMethod'
         '400':
@@ -61,7 +61,7 @@ paths:
                 summary: Commerce user payment method created
                 value:
                   cardholder_name: John Doe
-                  commerce_end_user_id: test_user_pm_2331d26e
+                  commerce_end_user_id: test_user_pm_56776607
                   payment_method_type: card
                   interim_card_key: X9edbacqt1CBCRRKRLkuiINj
                   billing_address:
@@ -75,39 +75,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    CommerceUserPaymentMethod:
-      type: object
-      properties:
-        id:
-          type: string
-        card_brand:
-          type:
-          - string
-          - 'null'
-          description: Brand of the card, e.g. 'Visa' or 'Mastercard'.
-        card_last_4:
-          type:
-          - string
-          - 'null'
-          description: Last 4 digits of the card number.
-        card_exp_month:
-          type:
-          - integer
-          - 'null'
-        card_exp_year:
-          type:
-          - integer
-          - 'null'
-        cardholder_name:
-          type:
-          - string
-          - 'null'
-        created_at:
-          type: string
-          format: date-time
-          description: Date and time the payment method was created, ISO 8601 format.
-      required:
-      - id
     CommerceUserPaymentMethodInput:
       type: object
       properties:
@@ -160,6 +127,39 @@ components:
           type: string
       required:
       - error
+    CommerceUserPaymentMethod:
+      type: object
+      properties:
+        id:
+          type: string
+        card_brand:
+          type:
+          - string
+          - 'null'
+          description: Brand of the card, e.g. 'Visa' or 'Mastercard'.
+        card_last_4:
+          type:
+          - string
+          - 'null'
+          description: Last 4 digits of the card number.
+        card_exp_month:
+          type:
+          - integer
+          - 'null'
+        card_exp_year:
+          type:
+          - integer
+          - 'null'
+        cardholder_name:
+          type:
+          - string
+          - 'null'
+        created_at:
+          type: string
+          format: date-time
+          description: Date and time the payment method was created, ISO 8601 format.
+      required:
+      - id
   securitySchemes:
     bearer:
       type: http

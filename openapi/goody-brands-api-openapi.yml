@@ -63,40 +63,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ProductVariantGroupOption:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the variant group option, e.g. "Small" for the "Size" variant group.
-        subtitle:
-          type:
-          - string
-          - 'null'
-        color:
-          type:
-          - string
-          - 'null'
-          description: The hex color code for this option, e.g. "#000000", if any.
-        image_large:
-          $ref: '#/components/schemas/Image'
-      required:
-      - id
-      - name
-    BrandSetImage:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        image_large:
-          $ref: '#/components/schemas/Image'
-      required:
-      - id
-      - image_large
     Brand:
       type: object
       properties:
@@ -126,6 +92,22 @@ components:
           items:
             type: string
           description: An array of brand values for this brand. Potential values are USA Made, Social Impact Driven, Sustainable, Gluten Free, Vegan, Kosher Certified, Female Founded, AAPI Founded, BIPOC Founded, Black Founded, LGBTQ+ Founded, and Hispanic Founded.
+        subtitle:
+          type:
+          - string
+          - 'null'
+          description: A short marketing description of the brand. Only included when using the brands endpoint.
+        tile_image:
+          $ref: '#/components/schemas/Image'
+          description: The square tile image for this brand. Only included when using the brands endpoint.
+        header_image:
+          $ref: '#/components/schemas/Image'
+          description: The wide header image for this brand. Only included when using the brands endpoint.
+        price_min:
+          type:
+          - integer
+          - 'null'
+          description: The lowest product price among this brand's listed products, in cents. Only included when using the brands endpoint.
         brand_sets:
           type:
           - array
@@ -142,78 +124,6 @@ components:
         total_count:
           type: integer
           description: The total number of items in this list.
-    BrandSetCategory:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        subcategories:
-          type: array
-          items:
-            type: string
-          description: An array of subcategory names within this category.
-      required:
-      - id
-      - name
-    ProductVariant:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        image_large:
-          $ref: '#/components/schemas/Image'
-        subtitle:
-          type:
-          - string
-          - 'null'
-      required:
-      - id
-      - name
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
-      required:
-      - url
-    ProductVariantGroup:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          description: The name of the variant group, e.g. "Size" or "Color".
-        options:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductVariantGroupOption'
-      required:
-      - id
-      - name
-    ProductAttribute:
-      type: object
-      properties:
-        label:
-          type: string
-          description: The label for this attribute, e.g. "Materials".
-        content:
-          type: string
-          description: The content for this attribute, e.g. "80% cotton, 20% elastane". This can be text or sanitized HTML (you might choose to sanitize the HTML as well). Allowed elements are a (href allowed), div, img (src, width height, alt allowed), span, p, br, strong, b, em, i, ol, ul, li, and hr.
-      required:
-      - label
-      - content
     ProductImage:
       type: object
       properties:
@@ -225,33 +135,6 @@ components:
       required:
       - id
       - image_large
-    BrandSet:
-      type: object
-      description: A brand set represents a collection of products from a brand.
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/BrandSetImage'
-          description: An array of images for this brand set.
-        products:
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-          description: An array of products in this brand set.
-        categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/BrandSetCategory'
-          description: An array of categories this brand set belongs to.
-      required:
-      - id
-      - name
     Product:
       type: object
       properties:
@@ -321,6 +204,9 @@ components:
           items:
             type: string
             description: The US states that this product cannot be shipped to.
+        cart_eligible:
+          type: boolean
+          description: Whether this product can be combined with others in a single gift. False for products that must be sent on their own, such as gift cards, alcohol, custom stores, gift of choice, and collections.
         attributes:
           type: array
           items:
@@ -347,6 +233,44 @@ components:
               - integer
               - 'null'
               description: For approved API partners only. A custom price tier for this product.
+        gift_card:
+          type:
+          - object
+          - 'null'
+          description: Present only for gift card products. Use to tell a gift card apart from a variable-price flex gift and to enforce its amount rules. All amounts here are in the card's native currency (the units a gift card's `variable_price` is spent in).
+          properties:
+            currency:
+              type:
+              - string
+              - 'null'
+              description: The gift card currency, e.g. "USD".
+            currency_rate:
+              type:
+              - number
+              - 'null'
+              description: Native currency units per USD (native_amount / currency_rate = USD amount), for showing the USD a sender pays on a non-USD card. Always 1 for USD; null when the rate is temporarily unavailable, in which case treat the amount as native-only.
+            denominations:
+              type:
+              - array
+              - 'null'
+              items:
+                type: integer
+              description: The fixed set of allowed amounts, in native-currency cents. Null when the gift card is a sliding scale, in which case use value_restrictions.
+            value_restrictions:
+              type:
+              - object
+              - 'null'
+              description: For a sliding-scale gift card, the inclusive native-currency-cent bounds a sender may fund. Null for fixed-denomination cards (use denominations instead).
+              properties:
+                min:
+                  type: integer
+                  description: Minimum fundable amount, in native-currency cents.
+                max:
+                  type: integer
+                  description: Maximum fundable amount, in native-currency cents.
+              required:
+              - min
+              - max
       required:
       - id
       - name
@@ -356,6 +280,140 @@ components:
       - price
       - price_is_variable
       - restricted_states
+      - cart_eligible
+    ProductVariant:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        image_large:
+          $ref: '#/components/schemas/Image'
+        subtitle:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - name
+    ProductVariantGroup:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the variant group, e.g. "Size" or "Color".
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductVariantGroupOption'
+      required:
+      - id
+      - name
+    BrandSetCategory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        subcategories:
+          type: array
+          items:
+            type: string
+          description: An array of subcategory names within this category.
+      required:
+      - id
+      - name
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+      required:
+      - url
+    BrandSetImage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - image_large
+    ProductAttribute:
+      type: object
+      properties:
+        label:
+          type: string
+          description: The label for this attribute, e.g. "Materials".
+        content:
+          type: string
+          description: The content for this attribute, e.g. "80% cotton, 20% elastane". This can be text or sanitized HTML (you might choose to sanitize the HTML as well). Allowed elements are a (href allowed), div, img (src, width height, alt allowed), span, p, br, strong, b, em, i, ol, ul, li, and hr.
+      required:
+      - label
+      - content
+    BrandSet:
+      type: object
+      description: A brand set represents a collection of products from a brand.
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSetImage'
+          description: An array of images for this brand set.
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+          description: An array of products in this brand set.
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandSetCategory'
+          description: An array of categories this brand set belongs to.
+      required:
+      - id
+      - name
+    ProductVariantGroupOption:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The name of the variant group option, e.g. "Small" for the "Size" variant group.
+        subtitle:
+          type:
+          - string
+          - 'null'
+        color:
+          type:
+          - string
+          - 'null'
+          description: The hex color code for this option, e.g. "#000000", if any.
+        image_large:
+          $ref: '#/components/schemas/Image'
+      required:
+      - id
+      - name
   securitySchemes:
     bearer:
       type: http

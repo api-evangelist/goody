@@ -1,0 +1,107 @@
+openapi: 3.2.0
+info:
+  title: Goody Gifts of Choice API
+  version: 1.0.0
+  contact:
+    name: Goody Support
+    email: support@ongoody.com
+servers:
+- url: https://api.ongoody.com
+  description: Production
+- url: https://api.sandbox.ongoody.com
+  description: Sandbox
+tags:
+- name: Gifts of Choice
+paths:
+  /v1/gifts_of_choice:
+    get:
+      summary: List Gifts of Choice
+      tags:
+      - Gifts of Choice
+      security:
+      - bearer: []
+      responses:
+        '200':
+          description: Gifts of Choice retrieved
+          content:
+            application/json:
+              examples:
+                Gifts of Choice retrieved:
+                  value:
+                    data:
+                    - id: 7f610414-d872-496e-860a-e6df25e8dfcc
+                      name: A Goody Gift
+                      kind: default
+                      price_min: 1500
+                      price_max: null
+                      suggested_variable_price: null
+                      occasions: []
+                    list_meta:
+                      total_count: 1
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/GiftOfChoice'
+                  list_meta:
+                    $ref: '#/components/schemas/ListMeta'
+      operationId: getV1GiftsOfChoice
+      x-operation-id-source: derived
+components:
+  schemas:
+    GiftOfChoice:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Product ID. Send it like any other product (as a cart item) with a `variable_price` in [price_min, price_max].
+        name:
+          type: string
+        kind:
+          type: string
+          enum:
+          - default
+          - seasonal
+          description: '`default` is the flagship Gift of Choice; `seasonal` is a curated/holiday one. Exactly one entry is `default`.'
+        price_min:
+          type:
+          - integer
+          - 'null'
+          description: Lowest amount, in cents, the sender may fund.
+        price_max:
+          type:
+          - integer
+          - 'null'
+          description: Highest amount, in cents; null means unlimited (the usual case).
+        suggested_variable_price:
+          type:
+          - integer
+          - 'null'
+          description: Reserved for budget-framed queries; currently always null on this endpoint.
+        occasions:
+          type: array
+          items:
+            type: string
+            description: An occasion this Gift of Choice is recommended for.
+      required:
+      - id
+      - name
+      - kind
+      - price_min
+      - price_max
+      - suggested_variable_price
+      - occasions
+    ListMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: The total number of items in this list.
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Your Goody API key.
