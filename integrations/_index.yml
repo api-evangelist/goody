@@ -15,6 +15,7 @@
   evidence: https://zapier.com/apps/goody/integrations/hubspot/1745169/create-or-update-hubspot-contacts-when-new-orders-are-created-in-goody
   template: https://zapier.com/apps/goody/integrations/hubspot/1745169/create-or-update-hubspot-contacts-when-new-orders-are-created-in-goody
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: goody-send-goody-gifts-to-new-contacts-added-to-a-hubspot-list
@@ -29,6 +30,7 @@
   evidence: https://zapier.com/apps/goody/integrations/hubspot/1456841/send-goody-gifts-to-new-contacts-added-to-a-hubspot-list
   template: https://zapier.com/apps/goody/integrations/hubspot/1456841/send-goody-gifts-to-new-contacts-added-to-a-hubspot-list
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: goody-send-goody-gifts-to-new-contacts-added-to-hubspot
@@ -43,6 +45,7 @@
   evidence: https://zapier.com/apps/goody/integrations/hubspot/1527527/send-goody-gifts-to-new-contacts-added-to-hubspot
   template: https://zapier.com/apps/goody/integrations/hubspot/1527527/send-goody-gifts-to-new-contacts-added-to-hubspot
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: goody-send-goody-gifts-to-new-marketo-leads
@@ -57,88 +60,8 @@
   evidence: https://zapier.com/apps/goody/integrations/marketo/1527554/send-goody-gifts-to-new-marketo-leads
   template: https://zapier.com/apps/goody/integrations/marketo/1527554/send-goody-gifts-to-new-marketo-leads
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
-  arazzo: null
-- slug: goody-salesforce
-  label: Salesforce
-  partner: salesforce
-  partner_name: Salesforce
-  category: CRM (Customer Relationship Management)
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/salesforce
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: goody-quickbooks-online
-  label: QuickBooks Online
-  partner_name: QuickBooks Online
-  category: Accounting
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/quickbooks
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: goody-mighty-networks
-  label: Mighty Networks
-  partner: mighty-networks
-  partner_name: Mighty Networks
-  category: Website Builders
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/mightynetworks
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: goody-bamboohr
-  label: BambooHR
-  partner: bamboohr
-  partner_name: BambooHR
-  category: HR Talent & Recruitment
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/bamboohr
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: goody-lob
-  label: Lob
-  partner: lob
-  partner_name: Lob
-  category: Printing
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/lob
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: goody-simplesat
-  label: Simplesat
-  partner_name: Simplesat
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/simplesat
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: goody-surefire
-  label: Surefire
-  partner_name: Surefire
-  category: CRM (Customer Relationship Management)
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/surefireapp
-  source: edge
-  status: pending-partner-spec
   arazzo: null
 - slug: goody-zapier
   label: Zapier
@@ -190,4 +113,93 @@
     sources: true
     builder: Pipedream repo (component)
   status: not-a-workflow
+  arazzo: null
+- slug: goody-salesforce
+  label: Salesforce
+  partner: salesforce
+  partner_name: Salesforce
+  category: CRM (Customer Relationship Management)
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/salesforce
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: goody-quickbooks-online
+  label: QuickBooks Online
+  partner: quickbooks
+  partner_name: QuickBooks Online
+  category: Accounting
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/quickbooks
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: goody-mighty-networks
+  label: Mighty Networks
+  partner: mighty-networks
+  partner_name: Mighty Networks
+  category: Website Builders
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/mightynetworks
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: goody-bamboohr
+  label: BambooHR
+  partner: bamboohr
+  partner_name: BambooHR
+  category: HR Talent & Recruitment
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/bamboohr
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: goody-lob
+  label: Lob
+  partner: lob
+  partner_name: Lob
+  category: Printing
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/lob
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: goody-simplesat
+  label: Simplesat
+  partner_name: Simplesat
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/simplesat
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: goody-surefire
+  label: Surefire
+  partner_name: Surefire
+  category: CRM (Customer Relationship Management)
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/goody/integrations/surefireapp
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
   arazzo: null

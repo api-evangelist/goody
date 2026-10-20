@@ -1,4 +1,4 @@
-generated: '2026-10-12'
+generated: '2026-10-20'
 method: searched
 source:
 - https://zapier.com/apps/goody/integrations
@@ -68,105 +68,6 @@ marketplace_apps:
   - key: GOODY_RETRIEVE_CURRENT_USER
   - key: GOODY_RETRIEVE_PRODUCT
 edges:
-- partner_name: HubSpot
-  partner: hubspot
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/hubspot
-  direction: third-party
-  category: Marketing Automation
-  partner_url: http://www.hubspot.com/
-- partner_name: Salesforce
-  partner: salesforce
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/salesforce
-  direction: third-party
-  category: CRM (Customer Relationship Management)
-  partner_url: https://www.salesforce.com/
-- partner_name: Marketo
-  partner: marketo
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/marketo
-  direction: third-party
-  category: Marketing Automation
-  partner_url: https://marketo.com/
-- partner_name: QuickBooks Online
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/quickbooks
-  direction: third-party
-  category: Accounting
-  partner_url: http://intuit.com/
-- partner_name: Mighty Networks
-  partner: mighty-networks
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/mightynetworks
-  direction: third-party
-  category: Website Builders
-  partner_url: http://www.mightynetworks.com/
-- partner_name: BambooHR
-  partner: bamboohr
-  partner_match: domain
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/bamboohr
-  direction: third-party
-  category: HR Talent & Recruitment
-  partner_url: https://www.bamboohr.com/lp/c-hr-saas-software/d/?utm_source=PT&utm_medium=MKP&utm_campaign=Zapi-TR-FreeTrialR-20181111-01&utm_content=blank&utm_term=blank
-- partner_name: Lob
-  partner: lob
-  partner_match: name-exact
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/lob
-  direction: third-party
-  category: Printing
-  partner_url: https://www.lob.com/
-- partner_name: Simplesat
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/simplesat
-  direction: third-party
-  category: Forms & Surveys
-  partner_url: https://www.simplesat.io/
-- partner_name: Surefire
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/goody/integrations/surefireapp
-  direction: third-party
-  category: CRM (Customer Relationship Management)
-  partner_url: https://www.surefiresoftware.co.uk/
 - partner_name: Zapier
   partner: zapier
   partner_match: aggregator
@@ -218,6 +119,114 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/goody/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Salesforce
+  partner: salesforce
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/goody/integrations/salesforce
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://www.salesforce.com/
+- partner_name: Marketo
+  partner: marketo
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/goody/integrations/marketo
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://marketo.com/
+- partner_name: QuickBooks Online
+  partner: quickbooks
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/goody/integrations/quickbooks
+  direction: third-party
+  category: Accounting
+  partner_url: http://intuit.com/
+- partner_name: Mighty Networks
+  partner: mighty-networks
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/goody/integrations/mightynetworks
+  direction: third-party
+  category: Website Builders
+  partner_url: http://www.mightynetworks.com/
+- partner_name: BambooHR
+  partner: bamboohr
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/goody/integrations/bamboohr
+  direction: third-party
+  category: HR Talent & Recruitment
+  partner_url: https://www.bamboohr.com/lp/c-hr-saas-software/d/?utm_source=PT&utm_medium=MKP&utm_campaign=Zapi-TR-FreeTrialR-20181111-01&utm_content=blank&utm_term=blank
+- partner_name: Lob
+  partner: lob
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/goody/integrations/lob
+  direction: third-party
+  category: Printing
+  partner_url: https://www.lob.com/
+- partner_name: Simplesat
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/goody/integrations/simplesat
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.simplesat.io/
+- partner_name: Surefire
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/goody/integrations/surefireapp
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://www.surefiresoftware.co.uk/
 templates:
 - title: Create or update HubSpot contacts when new orders are created in Goody
   url: https://zapier.com/apps/goody/integrations/hubspot/1745169/create-or-update-hubspot-contacts-when-new-orders-are-created-in-goody
