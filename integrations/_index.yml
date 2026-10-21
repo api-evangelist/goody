@@ -203,3 +203,31 @@
   relationship: ipaas-bridge
   status: pending-partner-spec
   arazzo: null
+- slug: goody-index-ventures
+  label: Index Ventures
+  partner: index-ventures
+  partner_name: Index Ventures
+  category: vc portfolio participation
+  type: register
+  channel: standard-directory
+  evidence: https://www.indexventures.com/companies/goody/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Index Ventures companies (indexventures.com/companies/)
+    standard: null
+    spec_file: null
+    role: vc-portfolio-company
+    registered_name: Goody
+    register_id: https://www.indexventures.com/companies/goody/
+    register_country: null
+    register_website: https://www.ongoody.com/
+    matched_domain: ongoody.com
+    matched_by: domain
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+    sector: retail
+  status: not-a-workflow
+  arazzo: null

@@ -11,6 +11,12 @@ checked:
 - https://n8n.io/integrations/goody/
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/goody/integrations
+- https://a16z.com/portfolio/
+- https://www.battery.com/company/
+- https://www.battery.com/wp-admin/admin-ajax.php
+- https://www.indexventures.com/companies/
+- https://www.sequoiacap.com/our-companies/
+- https://www.sequoiacap.com/sitemap.xml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -227,6 +233,33 @@ edges:
   direction: third-party
   category: CRM (Customer Relationship Management)
   partner_url: https://www.surefiresoftware.co.uk/
+- partner_name: Index Ventures
+  partner: index-ventures
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.indexventures.com/companies/goody/
+  category: vc portfolio participation
+  contract_reference:
+    register: Index Ventures companies (indexventures.com/companies/)
+    standard: null
+    spec_file: null
+    role: vc-portfolio-company
+    registered_name: Goody
+    register_id: https://www.indexventures.com/companies/goody/
+    register_country: null
+    register_website: https://www.ongoody.com/
+    matched_domain: ongoody.com
+    matched_by: domain
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+    sector: retail
+  detected_by: sweep-vc-portfolios.py
+  first_seen: '2026-10-21'
 templates:
 - title: Create or update HubSpot contacts when new orders are created in Goody
   url: https://zapier.com/apps/goody/integrations/hubspot/1745169/create-or-update-hubspot-contacts-when-new-orders-are-created-in-goody
